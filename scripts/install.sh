@@ -17,7 +17,7 @@ info() {
 
 error_exit() {
     printf "\n\033[1;31m✘ %s, exiting.\033[0m\n" "$1"
-    return 1
+    exit 1
 }
 
 error_clean() {
@@ -91,7 +91,7 @@ emacs_install() {
     
     git clone https://github.com/hlissner/doom-emacs "$HOME"/.emacs.d || error_clean "Error cloning doom-emacs to $HOME/.emacs.d"
     "$HOME"/.emacs.d/bin/doom install || error_clean "Error running doom install" 
-    sips -i https://github.com/SavchenkoValeriy/emacs-icons/blob/main/curvy-blender/Emacs.icns /Applications/Emacs.app/Contents/Resources/AppIcon.icns || error_exit "Error changing Emacs icon"
+    sips -i https://github.com/SavchenkoValeriy/emacs-icons/blob/main/curvy-blender/Emacs.icns /Applications/Emacs.app/Contents/Resources/AppIcon.icns || error_clean "Error changing Emacs icon"
 
     success "Doom Emacs installed successfully"
 }
