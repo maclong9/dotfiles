@@ -71,7 +71,7 @@
        emacs-lisp          ; drown in parentheses
        erlang              ; an elegant language for a more civilized age
        json                ; At least it ain't XML
-       javascript          ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
        julia               ; a better, faster MATLAB
        latex               ; writing papers in Emacs has never been so fun
        org                 ; organize your plain life in plain text
@@ -89,4 +89,5 @@
        (mu4e +org)         ; You can answer emails in this thing too?
        
        :config
-       (default +bindings +smartparens))
+       literate            ; Write your configuration as documentation
+       (default +bindings +smartparens)
