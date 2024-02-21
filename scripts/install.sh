@@ -22,7 +22,7 @@ error_exit() {
 
 error_clean() {
     printf "\n\033[1;31m✘ %s, removing ~/.config and MacPorts then exiting.\033[0m\n" "$1"
-    sudo rm -rf ~/.config /opts/mports ~/.ssh
+    rm -rf ~/.config /opts/mports ~/.ssh
     rm -rf ~/Downloads/Hyperkey0.28.dmg
 
     if [ -d "/Volumes/Hyperkey0.28" ]; then
@@ -35,7 +35,7 @@ error_clean() {
 error_clean() {
     printf "\n\033[1;31m✘ %s, removing $HOME/.config and MacPorts then exiting.\033[0m\n" "$1"
     
-    sudo rm -rf "$HOME"/.config /opts/mports "$HOME"/.ssh
+    rm -rf "$HOME"/.config /opts/mports "$HOME"/.ssh
     rm -rf "$HOME"/Downloads/Hyperkey0.28.dmg
 
     if [ -d /Volumes/Hyperkey0.28 ]; then
@@ -61,12 +61,12 @@ ports_install() {
     if ! command -v ports > /dev/null; then
         message "Installing MacPorts..."
        
-        sudo mkdir -p /opt/mports
-        sudo git clone https://github.com/macports/macports-base.git /opt/mports/macports-base
+        mkdir -p /opt/mports
+        git clone https://github.com/macports/macports-base.git /opt/mports/macports-base
         cd /opt/mports/macports-base
         ./configure --enable-readline
         make
-        sudo make install
+        make install
         make distclean
     fi
     
@@ -78,7 +78,7 @@ install_hyperkey() {
     
     curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
     hdiutil attach "$HOME"/Downloads/Hyperkey0.28.dmg
-    sudo cp -R /Volumes/Hyperkey0.28/Hyperkey.app /Applications
+    cp -R /Volumes/Hyperkey0.28/Hyperkey.app /Applications
     hdiutil detach /Volumes/Hyperkey0.28
     rm -rf "$HOME"/Downloads/Hyperkey0.28.dmg
 
@@ -91,7 +91,7 @@ install_sioyek() {
     curl -LO https://github.com/ahrm/sioyek/releases/download/v2.0.0/sioyek-release-mac.zip
     unzip sioyek-release-mac.zip
     hdiutil attach "$HOME"/Downloads/build/sioyek.dmg
-    sudo cp -R /Volumes/build:sioyek/Sioyek.app /Applications
+    cp -R /Volumes/build:sioyek/Sioyek.app /Applications
     hdiutil detach /Volumes/build:sioyek
     rm -rf "$HOME"/Downloads/build
 
@@ -111,7 +111,7 @@ emacs_install() {
 tooling_install() {
     message "Installing tooling with MacPorts..."
    
-    sudo port install "$tooling" || error_clean "Error installing tooling with MacPorts"
+    port install "$tooling" || error_clean "Error installing tooling with MacPorts"
     curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
     emacs_install || error_clean "Error installing Emacs"
     
@@ -121,7 +121,7 @@ tooling_install() {
 app_install() {
     message "Installing Applications with mas..."
     
-    sudo mas install "$apps" || error_clean "Error installing applications with mas"
+    mas install "$apps" || error_clean "Error installing applications with mas"
     install_hyperkey || error_clean "Error installing Hyperkey"
     
     success "Applications have been installed"
