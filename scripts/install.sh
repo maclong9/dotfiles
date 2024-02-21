@@ -105,12 +105,12 @@ install_bun() {
     fi
 }
 
-install_emacs() {
+install_doom() {
     message "Installing Doom Emacs..."
+    mv /Applications/MacPorts/EmacsMac.app/Contents/MacOS/Emacs /Applications/MacPorts/EmacsMac.app/Contents/MacOS/emacs
 
     if [ ! -d "$HOME"/.emacs.d ]; then
         git clone https://github.com/hlissner/doom-emacs "$HOME"/.emacs.d || error_clean "Error cloning doom-emacs to $HOME/.emacs.d"
-        mv /Applications/MacPorts/EmacsMac.app/Contents/MacOS/Emacs /Applications/MacPorts/EmacsMac.app/Contents/MacOS/emacs
     fi
     "$HOME"/.emacs.d/bin/doom install || error_clean "Error running doom install"
     
@@ -124,7 +124,7 @@ tooling_install() {
     source "$HOME"/.profile
     port install $tooling || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
     install_bun || error_clean "Error installing bun from script"
-    install_emacs || error_clean "Error installing Emacs"
+    install_doom || error_clean "Error installing Emacs"
 
     success "Tooling has been installed successfully"
 }
