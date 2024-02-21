@@ -26,7 +26,7 @@ error_clean() {
     sudo rm -rf ~/.config /opts/mports ~/.ssh
     rm -rf ~/Downloads/Hyperkey0.28.dmg
 
-    if [ -d "/Volumes/Hyperkey0.28" ]; then
+    if [ -d /Volumes/Hyperkey0.28 ]; then
         hdiutil detach /Volumes/Hyperkey0.28
     fi
     
@@ -66,11 +66,24 @@ install_hyperkey() {
     
     curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
     hdiutil attach ~/Downloads/Hyperkey0.28.dmg
-    sudo cp -R "/Volumes/Hyperkey0.28/Hyperkey.app" /Applications
+    sudo cp -R /Volumes/Hyperkey0.28/Hyperkey.app /Applications
     hdiutil detach /Volumes/Hyperkey0.28
     rm -rf ~/Downloads/Hyperkey0.28.dmg
 
     success "Hyperkey installed successfully"
+}
+
+install_sioyek() {
+    message "Installing Sioyek..."
+    
+    curl -LO https://github.com/ahrm/sioyek/releases/download/v2.0.0/sioyek-release-mac.zip
+    unzip sioyek-release-mac.zip
+    hdiutil attach ~/Downloads/build/sioyek.dmg
+    sudo cp -R /Volumes/build:sioyek/Sioyek.app /Applications
+    hdiutil detach /Volumes/build:sioyek
+    rm -rf ~/Downloads/build
+
+    success "Sioyek installed successfully"
 }
 
 emacs_install() {
