@@ -131,7 +131,7 @@ tooling_install() {
 app_install() {
     message "Installing Applications with mas..."
 
-    mas install 1436953057 || \ # 1289583905 1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835
+    mas install 1436953057 || \ 
         error_clean "Error installing applications with mas"
     install_hyperkey || error_clean "Error installing Hyperkey"
 
