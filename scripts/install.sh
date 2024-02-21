@@ -113,7 +113,7 @@ emacs_install() {
 tooling_install() {
     message "Installing tooling with MacPorts..."
    
-    port install "${@:tooling}" || error_clean "Error installing tooling with MacPorts"
+    echo "${@:tooling}" || error_clean "Error installing tooling with MacPorts"
     curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
     emacs_install || error_clean "Error installing Emacs"
     
