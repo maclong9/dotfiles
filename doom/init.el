@@ -11,7 +11,7 @@
        doom-quit           ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)    ; 🙂
        indent-guides       ; highlighted indent columns
-       ligatures           ; ligatures and symbols to make your code pretty again
+       (ligatures +extra)  ; ligatures and symbols to make your code pretty again
        modeline            ; snazzy, Atom-inspired modeline, plus API
        nav-flash           ; blink cursor line after big motions
        ophints             ; highlight the region an operation acts on
@@ -19,7 +19,6 @@
        tabs                ; a tab bar for Emacs
        treemacs            ; a project drawer, like neotree but cooler
        (vc-gutter +pretty) ; vcs diff in the fringe
-       vi-tilde-fringe     ; fringe tildes to mark beyond EOB
        window-select       ; visually switch windows
        workspaces          ; tab emulation, persistence & separate workspaces
        zen                 ; distraction-free coding or writing
