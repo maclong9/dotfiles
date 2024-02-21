@@ -34,6 +34,8 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
 
 ***** Applications 
 
+- Alacritty
+  - [[https://www.dropbox.com/s/0i4ez0el7paksg3/Alacritty.icns?dl=0][Prettier Icon]]
 - Apple Apps
   - Compressor
   - Final Cut Pro
@@ -43,11 +45,12 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
   - Xcode
 - Emacs
   - [[https://github.com/SavchenkoValeriy/emacs-icons/tree/main][Prettier Icon]]
-- HyperKey
-- Linear
+- [[https://hyperkey.app/downloads/Hyperkey0.28.dmg][HyperKey]]
+- [[https://desktop.linear.app/mac][Linear]]
 - Pixelmator Pro
 - Safari Extensions
   - Ghostery 
+- Sioyek
 
 #+begin_src sh
 1436953057 1289583905 1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835
