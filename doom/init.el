@@ -82,6 +82,9 @@
        yaml                ; JSON, but readable
        zig                 ; C, but simpler
 
+       :app
+       everywhere          ; *leave* Emacs!? You must be joking
+       
        :email
        (mu4e +org)         ; You can answer emails in this thing too?
        
