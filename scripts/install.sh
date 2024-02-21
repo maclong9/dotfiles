@@ -22,16 +22,16 @@ error_exit() {
 }
 
 cleanup() {
-    message "Exiting...\n"
+    message "Exiting..."
     sudo rm -rf /opt/mports ~/.config
     exit 0
 }
 
 clone_configuration() {
-    message "Checking if ~/.config already exists...\n"
+    message "Checking if ~/.config already exists..."
 
     if [ -d ~/.config ]; then
-        error_exit "$HOME/.config already exists\n"
+        error_exit "$HOME/.config already exists"
     else
         git clone https://github.com/mac-codes9/dotfiles ~/.config || error_exit "Failed to clone configuration repository"
     fi
