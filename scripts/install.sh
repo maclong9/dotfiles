@@ -108,8 +108,10 @@ install_bun() {
 install_emacs() {
     message "Installing Doom Emacs..."
 
-    git clone https://github.com/hlissner/doom-emacs "$HOME"/.emacs.d || error_clean "Error cloning doom-emacs to $HOME/.emacs.d"
-    mv /Applications/MacPorts/EmacsMac.app/Contents/MacOS/Emacs /Applications/MacPorts/EmacsMac.app/Contents/MacOS/emacs
+    if ! -d "$HOME"/.emacs.d; then
+        git clone https://github.com/hlissner/doom-emacs "$HOME"/.emacs.d || error_clean "Error cloning doom-emacs to $HOME/.emacs.d"
+        mv /Applications/MacPorts/EmacsMac.app/Contents/MacOS/Emacs /Applications/MacPorts/EmacsMac.app/Contents/MacOS/emacs
+    fi
     "$HOME"/.emacs.d/bin/doom install || error_clean "Error running doom install"
     
     success "Doom Emacs installed successfully"
