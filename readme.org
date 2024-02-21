@@ -1,15 +1,15 @@
-# Dotfiles 
+* Dotfiles 
 
-## Usage
+** Usage
 
 Run the following in any macOS terminal.
 
-``` sh
+#+begin_src sh
 sh <(curl -s https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)
-```
+#+end_src
 
-### System Explanation
-#### Use Cases
+*** System Explanation
+**** Use Cases
 
 - Graphics
 - Music Production
@@ -24,7 +24,7 @@ sh <(curl -s https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/
 - Virtualisation 
 - Writing
 
-#### Applications 
+***** Applications 
 
 - Apple Apps
   - Compressor
@@ -33,7 +33,6 @@ sh <(curl -s https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/
   - MainStage
   - Motion
   - Xcode
-- Emacs
 - HyperKey
 - Linear
 - Pixelmator Pro
@@ -41,14 +40,18 @@ sh <(curl -s https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/
   - Ghostery 
 - Sioyek
 
-#### Tooling
+***** Tooling
 
 - alacritty
 - bun
 - fd
 - fzf
+- github-cli
 - mas
+- neovim
+- nushell
 - ripgrep
 - rust
 - sd
+- starship
 - zig
