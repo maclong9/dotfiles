@@ -58,7 +58,7 @@ clone_configuration() {
 }
 
 ports_install() {
-    if ! -f /opt/local/bin/port > /dev/null; then
+    if [ ! -f /opt/local/bin/port ]; then
         message "Installing MacPorts..."
         mkdir -p /opt/mports
         git clone https://github.com/macports/macports-base.git /opt/mports/macports-base
