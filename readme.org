@@ -5,7 +5,7 @@
 Run the following in any macOS terminal.
 
 #+begin_src sh
-sh <(curl -s https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)
+sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)"
 #+end_src
 
 #+BEGIN_QUOTE
