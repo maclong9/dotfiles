@@ -63,6 +63,7 @@ ports_install() {
         mkdir -p /opt/mports
         git clone https://github.com/macports/macports-base.git /opt/mports/macports-base
         cd /opt/mports/macports-base
+        git checkout v2.9.1
         ./configure --enable-readline
         make
         make install
