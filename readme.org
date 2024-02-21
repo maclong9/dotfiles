@@ -38,7 +38,6 @@ sh <(curl -s https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/
 - Pixelmator Pro
 - Safari Extensions
   - Ghostery 
-- Sioyek
 
 ***** Tooling
 
