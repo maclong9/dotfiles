@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 tooling="emacs-mac-app fd fzf mas ripgrep rust sd wget zig"
-apps="1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835"
-        
+#apps="1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835"
+apps="1289583905"
+
 success() {
     printf "\n\033[1;32m✔ %s\033[0m\n" "$1"
 }
@@ -14,7 +15,7 @@ message() {
     printf "\n\e[1;37m%s\e[0m\n" "$1"
 }
 
-error_clean() {
+error_exit() {
     printf "\n\033[1;31m✘ %s, exiting.\033[0m\n" "$1"
     sudo rm -rf ~/.config
     exit 1
@@ -22,7 +23,9 @@ error_clean() {
 
 error_clean() {
     printf "\n\033[1;31m✘ %s, removing ~/.config and MacPorts then exiting.\033[0m\n" "$1"
-    sudo rm -rf ~/.config
+    sudo rm -rf ~/.config /opts/mports ~/.ssh
+    hdiutil detach /Volumes/Hyperkey0.28
+    rm -rf ~/Downloads/Hyperkey0.28.dmg
     exit 1
 }
 
@@ -60,8 +63,10 @@ install_hyperkey() {
     curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
     hdiutil attach .dmg
     sudo cp -R "/Volumes/Hyperkey0.28/Hyperkey.app" /Applications
-    
     hdiutil detach /Volumes/Hyperkey0.28
+    rm -rf ~/Downloads/Hyperkey0.28.dmg
+
+    success "Hyperkey installed successfully"
 }
 
 tooling_install() {
