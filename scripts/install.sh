@@ -20,8 +20,8 @@ error_exit() {
 }
 
 cleanup() {
-    printf "Exiting...\n"
-    rm -rf /opt/mports ~/.config
+    message "Exiting...\n"
+    sudo rm -rf /opt/mports ~/.config
     exit 0
 }
 
