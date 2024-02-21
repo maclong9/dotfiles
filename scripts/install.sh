@@ -98,7 +98,7 @@ app_install() {
     sudo mas install "$apps" || error_clean "Error installing applications with mas"
     install_hyperkey || error_clean "Error installing Hyperkey"
     
-    maintainingsuccess "Applications have been installed"
+    success "Applications have been installed"
 }
 
 ssh_setup() {
