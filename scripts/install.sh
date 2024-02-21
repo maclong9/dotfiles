@@ -7,7 +7,7 @@ success() {
 }
 
 info() {
-    printf "\033[0;34m🛈 %s\033[0m\n" "$1"
+    printf "\033[0;34mⓘ %s\033[0m\n" "$1"
 }
 
 error_exit() {
@@ -50,13 +50,20 @@ ports_install() {
     success "MacPorts is installed"
 }
 
+install_hyperkey() {
+    curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
+    hdiutil attach .dmg
+    sudo cp -R "/Volumes/Hyperkey0.28/Hyperkey.app" /Applications
+    hdiutil detach /Volumes/Hyperkey0.28
+}
+
 tooling_install() {
     printf "Installing tooling with MacPorts..."
    
     sudo port install "$tooling" || error_exit "Error installing tooling with MacPorts"
     curl -fsSL https://bun.sh/install | bash || error_exit "Error installing bun"
     emacs_install || error_exit "Error installing Emacs"
-   
+    
     success "Tooling has been installed successfully"
 }
 
@@ -93,7 +100,7 @@ post_install() {
     yabai --start-service
     open -a /Applications/Hyperkey.app
     open -a /Applications/Linear.app
-    git config --global user.email "you@example.com" && git config --global user.name "Your Name"
+    git config --global user.email "maclong9@icloud.com" && git config --global user.name "Mac"
     ssh_setup
     
     success "Post install setup complete."
