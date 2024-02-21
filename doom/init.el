@@ -1,14 +1,11 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-(doom! :input
-       ;;layout            ; auie,ctsrnm is the superior home row
-
-       :completion
+(doom! :completion
        company           ; the ultimate code completion backend
        vertico           ; the search engine of the future
 
        :ui
-       ;;deft              ; notational velocity for Emacs
+       deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
@@ -33,13 +30,11 @@
        (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        multiple-cursors  ; editing in many places at once
-       ;;objed             ; text object editing for the innocent
        snippets          ; my elves. They type so I don't have to
 
        :emacs
        dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
-       ;;ibuffer         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -53,17 +48,15 @@
 
        :tools
        biblio            ; Writes a PhD for you (citation needed)
-       ;;collab            ; buffers with friends
        debugger          ; FIXME stepping through code, to help you add bug
-       ;;dockler
-       ;;
+       dockler
        editorconfig      ; let someone else argue about tabs vs spaces
        ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        lookup              ; navigate your code and its documentation
        lsp               ; M-x vscode
        magit             ; a git porcelain for Emacs
-       ;;make              ; run make tasks from Emacs
+       make              ; run make tasks from Emacs
        pdf               ; pdf enhancements
        prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
@@ -71,8 +64,7 @@
 
        :os
        (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
-       ;;tty               ; improve the terminal Emacs experience
-
+       
        :lang
        (cc +lsp)         ; C > C++ == 1
        elixir            ; erlang done right
@@ -92,17 +84,7 @@
        yaml              ; JSON, but readable
        zig               ; C, but simpler
 
-       :email
-       ;;(mu4e +org +gmail)
-       ;;notmuch
-       ;;(wanderlust +gmail)
-
        :app
-       ;;calendar
-       ;;emms
-       ;;everywhere        ; *leave* Emacs!? You must be joking
-       ;;irc               ; how neckbeards socialize
-       ;;(rss +org)        ; emacs as an RSS reader
        twitter           ; twitter client https://twitter.com/vnought
 
        :config
