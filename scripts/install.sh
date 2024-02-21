@@ -21,10 +21,10 @@ error_exit() {
 }
 
 error_clean() {
-    printf "\n\033[1;31m✘ %s, removing ~/.config and MacPorts then exiting.\033[0m\n" "$1"
+    printf "\n\033[1;31m✘ %s, removing $HOME/.config and MacPorts then exiting.\033[0m\n" "$1"
     
-    sudo rm -rf ~/.config /opts/mports ~/.ssh
-    rm -rf ~/Downloads/Hyperkey0.28.dmg
+    sudo rm -rf $HOME/.config /opts/mports $HOME/.ssh
+    rm -rf $HOME/Downloads/Hyperkey0.28.dmg
 
     if [ -d /Volumes/Hyperkey0.28 ]; then
         hdiutil detach /Volumes/Hyperkey0.28
@@ -34,12 +34,12 @@ error_clean() {
 }
 
 clone_configuration() {
-    message "Checking if ~/.config already exists..."
+    message "Checking if $HOME/.config already exists..."
 
-    if [ -d ~/.config ]; then
+    if [ -d $HOME/.config ]; then
         error_exit "$HOME/.config already exists"
     else
-        git clone https://github.com/mac-codes9/dotfiles ~/.config || error_clean "Failed to clone configuration repository"
+        git clone https://github.com/mac-codes9/dotfiles $HOME/.config || error_clean "Failed to clone configuration repository"
     fi
 
     success "Configuration cloned successfully"
@@ -65,10 +65,10 @@ install_hyperkey() {
     message "Installing Hyperkey..."
     
     curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
-    hdiutil attach ~/Downloads/Hyperkey0.28.dmg
+    hdiutil attach $HOME/Downloads/Hyperkey0.28.dmg
     sudo cp -R /Volumes/Hyperkey0.28/Hyperkey.app /Applications
     hdiutil detach /Volumes/Hyperkey0.28
-    rm -rf ~/Downloads/Hyperkey0.28.dmg
+    rm -rf $HOME/Downloads/Hyperkey0.28.dmg
 
     success "Hyperkey installed successfully"
 }
@@ -78,10 +78,10 @@ install_sioyek() {
     
     curl -LO https://github.com/ahrm/sioyek/releases/download/v2.0.0/sioyek-release-mac.zip
     unzip sioyek-release-mac.zip
-    hdiutil attach ~/Downloads/build/sioyek.dmg
+    hdiutil attach $HOME/Downloads/build/sioyek.dmg
     sudo cp -R /Volumes/build:sioyek/Sioyek.app /Applications
     hdiutil detach /Volumes/build:sioyek
-    rm -rf ~/Downloads/build
+    rm -rf $HOME/Downloads/build
 
     success "Sioyek installed successfully"
 }
@@ -89,8 +89,8 @@ install_sioyek() {
 emacs_install() {
     message "Installing Doom Emacs..."
     
-    git clone https://github.com/hlissner/doom-emacs ~/.emacs.d || error_clean "Error cloning doom-emacs to ~/.emacs.d"
-    ~/.emacs.d/bin/doom install || error_clean "Error running doom install" 
+    git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d || error_clean "Error cloning doom-emacs to $HOME/.emacs.d"
+    $HOME/.emacs.d/bin/doom install || error_clean "Error running doom install" 
 
     success "Doom Emacs installed successfully"
 }
@@ -117,16 +117,16 @@ app_install() {
 ssh_setup() {
   message "Configuring SSH..."
   
-  ssh-keygen -t ed25519 -C "maclong9@icloud.com" -f ~/.ssh/mac-mb
+  ssh-keygen -t ed25519 -C "maclong9@icloud.com" -f $HOME/.ssh/mac-mb
   eval "$(ssh-agent -s)"
   echo '''
   Host github.com
   AddKeysToAgent yes
   UseKeychain yes
-  IdentityFile ~/.ssh/id_mac-mb
-  ''' > ~/.ssh/config
-  ssh-add --apple-use-keychain ~/.ssh/mac-mb
-  pbcopy < ~/.ssh/id_mac-mb.pub
+  IdentityFile $HOME/.ssh/id_mac-mb
+  ''' > $HOME/.ssh/config
+  ssh-add --apple-use-keychain $HOME/.ssh/mac-mb
+  pbcopy < $HOME/.ssh/id_mac-mb.pub
 
   info "Your public key has been copied to your clipboard, make sure to add it to your remote repository provider"
   success "SSH configured successfully"
