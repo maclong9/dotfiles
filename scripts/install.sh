@@ -21,7 +21,7 @@ error_clean() {
 }
 
 error_clean() {
-    printf "\n\033[1;31m✘ %s\n removing config and build tools then exiting.\033[0m\n" "$1"
+    printf "\n\033[1;31m✘ %s, removing ~/.config and build tools then exiting.\033[0m\n" "$1"
     sudo rm -rf ~/.config
     exit 1
 }
