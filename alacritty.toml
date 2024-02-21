@@ -1,6 +1,0 @@
-[window]
-padding = { x = 10, y = 10 }
-decorations = "none"
-
-[font.normal]
-family = "Lifa SFMono Nerd Font"
