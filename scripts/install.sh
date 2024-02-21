@@ -115,8 +115,8 @@ tooling_install() {
     source $HOME/.profile
     sudo port selfupdate
     port install $tooling || error_clean "Error installing tooling with MacPorts"
-    # curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
-    # emacs_install || error_clean "Error installing Emacs"
+    curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
+    emacs_install || error_clean "Error installing Emacs"
 
     success "Tooling has been installed successfully"
 }
