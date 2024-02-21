@@ -83,8 +83,5 @@
        yaml              ; JSON, but readable
        zig               ; C, but simpler
 
-       :app
-       twitter           ; twitter client https://twitter.com/vnought
-
        :config
        (default +bindings +smartparens))
