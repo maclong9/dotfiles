@@ -1,5 +1,5 @@
 [window]
-padding = { x = 10, y = 2 }
+padding = { x = 10, y = 10 }
 decorations = "none"
 blur = true
 
