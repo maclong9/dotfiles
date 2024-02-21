@@ -66,12 +66,8 @@
        ;;make              ; run make tasks from Emacs
        pdf               ; pdf enhancements
        prodigy           ; FIXME managing external services & code builders
-       ;;rgb               ; creating color strings
-       ;;taskrunner        ; taskrunner for all your projects
-       ;;terraform         ; infrastructure as code
-       ;;tmux              ; an API for interacting with tmux
-       ;;tree-sitter       ; syntax and parsing, sitting in a tree...
-       ;;upload            ; map local to remote projects via ssh/ftp
+       rgb               ; creating color strings
+       tree-sitter       ; syntax and parsing, sitting in a tree...
 
        :os
        (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
