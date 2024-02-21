@@ -72,23 +72,28 @@ install_hyperkey() {
     success "Hyperkey installed successfully"
 }
 
+emacs_install() {
+    git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+    ~/.emacs.d/bin/doom install
+}
+
 tooling_install() {
     message "Installing tooling with MacPorts..."
    
     sudo port install "$tooling" || error_clean "Error installing tooling with MacPorts"
     curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
     emacs_install || error_clean "Error installing Emacs"
-    install_hyperkey || error_clean "Error installing Hyperkey"
     
     success "Tooling has been installed successfully"
 }
 
 app_install() {
     message "Installing Applications with mas..."
-   
+    
     sudo mas install "$apps" || error_clean "Error installing applications with mas"
-  
-    success "Applications have been installed"
+    install_hyperkey || error_clean "Error installing Hyperkey"
+    
+    maintainingsuccess "Applications have been installed"
 }
 
 ssh_setup() {
