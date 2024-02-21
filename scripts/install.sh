@@ -14,16 +14,16 @@ message() {
     printf "\n\e[1;37m%s\e[0m\n" "$1"
 }
 
-error_exit() {
+error_clean() {
     printf "\n\033[1;31m✘ %s, exiting.\033[0m\n" "$1"
     sudo rm -rf ~/.config
     exit 1
 }
 
-cleanup() {
-    message "Exiting..."
-    sudo rm -rf /opt/mports ~/.config
-    exit 0
+error_clean() {
+    printf "\n\033[1;31m✘ %s\n removing config and build tools then exiting.\033[0m\n" "$1"
+    sudo rm -rf ~/.config
+    exit 1
 }
 
 clone_configuration() {
@@ -32,7 +32,7 @@ clone_configuration() {
     if [ -d ~/.config ]; then
         error_exit "$HOME/.config already exists"
     else
-        git clone https://github.com/mac-codes9/dotfiles ~/.config || error_exit "Failed to clone configuration repository"
+        git clone https://github.com/mac-codes9/dotfiles ~/.config || error_clean "Failed to clone configuration repository"
     fi
 
     success "Configuration cloned successfully"
@@ -44,12 +44,13 @@ ports_install() {
        
         mkdir -p /opt/mports
         git clone https://github.com/macports/macports-base.git /opt/mports/
-        cd /opt/mports/macports-base || error_exit "/opts/mports/macports-base does not exist"
+        cd /opt/mports/macports-base || error_clean "/opts/mports/macports-base does not exist"
         ./configure --enable-readline
         make
         sudo make install
         make distclean
     fi
+    
     success "MacPorts is installed"
 }
 
@@ -66,9 +67,10 @@ install_hyperkey() {
 tooling_install() {
     message "Installing tooling with MacPorts..."
    
-    sudo port install "$tooling" || error_exit "Error installing tooling with MacPorts"
-    curl -fsSL https://bun.sh/install | bash || error_exit "Error installing bun"
-    emacs_install || error_exit "Error installing Emacs"
+    sudo port install "$tooling" || error_clean "Error installing tooling with MacPorts"
+    curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
+    emacs_install || error_clean "Error installing Emacs"
+    install_hyperkey || error_clean "Error installing Hyperkey"
     
     success "Tooling has been installed successfully"
 }
@@ -76,7 +78,7 @@ tooling_install() {
 app_install() {
     message "Installing Applications with mas..."
    
-    sudo mas install "$apps" || error_exit "Error installing applications with mas"
+    sudo mas install "$apps" || error_clean "Error installing applications with mas"
   
     success "Applications have been installed"
 }
