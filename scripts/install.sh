@@ -99,6 +99,12 @@ install_sioyek() {
     success "Sioyek installed successfully"
 }
 
+install_bun() {
+    if ! command -v bun; then
+        curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
+    fi
+}
+
 install_emacs() {
     message "Installing Doom Emacs..."
 
@@ -115,8 +121,8 @@ tooling_install() {
     sudo echo "export PATH=\"$PATH:/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:/Applications/MacPorts/EmacsMac.app/Contents/MacOS\"" > ~/.profile
     source "$HOME"/.profile
     port install $tooling || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
-    curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
-    emacs_install || error_clean "Error installing Emacs"
+    install_bun || error_clean "Error installing bun from script"
+    install_emacs || error_clean "Error installing Emacs"
 
     success "Tooling has been installed successfully"
 }
