@@ -49,6 +49,8 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
 - Safari Extensions
   - Ghostery 
 
+`1436953057 1289583905 1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835`
+
 ***** Tooling
 
 - alacritty
