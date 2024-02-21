@@ -162,7 +162,6 @@ post_install() {
     skhd --start-service
     yabai --start-service
     open -a /Applications/Hyperkey.app
-    open -a /Applications/Linear.app
     git config --global user.email "maclong9@icloud.com" && git config --global user.name "Mac"
     ssh_setup
 
