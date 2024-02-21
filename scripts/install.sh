@@ -128,8 +128,8 @@ tooling_install() {
 
 app_install() {
     message "Installing Applications with mas..."
-
-    mas install 1436953057 || error_clean "Error installing applications with mas"
+    # TODO: Figure out why mas install works unless run in a script.
+    # mas install 1436953057 || error_clean "Error installing applications with mas"
     install_hyperkey || error_clean "Error installing Hyperkey"
 
     success "Applications have been installed"
