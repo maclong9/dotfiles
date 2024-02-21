@@ -70,31 +70,6 @@ ports_install() {
     success "MacPorts is installed"
 }
 
-install_hyperkey() {
-    message "Installing Hyperkey..."
-
-    curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
-    hdiutil attach "$HOME"/Downloads/Hyperkey0.28.dmg
-    cp -R /Volumes/Hyperkey0.28/Hyperkey.app /Applications
-    hdiutil detach /Volumes/Hyperkey0.28
-    rm -rf "$HOME"/Downloads/Hyperkey0.28.dmg
-
-    success "Hyperkey installed successfully"
-}
-
-install_sioyek() {
-    message "Installing Sioyek..."
-
-    curl -LO https://github.com/ahrm/sioyek/releases/download/v2.0.0/sioyek-release-mac.zip
-    unzip sioyek-release-mac.zip
-    hdiutil attach "$HOME"/Downloads/build/sioyek.dmg
-    cp -R /Volumes/build:sioyek/Sioyek.app /Applications
-    hdiutil detach /Volumes/build:sioyek
-    rm -rf "$HOME"/Downloads/build
-
-    success "Sioyek installed successfully"
-}
-
 install_bun() {
     if ! command -v bun; then
         curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
@@ -126,27 +101,19 @@ tooling_install() {
     success "Tooling has been installed successfully"
 }
 
-app_install() {
-    message "Installing Applications with mas..."
-    # TODO: Figure out why mas install works unless run in a script.
-    # mas install 1436953057 || error_clean "Error installing applications with mas"
-    install_hyperkey || error_clean "Error installing Hyperkey"
-
-    success "Applications have been installed"
-}
-
 ssh_setup() {
   message "Configuring SSH..."
 
-  ssh-keygen -t ed25519 -C "maclong9@icloud.com" -f "$HOME"/.ssh/mac-mb
+  mkdir .ssh
+  ssh-keygen -t ed25519 -C "maclong9@icloud.com" -f .ssh/mac-mb
   eval "$(ssh-agent -s)"
   echo "
   Host github.com
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile $HOME/.ssh/id_mac-mb
-  " > "$HOME"/.ssh/config
-  ssh-add --apple-use-keychain "$HOME"/.ssh/mac-mb
+  " > .ssh/config
+  ssh-add --apple-use-keychain .ssh/mac-mb
   pbcopy < "$HOME"/.ssh/id_mac-mb.pub
 
   info "Your public key has been copied to your clipboard, make sure to add it to your remote repository provider"
@@ -158,7 +125,6 @@ post_install() {
 
     skhd --start-service
     yabai --start-service
-    open -a /Applications/Hyperkey.app
     git config --global user.email "maclong9@icloud.com" && git config --global user.name "Mac"
     ssh_setup
 
@@ -172,7 +138,6 @@ main() {
         clone_configuration || error_clean "Failed to clone configuration repository"
         ports_install || error_clean "/opts/mports/macports-base does not exist"
         tooling_install
-        app_install
         post_install || error_exit "Error running post installation setup"
 
         success "System configuration complete, enjoy."
