@@ -120,7 +120,7 @@ tooling_install() {
 
     sudo echo "export PATH=\"$PATH:/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:/Applications/MacPorts/EmacsMac.app/Contents/MacOS\"" > ~/.profile
     source "$HOME"/.profile
-    port install alacritty emacs-mac-app fd fzf mas ripgrep rust sd zig || \
+    port install alacritty emacs-mac-app fd fzf mas ripgrep rust sd || \ # zig
         error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
