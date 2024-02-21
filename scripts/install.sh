@@ -22,6 +22,7 @@ error_exit() {
 
 error_clean() {
     printf "\n\033[1;31m✘ %s, removing ~/.config and MacPorts then exiting.\033[0m\n" "$1"
+    
     sudo rm -rf ~/.config /opts/mports ~/.ssh
     rm -rf ~/Downloads/Hyperkey0.28.dmg
 
@@ -73,8 +74,12 @@ install_hyperkey() {
 }
 
 emacs_install() {
-    git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-    ~/.emacs.d/bin/doom install
+    message "Installing Doom Emacs..."
+    
+    git clone https://github.com/hlissner/doom-emacs ~/.emacs.d || error_clean "Error cloning doom-emacs to ~/.emacs.d"
+    ~/.emacs.d/bin/doom install || error_clean "Error running doom install" 
+
+    success "Doom Emacs installed successfully"
 }
 
 tooling_install() {
