@@ -69,7 +69,7 @@ ports_install() {
         make distclean
     fi
     
-    export PATH=$PATH:/opt/local/bin/
+    echo "export PATH="/opt/local/bin:$PATH" > ~/.profile
     success "MacPorts is installed"
 }
 
