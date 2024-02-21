@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-tooling="emacs-mac-app fd fzf mas ripgrep rust sd"
+tooling="emacs-mac-app fd fzf mas ripgrep rust sd zig"
 #apps="1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835"
 apps="1289583905"
 
