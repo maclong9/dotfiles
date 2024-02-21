@@ -83,5 +83,8 @@
        yaml                ; JSON, but readable
        zig                 ; C, but simpler
 
+       :email
+       mu4e
+       
        :config
        (default +bindings +smartparens))
