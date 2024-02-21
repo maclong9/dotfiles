@@ -62,7 +62,7 @@ ports_install() {
         message "Installing MacPorts..."
        
         sudo mkdir -p /opt/mports
-        sudo git clone https://github.com/macports/macports-base.git /opt/mports/
+        sudo git clone https://github.com/macports/macports-base.git /opt/mports/macports-base
         cd /opt/mports/macports-base
         ./configure --enable-readline
         make
