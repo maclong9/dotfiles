@@ -45,7 +45,7 @@ ports_install() {
     if ! command -v ports > /dev/null; then
         message "Installing MacPorts..."
        
-        mkdir -p /opt/mports
+        sudo mkdir -p /opt/mports
         git clone https://github.com/macports/macports-base.git /opt/mports/
         cd /opt/mports/macports-base || error_clean "/opts/mports/macports-base does not exist"
         ./configure --enable-readline
