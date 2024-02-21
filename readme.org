@@ -42,7 +42,7 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
   - Motion
   - Xcode
 - Emacs
-  - [https://github.com/SavchenkoValeriy/emacs-icons/tree/main[Prettier Icon]]
+  - [[https://github.com/SavchenkoValeriy/emacs-icons/tree/main][Prettier Icon]]
 - HyperKey
 - Linear
 - Pixelmator Pro
