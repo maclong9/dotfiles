@@ -71,7 +71,6 @@ ports_install() {
     fi
     
     echo 'export PATH="/opt/local/bin:$PATH"' > ~/.profile
-    source ~/.profile
     success "MacPorts is installed"
 }
 
@@ -112,8 +111,9 @@ emacs_install() {
 
 tooling_install() {
     message "Installing tooling with MacPorts..."
-   
-    echo "${@:tooling}" || error_clean "Error installing tooling with MacPorts"
+    
+    source ~/.profile
+    port install "${@:tooling}" || error_clean "Error installing tooling with MacPorts"
     curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
     emacs_install || error_clean "Error installing Emacs"
     
