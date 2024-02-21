@@ -29,6 +29,7 @@
        (format +onsave)    ; automated prettiness
        god                 ; run Emacs commands without modifier keys
        multiple-cursors    ; editing in many places at once
+       objed               ; text object editing for the innocent
        snippets            ; my elves. They type so I don't have to
 
        :emacs
