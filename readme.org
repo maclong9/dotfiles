@@ -8,6 +8,10 @@ Run the following in any macOS terminal.
 sh <(curl -s https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)
 #+end_src
 
+#+BEGIN_QUOTE
+Note: If the script fails to run at any point it will clean up the files that were involved in the setup.
+#+END_QUOTE
+
 *** System Explanation
 **** Use Cases
 
