@@ -68,6 +68,7 @@ ports_install() {
         make
         make install
         make distclean
+        export PATH=$PATH:/opt/local/bin/
     fi
     
     success "MacPorts is installed"
