@@ -32,8 +32,6 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
 
 ***** Applications 
 
-- Alacritty
-  - [[https://www.dropbox.com/s/0i4ez0el7paksg3/Alacritty.icns?dl=0][Prettier Icon]]
 - Apple Apps
   - Compressor
   - Final Cut Pro
