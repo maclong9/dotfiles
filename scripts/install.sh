@@ -113,7 +113,7 @@ emacs_install() {
 tooling_install() {
     message "Installing tooling with MacPorts..."
 
-    sudo echo 'export PATH="/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:$PATH"' > ~/.profile
+    sudo echo 'export PATH="/opt/local/bin:/Applications/MacPorts/Emacs.app/Contents/MacOS:$HOME/.bun/bin:$HOME/.emacs.d/bin:$PATH"' > ~/.profile
     source $HOME/.profile
     sudo port selfupdate
     port install $tooling || error_clean "Error installing tooling with MacPorts"
