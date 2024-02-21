@@ -23,8 +23,12 @@ error_exit() {
 error_clean() {
     printf "\n\033[1;31m✘ %s, removing ~/.config and MacPorts then exiting.\033[0m\n" "$1"
     sudo rm -rf ~/.config /opts/mports ~/.ssh
-    hdiutil detach /Volumes/Hyperkey0.28
     rm -rf ~/Downloads/Hyperkey0.28.dmg
+
+    if [ -d "/Volumes/Hyperkey0.28" ]; then
+        hdiutil detach /Volumes/Hyperkey0.28
+    fi
+    
     exit 1
 }
 
