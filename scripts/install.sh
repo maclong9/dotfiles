@@ -111,10 +111,10 @@ emacs_install() {
 tooling_install() {
     message "Installing tooling with MacPorts..."
 
-    echo 'export PATH="/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:$PATH"' > ~/.profile
+    sudo echo 'export PATH="/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:$PATH"' > ~/.profile
     source $HOME/.profile
-    echo "$PATH"
-    port install "${@:tooling}" || error_clean "Error installing tooling with MacPorts"
+    sudo port selfupdate
+    port install $tooling || error_clean "Error installing tooling with MacPorts"
     # curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
     # emacs_install || error_clean "Error installing Emacs"
 
@@ -124,7 +124,7 @@ tooling_install() {
 app_install() {
     message "Installing Applications with mas..."
 
-    mas install "${@:apps}" || error_clean "Error installing applications with mas"
+    mas install $apps || error_clean "Error installing applications with mas"
     install_hyperkey || error_clean "Error installing Hyperkey"
 
     success "Applications have been installed"
@@ -179,3 +179,4 @@ main() {
     success "Configuration setup completed successfully."
 }
 main
+
