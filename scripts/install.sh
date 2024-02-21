@@ -49,12 +49,12 @@ ports_install() {
     if ! command -v ports > /dev/null; then
         message "Installing MacPorts..."
        
-        mkdir -p /opt/mports
-        git clone https://github.com/macports/macports-base.git /opt/mports/
+        sudo mkdir -p /opt/mports
+        sudo git clone https://github.com/macports/macports-base.git /opt/mports/
         cd /opt/mports/macports-base
         ./configure --enable-readline
         make
-        make install
+        sudo make install
         make distclean
     fi
     
@@ -151,7 +151,7 @@ main() {
         message "􀣺 Running on macOS"
         
         clone_configuration || error_clean "Failed to clone configuration repository"
-        sudo ports_install || error_clean "/opts/mports/macports-base does not exist"
+        ports_install || error_clean "/opts/mports/macports-base does not exist"
         tooling_install 
         app_install
         post_install || error_exit "Error running post installation setup"
