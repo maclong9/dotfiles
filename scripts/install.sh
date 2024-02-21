@@ -10,13 +10,17 @@ info() {
     printf "\033[0;34mⓘ %s\033[0m\n" "$1"
 }
 
+message() {
+    printf "\e[1;37m%s\e[0m\n" "$1"
+}
+
 error_exit() {
     printf "\033[1;31m✘ %s, exiting.\033[0m\n" "$1"
     exit 1
 }
 
 cleanup() {
-    printf "Exiting..."
+    printf "Exiting...\n"
     rm -rf /opt/mports ~/.config
     exit 0
 }
@@ -24,10 +28,10 @@ cleanup() {
 trap 'cleanup' INT TERM
 
 clone_configuration() {
-    printf "Checking if ~/.config already exists..."
+    message "Checking if ~/.config already exists...\n"
 
     if [ -d ~/.config ]; then
-        error_exit "$HOME/.config already exists"
+        error_exit "$HOME/.config already exists\n"
     else
         git clone https://github.com/mac-codes9/dotfiles ~/.config || error_exit "Failed to clone configuration repository"
     fi
@@ -37,7 +41,7 @@ clone_configuration() {
 
 ports_install() {
     if ! command -v ports > /dev/null; then
-        printf "Installing MacPorts..."
+        message "Installing MacPorts..."
        
         mkdir -p /opt/mports
         git clone https://github.com/macports/macports-base.git /opt/mports/
@@ -51,14 +55,17 @@ ports_install() {
 }
 
 install_hyperkey() {
+    message "Installing Hyperkey..."
+    
     curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
     hdiutil attach .dmg
     sudo cp -R "/Volumes/Hyperkey0.28/Hyperkey.app" /Applications
+    
     hdiutil detach /Volumes/Hyperkey0.28
 }
 
 tooling_install() {
-    printf "Installing tooling with MacPorts..."
+    message "Installing tooling with MacPorts..."
    
     sudo port install "$tooling" || error_exit "Error installing tooling with MacPorts"
     curl -fsSL https://bun.sh/install | bash || error_exit "Error installing bun"
@@ -68,7 +75,7 @@ tooling_install() {
 }
 
 app_install() {
-    printf "Installing Applications with mas..."
+    message "Installing Applications with mas..."
    
     sudo mas install "$apps" || error_exit "Error installing applications with mas"
   
@@ -76,7 +83,7 @@ app_install() {
 }
 
 ssh_setup() {
-  printf "Configuring SSH"
+  message "Configuring SSH..."
   
   ssh-keygen -t ed25519 -C "maclong9@icloud.com" -f ~/.ssh/mac-mb
   eval "$(ssh-agent -s)"
@@ -94,7 +101,7 @@ ssh_setup() {
 }
 
 post_install() {
-    print "Running post install setup..."
+    message "Running post install setup..."
     
     skhd --start-service
     yabai --start-service
@@ -108,7 +115,7 @@ post_install() {
 
 main() {
     if [ "$(uname -s)" = "Darwin" ]; then
-        printf "􀣺 Running on macOS"
+        message "􀣺 Running on macOS"
        
         clone_configuration
         ports_install
