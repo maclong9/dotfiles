@@ -25,8 +25,6 @@ cleanup() {
     exit 0
 }
 
-trap 'cleanup' INT TERM
-
 clone_configuration() {
     message "Checking if ~/.config already exists...\n"
 
@@ -116,7 +114,9 @@ post_install() {
 main() {
     if [ "$(uname -s)" = "Darwin" ]; then
         message "􀣺 Running on macOS"
-       
+        
+        trap 'cleanup' INT TERM
+        
         clone_configuration
         ports_install
         tooling_install
