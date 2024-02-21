@@ -65,7 +65,7 @@ install_hyperkey() {
     message "Installing Hyperkey..."
     
     curl -LO https://hyperkey.app/downloads/Hyperkey0.28.dmg
-    hdiutil attach .dmg
+    hdiutil attach ~/Downloads/Hyperkey0.28.dmg
     sudo cp -R "/Volumes/Hyperkey0.28/Hyperkey.app" /Applications
     hdiutil detach /Volumes/Hyperkey0.28
     rm -rf ~/Downloads/Hyperkey0.28.dmg
