@@ -11,7 +11,7 @@ info() {
 }
 
 message() {
-    printf "\e[1;37m%s\e[0m\n" "$1"
+    printf "\e[1;37m%s\e[0m\n\n" "$1"
 }
 
 error_exit() {
