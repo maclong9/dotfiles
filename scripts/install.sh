@@ -120,8 +120,8 @@ tooling_install() {
 
     sudo echo "export PATH=\"$PATH:/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:/Applications/MacPorts/EmacsMac.app/Contents/MacOS\"" > ~/.profile
     source "$HOME"/.profile
-    port install alacritty emacs-mac-app fd fzf mas ripgrep rust sd zig \
-        || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
+    port install alacritty emacs-mac-app fd fzf mas ripgrep rust sd zig || \
+        error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
 
@@ -131,8 +131,8 @@ tooling_install() {
 app_install() {
     message "Installing Applications with mas..."
 
-    mas install 1436953057 \ # 1289583905 1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835
-        || error_clean "Error installing applications with mas"
+    mas install 1436953057 || \ # 1289583905 1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835
+        error_clean "Error installing applications with mas"
     install_hyperkey || error_clean "Error installing Hyperkey"
 
     success "Applications have been installed"
