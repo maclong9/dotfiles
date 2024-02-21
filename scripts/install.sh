@@ -111,7 +111,7 @@ emacs_install() {
 tooling_install() {
     message "Installing tooling with MacPorts..."
 
-    echo 'export PATH="/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d:$PATH"' > ~/.profile
+    echo 'export PATH="/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:$PATH"' > ~/.profile
     source ~/.profile
     port install "${@:tooling}" || error_clean "Error installing tooling with MacPorts"
     curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
