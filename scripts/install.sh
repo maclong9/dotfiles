@@ -94,30 +94,11 @@ tooling_install() {
 
     sudo echo "export PATH=\"$PATH:/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:/Applications/MacPorts/EmacsMac.app/Contents/MacOS\"" > ~/.profile
     source "$HOME"/.profile
-    # port install alacritty emacs-mac-app fd fzf mas ripgrep rust sd || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
+    port install alacritty emacs-mac-app fd fzf gh mas ripgrep rust sd || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
 
     success "Tooling has been installed successfully"
-}
-
-ssh_setup() {
-  message "Configuring SSH..."
-
-  mkdir .ssh
-  ssh-keygen -t ed25519 -C "maclong9@icloud.com" -f .ssh/mac-mb
-  eval "$(ssh-agent -s)"
-  echo "
-  Host github.com
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile $HOME/.ssh/id_mac-mb
-  " > .ssh/config
-  ssh-add --apple-use-keychain .ssh/mac-mb
-  pbcopy < "$HOME"/.ssh/id_mac-mb.pub
-
-  info "Your public key has been copied to your clipboard, make sure to add it to your remote repository provider"
-  success "SSH configured successfully"
 }
 
 post_install() {
@@ -126,7 +107,8 @@ post_install() {
     skhd --start-service
     yabai --start-service
     git config --global user.email "maclong9@icloud.com" && git config --global user.name "Mac"
-    ssh_setup
+    gh config set git_protocol ssh
+    gh auth login
 
     success "Post install setup complete."
 }
