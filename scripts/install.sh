@@ -70,6 +70,7 @@ ports_install() {
     fi
     
     echo 'export PATH="/opt/local/bin:$PATH"' > ~/.profile
+    source ~/.profile
     success "MacPorts is installed"
 }
 
