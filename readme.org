@@ -42,7 +42,6 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
 - Emacs
   - [[https://github.com/SavchenkoValeriy/emacs-icons/tree/main][Prettier Icon]]
 - [[https://hyperkey.app/downloads/Hyperkey0.28.dmg][HyperKey]]
-- [[https://desktop.linear.app/mac][Linear]]
 - Pixelmator Pro
 - Safari Extensions
   - Ghostery 
