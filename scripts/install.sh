@@ -58,9 +58,8 @@ clone_configuration() {
 }
 
 ports_install() {
-    if ! command -v ports > /dev/null; then
+    if ! -f /opt/local/bin/port > /dev/null; then
         message "Installing MacPorts..."
-       
         mkdir -p /opt/mports
         git clone https://github.com/macports/macports-base.git /opt/mports/macports-base
         cd /opt/mports/macports-base
@@ -68,9 +67,9 @@ ports_install() {
         make
         make install
         make distclean
-        export PATH=$PATH:/opt/local/bin/
     fi
     
+    export PATH=$PATH:/opt/local/bin/
     success "MacPorts is installed"
 }
 
