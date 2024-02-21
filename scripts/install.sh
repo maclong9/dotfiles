@@ -17,7 +17,6 @@ message() {
 
 error_exit() {
     printf "\n\033[1;31m✘ %s, exiting.\033[0m\n" "$1"
-    sudo rm -rf ~/.config
     exit 1
 }
 
