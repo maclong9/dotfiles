@@ -83,7 +83,7 @@
        zig                 ; C, but simpler
 
        :email
-       mu4e
+       (mu4e +org)         ; You can answer emails in this thing too?
        
        :config
        (default +bindings +smartparens))
