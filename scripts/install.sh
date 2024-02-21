@@ -68,6 +68,7 @@ ports_install() {
         make
         make install
         make distclean
+        sudo port selfupdate
     fi
 
     success "MacPorts is installed"
@@ -115,8 +116,7 @@ tooling_install() {
 
     sudo echo 'export PATH="/opt/local/bin:/Applications/MacPorts/Emacs.app/Contents/MacOS:$HOME/.bun/bin:$HOME/.emacs.d/bin:$PATH"' > ~/.profile
     source $HOME/.profile
-    sudo port selfupdate
-    port install $tooling || error_clean "Error installing tooling with MacPorts"
+    port install $tooling || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
     curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
     emacs_install || error_clean "Error installing Emacs"
 
