@@ -4,5 +4,5 @@
   doom-font (font-spec :family "SFMono Nerd Font" :size 12 :weight 'semi-light))
   doom-theme 'doom-one)
   display-line-numbers-type nil)
-  org-directory "~/org/"
+  org-directory "/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/org"
 )
