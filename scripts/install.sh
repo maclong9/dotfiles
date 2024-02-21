@@ -3,16 +3,16 @@ tooling="emacs-mac-app fd fzf mas ripgrep rust sd wget zig"
 #apps="1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835"
 apps="1289583905"
 
+message() {
+    printf "\n\e[1;37m%s\e[0m\n" "$1"
+}
+
 success() {
     printf "\n\033[1;32m✔ %s\033[0m\n" "$1"
 }
 
 info() {
     printf "\n\033[0;34mⓘ %s\033[0m\n" "$1"
-}
-
-message() {
-    printf "\n\e[1;37m%s\e[0m\n" "$1"
 }
 
 error_exit() {
