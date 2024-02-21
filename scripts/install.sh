@@ -39,7 +39,7 @@ clone_configuration() {
     if [ -d "$HOME"/.config ]; then
         error_exit "$HOME/.config already exists"
     else
-        git clone https://github.com/mac-codes9/dotfiles "$HOME"/.config || error_clean "Failed to clone configuration repository"
+        git clone https://github.com/mac-codes9/dotfiles "$HOME"/.config 
     fi
 
     success "Configuration cloned successfully"
@@ -51,7 +51,7 @@ ports_install() {
        
         sudo mkdir -p /opt/mports
         git clone https://github.com/macports/macports-base.git /opt/mports/
-        cd /opt/mports/macports-base || error_clean "/opts/mports/macports-base does not exist"
+        cd /opt/mports/macports-base
         ./configure --enable-readline
         make
         sudo make install
@@ -150,11 +150,11 @@ main() {
     if [ "$(uname -s)" = "Darwin" ]; then
         message "􀣺 Running on macOS"
         
-        clone_configuration
-        ports_install
-        tooling_install
+        clone_configuration || error_clean "Failed to clone configuration repository"
+        ports_install || error_clean "/opts/mports/macports-base does not exist"
+        tooling_install 
         app_install
-        post_install
+        post_install || error_exit "Error running post installation setup"
 
         success "System configuration complete, enjoy."
     else
