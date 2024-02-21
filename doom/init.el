@@ -76,7 +76,6 @@
        julia             ; a better, faster MATLAB
        latex             ; writing papers in Emacs has never been so fun
        markdown          ; writing docs for people to ignore
-       org               ; organize your plain life in plain text
        (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        swift             ; who asked for emoji variables?
