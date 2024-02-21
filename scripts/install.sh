@@ -103,6 +103,7 @@ emacs_install() {
     message "Installing Doom Emacs..."
 
     git clone https://github.com/hlissner/doom-emacs "$HOME"/.emacs.d || error_clean "Error cloning doom-emacs to $HOME/.emacs.d"
+    mv /Applications/MacPorts/EmacsMac.app/Contents/MacOS/Emacs /Applications/MacPorts/EmacsMac.app/Contents/MacOS/emacs
     "$HOME"/.emacs.d/bin/doom install || error_clean "Error running doom install"
     sips -i https://github.com/SavchenkoValeriy/emacs-icons/blob/main/curvy-blender/Emacs.icns /Applications/MacPorts/EmacsMac.app/Contents/Resources/AppIcon.icns || error_clean "Error changing Emacs icon"
     defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/MacPorts/Emacs.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
