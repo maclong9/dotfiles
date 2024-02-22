@@ -18,7 +18,7 @@ error_exit() {
 
 error_clean() {
     printf "\n\033[1;31m✘ %s, removing ~/.config and MacPorts then exiting.\033[0m\n" "$1"
-    rm -rf ~/.config /opts/mports
+    rm -rf ~/.config /opt/homebrew
     exit 1
 }
 
@@ -26,11 +26,6 @@ error_clean() {
     printf "\n\033[1;31m✘ %s, removing $HOME/.config and MacPorts then exiting.\033[0m\n" "$1"
 
     rm -rf "$HOME"/.config /opts/mports "$HOME"/.ssh
-    rm -rf "$HOME"/Downloads/Hyperkey0.28.dmg
-
-    if [ -d /Volumes/Hyperkey0.28 ]; then
-        hdiutil detach /Volumes/Hyperkey0.28
-    fi
 
     exit 1
 }
@@ -71,6 +66,7 @@ tooling_install() {
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     port install homebrew/cask/emacs fd fzf gh mas ripgrep rust sd || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
+    mas install 1436953057
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
 
