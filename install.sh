@@ -52,7 +52,6 @@ tooling_install() {
 
     brew install homebrew/cask/zed hyperkey mas rust zig
     mas install 1436953057
-    install_doom
 
     success "Tooling has been installed successfully"
 }
