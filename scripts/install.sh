@@ -99,6 +99,7 @@ configure_git() {
     git config --global user.email "maclong9@icloud.com"
     git config --global user.name "Mac"
     git config --global push.default current
+    git config --global init.defaultBranch main
     git config --global merge.conflictStyle zdiff3
     git config --global rebase.autosquash true
     gh config set git_protocol ssh
