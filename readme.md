@@ -59,4 +59,6 @@ sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/m
 - ripgrep
 - rust
 - sd
+- skhd
+- yabai
 - zig
