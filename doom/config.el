@@ -1,5 +1,4 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq
  user-full-name "Mac"
  user-mail-address "maclong9@icloud.com"
