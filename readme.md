@@ -18,36 +18,30 @@ sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/m
 
 - Graphics
 - Music Production
+- Project Management
+- Video Editing
+- Virtualisation 
+- Writing
 - Programming
   - Shell
   - Zig
   - Rust
   - Web
   - Swift
-- Project Management
-- Video Editing
-- Virtualisation 
-- Writing
 
 ##### Applications 
 
-- Apple Apps
-  - Compressor
-  - Final Cut Pro
-  - Logic Pro
-  - MainStage
-  - Motion
-  - Xcode
-- Emacs
-  - [Prettier Icon](https://github.com/SavchenkoValeriy/emacs-icons/tree/main)
-- [HyperKey](https://hyperkey.app/downloads/Hyperkey0.28.dmg)
-- Pixelmator Pro
-- Safari Extensions
-  - Ghostery 
 
-``` mas_ids.sh:
-1436953057 1289583905 1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835
-```
+- [Compressor](https://apps.apple.com/gb/app/compressor/id424390742?mt=12)
+- [Final Cut Pro](https://apps.apple.com/gb/app/final-cut-pro/id424389933?mt=12)
+- [Logic Pro](https://apps.apple.com/gb/app/logic-pro/id634148309?mt=12)
+- [MainStage](https://apps.apple.com/gb/app/mainstage/id634159523?mt=12)
+- [Motion](https://apps.apple.com/gb/app/motion/id434290957?mt=12)
+- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12)
+- [Pixelmator Pro](https://apps.apple.com/gb/app/pixelmator-pro/id1289583905?mt=12)
+- [HyperKey](https://hyperkey.app/downloads/Hyperkey0.28.dmg)
+- [Emacs](https://ports.macports.org/port/emacs-mac-app/)
+  - [Prettier Icon](https://github.com/SavchenkoValeriy/emacs-icons/tree/main)
 
 ##### Tooling
 
@@ -55,10 +49,7 @@ sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/m
 - fd
 - fzf
 - github-cli
-- mas
 - ripgrep
 - rust
 - sd
-- skhd
-- yabai
 - zig
