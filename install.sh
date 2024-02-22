@@ -50,7 +50,7 @@ brew_install() {
 tooling_install() {
     message "Installing tooling with Brew..."
 
-    brew install eslint fd fzf gh homebrew/cask/zed hyperkey mas prettier ripgrep rust sd zig
+    brew install homebrew/cask/zed hyperkey mas rust zig
     mas install 1436953057
     install_doom
 
