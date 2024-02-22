@@ -5,7 +5,7 @@
 Run the following in any macOS terminal.
 
 ```
-sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)"
 ```
 
 > Note: If the script fails to run at any point it will clean up the files that were involved in the setup.
