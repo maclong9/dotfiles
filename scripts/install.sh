@@ -47,23 +47,6 @@ clone_configuration() {
     success "Configuration cloned successfully"
 }
 
-ports_install() {
-    if [ ! -f /opt/local/bin/port ]; then
-        message "Installing MacPorts..."
-        mkdir -p /opt/mports
-        git clone https://github.com/macports/macports-base.git /opt/mports/macports-base
-        cd /opt/mports/macports-base
-        git checkout v2.9.1
-        ./configure --enable-readline
-        make
-        make install
-        make distclean
-        sudo port selfupdate
-    fi
-
-    success "MacPorts is installed"
-}
-
 install_bun() {
     if ! command -v bun > /dev/null; then
         curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
@@ -86,9 +69,8 @@ install_doom() {
 tooling_install() {
     message "Installing tooling with MacPorts..."
 
-    sudo echo "export PATH=\"$PATH:/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:/Applications/MacPorts/EmacsMac.app/Contents/MacOS\"" > ~/.profile
-    source "$HOME"/.profile
-    port install emacs-mac-app fd fzf gh mas ripgrep rust sd || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    port install homebrew/cask/emacs fd fzf gh mas ripgrep rust sd || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
 
