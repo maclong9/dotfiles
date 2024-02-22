@@ -57,11 +57,14 @@ install_doom() {
 tooling_install() {
     message "Installing Hombrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    printf 'eval %s\n/export PATH="$PATH:Applications/Emacs.app/Contents/MacOS"' "$(/opt/homebrew/bin/brew shellenv)" > "$HOME"/.zprofile
+    echo "
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    export PATH="$PATH:Applications/Emacs.app/Contents/MacOS:/opt/homebrew/bin:~/.emacs.d/bin"
+    " > "$HOME"/.zprofile
     mv /Applications/Emacs.app/Contents/MacOS/Emacs /Applications/Emacs.app/Contents/MacOS/emacs
     . "$HOME"/.zprofile
     message "Installing tooling with Brew..."
-    brew install homebrew/cask/emacs fd fzf gh mas ripgrep rust sd koekeishiya/formulae/skhd koekeishiya/formulae/yabai zig || error_clean "Error installing tooling with Brew"
+    brew install homebrew/cask/emacs fd fzf gh hyperkey mas ripgrep rust sd koekeishiya/formulae/skhd koekeishiya/formulae/yabai zig || error_clean "Error installing tooling with Brew"
     mas install 1436953057
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
@@ -84,6 +87,8 @@ configure_git() {
   }
 
 post_install() {
+    ln -s ~/.config/yabairc ~/.yabairc 
+    ln -s ~/.config/skhdrc ~/.skhdrc
     yabai --start-service
     skhd --start-service
     configure_git || error_exit "Error configuring git"
