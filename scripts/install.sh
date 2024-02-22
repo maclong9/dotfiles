@@ -55,10 +55,10 @@ install_doom() {
 }
 
 tooling_install() {
-    message "Installing tooling with Brew..."
-
+    message "Installing Hombrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     printf "eval \"$(/opt/homebrew/bin/brew shellenv)\"" > ~/.zprofile && source ~/.zprofile
+    message "Installing tooling with Brew..."
     brew install homebrew/cask/emacs fd fzf gh mas ripgrep rust sd || error_clean "Error installing tooling with Brew"
     mas install 1436953057
     install_bun || error_clean "Error installing bun from script"
