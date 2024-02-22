@@ -39,7 +39,7 @@ sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/m
   - Motion
   - Xcode
 - Emacs
-  - [Prettier Icon] (https://github.com/SavchenkoValeriy/emacs-icons/tree/main)
+  - [Prettier Icon](https://github.com/SavchenkoValeriy/emacs-icons/tree/main)
 - [HyperKey](https://hyperkey.app/downloads/Hyperkey0.28.dmg)
 - Pixelmator Pro
 - Safari Extensions
