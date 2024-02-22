@@ -49,7 +49,7 @@ install_doom() {
         git clone https://github.com/hlissner/doom-emacs "$HOME"/.emacs.d || error_clean "Error cloning doom-emacs to $HOME/.emacs.d"
     fi
     
-    "$HOME"/.emacs.d/bin/doom install || error_clean "Error running doom install"
+    "$HOME"/.emacs.d/bin/doom install || error_exit "Error running doom install"
     
     success "Doom Emacs installed successfully"
 }
