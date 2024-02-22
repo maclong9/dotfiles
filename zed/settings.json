@@ -9,8 +9,8 @@
     "breadcrumbs": false,
     "quick_actions": false
   },
-  "ui_font_size": 13,
-  "buffer_font_size": 11,
+  "ui_font_size": 12,
+  "buffer_font_size": 12,
   "buffer_font_family": "Liga SFMono Nerd Font",
   "buffer_font_features": {
     "calt": true,
@@ -36,48 +36,69 @@
     "JavaScript": {
       "format_on_save": {
         "external": {
-          "command": "biome",
-          "arguments": ["format", "--write"]
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
     "JSON": {
       "format_on_save": {
         "external": {
-          "command": "biome",
-          "arguments": ["format", "--write"]
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
     "HTML": {
       "format_on_save": {
         "external": {
-          "command": "biome",
-          "arguments": ["format", "--write"]
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
     "TypeScript": {
       "format_on_save": {
         "external": {
-          "command": "biome",
-          "arguments": ["format", "--write"]
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "Svelte": {
+      "formatter": "prettier",
+      "format_on_save": "on",
+      "lsp": {
+        "typescript-language-server": {
+          "initialization_options": {
+            "preferences": {
+              "includeInlayParameterNameHints": "all",
+              "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+              "includeInlayFunctionParameterTypeHints": true,
+              "includeInlayVariableTypeHints": true,
+              "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+              "includeInlayPropertyDeclarationTypeHints": true,
+              "includeInlayFunctionLikeReturnTypeHints": true,
+              "includeInlayEnumMemberValueHints": true,
+              "includeInlayEnumMemberDeclarationTypes": true
+            }
+          }
         }
       }
     },
     "CSS": {
       "format_on_save": {
         "external": {
-          "command": "biome",
-          "arguments": ["format", "--write"]
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
     "TSX": {
       "format_on_save": {
-        "external": {          
-          "command": "biome",
-          "arguments": ["format", "--write"]
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     }
@@ -93,5 +114,23 @@
         }
       }
     },
+    "eslint": {
+      "initialization_options": {
+        "checkOnSave": {
+          "command": "eslint"
+        }
+      },
+      "probe": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "vue",
+        "markdown",
+        "svelte"
+      ],
+      "validate": ["javascript", "typescript", "javascriptreact", "svelte"]
+    }
   }
 }
