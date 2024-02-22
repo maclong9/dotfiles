@@ -21,11 +21,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - Virtualisation 
 - Writing
 - Programming
-  - Shell
-  - Zig
-  - Rust
-  - Web
-  - Swift
 
 ##### Applications 
 
@@ -38,8 +33,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12)
 - [Pixelmator Pro](https://apps.apple.com/gb/app/pixelmator-pro/id1289583905?mt=12)
 - [HyperKey](https://hyperkey.app/downloads/Hyperkey0.28.dmg)
-- [Emacs](https://ports.macports.org/port/emacs-mac-app/)
-  - [Prettier Icon](https://github.com/SavchenkoValeriy/emacs-icons/tree/main)
+- [Zed Editor](https://zed.dev)
 
 ##### Tooling
 
