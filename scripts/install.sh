@@ -88,7 +88,7 @@ tooling_install() {
 
     sudo echo "export PATH=\"$PATH:/opt/local/bin:$HOME/.bun/bin:$HOME/.emacs.d/bin:/Applications/MacPorts/EmacsMac.app/Contents/MacOS\"" > ~/.profile
     source "$HOME"/.profile
-    port install emacs-mac-app fd fzf gh mas ripgrep rust skhd sd yabai || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
+    port install emacs-mac-app fd fzf gh mas ripgrep rust sd || error_clean "Error installing tooling with MacPorts, you may need to run port selfupdate"
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
 
@@ -96,6 +96,7 @@ tooling_install() {
 }
 
 configure_git() {
+    message "Configuring Git"
     git config --global user.email "maclong9@icloud.com"
     git config --global user.name "Mac"
     git config --global push.default current
@@ -105,17 +106,8 @@ configure_git() {
     git config --global rebase.autosquash true
     gh config set git_protocol ssh
     gh auth login
+    success "Git configured successully"
   }
-
-post_install() {
-    message "Running post install setup..."
-
-    skhd --start-service
-    yabai --start-service
-    configure_git
-
-    success "Post install setup complete."
-}
 
 main() {
     if [ "$(uname -s)" = "Darwin" ]; then
@@ -124,7 +116,7 @@ main() {
         clone_configuration || error_clean "Failed to clone configuration repository"
         ports_install || error_clean "/opts/mports/macports-base does not exist"
         tooling_install
-        post_install || error_exit "Error running post installation setup"
+        configure_git || error_exit "Error configuring git"
 
         success "System configuration complete, enjoy."
     else
