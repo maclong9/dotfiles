@@ -65,7 +65,7 @@ ports_install() {
 }
 
 install_bun() {
-    if ! command -v bun; then
+    if ! command -v bun > /dev/null; then
         curl -fsSL https://bun.sh/install | bash || error_clean "Error installing bun"
     fi
 }
