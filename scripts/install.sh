@@ -96,8 +96,10 @@ tooling_install() {
 }
 
 configure_git() {
-    git config --global user.email "maclong9@icloud.com" && git config --global user.name "Mac"
-    git config push.autosetupremote true
+    git config --global user.email "maclong9@icloud.com"
+    git config --global user.name "Mac"
+    git config --global push.autosetupremote true
+    git config --global merge.conflictStyle zdiff3
     gh config set git_protocol ssh
     gh auth login
   }
