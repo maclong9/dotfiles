@@ -101,6 +101,7 @@ configure_git() {
     git config --global push.default current
     git config --global init.defaultBranch main
     git config --global merge.conflictStyle zdiff3
+    git commit --global help.autocorrect 30
     git config --global rebase.autosquash true
     gh config set git_protocol ssh
     gh auth login
