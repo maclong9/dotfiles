@@ -1,5 +1,5 @@
-# General
-yabai -m config layout managed
+# Window Management
+yabai -m config layout bsp
 yabai -m config top_padding    10
 yabai -m config left_padding   10
 yabai -m config right_padding  10
@@ -7,7 +7,7 @@ yabai -m config window_gap     10
 yabai -m config external_bar main:0:16
 yabai -m config focus_follow_mouse autoraise
 
-# App Specifics
+# App Specific Rules
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
