@@ -1,21 +1,20 @@
-* Dotfiles 
+# Dotfiles
 
-** Usage
+## Usage
 
 Run the following in any macOS terminal.
 
-#+begin_src sh
+```
 sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)"
-#+end_src
+```
 
-#+BEGIN_QUOTE
-Note: If the script fails to run at any point it will clean up the files that were involved in the setup.
+> Note: If the script fails to run at any point it will clean up the files that were involved in the setup.
+>
+> WARNING: This script uses `sudo` mode to install MacPorts. Read the script before running it on your system.
 
-WARNING: This script uses `sudo` mode to install MacPorts. Read the script before running it on your system.
-#+END_QUOTE
+### System Explanation
 
-*** System Explanation
-**** Use Cases
+#### Use Cases
 
 - Graphics
 - Music Production
@@ -30,7 +29,7 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
 - Virtualisation 
 - Writing
 
-***** Applications 
+##### Applications 
 
 - Apple Apps
   - Compressor
@@ -40,18 +39,17 @@ WARNING: This script uses `sudo` mode to install MacPorts. Read the script befor
   - Motion
   - Xcode
 - Emacs
-  - [[https://github.com/SavchenkoValeriy/emacs-icons/tree/main][Prettier Icon]]
-- [[https://hyperkey.app/downloads/Hyperkey0.28.dmg][HyperKey]]
+  - [Prettier Icon] (https://github.com/SavchenkoValeriy/emacs-icons/tree/main)
+- [HyperKey](https://hyperkey.app/downloads/Hyperkey0.28.dmg)
 - Pixelmator Pro
 - Safari Extensions
   - Ghostery 
-- [[https://github.com/ahrm/sioyek/releases/download/v2.0.0/sioyek-release-mac.zip][Sioyek]]
 
-#+begin_src mas_ids.sh
+``` mas_ids.sh:
 1436953057 1289583905 1436953057 424390742 424389933 1436953057 1534275760 634148309 634159523 43420957 1289583905 497799835
-#+end_src
+```
 
-***** Tooling
+##### Tooling
 
 - bun
 - fd
