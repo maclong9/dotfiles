@@ -100,6 +100,7 @@ configure_git() {
     git config --global user.name "Mac"
     git config --global push.autosetupremote true
     git config --global merge.conflictStyle zdiff3
+    git config --global rebase.autosquash true
     gh config set git_protocol ssh
     gh auth login
   }
