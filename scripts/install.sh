@@ -95,14 +95,19 @@ tooling_install() {
     success "Tooling has been installed successfully"
 }
 
+configure_git() {
+    git config --global user.email "maclong9@icloud.com" && git config --global user.name "Mac"
+    git config push.autosetupremote true
+    gh config set git_protocol ssh
+    gh auth login
+  }
+
 post_install() {
     message "Running post install setup..."
 
     skhd --start-service
     yabai --start-service
-    git config --global user.email "maclong9@icloud.com" && git config --global user.name "Mac"
-    gh config set git_protocol ssh
-    gh auth login
+    configure_git
 
     success "Post install setup complete."
 }
