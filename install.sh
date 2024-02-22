@@ -50,7 +50,7 @@ brew_install() {
 tooling_install() {
     message "Installing tooling with Brew..."
 
-    brew install homebrew/cask/zed hyperkey mas rust zig
+    brew install hyperkey mas rust visual-studio-code zig
     mas install 1436953057
 
     success "Tooling has been installed successfully"
