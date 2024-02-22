@@ -50,7 +50,7 @@ brew_install() {
 tooling_install() {
     message "Installing tooling with Brew..."
 
-    brew install fd fzf gh homebrew/cask/zed hyperkey mas ripgrep rust sd koekeishiya/formulae/skhd koekeishiya/formulae/yabai zig
+    brew install fd fzf gh homebrew/cask/zed hyperkey mas ripgrep rust sd zig
     mas install 1436953057
     install_doom
 
@@ -83,44 +83,7 @@ configure_git() {
 
 post_install() {
     message "Configuring tools"
-    
-    echo "
-    yabai -m config layout managed
-    yabai -m config top_padding    10
-    yabai -m config left_padding   10
-    yabai -m config right_padding  10
-    yabai -m config window_gap     10
-    yabai -m config external_bar main:0:16
-    yabai -m config focus_follow_mouse autoraise
-    yabai -m rule --add app="^System Settings$" manage=off
-    yabai -m rule --add app="^Activity Monitor$" manage=off
-    yabai -m rule --add app="^App Store$" manage=off
-    yabai -m rule --add app="^Calendar$" manage=off
-    yabai -m rule --add app="^Mail$" manage=off
-    yabai -m rule --add app="^Reminders$" manage=off
-    " > ~/.yabairc 
-    
-    echo "
-    cmd - h : yabai -m window --focus west
-    cmd - j : yabai -m window --focus south
-    cmd - k : yabai -m window --focus north
-    cmd - l : yabai -m window --focus east
-    cmd + ctrl - h : yabai -m window --warp west
-    cmd + ctrl - j : yabai -m window --warp south
-    cmd + ctrl - k : yabai -m window --warp north
-    cmd + ctrl - l : yabai -m window --warp east
-    cmd + shift - h : yabai -m window --resize left:-15:0; yabai -m window --resize right:-15:0
-    cmd + shift - j : yabai -m window --resize bottom:0:15; yabai -m window --resize top:0:15
-    cmd + shift - k : yabai -m window --resize top:0:-15; yabai -m window --resize bottom:0:-15
-    cmd + shift - l : yabai -m window --resize right:15:0; yabai -m window --resize left:15:0
-    cmd + enter : open /Applications/Alacritty.app
-    cmd + b : open /Applications/Safari.app
-    " > ~/.skhdrc
-
-    yabai --start-service
-    skhd --start-service
     configure_git
-
     success "Post install configuration complete"
 }
 
