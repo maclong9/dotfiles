@@ -38,12 +38,14 @@ clone_configuration() {
 
 brew_install() {
     message "Installing Hombrew"
+    
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH="$PATH:/opt/homebrew/bin"
     " > "$HOME"/.zprofile
     . "$HOME"/.zprofile
+    
     success "Homebrew installed successfully"
 }
 
@@ -56,36 +58,6 @@ tooling_install() {
     success "Tooling has been installed successfully"
 }
 
-configure_git() {
-    message "Configuring Git"
-    
-    echo "
-    [user]
-	email = maclong9@icloud.com
-	name = Mac
-    [push]
-	default = current
-    [init]
-	defaultBranch = main
-    [merge]
-	conflictStyle = zdiff3
-    [help]
-	autocorrect = 30
-    [rebase]
-	autosquash = true
-    " > ~/.gitconfig
-    gh config set git_protocol ssh
-    gh auth login
-    
-    success "Git configured successully"
-  }
-
-post_install() {
-    message "Configuring tools"
-    configure_git
-    success "Post install configuration complete"
-}
-
 main() {
     if [ "$(uname -s)" = "Darwin" ]; then
         message "􀣺 Running on macOS"
@@ -93,7 +65,6 @@ main() {
         clone_configuration || error_clean "Failed to clone configuration repository"
         brew_install || error_clean "Failed to install Homebrew"
         tooling_install || error_clean "Error while installing tooling with homebrew"
-        post_install || error_clean "Error during post install configuration"
 
         success "System configuration complete, enjoy."
     else
