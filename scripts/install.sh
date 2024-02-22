@@ -81,13 +81,19 @@ configure_git() {
     success "Git configured successully"
   }
 
+post_install() {
+    yabai --start-service
+    skhd --start-service
+    configure_git || error_exit "Error configuring git"
+}
+
 main() {
     if [ "$(uname -s)" = "Darwin" ]; then
         message "􀣺 Running on macOS"
 
         clone_configuration || error_clean "Failed to clone configuration repository"
         tooling_install
-        configure_git || error_exit "Error configuring git"
+        post_install
 
         success "System configuration complete, enjoy."
     else
