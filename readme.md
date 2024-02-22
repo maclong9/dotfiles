@@ -9,8 +9,6 @@ sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/m
 ```
 
 > Note: If the script fails to run at any point it will clean up the files that were involved in the setup.
->
-> WARNING: This script uses `sudo` mode to install MacPorts. Read the script before running it on your system.
 
 ### System Explanation
 
