@@ -73,7 +73,6 @@
        (javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
        julia               ; a better, faster MATLAB
        latex               ; writing papers in Emacs has never been so fun
-       org                 ; organize your plain life in plain text
        (rust +lsp)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        sh                  ; she sells {ba,z,fi}sh shells on the C xor
        swift               ; who asked for emoji variables?
@@ -83,9 +82,6 @@
 
        :app
        everywhere          ; *leave* Emacs!? You must be joking
-       
-       :email
-       (mu4e +org)         ; You can answer emails in this thing too?
        
        :config
        literate            ; Write your configuration as documentation
