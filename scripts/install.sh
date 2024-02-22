@@ -87,6 +87,8 @@ configure_git() {
   }
 
 post_install() {
+    ln -s ~/.config/yabairc ~/.yabairc 
+    ln -s ~/.config/skhdrc ~/.skhdrc
     yabai --start-service
     skhd --start-service
     configure_git || error_exit "Error configuring git"
