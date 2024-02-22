@@ -60,7 +60,7 @@ tooling_install() {
     printf "eval \"$(/opt/homebrew/bin/brew shellenv)\"" > ~/.zprofile
     source ~/.zprofile
     message "Installing tooling with Brew..."
-    brew install homebrew/cask/emacs fd fzf gh mas ripgrep rust sd || error_clean "Error installing tooling with Brew"
+    brew install homebrew/cask/emacs fd fzf gh mas ripgrep rust sd skhd yabai zig || error_clean "Error installing tooling with Brew"
     mas install 1436953057
     install_bun || error_clean "Error installing bun from script"
     install_doom || error_clean "Error installing Emacs"
