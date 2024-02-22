@@ -57,8 +57,9 @@ install_doom() {
 tooling_install() {
     message "Installing Hombrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    printf "eval \"$(/opt/homebrew/bin/brew shellenv)\"" > ~/.zprofile
-    source ~/.zprofile
+    printf 'eval %s\n/export PATH="$PATH:Applications/Emacs.app/Contents/MacOS"' "$(/opt/homebrew/bin/brew shellenv)" > "$HOME"/.zprofile
+    mv /Applications/Emacs.app/Contents/MacOS/Emacs /Applications/Emacs.app/Contents/MacOS/emacs
+    . "$HOME"/.zprofile
     message "Installing tooling with Brew..."
     brew install homebrew/cask/emacs fd fzf gh mas ripgrep rust sd skhd yabai zig || error_clean "Error installing tooling with Brew"
     mas install 1436953057
