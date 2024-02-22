@@ -86,3 +86,4 @@
        :config
        literate            ; Write your configuration as documentation
        (default +bindings +smartparens)
+)
