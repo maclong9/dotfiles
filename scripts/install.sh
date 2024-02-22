@@ -57,7 +57,10 @@ install_doom() {
 tooling_install() {
     message "Installing Hombrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    printf 'eval %s\n/export PATH="$PATH:Applications/Emacs.app/Contents/MacOS"' "$(/opt/homebrew/bin/brew shellenv)" > "$HOME"/.zprofile
+    echo "
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    export PATH="$PATH:Applications/Emacs.app/Contents/MacOS:/opt/homebrew/bin:~/.emacs.d/bin"
+    " > "$HOME"/.zprofile
     mv /Applications/Emacs.app/Contents/MacOS/Emacs /Applications/Emacs.app/Contents/MacOS/emacs
     . "$HOME"/.zprofile
     message "Installing tooling with Brew..."
