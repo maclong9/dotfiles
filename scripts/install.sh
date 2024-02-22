@@ -17,15 +17,9 @@ error_exit() {
 }
 
 error_clean() {
-    printf "\n\033[1;31m✘ %s, removing ~/.config and MacPorts then exiting.\033[0m\n" "$1"
-    rm -rf ~/.config /opt/homebrew
-    exit 1
-}
+    printf "\n\033[1;31m✘ %s, removing $HOME/.config and brew then exiting.\033[0m\n" "$1"
 
-error_clean() {
-    printf "\n\033[1;31m✘ %s, removing $HOME/.config and MacPorts then exiting.\033[0m\n" "$1"
-
-    rm -rf "$HOME"/.config /opts/mports "$HOME"/.ssh
+    rm -rf "$HOME"/.config /opt/homebrew "$HOME"/.ssh
 
     exit 1
 }
@@ -92,7 +86,6 @@ main() {
         message "􀣺 Running on macOS"
 
         clone_configuration || error_clean "Failed to clone configuration repository"
-        ports_install || error_clean "/opts/mports/macports-base does not exist"
         tooling_install
         configure_git || error_exit "Error configuring git"
 
