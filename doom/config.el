@@ -6,5 +6,5 @@
  doom-theme 'doom-one
  display-line-numbers-type nil
  fancy-splash-image (concat doom-private-dir "splash.png")
- menu-bar-mode t
+ doom-font (font-spec :family "Liga SFMono Nerd Font" :size 12 :weight 'medium)
 )
