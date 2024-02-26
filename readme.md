@@ -71,3 +71,4 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 
 - [pipshags](https://github.com/Alexays/Waybar/wiki/Examples#pipshags-configuration) for the nice waybar base.
 - [u/red_doxie & u/jedi945](https://www.reddit.com/r/Fedora/s/45U2jOjI5h) for helping me figure out the error I had whet trying to replace Sway with SwayFX in Fedora Sericea.
+- [u/antyhrabia] (https://www.reddit.com/r/swaywm/s/1AsyrbjErE) for the screenshot mode for Sway.
