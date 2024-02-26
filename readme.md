@@ -12,21 +12,18 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 
 > Note: If the script fails to run at any point it will clean up the files that were involved in the setup.
 
-### System Explanation
-
-#### Mac
+### Mac
 
 #### Use Cases
 
 - Graphics
 - Music Production
 - Project Management
-- Video Editing
-- Virtualisation 
+- Video Editing 
 - Writing
 - Programming
 
-##### Applications 
+#### Applications 
 
 - [Compressor](https://apps.apple.com/gb/app/compressor/id424390742?mt=12)
 - [Final Cut Pro](https://apps.apple.com/gb/app/final-cut-pro/id424389933?mt=12)
@@ -69,3 +66,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - rust
 - rust-analyzer
 - zig
+
+###  Credits
+
+- [pipshags](https://github.com/Alexays/Waybar/wiki/Examples#pipshags-configuration) for the nice waybar base.
+- [u/red_doxie & u/jedi945](https://www.reddit.com/r/Fedora/s/45U2jOjI5h) for helping me figure out the error I had whet trying to replace Sway with SwayFX in Fedora Sericea.
