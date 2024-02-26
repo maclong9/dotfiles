@@ -1,0 +1,163 @@
+@keyframes blink-warning {
+  70% {
+    color: @light;
+  }
+
+  to {
+    color: @light;
+    background-color: @warning;
+  }
+}
+
+@keyframes blink-critical {
+  70% {
+    color: @light;
+  }
+
+  to {
+    color: @light;
+    background-color: @critical;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * Styles
+ * -------------------------------------------------------------------------- */
+
+/* COLORS */
+
+/* Nord */
+@define-color bg #2E3440;
+@define-color light #D8DEE9;
+@define-color warning #ebcb8b;
+@define-color critical #BF616A;
+@define-color charging #a3be8c;
+@define-color mode @nord_bg_blue;
+@define-color workspacesfocused #434C5E;
+@define-color nord_bg #434C5E;
+@define-color nord_bg_blue #2E3440;
+@define-color nord_light_font #D8DEE9;
+@define-color nord_dark_font #434C5E;
+
+/* Reset all styles */
+* {
+  border: none;
+  border-radius: 3px;
+  min-height: 0;
+  margin: 0.2em 0.3em 0.2em 0.3em;
+}
+
+/* The whole bar */
+#waybar {
+  background: @bg;
+  color: @light;
+  font-family: "Liga SFMono Nerd Font";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#memory,
+#mode,
+#network,
+#workspaces {
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  background: @nord_bg_blue;
+  border: 1px solid @nord_bg;
+}
+
+/* Each module that should blink */
+#mode,
+#memory,
+#temperature,
+#battery {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#battery.critical {
+  color: @critical;
+}
+
+/* Each critical that should blink */
+#mode,
+#memory.critical,
+#temperature.critical,
+#battery.critical.discharging {
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}
+
+/* Each warning */
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning {
+  background: @warning;
+  color: @nord_dark_font;
+}
+*.critical {
+  background: @critical;
+}
+
+/* Each warning that should blink */
+#battery.warning.discharging {
+  animation-name: blink-warning;
+  animation-duration: 3s;
+}
+
+/* And now modules themselves in their respective order */
+
+#mode {
+  /* Shown current Sway mode (resize etc.) */
+  color: @light;
+  background: @mode;
+}
+
+/* Workspaces stuff */
+#workspaces button {
+  font-weight: bold; /* Somewhy the bar-wide setting is ignored*/
+  padding: 0;
+  color: #999;
+  background: none;
+  font-size: 1em;
+}
+
+#workspaces button.focused {
+  /*border: 1px solid @nord_bg;*/
+  background: @nord_bg;
+  color: @nord_light_font;
+  padding: 0 0.3em 0 0.1em;
+}
+
+#workspaces button.urgent {
+  border-color: #c9545d;
+  color: #c9545d;
+  opacity: 1;
+}
+
+#backlight {
+  background: @backlight;
+}
+
+#battery.charging.good,
+#battery.critical.charging.good,
+#battery.warning.charging.good {
+  background-color: @charging;
+}
+
+#battery.charging,
+#battery.critical.charging,
+#battery.warning.charging {
+  background-color: @nord_bg_blue;
+  border-color: @charging;
+  color: @nord_light_font;
+}
