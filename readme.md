@@ -64,7 +64,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - pnpm
 - ripgrep
 - rust
-- rust-analyzer
 - zig
 
 ###  Credits
