@@ -27,7 +27,29 @@ set $browser firefox
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
 set $menu fuzzel
+set $wallpaper ~/Pictures/wallpaper.jpg
+set $lock swaylock -f -i $wallpaper \
+    --clock \
+    --indicator \
+    --indicator-radius 75 \
+    --indicator-thickness 12 \
+    --effect-blur 7x5 \
+    --effect-vignette 0.5:0.5 \
+    --ring-color 434C5E \
+    --key-hl-color 81A1C1 \
+    --separator-color 2E3440 \
+    --line-color 2e3440 \
+    --inside-color 434C5E33 \
+    --text-color D8DEE9 \
+    --grace 2 \
+    --fade-in 0.2 \
 
+
+exec $lock
+bindsym $mod+Alt+l exec $lock
+
+exec swaync
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 #
 # Example configuration:
@@ -35,15 +57,12 @@ set $menu fuzzel
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-
+#
 ### Idle configuration
-#
-# Example configuration:
-#
  exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
+          timeout 300 '$lock' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep '$lock'
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -236,11 +255,12 @@ set $nord6 #ECEFF4
 set $nord7 #8FBCBB
 set $nord8 #88C0D0
 set $nord9 #81A1C1
+set $shadow #000000
 
 # Apply Colours
 client.focused           $nord8    $nord0   $nord4  $nord8      $nord3
 client.focused_inactive  $nord1    $nord0   $nord4  $nord8      $nord1
-client.unfocused         $nord1    $nord0   $nord4  $nord8      $nord1
+client.unfocused         $shadow   $nord0   $nord4  $nord8      $nord1
 client.urgent            $nord9    $nord0   $nord9  $nord7      $nord9
 client.placeholder       $nord1    $nord0   $nord4  $nord1      $nord1
 client.background        $nord0
@@ -249,9 +269,9 @@ client.background        $nord0
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg /home/mac/Downloads/wallpaper.jpg fill $nord3
+output * bg $wallpaper fill $nord3
 default_border pixel 2
-gaps inner 8
+gaps inner 5
 gaps outer 5
 
 ### Effects
