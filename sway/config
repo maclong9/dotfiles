@@ -28,6 +28,7 @@ set $browser firefox
 # TODO: add window with the next release of rofi-wayland
 set $menu fuzzel
 set $wallpaper ~/Pictures/wallpaper.jpg
+set $lockCommandArgs  --grace 2 --fade-in 0.3
 set $lock swaylock -f -i $wallpaper \
     --clock \
     --indicator \
@@ -41,15 +42,21 @@ set $lock swaylock -f -i $wallpaper \
     --line-color 2e3440 \
     --inside-color 434C5E33 \
     --text-color D8DEE9 \
-    --grace 2 \
-    --fade-in 0.2 \
 
 
 exec $lock
-bindsym $mod+Alt+l exec $lock
+bindsym $mod+Alt+l exec $lock $lockCommandArgs
 
 exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
+
+workspace 1
+exec nvim
+
+workspace 2
+exec flatpak run org.mozilla.firefox \
+    --args="-new-tab http://localhost:3000 -new-devtools" \
+    "--args=-new-tab http://localhost:3000" \
 
 #
 # Example configuration:
@@ -60,9 +67,9 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 #
 ### Idle configuration
  exec swayidle -w \
-          timeout 300 '$lock' \
+          timeout 300 '$lock $lockCommandArgs' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep '$lock'
+          before-sleep '$lock $lockCommandArgs'
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -270,6 +277,11 @@ client.background        $nord0
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
 output * bg $wallpaper fill $nord3
+output eDP-1 {
+  position 0,0
+  scale 1
+  subpixel rgb
+}
 default_border pixel 2
 gaps inner 5
 gaps outer 5
