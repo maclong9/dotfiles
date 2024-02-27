@@ -1,7 +1,6 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 16, // Waybar height (to be removed for auto height)
     "width": 1000,
     "margin-top": 8,
     "modules-left": [ "clock", "sway/mode"],
