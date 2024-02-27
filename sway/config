@@ -209,7 +209,7 @@ bindsym $mod+r mode "resize"
 #
 # Screen capture
 #
-set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
+set $screenshot screenshot
 mode "$screenshot" {
     bindsym 1 exec 'grim -g "$(slurp)" ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
     bindsym 2 exec 'grim ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
