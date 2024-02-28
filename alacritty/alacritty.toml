@@ -2,18 +2,13 @@
 padding = { x = 8, y = 8 }
 decorations = "buttonless"
 
-
 [font]
 normal = { family = "Liga SFMono Nerd Font" }
 
-# github Alacritty Colors
-
-# Default colors
 [colors.primary]
 background = '#0d1117'
 foreground = '#b3b1ad'
 
-# Normal colors
 [colors.normal]
 black   = '#484f58'
 red     = '#ff7b72'
@@ -24,7 +19,6 @@ magenta = '#bc8cff'
 cyan    = '#39c5cf'
 white   = '#b1bac4'
 
-# Bright colors
 [colors.bright]
 black   = '#6e7681'
 red     = '#ffa198'
