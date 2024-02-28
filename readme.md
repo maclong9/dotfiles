@@ -76,7 +76,3 @@ An immutable version of Fedora running Sway a minimal and fast window manager fo
 - swaybg
 - eww
 
-###  Credits
-
-- [u/red_doxie & u/jedi945](https://www.reddit.com/r/Fedora/s/45U2jOjI5h) for helping me figure out the error I had when trying to replace Sway with SwayFX in Fedora Sericea.
-- [u/antyhrabia](https://www.reddit.com/r/swaywm/s/1AsyrbjErE) for the screenshot mode for Sway.
