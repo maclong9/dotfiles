@@ -1,6 +1,5 @@
 # Dotfiles
 
-
 - [ ] TODO: Add Fedora Startup to Install Script.
 - [ ] TODO: Confirm Tooling for Both Systems.
 
@@ -14,6 +13,21 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 
 > Note: If the script fails to run at any point it will clean up the files that were involved in the setup.
 
+### Shared
+
+These tools are used by both the macOS and Linux setups.
+
+- alacritty
+- fd
+- gh
+- neofetch
+- neovim
+- nodejs
+- pnpm
+- ripgrep
+- rust
+- zig
+ 
 ### Mac
 
 #### Use Cases
@@ -23,7 +37,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - Project Management
 - Video Editing 
 - Writing
-- Swift Programming
+- Programming
+
+#### Tooling
+
+- yabai
+- skhd
 
 #### Applications 
 
@@ -36,36 +55,25 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - [Pixelmator Pro](https://apps.apple.com/gb/app/pixelmator-pro/id1289583905?mt=12)
 - [HyperKey](https://hyperkey.app/downloads/Hyperkey0.28.dmg)
 - [Homerow](https://www.homerow.app)
-- 
+
+
 ### Fedora Sericea
+
+An immutable version of Fedora running Sway a minimal and fast window manager for Wayland.
 
 #### Use Cases
 
 - Programming
-- System Administration (Learning)
+- System Administration
 - Cyber Security
 
 #### Tools
 
-- SwayFX
-- Foot
-- Fuzzel
-- Eww (Bar, Notifications and Launcher)
-
-### Shared Tooling
-
-- alacritty
-- clang
-- cmake
-- fd-find
-- gh
-- neofetch
-- neovim
-- nodejs
-- pnpm
-- ripgrep
-- rust
-- zig
+- swayfx
+- swaylock-effects
+- swayidle
+- swaybg
+- eww
 
 ###  Credits
 
