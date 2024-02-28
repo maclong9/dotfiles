@@ -1,5 +1,7 @@
 # Dotfiles
 
+These files are used to configure my unix(like) systems, currently the configurations defined in these files are geared towards macOS and Fedora Sericea an immutable linux distrobution providing excellent security and stability.
+
 - [ ] TODO: Add Fedora Startup to Install Script.
 - [ ] TODO: Confirm Tooling for Both Systems.
 
@@ -34,7 +36,6 @@ These tools are used by both the macOS and Linux setups.
 
 - Graphics
 - Music Production
-- Project Management
 - Video Editing 
 - Writing
 - Programming
@@ -75,7 +76,3 @@ An immutable version of Fedora running Sway a minimal and fast window manager fo
 - swaybg
 - eww
 
-###  Credits
-
-- [u/red_doxie & u/jedi945](https://www.reddit.com/r/Fedora/s/45U2jOjI5h) for helping me figure out the error I had when trying to replace Sway with SwayFX in Fedora Sericea.
-- [u/antyhrabia](https://www.reddit.com/r/swaywm/s/1AsyrbjErE) for the screenshot mode for Sway.
