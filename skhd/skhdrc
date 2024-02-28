@@ -3,7 +3,7 @@
 
 # Default 
 ## Application Launching
-default< alt - return : open /Applications/Alacritty.app
+default < alt - return : open /Applications/Alacritty.app
 
 ## Switch Focus 
 default < alt - h : yabai -m window --focus west
