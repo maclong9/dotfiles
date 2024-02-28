@@ -1,10 +1,12 @@
 # Dotfiles
 
+
+- [ ] TODO: Add Fedora Startup to Install Script.
+- [ ] TODO: Confirm Tooling for Both Systems.
+
 ## Usage
 
 Run the following in any Unix terminal.
-
-- [ ] TODO: Add Fedora Sericea Startup to Install Script.
 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/scripts/install.sh)"
@@ -21,7 +23,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - Project Management
 - Video Editing 
 - Writing
-- Programming
+- Swift Programming
 
 #### Applications 
 
@@ -33,30 +35,29 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/s
 - [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12)
 - [Pixelmator Pro](https://apps.apple.com/gb/app/pixelmator-pro/id1289583905?mt=12)
 - [HyperKey](https://hyperkey.app/downloads/Hyperkey0.28.dmg)
-- [Zed Editor](https://zed.dev)
-
+- [Homerow](https://www.homerow.app)
+- 
 ### Fedora Sericea
 
 #### Use Cases
 
-- Ricing
 - Programming
 - System Administration (Learning)
+- Cyber Security
 
 #### Tools
 
 - SwayFX
 - Foot
 - Fuzzel
-- Waybar
-- [ ] TODO: Add Notification Daemon.
+- Eww (Bar, Notifications and Launcher)
 
 ### Shared Tooling
 
+- alacritty
 - clang
 - cmake
 - fd-find
-- fuzzel
 - gh
 - neofetch
 - neovim
