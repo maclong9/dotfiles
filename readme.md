@@ -24,11 +24,7 @@ These tools are used by both the macOS and Linux setups.
 - gh
 - neofetch
 - neovim
-- nodejs
-- pnpm
 - ripgrep
-- rust
-- zig
  
 ### Mac
 
@@ -42,8 +38,9 @@ These tools are used by both the macOS and Linux setups.
 
 #### Tooling
 
-- yabai
+- orbstack
 - skhd
+- yabai
 
 #### Applications 
 
