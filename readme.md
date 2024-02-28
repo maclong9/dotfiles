@@ -36,7 +36,6 @@ These tools are used by both the macOS and Linux setups.
 
 - Graphics
 - Music Production
-- Project Management
 - Video Editing 
 - Writing
 - Programming
