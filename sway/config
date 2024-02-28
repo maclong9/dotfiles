@@ -6,7 +6,6 @@ set $up k
 set $right l
 set $term alacritty
 set $browser firefox
-set $menu fuzzel
 set $wallpaper ~/Pictures/wallpaper.jpg
 set $lockCommandArgs  --grace 2 --fade-in 0.3
 set $lock swaylock -f -i $wallpaper \
@@ -44,7 +43,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Alt+l exec $lock $lockCommandArgs
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m \
+	'Sure you want to exit?' -B 'Yes' 'swaymsg exit'
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -118,6 +118,7 @@ mode "$screenshot" {
     bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
     bindsym 4 exec 'grim - | wl-copy', mode "default"
     bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"
+    bindsym 6 exec 'grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy'
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -137,14 +138,14 @@ set $accentLight #7BA9BD
 set $accentLighter #6B8FA3
 set $shadow #090A0F
 
-client.focused           $accentLight    $bg    $text    $accentLight      $bgLightest
-client.focusedInactive   $bgLight    $bg    $text    $accentLight      $bgLight
-client.unfocused         $shadow   $bg    $text    $accentLight      $bgLight
-client.urgent            $accentLighter    $bg    $accentLighter  $accent      $accentLighter
-client.placeholder       $bgLight    $bg    $text    $bgLight      $bgLight
+client.focused           $accentLight    $bg    $text           $accentLight   $bgLightest
+client.focused_inactive  $bgLight        $bg    $text           $accentLight   $bgLight
+client.unfocused         $shadow         $bg    $text           $accentLight   $bgLight
+client.urgent            $accentLighter  $bg    $accentLighter  $accent        $accentLighter
+client.placeholder       $bgLight        $bg    $text           $bgLight       $bgLight
 client.background        $bg
 
-output * bg $wallpaper fill $nord3
+output * bg $wallpaper fill $bgLightest
 output eDP-1 {
   position 0,0
   scale 1
@@ -159,9 +160,5 @@ shadows enabled
 shadows_on_csd enabled
 shadow_blur_radius 16
 layer_effects "waybar" blur enable; shadows enable; corner_radius 8
-
-bar {
-    swaybar_command waybar
-}
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

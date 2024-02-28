@@ -3,3 +3,5 @@ emacs
 gh
 nvim
 !nvim/lua/user/init.lua
+pulse
+toolbox
