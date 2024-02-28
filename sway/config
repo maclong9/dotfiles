@@ -62,7 +62,6 @@ shadows_on_csd enabled
 shadow_blur_radius 16
 
 # Interface
-
 ## Trackpad
 input "2321:21128:SYNA3602:00_0911:5288_Touchpad" {
     dwt enabled
@@ -79,6 +78,36 @@ output eDP-1 {
   bg $wallpaper fill $bgLightest  
 }
 
+# Modes
+## Resize
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Screenshot 
+set $screenshot screenshot
+mode "$screenshot" {
+    bindsym 1 exec 'grim -g "$(slurp)" ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 2 exec 'grim ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
+    bindsym 4 exec 'grim - | wl-copy', mode "default"
+    bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"
+    bindsym 6 exec 'grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy'
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Print mode "default"
+}
+
 # Bindings
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
@@ -86,7 +115,7 @@ bindsym $mod+d exec $menu
 bindsym $mod+Alt+l exec $lock $lockCommandArgs
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m \
-	'Sure you want to exit?' -B 'Yes' 'swaymsg exit'
+	'Are you sure you want to exit?' -B 'Yes' 'swaymsg exit'
 
 ## Movement 
 bindsym $mod+$left focus left
@@ -143,37 +172,8 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# Modes
-
-## Resize
-mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+## Other
 bindsym $mod+r mode "resize"
-
-## Screenshot 
-set $screenshot screenshot
-mode "$screenshot" {
-    bindsym 1 exec 'grim -g "$(slurp)" ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
-    bindsym 2 exec 'grim ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
-    bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
-    bindsym 4 exec 'grim - | wl-copy', mode "default"
-    bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"
-    bindsym 6 exec 'grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy'
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+Print mode "default"
-}
 bindsym $mod+Print mode "$screenshot"
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
