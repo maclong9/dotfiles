@@ -60,7 +60,7 @@ These tools are used by both the macOS and Linux setups.
 
 ### Fedora Sericea
 
-An immutable version of Fedora running Sway a minimal and fast window manager for Wayland.
+An immutable version of Fedora, running Sway a minimal window manager for Wayland.
 
 #### Use Cases
 
@@ -75,4 +75,3 @@ An immutable version of Fedora running Sway a minimal and fast window manager fo
 - swayidle
 - swaybg
 - eww
-
