@@ -1,5 +1,7 @@
 # Dotfiles
 
+These files are used to configure my unix(like) systems, currently the configurations defined in these files are geared towards macOS and Fedora Sericai an immutable linux distrobution providing excellent security and stability.
+
 - [ ] TODO: Add Fedora Startup to Install Script.
 - [ ] TODO: Confirm Tooling for Both Systems.
 
