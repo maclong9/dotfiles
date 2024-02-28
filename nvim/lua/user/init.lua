@@ -14,4 +14,3 @@ return {
     { import = "astrocommunity.motion.hop-nvim" },
   },
 }
-

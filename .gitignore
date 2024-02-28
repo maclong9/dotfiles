@@ -1,0 +1,5 @@
+.DS_Store
+emacs
+gh
+nvim
+!nvim/lua/user/init.lua
