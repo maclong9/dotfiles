@@ -125,24 +125,24 @@ mode "$screenshot" {
 }
 bindsym $mod+Print mode "$screenshot"
 
-set $nord0 #2E3440
-set $nord1 #3B4252
-set $nord2 #434C5E
-set $nord3 #4C566A
-set $nord4 #D8DEE9
-set $nord5 #E5E9F0
-set $nord6 #ECEFF4
-set $nord7 #8FBCBB
-set $nord8 #88C0D0
-set $nord9 #81A1C1
-set $shadow #000000
+set $bg #282C34
+set $bgLight #444C56
+set $bgLighter #4D576A
+set $bgLightest #616E86
+set $text #C9D1E0
+set $textLight #D8E1F2
+set $textLighter #E5EBF7
+set $accent #8AB3C5
+set $accentLight #7BA9BD
+set $accentLighter #6B8FA3
+set $shadow #090A0F
 
-client.focused           $nord8    $nord0   $nord4  $nord8      $nord3
-client.focused_inactive  $nord1    $nord0   $nord4  $nord8      $nord1
-client.unfocused         $shadow   $nord0   $nord4  $nord8      $nord1
-client.urgent            $nord9    $nord0   $nord9  $nord7      $nord9
-client.placeholder       $nord1    $nord0   $nord4  $nord1      $nord1
-client.background        $nord0
+client.focused           $accentLight    $bg    $text    $accentLight      $bgLightest
+client.focusedInactive   $bgLight    $bg    $text    $accentLight      $bgLight
+client.unfocused         $shadow   $bg    $text    $accentLight      $bgLight
+client.urgent            $accentLighter    $bg    $accentLighter  $accent      $accentLighter
+client.placeholder       $bgLight    $bg    $text    $bgLight      $bgLight
+client.background        $bg
 
 output * bg $wallpaper fill $nord3
 output eDP-1 {
