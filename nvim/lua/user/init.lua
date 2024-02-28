@@ -8,7 +8,6 @@ return {
   plugins = {
     "AstroNvim/astrocommunity",
     { import = "astrocommunity.colorscheme.github-nvim-theme"},
-    { import = "astrocommunity.git.neogit" },
     { import = "astrocommunity.project.project-nvim" },
     { import = "astrocommunity.motion.nvim-spider" },
     { import = "astrocommunity.motion.hop-nvim" },
