@@ -29,7 +29,6 @@ These tools are used by both the macOS and Linux setups.
 ### Mac
 
 <img width="1680" alt="Screenshot 2024-03-01 at 16 44 52" src="https://github.com/mac-codes9/dotfiles/assets/115668288/b0ce8c75-5cb2-474b-ba7b-dfaed6350b0f">
-<img width="578" alt="Screenshot 2024-03-01 at 14 35 59" src="https://github.com/mac-codes9/dotfiles/assets/115668288/0226ae72-f3c4-4136-a4ee-fa2b41e3d57a">
 
 #### Use Cases
 
