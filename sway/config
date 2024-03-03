@@ -48,7 +48,7 @@ client.background        $base00
 
 # Interface
 ## Trackpad
-input "2321:21128:SYNA3602:00_0911:5288_Touchpad" {
+input type "touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
