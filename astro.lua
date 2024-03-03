@@ -22,6 +22,7 @@ return {
     { import = "astrocommunity.project.project-nvim" },
     { import = "astrocommunity.motion.nvim-spider" },
     { import = "astrocommunity.motion.hop-nvim" },
+    { import = "astrocommunity.motion.transparent-nvim" },
     {
       "goolord/alpha-nvim",
       opts = function(_, opts)
