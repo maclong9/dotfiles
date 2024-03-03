@@ -6,27 +6,14 @@ set $right l
 set $term alacritty
 set $browser flatpak run org.mozilla.Firefox
 set $wallpaper ~/Pictures/wallpaper.jpg
-set $lockArgs  --grace 2 --fade-in 0.3
-set $lock swaylock -f -i $wallpaper \
-    --clock \
-    --indicator \
-    --indicator-radius 75 \
-    --indicator-thickness 12 \
-    --effect-blur 7x5 \
-    --effect-vignette 0.5:0.5 \
-    --ring-color 434C5E \
-    --key-hl-color 81A1C1 \
-    --separator-color 2E3440 \
-    --line-color 2e3440 \
-    --inside-color 434C5E33 \
-    --text-color D8DEE9 \
+set $lock swaylock
 
 # Startup
 exec $lock
 exec swayidle -w \
-        timeout 300 '$lock $lockCommandArgs' \
+        timeout 300 '$lock' \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-        before-sleep '$lock $lockCommandArgs'
+        before-sleep '$lock'
 
 # Appearance
 font pango: 'Liga SFMono Nerd Font' 11
