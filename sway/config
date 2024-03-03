@@ -52,15 +52,6 @@ client.urgent            $accentLighter  $bg    $accentLighter  $accent        $
 client.placeholder       $bgLight        $bg    $text           $bgLight       $bgLight
 client.background        $bg
 
-## Window Appearance 
-default_border pixel 2
-gaps inner 5
-gaps outer 5
-corner_radius 4
-shadows enabled
-shadows_on_csd enabled
-shadow_blur_radius 16
-
 # Interface
 ## Trackpad
 input "2321:21128:SYNA3602:00_0911:5288_Touchpad" {
