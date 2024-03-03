@@ -16,27 +16,35 @@ exec swayidle -w \
 
 # Appearance
 font pango: 'Liga SFMono Nerd Font' 11
+default_border pixel 2
+gaps inner 5
+gaps outer 5
 
 ## Colours
-set $bg #282C34
-set $bgLight #444C56
-set $bgLighter #4D576A
-set $bgLightest #616E86
-set $text #C9D1E0
-set $textLight #D8E1F2
-set $textLighter #E5EBF7
-set $accent #8AB3C5
-set $accentLight #7BA9BD
-set $accentLighter #6B8FA3
-set $shadow #090A0F
+set $base00 #161616
+set $base01 #262626
+set $base02 #393939
+set $base03 #525252
+set $base04 #DDE1E6
+set $base05 #F2F4F8
+set $base06 #FFFFFF
+set $base07 #08BDBA
+set $base08 #3DDBD9
+set $base09 #78A9FF
+set $base0A #EE5396
+set $base0B #33B1FF
+set $base0C #FF7EB6
+set $base0D #42BE65
+set $base0E #BE95FF
+set $base0F #82CFFF
 
 ## Window Colours
-client.focused           $accentLight    $bg    $text           $accentLight   $bgLightest
-client.focused_inactive  $bgLight        $bg    $text           $accentLight   $bgLight
-client.unfocused         $shadow         $bg    $text           $accentLight   $bgLight
-client.urgent            $accentLighter  $bg    $accentLighter  $accent        $accentLighter
-client.placeholder       $bgLight        $bg    $text           $bgLight       $bgLight
-client.background        $bg
+client.focused           $base08  $base00  $base06  $base08  $base09
+client.focused_inactive  $base02  $base00  $base06  $base08  $base02
+client.unfocused         $base01  $base00  $base06  $base08  $base02
+client.urgent            $base07  $base00  $base08  $base0B  $base02
+client.placeholder       $base02  $base00  $base06  $base03  $base04
+client.background        $base00
 
 # Interface
 ## Trackpad
@@ -52,7 +60,7 @@ output eDP-1 {
   position 0,0
   scale 1
   subpixel rgb
-  bg $wallpaper fill $bgLightest  
+  bg $wallpaper fill $base00  
 }
 
 # Modes
