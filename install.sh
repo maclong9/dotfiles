@@ -3,6 +3,8 @@ message() {
     printf "\n\e[1;37m%s\e[0m\n" "$1"
 }
 
+# Fedora Setup: install alacritty hyprland, hypridle, hyprlock, ags & neovim
+
 success() {
     printf "\n\033[1;32m✔ %s\033[0m\n" "$1"
 }
