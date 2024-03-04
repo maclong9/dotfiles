@@ -40,11 +40,12 @@ brew_install() {
     message "Installing Homebrew"
     
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    touch $HOME/.zprofile
     echo "
     eval \$(/opt/homebrew/bin/brew shellenv)
     export PATH=\"\$PATH:/opt/homebrew/bin\"
-    " > "$HOME"/.zprofile
-    . "$HOME"/.zprofile
+    " > $HOME/.zprofile
+    . $HOME/.zprofile
     
     success "Homebrew installed successfully"
 }
