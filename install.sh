@@ -86,7 +86,7 @@ tooling_install() {
     
     if [ "$1" = "mac" ]; then
         brew tap koekeishiya/formulae
-        brew install alacritty atuin fd gh hyperkey mas neovim orbstack ripgrep sd skhd utm yabai
+        brew install alacritty atuin fd gh hyperkey mas neovim nodejs orbstack ripgrep sd skhd utm yabai
         mas install 1436953057
         astro_install
     elif [ "$1" = "fedora" ]; then
