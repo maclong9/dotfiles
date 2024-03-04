@@ -92,6 +92,24 @@ post_install() {
     atuin register -u mac-codes9 -e maclong9@icloud.com
 }
 
+select_window_manager() {
+    PS3="Please select your window manager: "
+    options=("sway" "hyprland")
+    select opt in "${options[@]}"; do
+        case $opt in
+            "sway")
+                window_manager="sway"
+                break
+                ;;
+            "hyprland")
+                window_manager="hyprland"
+                break
+                ;;
+            *) echo "Invalid option. Please select again.";;
+        esac
+    done
+}
+
 main() {
     while [ "$#" -gt 0 ]; do
         case "$1" in
@@ -107,6 +125,7 @@ main() {
         shift
     done
 
+
     if [ -z "$window_manager" ]; then
         printf "Window manager not specified. Please choose between 'sway' or 'hyprland': "
         read -r window_manager
@@ -118,17 +137,8 @@ main() {
         message "􀣺 Running on macOS"
         brew_install || error_clean "Failed to install Homebrew"
         tooling_install "mac" || error_exit "Error while installing tooling with homebrew"
-    elif [ "$(uname -s)" = "Linux" ]; then
-        if [ "$window_manager" = "sway" ]; then
-            message "Running on Sway"
-            tooling_install "sway" || error_clean "Error while installing tooling with sway"
-        elif [ "$window_manager" = "hyprland" ]; then
-            message "Running on Hyprland"
-            tooling_install "hyprland" || error_clean "Error while installing tooling with hyprland"
-        else
-            printf "\n\033[1;31m✘ Unsupported window manager. Exiting.\033[0m\n"
-            exit 1
-        fi
+    elif [ "$(lsb_release -a)" = "Fedora" ]; then
+            tooling_install "fedora" || error_clean "Error while installing tooling with sway"
     else
         printf "\n\033[1;31m✘ Running on unsupported system, exiting.\033[0m\n"
         exit 1
