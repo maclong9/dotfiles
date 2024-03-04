@@ -43,7 +43,7 @@ brew_install() {
     echo "
     eval \$(/opt/homebrew/bin/brew shellenv)
     export PATH=\"\$PATH:/opt/homebrew/bin\"
-    " > "\$HOME"/.zprofile
+    " > "$HOME"/.zprofile
     . "$HOME"/.zprofile
     
     success "Homebrew installed successfully"
