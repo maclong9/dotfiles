@@ -29,6 +29,7 @@ These containers will have access to your home directory so do not run anything 
 - gh
 - neovim
 - ripgrep
+- sd
 
 ### macOS
 
@@ -42,12 +43,14 @@ These containers will have access to your home directory so do not run anything 
 ### Fedora Linux
 
 - aylurs-gtk-shell
+- grim
 - hyprland
   - hypridle
   - hyprlock
   - swww
   - xdg-desktop-portal-hyprland 
 - keyd
+- slurp
 - sway
   - swaylock
   - swayidle  
