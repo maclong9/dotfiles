@@ -2,6 +2,8 @@
 
 These files are used to configure my unix(like) systems, currently the configurations defined in these files are geared towards macOS and Fedora Sericea an immutable linux distribution providing excellent security and stability.
 
+- [ ] TODO: Using Pixelmator Pro creat keybinding sheets for macOS and Fedora window management.
+
 ## Usage
 
 Run the following in any Unix terminal.
