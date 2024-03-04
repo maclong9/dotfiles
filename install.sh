@@ -44,6 +44,7 @@ brew_install() {
     echo "
     eval \$(/opt/homebrew/bin/brew shellenv)
     export PATH=\"\$PATH:/opt/homebrew/bin\"
+    echo 'eval \"\$(atuin init zsh)\"' >> ~/.zshrc
     " > $HOME/.zprofile
     . $HOME/.zprofile
     
