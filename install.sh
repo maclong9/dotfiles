@@ -108,7 +108,7 @@ tooling_install() {
 
 post_install() {
     gh auth login
-    atuin register -u mac-codes9 -e maclong9@icloud.com
+    atuin login -u mac-codes9
 }
 
 select_window_manager() {
