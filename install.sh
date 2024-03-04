@@ -59,7 +59,7 @@ brew_install() {
     
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval $(/opt/homebrew/bin/brew shellenv)
     export PATH="$PATH:/opt/homebrew/bin"
     " > "$HOME"/.zprofile
     . "$HOME"/.zprofile
@@ -91,7 +91,7 @@ tooling_install() {
 
         if [ "$window_manager" = "hyprland" ]; then
             sudo dnf install hyprland-git hypridle hyprlock swww xdg-desktop-portal-hyprland
-        else if [ "$window_manager" = "sway" ]; then
+        elif [ "$window_manager" = "sway" ]; then
             sudo dnf install sway swaylock sway
         fi
         
