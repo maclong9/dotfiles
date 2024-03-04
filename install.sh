@@ -35,7 +35,7 @@ setup_sway() {
 setup_hypr() {
     rm -rf ~/.config/yabai ~/.config/skhd
     mkdir ~/.config/hypr
-    curl "$GIST_URL/alacrity-oxo" > ~/.config/alacritty/alacritty.toml
+    curl "$GIST_URL/alacrity-oxo.toml" > ~/.config/alacritty/alacritty.toml
     curl "$GIST_URL/hypridle" > ~/.config/hypr/hypridle.conf
     curl "$GIST_URL/hyprland" > ~/.config/hypr/hyprland.conf
     curl "$GIST_URL/hyprlock" > ~/.config/hypr/hyprlock.conf
@@ -99,6 +99,7 @@ tooling_install() {
         sudo curl "$GIST_URL"/keyd > /etc/keyd/default.conf
         astro_install
     fi
+    
     success "Tooling has been installed successfully"
 }
 
