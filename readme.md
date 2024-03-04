@@ -42,9 +42,12 @@ These containers will have access to your home directory so do not run anything 
 ### Fedora Linux
 
 - aylurs-gtk-shell
-- hyprland-git
-- hypridle
-- hyprlock
+- hyprland
+  - hypridle
+  - hyprlock
+  - swww
+  - xdg-desktop-portal-hyprland 
 - keyd
-- swww
-- xdg-desktop-portal-hyprland 
+- sway
+  - swaylock
+  - swayidle  
