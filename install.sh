@@ -24,24 +24,6 @@ error_clean() {
     exit 1
 }
 
-setup_sway() {
-    rm -rf ~/.config/yabai ~/.config/skhh
-    mkdir ~/.config/sway
-    curl "$GIST_URL/alacritty-gruv.toml" > ~/.config/alacritty/alacritty.toml
-    curl "$GIST_URL/sway" > ~/.config/sway/config
-    curl https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/gruv.jpg -o ~/Pictures/wallpaper.jpg
-}
-
-setup_hypr() {
-    rm -rf ~/.config/yabai ~/.config/skhd
-    mkdir ~/.config/hypr
-    curl "$GIST_URL/alacrity-oxo.toml" > ~/.config/alacritty/alacritty.toml
-    curl "$GIST_URL/hypridle" > ~/.config/hypr/hypridle.conf
-    curl "$GIST_URL/hyprland" > ~/.config/hypr/hyprland.conf
-    curl "$GIST_URL/hyprlock" > ~/.config/hypr/hyprlock.conf
-    curl https://raw.githubusercontent.com/Gingeh/wallpapers/main/minimalistic/romb.png -o ~/Pictures/wallpaper.png
-}
-
 clone_configuration() {
     message "Checking if $HOME/.config already exists..."
 
@@ -59,9 +41,9 @@ brew_install() {
     
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "
-    eval $(/opt/homebrew/bin/brew shellenv)
-    export PATH="$PATH:/opt/homebrew/bin"
-    " > "$HOME"/.zprofile
+    eval \$(/opt/homebrew/bin/brew shellenv)
+    export PATH=\"\$PATH:/opt/homebrew/bin\"
+    " > "\$HOME"/.zprofile
     . "$HOME"/.zprofile
     
     success "Homebrew installed successfully"
@@ -77,6 +59,26 @@ astro_install() {
     success "AstroNvim has been installed successfully"
 }
 
+setup_sway() {
+    rm -rf ~/.config/yabai ~/.config/skhh
+    mkdir ~/.config/sway
+    curl "$GIST_URL/alacritty-gruv.toml" > ~/.config/alacritty/alacritty.toml
+    curl "$GIST_URL/sway" > ~/.config/sway/config
+    curl https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/gruv.jpg -o ~/Pictures/wallpaper.jpg
+    sudo dnf install sway swaylock sway
+}
+
+setup_hypr() {
+    rm -rf ~/.config/yabai ~/.config/skhd
+    mkdir ~/.config/hypr
+    curl "$GIST_URL/alacrity-oxo.toml" > ~/.config/alacritty/alacritty.toml
+    curl "$GIST_URL/hypridle" > ~/.config/hypr/hypridle.conf
+    curl "$GIST_URL/hyprland" > ~/.config/hypr/hyprland.conf
+    curl "$GIST_URL/hyprlock" > ~/.config/hypr/hyprlock.conf
+    curl https://raw.githubusercontent.com/Gingeh/wallpapers/main/minimalistic/romb.png -o ~/Pictures/wallpaper.png
+    sudo dnf install hyprland-git hypridle hyprlock swww xdg-desktop-portal-hyprland
+}
+
 tooling_install() {
     message "Installing tooling..."
     
@@ -90,9 +92,9 @@ tooling_install() {
         sudo dnf install atuin aylurs-gtk-shell alacritty fd-find gh grim keyd neovim ripgrep sd slurp
 
         if [ "$window_manager" = "hyprland" ]; then
-            sudo dnf install hyprland-git hypridle hyprlock swww xdg-desktop-portal-hyprland
+            setup_hypr
         elif [ "$window_manager" = "sway" ]; then
-            sudo dnf install sway swaylock sway
+            setup_sway
         fi
         
         sudo systemctl enable keyd && sudo systemctl start keyd
