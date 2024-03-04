@@ -133,6 +133,8 @@ setup_mac() {
     message "􀣺 Running on macOS"
     brew_install || error_clean "Failed to install Homebrew"
     tooling_install "mac" || error_exit "Error while installing tooling with homebrew"
+    yabai --start-service
+    skhd --start-service
 }
 
 setup_linux() {
