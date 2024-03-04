@@ -44,6 +44,7 @@ brew_install() {
     echo "
     eval \$(/opt/homebrew/bin/brew shellenv)
     export PATH=\"\$PATH:/opt/homebrew/bin\"
+    echo 'eval \"\$(atuin init zsh)\"' >> ~/.zshrc
     " > $HOME/.zprofile
     . $HOME/.zprofile
     
@@ -108,7 +109,8 @@ tooling_install() {
 
 post_install() {
     gh auth login
-    atuin register -u mac-codes9 -e maclong9@icloud.com
+    atuin login -u mac-codes9
+    atuin sync
 }
 
 select_window_manager() {

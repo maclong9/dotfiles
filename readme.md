@@ -18,7 +18,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/mac-codes9/dotfiles/main/i
 
 #### Development
 
-The default tools installed on the system are for general usage for development focused workflows ensure that you set up a container using either OrbStack or Toolbox respective of the OS you are running on.
+The default tools installed on the system are for general usage, for development focused workflows ensure that you set up a container using either OrbStack or Toolbox respective of the OS you are running on.
 These containers will have access to your home directory so do not run anything destructive in them, use a virtual machine of Qubes OS for experimenting with possibly desctructive scripts and tools.
 
 ### Shared
@@ -29,6 +29,7 @@ These containers will have access to your home directory so do not run anything 
 - gh
 - neovim
 - ripgrep
+- sd
 
 ### macOS
 
@@ -42,12 +43,14 @@ These containers will have access to your home directory so do not run anything 
 ### Fedora Linux
 
 - aylurs-gtk-shell
+- grim
 - hyprland
   - hypridle
   - hyprlock
   - swww
   - xdg-desktop-portal-hyprland 
 - keyd
+- slurp
 - sway
   - swaylock
   - swayidle  
