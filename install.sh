@@ -125,7 +125,13 @@ select_window_manager() {
     done
 }
 
-main() {
+setup_mac() {
+    message "􀣺 Running on macOS"
+    brew_install || error_clean "Failed to install Homebrew"
+    tooling_install "mac" || error_exit "Error while installing tooling with homebrew"
+}
+
+setup_linux() {
     while [ "$#" -gt 0 ]; do
         case "$1" in
             --window-manager|-w)
@@ -140,20 +146,21 @@ main() {
         shift
     done
 
-
     if [ -z "$window_manager" ]; then
         printf "Window manager not specified. Please choose between 'sway' or 'hyprland': "
         read -r window_manager
     fi
+    
+    tooling_install "fedora" || error_clean "Error while installing tooling with sway"
+}
 
+main() {
     clone_configuration || error_clean "Failed to clone configuration repository"
     
     if [ "$(uname -s)" = "Darwin" ]; then
-        message "􀣺 Running on macOS"
-        brew_install || error_clean "Failed to install Homebrew"
-        tooling_install "mac" || error_exit "Error while installing tooling with homebrew"
+        setup_mac
     elif [ "$(lsb_release -a)" = "Fedora" ]; then
-            tooling_install "fedora" || error_clean "Error while installing tooling with sway"
+        setup_linux
     else
         printf "\n\033[1;31m✘ Running on unsupported system, exiting.\033[0m\n"
         exit 1
