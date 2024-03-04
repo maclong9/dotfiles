@@ -4,7 +4,7 @@ These files are used to configure my unix(like) systems, currently the configura
 
 - [ ] TODO: Using Pixelmator Pro create keybinding sheets for macOS and Fedora window management.
 - [ ] TODO: Add option to choose between sway and hyprland
-- [ ] TODO: Add flag to reload that will remove the current configuration and set it up using a different default configuration.
+- [ ] TODO: Replace the Fedora install script with Atomic Fedora Images that can be switched using `rpm-ostree`
 
 ## Usage
 

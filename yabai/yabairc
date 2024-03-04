@@ -12,4 +12,4 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
-yabai -m rule --add app="^Mail$" manage=off
+yabai -m rule --add app="^OrbStack$" manage=off
