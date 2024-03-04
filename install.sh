@@ -109,6 +109,7 @@ tooling_install() {
 post_install() {
     gh auth login
     atuin login -u mac-codes9
+    atuin sync
 }
 
 select_window_manager() {
