@@ -1,56 +1,11 @@
 return {
-<<<<<<< HEAD
-  colorscheme = "oxocarbon",
-  lsp = {
-    formatting = {
-      format_on_save = true,
-    },
-  },
-  mappings = {
-    n = {
-      ["<leader>fp"] = { "<cmd>Telescope projects<cr>" },
-      ["<leader>ln"] = { "<cmd>AerialNavToggle<cr>" },
-    },
-  },
-  options = {
-    o = {
-      guifont = "Liga SFMono Nerd Font:h12",
-    },
-  },
-  plugins = {
-    "AstroNvim/astrocommunity",
-    { import = "astrocommunity.colorscheme.oxocarbon-nvim" },
-    { import = "astrocommunity.project.project-nvim" },
-    { import = "astrocommunity.motion.nvim-spider" },
-    { import = "astrocommunity.motion.hop-nvim" },
-    {
-      "goolord/alpha-nvim",
-      opts = function(_, opts)
-        opts.section.header.val = {
-          "  ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ",
-          "   ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
-          "         ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷⠄⠄⠄⠄⠻⠿⢿⣿⣧⣄     ",
-          "          ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
-          "         ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
-          "  ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
-          " ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
-          "⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
-          "⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ",
-          "     ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
-          "      ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
-        }
-      end,
-    },
-    { "rcarriga/nvim-notify", enabled = false },
-  },
-=======
 	colorscheme = "oxocarbon",
 	heirline = {
 		colors = {
 			tabline_bg = "none",
 		},
 		separators = {
-			breadcrumbs = "  ",
+			breadcrumbs = " ",
 		},
 	},
 	lsp = {
@@ -76,6 +31,8 @@ return {
 		{ import = "astrocommunity.motion.nvim-spider" },
 		{ import = "astrocommunity.motion.hop-nvim" },
 		{ import = "astrocommunity.pack.lua" },
+		{ import = "astrocommunity.pack.svelte" },
+		{ import = "astrocommunity.pack.tailwindcss" },
 		{ import = "astrocommunity.pack.typescript-all-in-one" },
 		{
 			"goolord/alpha-nvim",
@@ -103,7 +60,7 @@ return {
 
 				opts.source_selector.sources = {
 					{ source = "filesystem", display_name = get_icon("FolderClosed") .. " File" },
-					{ source = "git_status", display_name = get_icon("Git") .. " Git" },
+					{ source = "document_symbols", display_name = get_icon("FolderClosed") .. " Symbols" },
 				}
 			end,
 		},
@@ -132,5 +89,4 @@ return {
 			end,
 		},
 	},
->>>>>>> ba33d032bd337240a3e3881a4dcc8319e0a7da39
 }
