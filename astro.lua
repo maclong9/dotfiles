@@ -28,6 +28,8 @@ return {
 		"AstroNvim/astrocommunity",
 		{ import = "astrocommunity.colorscheme.oxocarbon-nvim" },
 		{ import = "astrocommunity.project.project-nvim" },
+		{ import = "astrocommunity.indent.indent-blankline-nvim" },
+		{ import = "astrocommunity.motion.mini-indentscope" },
 		{ import = "astrocommunity.motion.nvim-spider" },
 		{ import = "astrocommunity.motion.hop-nvim" },
 		{ import = "astrocommunity.pack.lua" },
@@ -59,7 +61,7 @@ return {
 				local get_icon = require("astronvim.utils").get_icon
 
 				opts.source_selector.sources = {
-					{ source = "filesystem", display_name = get_icon("FolderClosed") .. " File" },
+					{ source = "filesystem",       display_name = get_icon("FolderClosed") .. " File" },
 					{ source = "document_symbols", display_name = get_icon("FolderClosed") .. " Symbols" },
 				}
 			end,
