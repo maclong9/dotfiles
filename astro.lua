@@ -15,6 +15,23 @@ return {
 	},
 	mappings = {
 		n = {
+			["<leader>b"] = false,
+			["<leader>bC"] = false,
+			["<leader>b\\"] = false,
+			["<leader>bb"] = false,
+			["<leader>bc"] = false,
+			["<leader>bd"] = false,
+			["<leader>bl"] = false,
+			["<leader>bn"] = false,
+			["<leader>bp"] = false,
+			["<leader>br"] = false,
+			["<leader>b|"] = false,
+			["<leader>bse"] = false,
+			["<leader>bsi"] = false,
+			["<leader>bsm"] = false,
+			["<leader>bsp"] = false,
+			["<leader>bsr"] = false,
+			["<leader>bs"] = false,
 			["<leader>fp"] = { "<cmd>Telescope projects<cr>" },
 			["<leader>ln"] = { "<cmd>AerialNavToggle<cr>" },
 		},
@@ -22,20 +39,22 @@ return {
 	options = {
 		o = {
 			guifont = "Liga SFMono Nerd Font:h12",
+			showtabline = 0,
 		},
 	},
 	plugins = {
 		"AstroNvim/astrocommunity",
 		{ import = "astrocommunity.colorscheme.oxocarbon-nvim" },
-		{ import = "astrocommunity.project.project-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
-		{ import = "astrocommunity.motion.mini-indentscope" },
-		{ import = "astrocommunity.motion.nvim-spider" },
+		{ import = "astrocommunity.indent.mini-indentscope" },
+		{ import = "astrocommunity.motion.harpoon" },
 		{ import = "astrocommunity.motion.hop-nvim" },
+		{ import = "astrocommunity.motion.nvim-spider" },
 		{ import = "astrocommunity.pack.lua" },
 		{ import = "astrocommunity.pack.svelte" },
 		{ import = "astrocommunity.pack.tailwindcss" },
 		{ import = "astrocommunity.pack.typescript-all-in-one" },
+		{ import = "astrocommunity.project.project-nvim" },
 		{
 			"goolord/alpha-nvim",
 			opts = function(_, opts)
@@ -55,14 +74,12 @@ return {
 			end,
 		},
 		{ "rcarriga/nvim-notify", enabled = false },
+		{ "akinsho/toggleterm.nvim", enabled = false },
 		{
 			"nvim-neo-tree/neo-tree.nvim",
 			opts = function(_, opts)
-				local get_icon = require("astronvim.utils").get_icon
-
 				opts.source_selector.sources = {
-					{ source = "filesystem",       display_name = get_icon("FolderClosed") .. " File" },
-					{ source = "document_symbols", display_name = get_icon("FolderClosed") .. " Symbols" },
+					{ source = "filesystem" },
 				}
 			end,
 		},
@@ -70,6 +87,8 @@ return {
 			"rebelot/heirline.nvim",
 			opts = function(_, opts)
 				local status = require("astronvim.utils.status")
+
+				opts.tabline = nil
 
 				opts.statusline = {
 					status.component.mode(),
@@ -84,7 +103,6 @@ return {
 				}
 
 				opts.statuscolumn = {
-					status.component.foldcolumn(),
 					status.component.fill(),
 					status.component.numbercolumn(),
 				}
