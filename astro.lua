@@ -47,7 +47,6 @@ return {
 		{ import = "astrocommunity.colorscheme.oxocarbon-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
 		{ import = "astrocommunity.indent.mini-indentscope" },
-		{ import = "astrocommunity.motion.harpoon" },
 		{ import = "astrocommunity.motion.hop-nvim" },
 		{ import = "astrocommunity.motion.nvim-spider" },
 		{ import = "astrocommunity.pack.lua" },
@@ -73,13 +72,14 @@ return {
 				}
 			end,
 		},
-		{ "rcarriga/nvim-notify", enabled = false },
+		{ "rcarriga/nvim-notify",    enabled = false },
 		{ "akinsho/toggleterm.nvim", enabled = false },
 		{
 			"nvim-neo-tree/neo-tree.nvim",
 			opts = function(_, opts)
 				opts.source_selector.sources = {
 					{ source = "filesystem" },
+					{ source = "buffers" },
 				}
 			end,
 		},
@@ -106,6 +106,8 @@ return {
 					status.component.fill(),
 					status.component.numbercolumn(),
 				}
+
+				return opts
 			end,
 		},
 	},
