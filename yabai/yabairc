@@ -14,3 +14,4 @@ yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^OrbStack$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Dictionary$" manage=off
