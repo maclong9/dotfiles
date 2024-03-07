@@ -61,49 +61,23 @@ astro_install() {
     success "AstroNvim has been installed successfully"
 }
 
-setup_sway() {
-    rm -rf ~/.config/yabai ~/.config/skhh
-    mkdir ~/.config/sway
-    curl "$GIST_URL/alacritty-gruv.toml" > ~/.config/alacritty/alacritty.toml
-    curl "$GIST_URL/sway" > ~/.config/sway/config
-    curl https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/gruv.jpg -o ~/Pictures/wallpaper.jpg
-    sudo dnf install sway swaylock sway
-}
-
-setup_hypr() {
-    rm -rf ~/.config/yabai ~/.config/skhd
-    mkdir ~/.config/hypr
-    curl "$GIST_URL/alacrity-oxo.toml" > ~/.config/alacritty/alacritty.toml
-    curl "$GIST_URL/hypridle" > ~/.config/hypr/hypridle.conf
-    curl "$GIST_URL/hyprland" > ~/.config/hypr/hyprland.conf
-    curl "$GIST_URL/hyprlock" > ~/.config/hypr/hyprlock.conf
-    curl https://raw.githubusercontent.com/Gingeh/wallpapers/main/minimalistic/romb.png -o ~/Pictures/wallpaper.png
-    sudo dnf install hyprland-git hypridle hyprlock swww xdg-desktop-portal-hyprland
-}
-
 tooling_install() {
     message "Installing tooling..."
     
     if [ "$1" = "mac" ]; then
         brew tap koekeishiya/formulae
-        brew install alacritty atuin fd gh hyperkey mas neovim nodejs orbstack ripgrep sd skhd utm yabai
+        brew install alacritty atuin fd gh hyperkey mas neovim nodejs orbstack ripgrep sd sioyek skhd utm yabai
         mas install 1436953057
-        astro_install
     elif [ "$1" = "fedora" ]; then
-        sudo dnf copr enable alternateved/keyd solopasha/hyprland sramanujam/atuin
-        sudo dnf install atuin aylurs-gtk-shell alacritty fd-find gh grim keyd neovim ripgrep sd slurp
-
-        if [ "$window_manager" = "hyprland" ]; then
-            setup_hypr
-        elif [ "$window_manager" = "sway" ]; then
-            setup_sway
-        fi
-        
+        sudo dnf copr enable alternateved/keyd endle/sioyek solopasha/hyprland sramanujam/atuin
+        sudo dnf install atuin aylurs-gtk-shell alacritty fd-find gh grim keyd neovim ripgrep sd sioyek slurp
         sudo systemctl enable keyd && sudo systemctl start keyd
         sudo curl "$GIST_URL"/keyd > /etc/keyd/default.conf
-        astro_install
+    elif [ "$1" = "openbsd" ]; then
+        echo "Running OpenBSD"
     fi
     
+    astro_install
     success "Tooling has been installed successfully"
 }
 
@@ -162,6 +136,10 @@ setup_linux() {
     tooling_install "fedora" || error_clean "Error while installing tooling with sway"
 }
 
+setup_bsd() {
+    echo "Running on Open BSD"
+}
+
 main() {
     clone_configuration || error_clean "Failed to clone configuration repository"
     
@@ -169,6 +147,8 @@ main() {
         setup_mac
     elif [ "$(lsb_release -a)" = "Fedora" ]; then
         setup_linux
+    elif [ "$OSTYPE" = "OpenBSD" ];
+        setup_bsd
     else
         printf "\n\033[1;31m✘ Running on unsupported system, exiting.\033[0m\n"
         exit 1
