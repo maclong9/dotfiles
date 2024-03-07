@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # Check System & Configure Accordingly
 if [ -f /etc/void-release ]; then
   xbps-install python3
