@@ -4,8 +4,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $browser flatpak run org.mozilla.Firefox
-set $wallpaper ~/Pictures/wallpaper.jpg
+set $browser firefox
 set $lock swaylock
 
 # Startup
@@ -13,9 +12,9 @@ exec swayidle -w \
         timeout 300 '$lock' \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
         before-sleep '$lock'
+exec swaylock
 
 # Appearance
-font pango: 'Liga SFMono Nerd Font' 11
 default_border pixel 2
 gaps inner 5
 gaps outer 5
@@ -24,33 +23,6 @@ corner_radius 8
 shadows enable
 layer_effects 'yambar' blur enable; shadow enable; corner_radius 8; opacity 0.9;
 layer_effects 'fuzzel' blur enable; shadow enable; corner_radius 8; opacity 0.9;
-
-
-## Colours
-set $base00 #282828
-set $base01 #3c3836
-set $base02 #504945
-set $base03 #665c54
-set $base04 #d5c4a1
-set $base05 #ebdbb2
-set $base06 #fbf1c7
-set $base07 #ebdbb2
-set $base08 #cc241d
-set $base09 #d65d0e
-set $base0A #d79921
-set $base0B #98971a
-set $base0C #458588
-set $base0D #b16286
-set $base0E #689d6a
-set $base0F #a89984
-
-## Window Colours
-client.focused           $base0D  $base00  $base06  $base08  $base09
-client.focused_inactive  $base02  $base00  $base06  $base08  $base02
-client.unfocused         $base01  $base00  $base06  $base08  $base02
-client.urgent            $base07  $base00  $base08  $base0B  $base02
-client.placeholder       $base02  $base00  $base06  $base03  $base04
-client.background        $base00
 
 # Interface
 ## Trackpad
@@ -98,10 +70,13 @@ mode "screenshot" {
     bindsym $mod+Print mode "default"
 }
 
+
 # Bindings
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
+bindsym $mod+r mode "resize"
+bindsym $mod+Print mode "$screenshot"
 bindsym $mod+Alt+l exec $lock $lockCommandArgs
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m \
@@ -161,9 +136,5 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
-
-## Other
-bindsym $mod+r mode "resize"
-bindsym $mod+Print mode "$screenshot"
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
