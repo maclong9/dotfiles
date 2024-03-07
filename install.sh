@@ -1,4 +1,5 @@
 #!/bin/sh
+git clone https://github.com/mac-codes9/dotfiles ~/.config
 pip3 install ansible
 export PATH=$PATH:/Users/mac/Library/Python/3.9/bin/
 echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
