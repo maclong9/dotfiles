@@ -1,0 +1,91 @@
+---
+- name: Initialise System
+  hosts: localhost
+  gather_facts: true
+  vars:
+      system: '{{ ansible_facts["os_family"] }}'
+  tasks:
+    - name: Debug System Variable
+      debug:
+        var: system
+
+    - name: Darwin Specific Setup
+      when: system == "Darwin"
+      block:
+        - name: Install macOS Tools
+          ansible.builtin.package:
+              name: "{{ item }}"
+              state: present
+          with_items:
+              - alacritty
+              - gh
+              - homebrew/cask-fonts/font-sf-mono
+              - hyperkey
+              - mactex
+              - mas
+              - neovim
+              - orbstack
+              - sioyek
+              - swish
+
+        - name: Refresh Font Cache
+          become: true
+          when: not sfmono_check.stat.exists
+          ansible.builtin.command: atsutil databases -remove
+          changed_when: true
+
+    - name: Linux Specific Setup
+      when: system == "Linux"
+      become: true
+      block:
+        - name: Install Linux Tools
+          ansible.builtin.package:
+              name: "{{ item }}"
+              state: present
+          with_items:
+              - alacritty
+              - atuin
+              - aylurs-gtk-shell
+              - fd
+              - gh
+              - git
+              - grim
+              - hyprland
+              - keyd
+              - neovim
+              - ripgrep
+              - sd
+              - sioyek
+              - slurp
+              - toolbox
+              - unzip
+              - zsh
+
+        - name: Set Default Shell to ZSH
+          user:
+              name: "mac"
+              shell: /bin/zsh
+
+        - name: Ensure Font Directory Exists
+          ansible.builtin.file:
+              path: /usr/local/share/fonts
+              state: directory
+              mode: '0755'
+
+        - name: Create .zprofile File
+          ansible.builtin.copy:
+              content: |
+                  eval "$(atuin)"
+              dest: ~/.zprofile
+              mode: '0644'
+
+        - name: Fetch CascadiaMono Nerd Font
+          ansible.builtin.get_url:
+              url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/CascadiaMono.zip
+              dest: /usr/local/share/fonts/CascadiaMono.zip
+              mode: '0644'
+
+        - name: Unarchive CascadiaMono Nerd Font
+          ansible.builtin.unarchive:
+              src: /usr/local/share/fonts/CascadiaMono.zip
+              dest: /usr/local/share/fonts/
