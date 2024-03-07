@@ -1,0 +1,136 @@
+---
+- name: Initialise System
+  hosts: localhost
+  gather_facts: true
+  vars:
+      system: ansible_facts["ansible_system"]
+  tasks:
+    - name: Debug System Variable
+      debug:
+          msg: "The value of 'system' is {{ ansible_facts['ansible_system']['system'] }}"
+
+    - name: Darwin Specific Setup
+      when: system == "Darwin"
+      block:
+        - name: Check if Homebrew is Installed
+          ansible.builtin.stat:
+              path: /usr/local/bin/brew
+          register: homebrew_check
+
+        - name: Install Homebrew
+          when: not homebrew_check.stat.exists
+          changed_when: true
+          ansible.builtin.command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+        - name: Evaluate Homebrew
+          changed_when: true
+          ansible.builtin.command: eval "$(/usr/local/bin/brew shellenv)"
+
+        - name: Install macOS Tools
+          ansible.builtin.package:
+              name: "{{ item }}"
+              state: present
+          with_items:
+              - hyperkey
+              - mas
+              - orbstack
+              - swish
+              - utm
+
+        - name: Check if SFMono Nerd Font Exists
+          ansible.builtin.stat:
+              path: /Library/Fonts/LigaSFMonoNerdFont-Regular.otf
+          register: sfmono_check
+
+        - name: Install SFMono Nerd Font
+          become: true
+          when: not sfmono_check.stat.exists
+          ansible.builtin.get_url:
+              url: https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized/blob/main/LigaSFMonoNerdFont-Regular.otf
+              dest: /Library/Fonts/LigaSFMonoNerdFont-Regular.otf
+              mode: '0644'
+
+        - name: Refresh Font Cache
+          become: true
+          when: not sfmono_check.stat.exists
+          ansible.builtin.command: atsutil databases -remove
+          changed_when: true
+
+    - name: Linux Specific Setup
+      when: system == "Linux"
+      become: true
+      block:
+        - name: Install Linux Tools
+          ansible.builtin.package:
+              name: "{{ item }}"
+              state: present
+          with_items:
+              - atuin
+              - aylurs-gtk-shell
+              - fd
+              - git
+              - grim
+              - keyd
+              - neovim
+              - ripgrep
+              - sd
+              - slurp
+              - toolbox
+              - unzip
+              - zsh
+
+        - name: Ensure Font Directory Exists
+          ansible.builtin.file:
+              path: /usr/local/share/fonts
+              state: directory
+              mode: '0755'
+
+        - name: Fetch CascadiaMono Nerd Font
+          ansible.builtin.get_url:
+              url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/CascadiaMono.zip
+              dest: /usr/local/share/fonts/CascadiaMono.zip
+              mode: '0644'
+
+        - name: Unarchive CascadiaMono Nerd Font
+          ansible.builtin.unarchive:
+              src: /usr/local/share/fonts/CascadiaMono.zip
+              dest: /usr/local/share/fonts/
+
+        - name: Set Default Shell to ZSH
+          user:
+              name: "{{ ansible_user }}"
+              shell: /bin/zsh
+
+    - name: Universal Setup
+      become: "{{ 'true' if system == 'Linux' else 'no' }}"
+      block:
+        - name: Install System Tools
+          ansible.builtin.package:
+              name: "{{ item }}"
+              state: present
+          with_items:
+              - alacritty
+              - gh
+              - sioyek
+
+        - name: Check if Git Configuration Exists
+          ansible.builtin.stat:
+              path: ~/.gitconfig
+          register: git_check
+
+        - name: Configure Git
+          when: not git_check.stat.exists
+          changed_when: true
+          community.general.git_config:
+              name: "Mac"
+              email: "maclong9@icloud.com"
+
+        - name: Create .zprofile File
+          ansible.builtin.copy:
+              content: |
+                  eval "$(atuin)"
+              dest: ~/.zprofile
+              owner: "{{ ansible_user }}"
+              group: "{{ ansible_user }}"
+              mode: '0644'
+
