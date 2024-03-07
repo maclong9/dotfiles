@@ -34,6 +34,7 @@ return {
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 			end
 		},
+		{ import = "astrocommunity.editing-support.yanky-nvim" },
 		{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
 		{ import = "astrocommunity.indent.mini-indentscope" },
