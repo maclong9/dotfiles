@@ -16,7 +16,7 @@ return {
 	mappings = {
 		n = {
 			["<leader>fp"] = { "<cmd>Telescope projects<cr>" },
-			["<leader>ff"] = { "<cmd>Telescope projects<cr>" },
+			["<leader>ff"] = { "<cmd>Telescope file_browser<cr>" },
 			["<leader>ln"] = { "<cmd>AerialNavToggle<cr>" },
 		},
 	},
