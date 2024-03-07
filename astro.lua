@@ -1,5 +1,13 @@
+local colorscheme
+
+if os.getenv("HOME") == "/Users" then
+	colorscheme = "oxocarbon"
+else
+	colorscheme = "rose-pine-moon"
+end
+
 return {
-	colorscheme = "oxocarbon",
+	colorscheme = colorscheme,
 	heirline = {
 		separators = {
 			breadcrumbs = " ",
@@ -19,6 +27,7 @@ return {
 	plugins = {
 		"AstroNvim/astrocommunity",
 		{ import = "astrocommunity.colorscheme.oxocarbon-nvim" },
+		{ import = "astrocommunity.colorscheme.rose-pine" },
 		{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
 		{ import = "astrocommunity.indent.mini-indentscope" },

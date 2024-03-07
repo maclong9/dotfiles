@@ -9,7 +9,7 @@
       debug:
         var: system
 
-    - name: Darwin Specific Setup
+    - name: Darwin Setup
       when: system == "Darwin"
       block:
         - name: Install macOS Tools
@@ -17,7 +17,6 @@
               name: "{{ item }}"
               state: present
           with_items:
-              - alacritty
               - github
               - hyperkey
               - mactex
@@ -26,18 +25,22 @@
               - orbstack
               - sioyek
               - swish
+              - warp
               
         - name: Install & Upgrade App Store Apps
           community.general.mas:
             id:
-              - 409183694 # Keynote
-              - 413857545 # Divvy
+            # - 424390742 # Compressor
+            # - 424389933 # Final Cut Pro
+            # - 634148309 # Logic Pro
+            # - 634159523 # MainStage
+            # - 434290957 # Motion
+              - 497799835 # Xcode
+            # - 1289583905 # Pixelmator Pro
             state: present
             upgrade_all: true
 
-
-
-    - name: Linux Specific Setup
+    - name: Linux Setup
       when: system == "Linux"
       become: true
       block:
@@ -46,48 +49,38 @@
               name: "{{ item }}"
               state: present
           with_items:
-              - alacritty
-              - aylurs-gtk-shell
+              - autotiling
               - fd
-              - gh
+              - foot
               - git
               - grim
-              - hyprland
               - keyd
               - neovim
+              - nerdfonts
               - ripgrep
               - sd
               - sioyek
               - slurp
+              - swayfx
+              - swayidle
+              - swaylock
               - toolbox
-              - unzip
-              - zsh
 
-        - name: Set Default Shell to ZSH
-          user:
-              name: "mac"
-              shell: /bin/zsh
+    - name: Setup AstroNvim
+      block:
+      - name: Clone Astronvim Repository
+        git:
+          repo: https://github.com/Astronvim/astronvim.git
+          dest: ~/.config/nvim
+  
+      - name: Create User Configuration Directory
+        file:
+          path: ~/.config/nvim/lua/user
+          state: directory
+  
+      - name: Create symlink for astro.lua to init.lua
+        file:
+          src: ~/.config/astro.lua
+          dest: ~/.config/nvim/lua/user/init.lua
+          state: link
 
-        - name: Ensure Font Directory Exists
-          ansible.builtin.file:
-              path: /usr/local/share/fonts
-              state: directory
-              mode: '0755'
-
-        - name: Create .zprofile File
-          ansible.builtin.copy:
-              content: |
-                  eval "$(atuin)"
-              dest: ~/.zprofile
-              mode: '0644'
-
-        - name: Fetch CascadiaMono Nerd Font
-          ansible.builtin.get_url:
-              url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/CascadiaMono.zip
-              dest: /usr/local/share/fonts/CascadiaMono.zip
-              mode: '0644'
-
-        - name: Unarchive CascadiaMono Nerd Font
-          ansible.builtin.unarchive:
-              src: /usr/local/share/fonts/CascadiaMono.zip
-              dest: /usr/local/share/fonts/
