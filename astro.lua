@@ -45,6 +45,8 @@ return {
 		{ import = "astrocommunity.pack.tailwindcss" },
 		{ import = "astrocommunity.pack.typescript-all-in-one" },
 		{ import = "astrocommunity.project.project-nvim" },
+		{ import = "astrocommunity.scrolling.cinnamon" },
+		{ import = "astrocommunity.scrolling.satellite" },
 		{
 			"goolord/alpha-nvim",
 			opts = function(_, opts)
