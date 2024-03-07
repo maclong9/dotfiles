@@ -1,9 +1,6 @@
 return {
 	colorscheme = "oxocarbon",
 	heirline = {
-		colors = {
-			tabline_bg = "none",
-		},
 		separators = {
 			breadcrumbs = " ",
 		},
@@ -19,17 +16,9 @@ return {
 			["<leader>ff"] = { "<cmd>Telescope file_browser<cr>" },
 		},
 	},
-	options = {
-		o = {
-			guifont = "Liga SFMono Nerd Font:h12",
-			showtabline = 0,
-		},
-	},
 	plugins = {
 		"AstroNvim/astrocommunity",
 		{ import = "astrocommunity.colorscheme.oxocarbon-nvim" },
-		{ import = "astrocommunity.colorscheme.gruvbox-nvim" },
-		{ import = "astrocommunity.editing-support.yanky-nvim" },
 		{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
 		{ import = "astrocommunity.indent.mini-indentscope" },
@@ -39,9 +28,11 @@ return {
 		{ import = "astrocommunity.pack.docker" },
 		{ import = "astrocommunity.pack.lua" },
 		{ import = "astrocommunity.pack.nix" },
+		{ import = "astrocommunity.pack.rust" },
 		{ import = "astrocommunity.pack.svelte" },
 		{ import = "astrocommunity.pack.tailwindcss" },
 		{ import = "astrocommunity.pack.typescript-all-in-one" },
+		{ import = "astrocommunity.pack.zig" },
 		{ import = "astrocommunity.project.project-nvim" },
 		{ import = "astrocommunity.scrolling.cinnamon-nvim" },
 		{
@@ -61,10 +52,6 @@ return {
 					"      ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
 				}
 			end,
-		},
-		{
-			"nvim-telescope/telescope-file-browser.nvim",
-			dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		},
 		{
 			"rebelot/heirline.nvim",
@@ -93,6 +80,7 @@ return {
 				return opts
 			end,
 		},
+		{ "nvim-telescope/telescope-file-browser.nvim" },
 		{ "rcarriga/nvim-notify",        enabled = false },
 		{ "akinsho/toggleterm.nvim",     enabled = false },
 		{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
