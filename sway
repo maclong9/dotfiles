@@ -24,22 +24,18 @@ shadows enable
 layer_effects 'yambar' blur enable; shadow enable; corner_radius 8; opacity 0.9;
 layer_effects 'fuzzel' blur enable; shadow enable; corner_radius 8; opacity 0.9;
 
-# Interface
-## Trackpad
-input type "touchpad" {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-}
+## Colors
+set $bg-color #232136
+set $inactive-bg-color #393552
+set $text-color #e0def4
+set $inactive-text-color #908caa
+set $border-color #59546d
+set $focused-border-color #ea9a97
 
-## Display
-output eDP-1 {
-  position 0,0
-  scale 1
-  subpixel rgb
-  bg $wallpaper fill $base00  
-}
+client.focused $bg-color $text-color $focused-border-color
+client.unfocused $inactive-bg-color $inactive-text-color $border-color
+client.focused_inactive $inactive-bg-color $text-color $border-color
+client.urgent $bg-color $text-color $border-color
 
 # Modes
 ## Resize
@@ -70,8 +66,24 @@ mode "screenshot" {
     bindsym $mod+Print mode "default"
 }
 
+# Interface
+## Trackpad
+input type "touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
 
-# Bindings
+## Display
+output eDP-1 {
+  position 0,0
+  scale 1
+  subpixel rgb
+  bg $wallpaper fill $base00  
+}
+
+## Key Bindings
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
