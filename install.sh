@@ -6,7 +6,7 @@ elif [ "$(uname -s)" ]; then
   echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
 fi
 
-# Setup Ansible
+# Install Ansible
 pip3 install ansible
 export PATH=$PATH:/Users/mac/Library/Python/3.9/bin/
 
