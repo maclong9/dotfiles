@@ -1,6 +1,6 @@
 local colorscheme
 
-if os.getenv("HOME") == "/Users" then
+if vim.fn.has('macunix') then
 	colorscheme = "oxocarbon"
 else
 	colorscheme = "rose-pine-moon"
