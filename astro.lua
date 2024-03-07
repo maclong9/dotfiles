@@ -35,6 +35,7 @@ return {
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 			end
 		},
+		{ import= "astrocommunity.colorscheme.everforest" },
 		{ import= "astrocommunity.colorscheme.gruvbox-nvim" },
 		{ import = "astrocommunity.editing-support.yanky-nvim" },
 		{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
