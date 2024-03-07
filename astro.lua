@@ -36,7 +36,7 @@ return {
 		{ import = "astrocommunity.markdown-and-latex.vimtex" },
 		{ import = "astrocommunity.motion.hop-nvim" },
 		{ import = "astrocommunity.motion.nvim-spider" },
-		{ import = "astrocommunity.pack.ansible" },
+		{ import = "astrocommunity.pack.docker" },
 		{ import = "astrocommunity.pack.lua" },
 		{ import = "astrocommunity.pack.nix" },
 		{ import = "astrocommunity.pack.svelte" },
@@ -62,10 +62,6 @@ return {
 				}
 			end,
 		},
-		{ "rcarriga/nvim-notify",        enabled = false },
-		{ "akinsho/toggleterm.nvim",     enabled = false },
-		{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
-		{ "stevearc/aerial.nvim",        enabled = false },
 		{
 			"nvim-telescope/telescope-file-browser.nvim",
 			dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
@@ -97,5 +93,9 @@ return {
 				return opts
 			end,
 		},
+		{ "rcarriga/nvim-notify",        enabled = false },
+		{ "akinsho/toggleterm.nvim",     enabled = false },
+		{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
+		{ "stevearc/aerial.nvim",        enabled = false },
 	},
 }
