@@ -18,8 +18,7 @@
               state: present
           with_items:
               - alacritty
-              - gh
-              - homebrew/cask-fonts/font-sf-mono
+              - github
               - hyperkey
               - mactex
               - mas
@@ -44,7 +43,6 @@
               state: present
           with_items:
               - alacritty
-              - atuin
               - aylurs-gtk-shell
               - fd
               - gh
