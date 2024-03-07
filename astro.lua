@@ -77,6 +77,10 @@ return {
 			end,
 		},
 		{
+      "nvim-telescope/telescope-file-browser.nvim",
+      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+		},
+		{
 			"rebelot/heirline.nvim",
 			opts = function(_, opts)
 				local status = require("astronvim.utils.status")
