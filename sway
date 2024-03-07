@@ -5,6 +5,7 @@ set $up k
 set $right l
 set $term alacritty
 set $browser firefox
+set $wallpaper ~/Pictures/wallpaper.jpg
 set $lock swaylock
 
 # Startup
