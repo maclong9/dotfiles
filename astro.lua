@@ -16,6 +16,7 @@ return {
 	mappings = {
 		n = {
 			["<leader>fp"] = { "<cmd>Telescope projects<cr>" },
+			["<leader>ff"] = { "<cmd>Telescope projects<cr>" },
 			["<leader>ln"] = { "<cmd>AerialNavToggle<cr>" },
 		},
 	},
@@ -66,16 +67,9 @@ return {
 			end,
 		},
 		{ "rcarriga/nvim-notify",    enabled = false },
+
 		{ "akinsho/toggleterm.nvim", enabled = false },
-		{
-			"nvim-neo-tree/neo-tree.nvim",
-			opts = function(_, opts)
-				opts.source_selector.sources = {
-					{ source = "filesystem" },
-					{ source = "buffers" },
-				}
-			end,
-		},
+		{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
 		{
       "nvim-telescope/telescope-file-browser.nvim",
       dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
