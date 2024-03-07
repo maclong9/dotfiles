@@ -29,12 +29,13 @@ return {
 	plugins = {
 		"AstroNvim/astrocommunity",
 		{ 
-			import = "astrocommunity.colorscheme.oxocarbon-nvim",
+	    import = "astrocommunity.colorscheme.oxocarbon-nvim",
 			opts = function()
 				vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 			end
 		},
+		{ import= "astrocommunity.colorscheme.gruvbox-nvim" },
 		{ import = "astrocommunity.editing-support.yanky-nvim" },
 		{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
