@@ -26,12 +26,16 @@
               - orbstack
               - sioyek
               - swish
+              
+        - name: Install & Upgrade App Store Apps
+          community.general.mas:
+            id:
+              - 409183694 # Keynote
+              - 413857545 # Divvy
+            state: present
+            upgrade_all: true
 
-        - name: Refresh Font Cache
-          become: true
-          when: not sfmono_check.stat.exists
-          ansible.builtin.command: atsutil databases -remove
-          changed_when: true
+
 
     - name: Linux Specific Setup
       when: system == "Linux"
