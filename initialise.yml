@@ -17,15 +17,14 @@
               name: "{{ item }}"
               state: present
           with_items:
-              - alacritty
               - github
               - hyperkey
               - iterm2
+              - kitty
               - mas
               - neovim
               - orbstack
               - osu
-              - sioyek
               - swish
               - texifier
               - wezterm
