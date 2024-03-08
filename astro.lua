@@ -1,6 +1,6 @@
 local colorscheme
 
-if vim.fn.has('macunix') then
+if vim.fn.has("macunix") then
 	colorscheme = "oxocarbon"
 else
 	colorscheme = "rose-pine-moon"
@@ -90,9 +90,9 @@ return {
 			end,
 		},
 		{ "nvim-telescope/telescope-file-browser.nvim" },
-		{ "rcarriga/nvim-notify",        enabled = false },
-		{ "akinsho/toggleterm.nvim",     enabled = false },
+		{ "rcarriga/nvim-notify", enabled = false },
+		{ "akinsho/toggleterm.nvim", enabled = false },
 		{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
-		{ "stevearc/aerial.nvim",        enabled = false },
+		{ "stevearc/aerial.nvim", enabled = false },
 	},
 }
