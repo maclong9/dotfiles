@@ -21,13 +21,13 @@
               - github
               - hyperkey
               - iterm2
-              - mactex
               - mas
               - neovim
               - orbstack
               - osu
               - sioyek
               - swish
+              - texifier
               - wezterm
               
         - name: Install & Upgrade App Store Apps
