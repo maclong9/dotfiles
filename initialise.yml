@@ -19,13 +19,13 @@
           with_items:
               - github
               - hyperkey
+              - iterm2
               - mactex
               - mas
               - neovim
               - orbstack
               - sioyek
               - swish
-              - wezterm
               
         - name: Install & Upgrade App Store Apps
           community.general.mas:
