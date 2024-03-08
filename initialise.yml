@@ -36,6 +36,7 @@
             # - 634159523 # MainStage
             # - 434290957 # Motion
               - 497799835 # Xcode
+              - 1436953057 # Ghostery
             # - 1289583905 # Pixelmator Pro
             state: present
             upgrade_all: true
