@@ -30,6 +30,25 @@
               - swish
               - texifier
               - wezterm
+        
+        - name: Install Cask Apps 
+          community.general.homebrew_cask:
+            name: "{{ item }}"
+            state: present
+          with_items:
+            - gitbutler
+            - gitfox
+            - github
+            - hyperkey
+            - iterm2
+            - kitty
+            - mas
+            - neovim
+            - orbstack
+            - osu
+            - swish
+            - texifier
+            - wezterm
               
         - name: Install & Upgrade App Store Apps
           community.general.mas:
