@@ -69,3 +69,15 @@
               - swayfx
               - swayidle
               - swaylock
+
+    - name: Universal Setup
+      block:
+        - name: Configure Git User Name
+          community.general.git_config:
+            name: user.name
+            value: "Mac"
+            
+        - name: Configure Git Email Address
+          community.general.git_config:
+            name: user.email
+            value: "maclong9@icloud.com"
