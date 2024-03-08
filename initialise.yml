@@ -19,6 +19,7 @@
           with_items:
               - mas
               - neovim
+              - nodejs
         
         - name: Install Cask Apps 
           community.general.homebrew_cask:
@@ -28,7 +29,6 @@
             - github
             - hyperkey
             - iterm2
-            - nodejs
             - orbstack
             - osu
             - swish
