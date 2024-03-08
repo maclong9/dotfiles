@@ -25,16 +25,12 @@
             name: "{{ item }}"
             state: present
           with_items:
-            - coreutils
-            - eza
-            - fd
             - github
             - hyperkey
             - iterm2
             - nodejs
             - orbstack
             - osu
-            - ripgrep
             - swish
             - texifier
               
