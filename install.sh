@@ -1,9 +1,14 @@
 #!/bin/sh
 # Check System & Configure Accordingly
-if [ -f /etc/void-release ]; then
-  xbps-install python3
-elif [ "$(uname -s)" ]; then
+if [ "$(uname -s)" ]; then
+  echo "Running on macOS"
   echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
+elif [ "$(uname)" = "OpenBSD" ]; then
+  echo "Running on BSD"
+  apk add python3
+elif [ -f /etc/void-release ]; then
+  echo "Running on Linux"
+  xbps-install python3
 fi
 
 # Install Ansible
