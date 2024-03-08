@@ -53,15 +53,12 @@
               state: present
           with_items:
               - autotiling
-              - fd
               - foot
               - git
               - grim
               - keyd
               - neovim
               - nerdfonts
-              - ripgrep
-              - sd
               - sioyek
               - slurp
               - swayfx
