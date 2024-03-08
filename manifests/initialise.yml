@@ -1,0 +1,46 @@
+---
+- name: Initialise System
+  hosts: localhost
+  gather_facts: true
+  vars:
+    system: '{{ ansible_facts["os_family"] }}'
+  vars_files:
+    - "./packages.yml"
+  
+  tasks:
+    - name: Debug System
+      debug:
+        var: system
+
+    - name: Darwin Setup
+      when: system == "Darwin"
+      block:
+        - name: Install macOS Tools
+          ansible.builtin.package:
+            name: "{{ item }}"
+          with_items: "{{ mac.tools }}"
+        
+        - name: Install Cask Apps 
+          community.general.homebrew_cask:
+            name: "{{ item }}"
+          with_items: "{{ mac.casks }}"
+              
+        - name: Install & Upgrade App Store Apps
+          community.general.mas:
+            id: "{{ mac.apps }}"
+            upgrade_all: true
+
+    - name: Linux Setup
+      when: system == "Archlinux"
+      block:
+        - name: Install Linux Tools
+          become: true
+          ansible.builtin.package:
+            name: "{{ item }}"
+          with_items: "{{ linux.tools }}"
+
+        - name: Install Flatpaks
+          become: true
+          community.general.flatpak:
+            name: "{{ item }}"
+          with_items: "{{ linux.flatpak }}"

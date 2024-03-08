@@ -86,14 +86,13 @@ output eDP-1 {
 
 ## Key Bindings
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
+bindsym $mod+B exec $browser
 bindsym $mod+d exec $menu
+bindsym $mod+Alt+l exec $lock
+bindsym $mod+Shift+q kill
 bindsym $mod+r mode "resize"
 bindsym $mod+Print mode "$screenshot"
-bindsym $mod+Alt+l exec $lock $lockCommandArgs
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m \
-	'Are you sure you want to exit?' -B 'Yes' 'swaymsg exit'
 
 ### Movement 
 bindsym $mod+$left focus left

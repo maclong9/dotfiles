@@ -4,19 +4,13 @@ if [ "$(uname -s)" ]; then
   echo "Running on macOS"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
-elif [ "$(uname)" = "OpenBSD" ]; then
-  echo "Running on BSD"
-  apk add python3
+  . $HOME/.zprofile
+  brew install ansible
 elif [ -f /etc/void-release ]; then
   echo "Running on Linux"
-  xbps-install python3
+  xbps-install ansible
 fi
-
-# Install Ansible
-pip3 install ansible
-echo 'export PATH=$PATH:/Users/mac/Library/Python/3.9/bin/' >> $HOME/.zprofile
-. "$HOME"/.zprofile
 
 # Clone Configuration & Run Ansible Playbook
 git clone https://github.com/mac-codes9/dotfiles ~/.config
-ansible-playbook ~/.config/initialise.yml
+ansible-playbook ~/.config/manifests/initialise.yml
