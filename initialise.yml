@@ -25,7 +25,7 @@
               - orbstack
               - sioyek
               - swish
-              - warp
+              - wezterm
               
         - name: Install & Upgrade App Store Apps
           community.general.mas:
