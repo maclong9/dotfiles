@@ -14,7 +14,8 @@ fi
 
 # Install Ansible
 pip3 install ansible
-export PATH=$PATH:/Users/mac/Library/Python/3.9/bin/
+echo 'export PATH=$PATH:/Users/mac/Library/Python/3.9/bin/' >> $HOME/.zprofile
+. "$HOME"/.zprofile
 
 # Clone Configuration & Run Ansible Playbook
 git clone https://github.com/mac-codes9/dotfiles ~/.config
