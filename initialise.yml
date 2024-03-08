@@ -25,15 +25,13 @@
             name: "{{ item }}"
             state: present
           with_items:
-            - gitfox
+            - github
             - hyperkey
             - iterm2
-            - kitty
             - orbstack
             - osu
             - swish
             - texifier
-            - wezterm
               
         - name: Install & Upgrade App Store Apps
           community.general.mas:
@@ -68,15 +66,3 @@
               - swayfx
               - swayidle
               - swaylock
-
-    - name: Universal Setup
-      block:
-        - name: Configure Git User Name
-          community.general.git_config:
-            name: user.name
-            value: "Mac"
-            
-        - name: Configure Git Email Address
-          community.general.git_config:
-            name: user.email
-            value: "maclong9@icloud.com"
