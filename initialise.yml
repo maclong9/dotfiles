@@ -18,6 +18,7 @@
               state: present
           with_items:
               - gitbutler
+              - gitfox
               - github
               - hyperkey
               - iterm2
