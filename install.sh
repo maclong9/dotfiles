@@ -2,7 +2,6 @@
 # Check System & Configure Accordingly
 if [ "$(uname -s)" ]; then
   echo "Running on macOS"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
 elif [ "$(uname)" = "OpenBSD" ]; then
   echo "Running on BSD"
