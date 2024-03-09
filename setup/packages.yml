@@ -12,13 +12,13 @@ mac:
     - sioyek
     - swish
   apps:
-  # - 424390742  # Compressor 
-  # - 424389933  # Final Cut Pro 
-  # - 634148309  # Logic Pro 
-  # - 634159523  # MainStage 
-  # - 434290957  # Motion 
-  # - 497799835  # Xcode
-  # - 1289583905 # Pixelmator Pro 
+    - 424390742  # Compressor 
+    - 424389933  # Final Cut Pro 
+    - 634148309  # Logic Pro 
+    - 634159523  # MainStage 
+    - 434290957  # Motion 
+    - 497799835  # Xcode
+    - 1289583905 # Pixelmator Pro 
     - 1436953057 # Ghostery
     - 1571998974 # Mastodon
     - 1521432881 # Session
