@@ -4,7 +4,7 @@ handle_error() {
   exit 1
 }
 
-install_command="sudo xbps-install -y"
+install_command="xbps-install -y"
 
 if [ "$1" = "-i" ]; then
   if [ -z "$2" ]; then
@@ -21,7 +21,7 @@ case "$(uname -s)" in
     brew install ansible || handle_error "Failed to install Ansible."
     ;;
   "Linux")
-    $install_command ansible || handle_error "Failed to install Ansible."
+    sudo $install_command ansible || handle_error "Failed to install Ansible."
     ;;
   "OpenBSD")
     echo "OpenBSD support is in progress. Need to confirm tooling and best practices before adding it to initialization scripts"
