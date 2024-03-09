@@ -7,6 +7,8 @@
     dest: '/tmp/void'
     pub_url: 'https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/void-release-keys/files/void-release-20230628.pub'
     system: '{{ ansible_facts["os_family"] }}'
+    sudo: '{{ system != "Darwin" }}'
+    grep: 'musl-20230628-base.iso sha256sum.txt'
   tasks:
     - name: Setup Utilities
       block:
@@ -17,6 +19,7 @@
             mode: '0755'
 
         - name: Install minisign for Verification
+          become: "{{ sudo }}"
           ansible.builtin.package:
             name: minisign
 
@@ -67,22 +70,16 @@
 
         - name: Verify Checksum of Image
           when: system != 'Darwin'
-          ansible.builtin.command: |
-            cd {{ dest }}
-            sha256sum -c | grep musl-20230628-base.iso sha256sum.txt
-          register: image_authenticity
-          changed_when: true
-
-        - name: Verify Checksum of Image (macOS)
           ansible.builtin.shell: |
             cd {{ dest }}
             shasum -a 256 -c | grep musl-20230628-base.iso sha256sum.txt
           register: image_authenticity
           changed_when: true
-          when: system == 'Darwin'
 
-        - name: Print Results of Verifications
-          ansible.builtin.debug:
-            msg: |
-              txt_Authenticity: {{ txt_authenticity.stdout }}
-              image_Authenticity: {{ image_authenticity.stdout }}
+        - name: Verify Checksum of Image (macOS)
+          when: system == 'Darwin'
+          ansible.builtin.shell: |
+            cd {{ dest }}
+            shasum -a 256 -c | grep '{{ grep }}'
+          register: image_authenticity_mac
+          changed_when: true
