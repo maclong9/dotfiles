@@ -3,6 +3,7 @@ mac:
     - mas
     - neovim 
   casks:
+    - alacritty
     - github
     - hyperkey
     - iterm2
@@ -24,13 +25,13 @@ mac:
 
 linux:
   tools:
+    - alacritty
     - alsa-pipewire
     - autotiling
     - brightnessctl
     - cargo
     - flatpak
     - fnott
-    - foot
     - fuzzel
     - git
     - grim
