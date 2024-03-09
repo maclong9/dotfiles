@@ -1,4 +1,4 @@
-mac:
+darwin:
   tools:
     - mas
     - neovim 
