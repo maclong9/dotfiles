@@ -23,7 +23,6 @@ darwin:
 
 linux:
   tools:
-    - dwm
     - flatpak
     - git
     - keyd
