@@ -31,7 +31,7 @@
             upgrade_all: true
 
     - name: Linux Setup
-      when: system == "Archlinux"
+      when: system == "void"
       block:
         - name: Install Linux Tools
           become: true
