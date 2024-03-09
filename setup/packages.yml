@@ -1,9 +1,7 @@
 darwin:
   tools:
     - mas
-    - neovim 
   casks:
-    - alacritty
     - github
     - hyperkey
     - iterm2
@@ -29,16 +27,17 @@ linux:
     - flatpak
     - git
     - keyd
-    - neovim
     - nerd-fonts
     - pipewire
     - polkit
     - st
+    - vim
   flatpak:
     - firefox
     - sioyek
 
 container:
   - deno
+  - neovim
   - rust
   - zig
