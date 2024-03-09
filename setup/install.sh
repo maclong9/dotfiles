@@ -1,12 +1,10 @@
 #!/bin/sh
 if [ "$(uname -s)" ]; then
-  echo "Running on macOS"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
-  . $HOME/.zprofile
+  echo "eval \$(/opt/homebrew/bin/brew shellenv)" >> "$HOME"/.zprofile
+  . "$HOME"/.zprofile
   brew install ansible
-elif [ -f /etc/void-release ]; then
-  echo "Running on Linux"
+elif [ "$(uname -s)" ]; then
   xbps-install ansible
 else
   echo "Unsupported system, exiting"
