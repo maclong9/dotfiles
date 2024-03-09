@@ -25,10 +25,9 @@
             name: "{{ item }}"
           with_items: "{{ mac.casks }}"
               
-        - name: Install & Upgrade App Store Apps
+        - name: Install App Store Apps
           community.general.mas:
             id: "{{ mac.apps }}"
-            upgrade_all: true
 
     - name: Linux Setup
       when: system == "void"
