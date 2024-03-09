@@ -19,7 +19,7 @@ case "$(uname -s)" in
     # sudo pkg_add ansible || handle_error "Failed to install Ansible."
     ;;
   *)
-    handle_error "Unsupported system, exiting"
+    handle_error "Unsupported system"
     ;;
 esac
 
