@@ -1,5 +1,4 @@
 #!/bin/sh
-
 handle_error() {
   echo "An error occurred: $1"
   exit 1
