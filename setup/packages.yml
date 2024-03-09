@@ -37,6 +37,6 @@ linux:
     - sioyek
 
 container:
-    - deno
-    - rust
-    - zig
+  - deno
+  - rust
+  - zig
