@@ -1,13 +1,5 @@
-local colorscheme
-
-if vim.fn.has("macunix") then
-	colorscheme = "oxocarbon"
-else
-	colorscheme = "rose-pine-moon"
-end
-
 return {
-	colorscheme = colorscheme,
+	colorscheme = "oxocarbon",
 	heirline = {
 		separators = {
 			breadcrumbs = " ",
@@ -31,18 +23,15 @@ return {
 	plugins = {
 		"AstroNvim/astrocommunity",
 		{ import = "astrocommunity.colorscheme.oxocarbon-nvim" },
-		{ import = "astrocommunity.colorscheme.rose-pine" },
 		{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
 		{ import = "astrocommunity.indent.mini-indentscope" },
-		{ import = "astrocommunity.markdown-and-latex.vimtex" },
 		{ import = "astrocommunity.motion.hop-nvim" },
 		{ import = "astrocommunity.motion.nvim-spider" },
 		{ import = "astrocommunity.pack.ansible" },
 		{ import = "astrocommunity.pack.docker" },
 		{ import = "astrocommunity.pack.lua" },
 		{ import = "astrocommunity.pack.rust" },
-		{ import = "astrocommunity.pack.svelte" },
 		{ import = "astrocommunity.pack.tailwindcss" },
 		{ import = "astrocommunity.pack.typescript-all-in-one" },
 		{ import = "astrocommunity.pack.zig" },
