@@ -67,7 +67,9 @@
 
         - name: Verify Checksum of Image
           when: system != 'Darwin'
-          ansible.builtin.command: "sha256 -C {{ dest }}/sha256sum.txt {{ dest }}/{{ version }}"
+          ansible.builtin.command: |
+            cd {{ dest }}
+            sha256sum -c | grep musl-20230628-base.iso sha256sum.txt
           register: image_authenticity
           changed_when: true
 
