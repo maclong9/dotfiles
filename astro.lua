@@ -5,6 +5,9 @@ return {
 			breadcrumbs = " ",
 		},
 	},
+	diagnostics = {
+		virtual_text = false,
+	},
 	lsp = {
 		formatting = {
 			format_on_save = true,
