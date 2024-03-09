@@ -1,0 +1,38 @@
+---
+- name: Prepare Void Installation Media
+  hosts: localhost
+  vars:
+    - base_url: "https://repo-default.voidlinux.org/live/current"
+    - dest: "/tmp/void"
+  
+  tasks:
+    - name: Create Temporary Directory
+      ansible.builtin.file:
+        path: "{{ dest }}"
+        state: directory
+        
+    - name: Download ISO and Supporting Files
+      block:
+        - name: Fetch ISO File
+          ansible.builtin.get_url:
+            url: "{{ base_url }}/void-live-x86_64-musl-20230628-base.iso"
+            dest: "{{ dest }}"
+            checksum: "sha256:{{ base_url }}/sha256sum.txt"
+          register: image_download_stats
+
+        - name: Fetch Signature
+          ansible.builtin.get_url:
+            url: "{{ base_url }}/sha256sum.sig"
+            dest: "{{ dest }}"
+          register: sha_sig_stats
+
+    - name: Verify Image Integrity
+      block:
+        - name: Calculate Checksum of Downloaded ISO
+          set_fact:
+            downloaded_checksum: "{{ '{{ dest }}/void-live-x86_64-musl-20230628-base.iso' | checksum('sha256') }}"
+        
+        - name: Compare Checksums
+          debug:
+            msg: "Checksum Matched: {{ downloaded_checksum == lookup('file', '{{ dest }}/sha256sum.txt') }}"
+
