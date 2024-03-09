@@ -11,19 +11,19 @@
     - name: Darwin Setup
       when: system == "Darwin"
       block:
-        - name: Install macOS Tools
+        - name: Install System Tools
           ansible.builtin.package:
             name: "{{ item }}"
-          with_items: "{{ mac.tools }}"
+          with_items: "{{ darwin.tools }}"
         
         - name: Install Cask Apps 
           community.general.homebrew_cask:
             name: "{{ item }}"
-          with_items: "{{ mac.casks }}"
+          with_items: "{{ darwin.casks }}"
               
         - name: Install App Store Apps
           community.general.mas:
-            id: "{{ mac.apps }}"
+            id: "{{ darwin.apps }}"
 
     - name: Linux Setup
       when: system == "void"
@@ -45,4 +45,4 @@
        block:
          - name: Print not supported message
            debug:
-             msg: "{{ system }} is not supported yet, working out best practices and preferences."
+             msg: "{{ system }} is not supported yet, currently working out best practices and preferences."
