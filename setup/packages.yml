@@ -25,34 +25,18 @@ mac:
 
 linux:
   tools:
-    - alacritty
-    - alsa-pipewire
-    - autotiling
-    - brightnessctl
-    - cargo
     - flatpak
-    - fnott
-    - fuzzel
     - git
-    - grim
     - keyd
     - neovim
     - nerd-fonts
     - pipewire
     - polkit
-    - slurp
-    - swayfx
-    - swayidle
-    - swaylock
-    - yambar
   flatpak:
     - firefox
     - sioyek
 
 container:
     - deno
-    - fd
-    - lsd
-    - neovim 
-    - ripgrep
+    - rust
     - zig
