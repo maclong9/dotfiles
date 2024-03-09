@@ -3,28 +3,28 @@
   gather_facts: true
   vars:
     base_url: 'https://repo-default.voidlinux.org/live/current'
-    version: 'void-live-x86_64-musl-20230628-base.iso'
-    dest: '/tmp/void'
-    pub_url: 'https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/void-release-keys/files/void-release-20230628.pub'
-    system: '{{ ansible_facts["os_family"] }}'
-    use_sudo: '{{ system != "Darwin" }}'
     grep_value: 'musl-20230628-base.iso sha256sum.txt'
+    host_system: '{{ ansible_facts["os_family"] }}'
+    public_url: 'https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/void-release-keys/files/void-release-20230628.pub'
+    temporary_destination: '/tmp/void'
+    use_sudo: '{{ host_system != "Darwin" }}'
+    version: 'void-live-x86_64-musl-20230628-base.iso'
   tasks:
     - name: Setup Utilities
       block:
         - name: Create Temporary Directory for Downloaded Files
           ansible.builtin.file:
-            path: '{{ dest }}'
+            path: '{{ temporary_destination }}'
             state: directory
             mode: '0755'
 
         - name: Install minisign for Verification
-          become: "{{ use_sudo }}"
+          become: '{{ use_sudo }}'
           ansible.builtin.package:
             name: minisign
 
-        - name: Install sha2 on macOS for Integrity Verification
-          when: system == "Darwin"
+        - name: Install sha2 on Darwin for Integrity Verification
+          when: host_system == "Darwin"
           ansible.builtin.package:
             name: sha2
 
@@ -32,54 +32,72 @@
       block:
         - name: Check for ISO File
           ansible.builtin.stat:
-            path: '{{ dest }}/{{ version }}'
+            path: '{{ temporary_destination }}/{{ version }}'
           register: iso_stat
 
         - name: Fetch ISO File
           when: not iso_stat.stat.exists
           ansible.builtin.get_url:
             url: '{{ base_url }}/{{ version }}'
-            dest: '{{ dest }}'
+            dest: '{{ temporary_destination }}'
             checksum: sha256:c6de5ce00342c40f98f1627fea0e81db9d16b1758c43b0371aa24ee61f08cb45
             mode: '0644'
 
         - name: Fetch Text Verification
           ansible.builtin.get_url:
             url: '{{ base_url }}/sha256sum.txt'
-            dest: '{{ dest }}'
+            dest: '{{ temporary_destination }}'
             mode: '0644'
 
         - name: Fetch Signature
           ansible.builtin.get_url:
             url: '{{ base_url }}/sha256sum.sig'
-            dest: '{{ dest }}'
+            dest: '{{ temporary_destination }}'
             mode: '0644'
 
         - name: Fetch Signing Keys
           ansible.builtin.get_url:
-            url: '{{ pub_url }}'
-            dest: '{{ dest }}'
+            url: '{{ public_url }}'
+            dest: '{{ temporary_destination }}'
             mode: '0644'
 
     - name: Verify Digital Signature
       block:
         - name: Verify Authenticity of `sha256sum.txt`
-          ansible.builtin.command: "minisign -V -p {{ dest }}/void-release-20230628.pub -x {{ dest }}/sha256sum.sig -m {{ dest }}/sha256sum.txt"
+          ansible.builtin.command: 'minisign -V -p {{ temporary_destination }}/void-release-20230628.pub -x {{ temporary_destination }}/sha256sum.sig -m {{ temporary_destination }}/sha256sum.txt'
           register: txt_authenticity
           changed_when: true
 
-        - name: Verify Checksum of Image
-          when: system != 'Darwin'
+        - name: Verify Checksum of Image (Linux)
+          when: host_system != 'Darwin'
           ansible.builtin.shell: |
-            cd {{ dest }}
+            cd {{ temporary_destination }}
             shasum -a 256 -c | grep {{ grep_value }}
           register: image_authenticity
           changed_when: true
 
-        - name: Verify Checksum of Image (macOS)
-          when: system == 'Darwin'
+        - name: Verify Checksum of Image (Darwin)
+          when: host_system == 'Darwin'
           ansible.builtin.shell: |
-            cd {{ dest }}
+            cd {{ temporary_destination }}
             shasum -a 256 -c | grep {{ grep_value }}
           register: image_authenticity_mac
+          changed_when: true
+
+
+    - name: Prepare Installation Media
+      block:
+        - name: Unmount Target Disk
+          become: true
+          ansible.posix.mount:
+            path: '{{ target_disk }}'
+            state: unmounted
+
+        - name: Write Live Image
+          become: true
+          ansible.builtin.command: 'dd bs=4M if={{ temporary_destination }}/{{ version }} of={{ target_disk }}'
+          changed_when: true
+
+        - name: Flush Data
+          ansible.builtin.command: sync
           changed_when: true
