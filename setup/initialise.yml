@@ -5,44 +5,44 @@
   vars:
     system: '{{ ansible_facts["os_family"] }}'
   vars_files:
-    - "./packages.yml"
+    - './packages.yml'
   
   tasks:
     - name: Darwin Setup
-      when: system == "Darwin"
+      when: system == 'Darwin'
       block:
         - name: Install System Tools
           ansible.builtin.package:
-            name: "{{ item }}"
-          with_items: "{{ darwin.tools }}"
+            name: '{{ item }}'
+          with_items: '{{ darwin.tools }}'
         
         - name: Install Cask Apps 
           community.general.homebrew_cask:
-            name: "{{ item }}"
-          with_items: "{{ darwin.casks }}"
+            name: '{{ item }}'
+          with_items: '{{ darwin.casks }}'
               
         - name: Install App Store Apps
           community.general.mas:
-            id: "{{ darwin.apps }}"
+            id: '{{ darwin.apps }}'
 
     - name: Linux Setup
-      when: system == "void"
+      when: system == 'void'
       block:
         - name: Install Linux Tools
           become: true
           ansible.builtin.package:
-            name: "{{ item }}"
-          with_items: "{{ linux.tools }}"
+            name: '{{ item }}'
+          with_items: '{{ linux.tools }}'
 
         - name: Install Flatpaks
           become: true
           community.general.flatpak:
-            name: "{{ item }}"
-          with_items: "{{ linux.flatpak }}"
+            name: '{{ item }}'
+          with_items: '{{ linux.flatpak }}'
     
     - name: OpenBSD Setup
-      when: system == "OpenBSD"
+      when: system == 'OpenBSD'
       block:
         - name: Print not supported message
           debug:
-            msg: "{{ system }} is not supported yet, currently working out best practices and preferences."
+            msg: '{{ system }} is not supported yet, currently working out best practices and preferences.'
