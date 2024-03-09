@@ -29,17 +29,13 @@ return {
 		{ import = "astrocommunity.editing-support.telescope-undo-nvim" },
 		{ import = "astrocommunity.indent.indent-blankline-nvim" },
 		{ import = "astrocommunity.indent.mini-indentscope" },
-		{ import = "astrocommunity.motion.hop-nvim" },
 		{ import = "astrocommunity.motion.nvim-spider" },
 		{ import = "astrocommunity.pack.ansible" },
 		{ import = "astrocommunity.pack.docker" },
-		{ import = "astrocommunity.pack.lua" },
 		{ import = "astrocommunity.pack.rust" },
 		{ import = "astrocommunity.pack.tailwindcss" },
-		{ import = "astrocommunity.pack.typescript-all-in-one" },
+		{ import = "astrocommunity.pack.typescript-deno" },
 		{ import = "astrocommunity.pack.zig" },
-		{ import = "astrocommunity.project.project-nvim" },
-		{ import = "astrocommunity.scrolling.cinnamon-nvim" },
 		{
 			"goolord/alpha-nvim",
 			opts = function(_, opts)
