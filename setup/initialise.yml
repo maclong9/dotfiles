@@ -8,10 +8,6 @@
     - "./packages.yml"
   
   tasks:
-    - name: Debug System
-      debug:
-        var: system
-
     - name: Darwin Setup
       when: system == "Darwin"
       block:
