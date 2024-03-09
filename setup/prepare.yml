@@ -1,38 +1,86 @@
----
 - name: Prepare Void Installation Media
   hosts: localhost
+  gather_facts: true
   vars:
-    - base_url: "https://repo-default.voidlinux.org/live/current"
-    - dest: "/tmp/void"
-  
+    base_url: 'https://repo-default.voidlinux.org/live/current'
+    version: 'void-live-x86_64-musl-20230628-base.iso'
+    dest: '/tmp/void'
+    pub_url: 'https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/void-release-keys/files/void-release-20230628.pub'
+    system: '{{ ansible_facts["os_family"] }}'
   tasks:
-    - name: Create Temporary Directory
-      ansible.builtin.file:
-        path: "{{ dest }}"
-        state: directory
-        
-    - name: Download ISO and Supporting Files
+    - name: Setup Utilities
       block:
+        - name: Create Temporary Directory for Downloaded Files
+          ansible.builtin.file:
+            path: '{{ dest }}'
+            state: directory
+            mode: '0755'
+
+        - name: Install minisign for Verification
+          ansible.builtin.package:
+            name: minisign
+
+        - name: Install sha2 on macOS for Integrity Verification
+          when: system == "Darwin"
+          ansible.builtin.package:
+            name: sha2
+
+    - name: Download ISO & Supporting Files
+      block:
+        - name: Check for ISO File
+          ansible.builtin.stat:
+            path: '{{ dest }}/{{ version }}'
+          register: iso_stat
+
         - name: Fetch ISO File
+          when: not iso_stat.stat.exists
           ansible.builtin.get_url:
-            url: "{{ base_url }}/void-live-x86_64-musl-20230628-base.iso"
-            dest: "{{ dest }}"
-            checksum: "sha256:{{ base_url }}/sha256sum.txt"
-          register: image_download_stats
+            url: '{{ base_url }}/{{ version }}'
+            dest: '{{ dest }}'
+            checksum: sha256:c6de5ce00342c40f98f1627fea0e81db9d16b1758c43b0371aa24ee61f08cb45
+            mode: '0644'
+
+        - name: Fetch Text Verification
+          ansible.builtin.get_url:
+            url: '{{ base_url }}/sha256sum.txt'
+            dest: '{{ dest }}'
+            mode: '0644'
 
         - name: Fetch Signature
           ansible.builtin.get_url:
-            url: "{{ base_url }}/sha256sum.sig"
-            dest: "{{ dest }}"
-          register: sha_sig_stats
+            url: '{{ base_url }}/sha256sum.sig'
+            dest: '{{ dest }}'
+            mode: '0644'
 
-    - name: Verify Image Integrity
+        - name: Fetch Signing Keys
+          ansible.builtin.get_url:
+            url: '{{ pub_url }}'
+            dest: '{{ dest }}'
+            mode: '0644'
+
+    - name: Verify Digital Signature
       block:
-        - name: Calculate Checksum of Downloaded ISO
-          set_fact:
-            downloaded_checksum: "{{ '{{ dest }}/void-live-x86_64-musl-20230628-base.iso' | checksum('sha256') }}"
-        
-        - name: Compare Checksums
-          debug:
-            msg: "Checksum Matched: {{ downloaded_checksum == lookup('file', '{{ dest }}/sha256sum.txt') }}"
+        - name: Verify Authenticity of `sha256sum.txt`
+          ansible.builtin.command: "minisign -V -p {{ dest }}/void-release-20230628.pub -x {{ dest }}/sha256sum.sig -m {{ dest }}/sha256sum.txt"
+          register: txt_authenticity
+          changed_when: true
 
+        - name: Verify Checksum of Image
+          when: system != 'Darwin'
+          ansible.builtin.command: "sha256 -C {{ dest }}/sha256sum.txt {{ dest }}/{{ version }}"
+          register: image_authenticity
+          changed_when: true
+
+        - name: Verify Checksum of Image (macOS)
+          ansible.builtin.shell: |
+            cd {{ dest }}
+            shasum -a 256 -c | grep musl-20230628-base.iso sha256sum.txt
+          register: image_authenticity
+          changed_when: true
+          when: system == 'Darwin'
+
+        - name: Print Results of Verifications
+          ansible.builtin.debug:
+            msg: |
+              txt_Authenticity: {{ txt_authenticity.stdout }}
+              image_Authenticity: {{ image_authenticity.stdout }}
