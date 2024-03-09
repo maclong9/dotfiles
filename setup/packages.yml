@@ -25,6 +25,7 @@ darwin:
 
 linux:
   tools:
+    - dwm
     - flatpak
     - git
     - keyd
@@ -32,6 +33,7 @@ linux:
     - nerd-fonts
     - pipewire
     - polkit
+    - st
   flatpak:
     - firefox
     - sioyek

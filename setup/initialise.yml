@@ -40,9 +40,9 @@
             name: "{{ item }}"
           with_items: "{{ linux.flatpak }}"
     
-     - name: OpenBSD Setup
-       when: system == "OpenBSD"
-       block:
-         - name: Print not supported message
-           debug:
-             msg: "{{ system }} is not supported yet, currently working out best practices and preferences."
+    - name: OpenBSD Setup
+      when: system == "OpenBSD"
+      block:
+        - name: Print not supported message
+          debug:
+            msg: "{{ system }} is not supported yet, currently working out best practices and preferences."
