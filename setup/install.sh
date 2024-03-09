@@ -1,5 +1,4 @@
 #!/bin/sh
-# Check System & Configure Accordingly
 if [ "$(uname -s)" ]; then
   echo "Running on macOS"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -11,6 +10,5 @@ elif [ -f /etc/void-release ]; then
   xbps-install ansible
 fi
 
-# Clone Configuration & Run Ansible Playbook
 git clone https://github.com/mac-codes9/dotfiles ~/.config
 ansible-playbook ~/.config/manifests/initialise.yml
