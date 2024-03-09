@@ -4,6 +4,15 @@ handle_error() {
   exit 1
 }
 
+install_command="sudo xbps-install -y"
+
+if [ "$1" = "-i" ]; then
+  if [ -z "$2" ]; then
+    handle_error "No install command provided."
+  fi
+  install_command="$2"
+fi
+
 case "$(uname -s)" in
   "Darwin")
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sh || handle_error "Failed to install Homebrew."
@@ -12,10 +21,11 @@ case "$(uname -s)" in
     brew install ansible || handle_error "Failed to install Ansible."
     ;;
   "Linux")
-    sudo xbps-install -y ansible || handle_error "Failed to install Ansible."
+    $install_command ansible || handle_error "Failed to install Ansible."
     ;;
   "OpenBSD")
-    echo "OpenBSD support is in progress. Need to confirw tooling and best practices befor adding it to initialisation scripts"
+    echo "OpenBSD support is in progress. Need to confirm tooling and best practices before adding it to initialization scripts"
+    exit 0
     # sudo pkg_add ansible || handle_error "Failed to install Ansible."
     ;;
   *)
