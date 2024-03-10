@@ -1,6 +1,7 @@
 darwin:
   tools:
     - deno
+    - julia
     - mas
     - neovim
   casks:
@@ -25,6 +26,7 @@ linux:
   tools:
     - flatpak
     - git
+    - julia
     - keyd
     - pipewire
   flatpak:
