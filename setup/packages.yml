@@ -1,6 +1,9 @@
 darwin:
   tools:
+    - deno
     - mas
+    - neovim
+    - zig
   casks:
     - github
     - hyperkey
@@ -26,17 +29,9 @@ linux:
     - flatpak
     - git
     - keyd
-    - nerd-fonts
     - pipewire
-    - polkit
     - st
-    - vim
+    - zig
   flatpak:
     - firefox
     - sioyek
-
-container:
-  - deno
-  - neovim
-  - rust
-  - zig
