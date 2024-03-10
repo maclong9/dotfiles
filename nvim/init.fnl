@@ -27,7 +27,6 @@
         "expandtab"
       ])]
   (set! opt true))
-(vim.diagnostic.config {:virtual_text true})
 
 ;; Plugins
 ((. (require :lazy) :setup) [
@@ -35,18 +34,12 @@
   :nvim-lua/plenary.nvim
 
   ;; Fennel
-  { 1
-    :udayvir-singh/hibiscus.nvim
-    :lazy false
-  }
-  { 1
-    :udayvir-singh/tangerine.nvim
-    :lazy false
-  }
+  { 1 :udayvir-singh/hibiscus.nvim :lazy false }
+  { 1 :udayvir-singh/tangerine.nvim :lazy false }
 
   ;; LSP
-  { 1
-    :neovim/nvim-lspconfig
+  { 1 
+   :neovim/nvim-lspconfig
     :keys [
       { 1 :<leader>d 2 vim.diagnostic.open_float :desc "Open diagnostic window" }
     ]
@@ -80,15 +73,10 @@
       :symbol "│"
     }
   }
-  { 1
-    :lukas-reineke/indent-blankline.nvim
-    :lazy false
-    :main :ibl
-    :opts {}
-  }
+  { 1 :lukas-reineke/indent-blankline.nvim :lazy false :main :ibl :opts {} }
 
   ;; Editor
-  { 1
+  { 1 
     :nvim-telescope/telescope.nvim
     :keys [
       { 1 :<leader>ff 2 "<cmd>Telescope find_files<cr>" :desc "Find files" }
@@ -111,9 +99,9 @@
   }
 ]
 {
-; :defaults {
-;   :lazy true
-; }
+  :defaults {
+    :lazy true
+  }
 })
 
 (color! :oxocarbon)
