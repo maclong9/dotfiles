@@ -71,7 +71,13 @@
       :symbol "│"
     }
   }
-  { 1 :lukas-reineke/indent-blankline.nvim :lazy false :main :ibl :opts {} }
+  { 1 
+    :lukas-reineke/indent-blankline.nvim 
+    :lazy false 
+    :main 
+    :ibl 
+    :opts {} 
+  }
 
   ;; Editor
   { 1 
