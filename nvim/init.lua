@@ -29,8 +29,5 @@ bootstrap("https://github.com/udayvir-singh/hibiscus.nvim")
 bootstrap("https://github.com/folke/lazy.nvim")
 
 require("tangerine").setup {
-  compiler = {
-    hooks = {"oninit"}
-  },
   target = "~/.local/share/nvim/lua"
 }
