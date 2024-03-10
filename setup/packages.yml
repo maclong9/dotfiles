@@ -23,7 +23,6 @@ darwin:
 
 linux:
   tools:
-    - alacritty
     - flatpak
     - git
     - keyd
