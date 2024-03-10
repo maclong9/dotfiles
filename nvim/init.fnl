@@ -40,6 +40,7 @@
   { 1 :udayvir-singh/tangerine.nvim :lazy false }
 
   ;; LSP
+  :sigmasd/deno-nvim
   { 1 
    :neovim/nvim-lspconfig
    :keys [
