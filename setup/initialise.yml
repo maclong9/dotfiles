@@ -39,3 +39,5 @@
           community.general.flatpak:
             name: '{{ item }}'
           with_items: '{{ linux.flatpak }}'
+
+       # TODO: apparmor
