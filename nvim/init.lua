@@ -1,5 +1,3 @@
-local pack = "lazy"
-
 local function bootstrap(url, ref)
     local name = url:gsub(".*/", "")
     local path = vim.fn.stdpath("data") .. "/lazy/" .. name
