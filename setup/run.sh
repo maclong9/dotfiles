@@ -9,10 +9,10 @@ case "$(uname -s)" in
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sh || handle_error "Failed to install Homebrew."
     echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> "$HOME/.zprofile" || handle_error "Failed to setup Homebrew environment."
     . "$HOME/.zprofile"
-    brew install ansible git || handle_error "Failed to install Ansible."
+    brew install ansible || handle_error "Failed to install Ansible."
     ;;
   "Linux")
-    sudo xbps-install ansible || handle_error "Failed to install Ansible."
+    sudo xbps-install ansible git || handle_error "Failed to install Ansible."
     ;;
   *)
     handle_error "Unsupported system"
