@@ -20,6 +20,7 @@ Configuration for unix-y environemts.
 - [ ] Write Blog Posts
   - [ ] Neovim
     - [ ] Fennel Configuration
+    - [ ] Useful Options
     - [ ] Recommended Plugins
   - [ ] Configuration
     - [ ] Ansible
