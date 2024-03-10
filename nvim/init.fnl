@@ -32,6 +32,8 @@
 ;; Plugins
 ((. (require :lazy) :setup) [
   :nvim-lua/plenary.nvim
+  :sigmasd/deno-nvim
+
 
   ;; Fennel
   { 1 :udayvir-singh/hibiscus.nvim :lazy false }
@@ -44,15 +46,10 @@
       { 1 :<leader>d 2 vim.diagnostic.open_float :desc "Open diagnostic window" }
     ]
   }
-  { 1
-    :sigmasd/deno-nvim
-    :opts {}
-  }
 
   ;; Motion
   { 1
     :chrisgrieser/nvim-spider
-    :lazy true
     :keys [
       { 1 :w 2 "<cmd>lua require('spider').motion('w')<cr>" :mode [:n :o :x] }
       { 1 :e 2 "<cmd>lua require('spider').motion('e')<cr>" :mode [:n :o :x] }
@@ -73,10 +70,7 @@
   }
   { 1 
     :lukas-reineke/indent-blankline.nvim 
-    :lazy false 
-    :main 
-    :ibl 
-    :opts {} 
+    :lazy false  
   }
 
   ;; Editor
