@@ -41,4 +41,4 @@
           with_items: '{{ linux.flatpak }}'
 
        # TODO: seperate playbook for install sect, 
-       # TODO: apparmor, ntp, tlp, seatd
+       # TODO: apparmor, ntp, tlp, seatd, other river & compile ags
