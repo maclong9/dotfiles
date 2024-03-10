@@ -8,7 +8,7 @@
 ;;
 ;; TODO: Figure out how to disable virtual_text without neovim complaining on startup
 ;;
-;; TODO: Setup LaTeX wiht VimTex and Zathura
+;; TODO: Setup LaTeX wiht VimTex
 
 ;; Options
 (g! mapleader " ")
