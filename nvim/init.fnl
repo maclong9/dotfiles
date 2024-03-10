@@ -31,7 +31,6 @@
 
 ;; Plugins
 ((. (require :lazy) :setup) [
-  :nyoom-engineering/oxocarbon.nvim
   :nvim-lua/plenary.nvim
 
   ;; Fennel
@@ -47,9 +46,7 @@
   }
   { 1
     :sigmasd/deno-nvim
-    :opts (fn []
-      ((. (require :deno-nvim) :setup) {})	
-    )
+    :opts {}
   }
 
   ;; Motion
@@ -104,5 +101,3 @@
     :lazy true
   }
 })
-
-(color! :oxocarbon)
