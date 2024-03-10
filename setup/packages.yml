@@ -26,10 +26,15 @@ linux:
   tools:
     - apparmor
     - flatpak
+    - fnott
+    - foot
+    - fuzzel
     - git
     - julia
     - keyd
     - pipewire
+    - river
+    - yambar
   flatpak:
     - firefox
     - sioyek
