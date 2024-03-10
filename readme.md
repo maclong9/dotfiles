@@ -23,7 +23,8 @@ Configuration for unix-y environemts.
     - [ ] Recommended Plugins
   - [ ] Configuration
     - [ ] Ansible
-      - [ ] Prepare 
+      - [ ] Prepare
+      - [ ] Install
       - [ ] Initialise
     - [ ] POSIX
     - [ ] Nix
