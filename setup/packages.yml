@@ -23,17 +23,14 @@ darwin:
 
 linux:
   tools:
+    - alacritty
     - apparmor
     - flatpak
-    - fnott
-    - foot
-    - fuzzel
     - git
     - keyd
     - pipewire
     - river
     - seatd
-    - yambar
   flatpak:
     - firefox
     - sioyek
