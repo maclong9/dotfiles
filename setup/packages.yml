@@ -3,7 +3,6 @@ darwin:
     - deno
     - mas
     - neovim
-    - zig
   casks:
     - github
     - hyperkey
@@ -30,8 +29,6 @@ linux:
     - git
     - keyd
     - pipewire
-    - st
-    - zig
   flatpak:
     - firefox
     - sioyek
