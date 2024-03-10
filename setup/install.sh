@@ -14,11 +14,6 @@ case "$(uname -s)" in
   "Linux")
     sudo xbps-install ansible || handle_error "Failed to install Ansible."
     ;;
-  "OpenBSD")
-    echo "OpenBSD support is in progress. Need to confirm tooling and best practices before adding it to initialization scripts"
-    #sudo pkg_add ansible || handle_error "Failed to install Ansible."
-    exit 0
-    ;;
   *)
     handle_error "Unsupported system"
     ;;
