@@ -40,4 +40,4 @@
             name: '{{ item }}'
           with_items: '{{ linux.flatpak }}'
 
-       # TODO: apparmor
+       # TODO: seperate playbook for install sect, apparmor
