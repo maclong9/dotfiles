@@ -24,6 +24,7 @@ darwin:
 
 linux:
   tools:
+    - apparmor
     - flatpak
     - git
     - julia
