@@ -27,8 +27,6 @@ Configuration for unix-y environemts.
       - [ ] Prepare
       - [ ] Install
       - [ ] Initialise
-    - [ ] POSIX
-    - [ ] Nix
 - [ ] Void Linux Setup
    - [ ] DWM Configuration
    - [ ] ST Configiration
