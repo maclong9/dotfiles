@@ -40,7 +40,7 @@
   ;; LSP
   { 1 
    :neovim/nvim-lspconfig
-    :keys [
+   :keys [
       { 1 :<leader>d 2 vim.diagnostic.open_float :desc "Open diagnostic window" }
     ]
   }
