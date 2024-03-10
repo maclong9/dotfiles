@@ -6,7 +6,7 @@ darwin:
   casks:
     - github
     - hyperkey
-    - iterm2
+    - iterm2 # Alacritty?
     - orbstack
     - osu
     - sioyek
@@ -23,6 +23,7 @@ darwin:
 
 linux:
   tools:
+    - alacritty
     - flatpak
     - git
     - keyd
