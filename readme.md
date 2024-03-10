@@ -17,6 +17,34 @@ Configuration for unix-y environemts.
     - [ ] ZSH
     - [ ] Options
     - [ ] Plugins
+- [ ] Write Blog Posts
+  - [ ] Neovim
+    - [ ] Fennel Configuration
+    - [ ] Recommended Plugins
+  - [ ] Configuration
+    - [ ] Ansible
+      - [ ] Prepare 
+      - [ ] Initialise
+    - [ ] POSIX
+    - [ ] Nix
+- [ ] Void Linux Setup
+   - [ ] DWM Configuration
+   - [ ] ST Configiration
+  - [ ] flatpak
+    - [ ] firefox
+    - [ ] sioyek
+  - [ ] keyd
+ - [ ] Building My Blog
+   - [ ] Deno & Fresh
+   - [ ] Fediverse Comments, Likes & Followers
+- [ ] Mac Apps
+  - [ ] Swish
+  - [ ] iterm2
+  - [ ] orbstack
+  - [ ] Hyperkey
+  - [ ] Github Desktop
+  - [ ] Sioyek
+  - [ ] Osu
 
 ## Usage
 
