@@ -1,7 +1,6 @@
 darwin:
   tools:
     - deno
-    - julia
     - mas
     - neovim
   casks:
@@ -30,10 +29,10 @@ linux:
     - foot
     - fuzzel
     - git
-    - julia
     - keyd
     - pipewire
     - river
+    - seatd
     - yambar
   flatpak:
     - firefox
