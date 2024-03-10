@@ -40,4 +40,5 @@
             name: '{{ item }}'
           with_items: '{{ linux.flatpak }}'
 
-       # TODO: seperate playbook for install sect, apparmor, ntp & tlp
+       # TODO: seperate playbook for install sect, 
+       # TODO: apparmor, ntp, tlp, dwl & st-wl
