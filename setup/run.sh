@@ -4,12 +4,12 @@ handle_error() {
   exit 1
 }
 
-function installAnsible() {
-  if [ -x "$(command -v $ansible)" ]; then
+installAnsible() {
+  if [ -x "$(command -v ansible)" ]; then
     case "$(uname -s)" in
       "Darwin")
         pip3 install ansible
-        export PATH=$PATH:"$HOME"/Library/Python/3.9/bin
+        export PATH=\$PATH:"$HOME"/Library/Python/3.9/bin
         ;;
       "Linux")
         xbps-install ansible git
@@ -21,7 +21,7 @@ function installAnsible() {
   fi
 }
 
-function cloneConfiguration() {
+cloneConfiguration() {
   if [ -e "$HOME"/.config ]; then
     echo "Configuration folder already exists."
   else
@@ -29,7 +29,7 @@ function cloneConfiguration() {
   fi
 }
 
-function runSpecifiedPlaybook() {
+runSpecifiedPlaybook() {
   case "$1" in
   "prepare")
     ansible-playbook ~/.config/setup/prepare.yml --ask-become-password 
@@ -40,10 +40,7 @@ function runSpecifiedPlaybook() {
   esac
 }
 
-function main() {
-  installAnsible || handle_error "Failed to install ansible."
-  cloneConfiguration || handle_error "Failed to clone configuration."
-  runSpecifiedPlaybook $1 || handle_error "Failed to execute $1 playbook."
-  exit 0
-}
-main()
+installAnsible || handle_error "Failed to install ansible."
+cloneConfiguration || handle_error "Failed to clone configuration."
+runSpecifiedPlaybook "$1" || handle_error "Failed to execute $1 playbook."
+exit 0
