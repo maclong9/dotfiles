@@ -5,7 +5,7 @@ handle_error() {
 }
 
 installAnsible() {
-  if [ -x "$(command -v ansible)" ]; then
+  if ! [ -x "$(command -v ansible)" ]; then
     case "$(uname -s)" in
       "Darwin")
         pip3 install ansible
