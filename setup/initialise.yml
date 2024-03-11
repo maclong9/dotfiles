@@ -17,7 +17,7 @@
           register: brew_installed
 
         - name: Install Homebrew
-          command: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+          script: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
           changed-when: true
 
         - name: Create .zprofile with Homebrew Reference
