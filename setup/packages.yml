@@ -25,8 +25,16 @@ linux:
   tools:
     - apparmor
     - flatpak
+    - fnott
+    - foot
+    - fuzzel
     - git
     - keyd
+    - mesa-dri
+    - pipewire
+    - river
+    - seatd
+    - yambar
   flatpak:
     - im.riot.Riot # Element Matrix Client
     - io.github.shiftey.Desktop # GitHub Desktop
