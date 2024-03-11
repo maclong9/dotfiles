@@ -5,7 +5,7 @@ Configuration for unix-y environemts.
 ## Usage
 
 ```sh
-curl https://raw.githubusercontent.com/maclong9/dotfiles/main/setup/run.sh | sh
+curl -slS https://raw.githubusercontent.com/maclong9/dotfiles/main/setup/run.sh | sh -s -- "initialise"
 ```
 
 > [!NOTE] 
@@ -43,11 +43,11 @@ curl https://raw.githubusercontent.com/maclong9/dotfiles/main/setup/run.sh | sh
    - [ ] Fediverse Comments, Likes & Followers
 - [ ] Mac Setup
   - [ ] Tools
+    - [ ] Terminal.app
     - [ ] mas
     - [ ] neovim
   - [ ] Apps
     - [ ] Swish
-    - [ ] iterm2
     - [ ] orbstack
     - [ ] Hyperkey
     - [ ] Github Desktop
