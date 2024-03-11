@@ -5,15 +5,23 @@ handle_error() {
   exit 1
 }
 
-installAnsible() {
-  if ! [ -x "$(command -v ansible)" ]; then
+install_homebrew() {
+  if ! [ -x "$(command -v brew)" > /dev/null ]; 
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/mac/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+}
+ 
+
+install_ansible() {
+  if ! [ -x "$(command -v ansible)" > /dev/null ]; then
     case "$(uname -s)" in
       "Darwin")
-        pip3 install ansible
-        export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+	install_homebrew || error "Failed to install Homebrew."
+        brew install ansible
         ;;
       "Linux")
-        xbps-install -S ansible git  # Adjusted xbps-install command for package installation
+        xbps-install -S ansible git
         ;;
       *)
         handle_error "Unsupported system"
@@ -22,7 +30,7 @@ installAnsible() {
   fi
 }
 
-cloneConfiguration() {
+clone_configuration() {
   if [ -e "$HOME/.config" ]; then  # Adjusted directory check syntax
     echo "Configuration folder already exists."
   else
@@ -30,7 +38,7 @@ cloneConfiguration() {
   fi
 }
 
-runSpecifiedPlaybook() {
+run_playbook() {
   case "$1" in
     "prepare")
       ansible-playbook "$HOME/.config/setup/prepare.yml" --ask-become-pass  # Corrected playbook path and option
@@ -44,7 +52,7 @@ runSpecifiedPlaybook() {
   esac
 }
 
-installAnsible || handle_error "Failed to install ansible."
-cloneConfiguration || handle_error "Failed to clone configuration."
-runSpecifiedPlaybook "$1" || handle_error "Failed to execute $1 playbook."
+install_ansible || handle_error "Failed to install ansible."
+clone_configuration || handle_error "Failed to clone configuration."
+run_playbook "$1" || handle_error "Failed to execute $1 playbook."
 exit 0

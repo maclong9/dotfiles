@@ -1,12 +1,9 @@
 darwin:
   tools:
     - mas
-    - neovim
   casks:
     - element
-    - github
     - hyperkey
-    - iterm2
     - orbstack
     - osu
     - sioyek
@@ -37,7 +34,6 @@ linux:
     - yambar
   flatpak:
     - im.riot.Riot # Element Matrix Client
-    - io.github.shiftey.Desktop # GitHub Desktop
     - org.mozilla.firefox
     - com.github.ahrm.sioyek
     - social.whalebird.WhalebirdDesktop # Mastodon Client
