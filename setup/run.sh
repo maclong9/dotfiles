@@ -9,7 +9,7 @@ installAnsible() {
     case "$(uname -s)" in
       "Darwin")
         pip3 install ansible
-        export PATH=\$PATH:"$HOME"/Library/Python/3.9/bin
+        export PATH="$PATH":"$HOME"/Library/Python/3.9/bin
         ;;
       "Linux")
         xbps-install ansible git
