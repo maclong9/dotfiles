@@ -41,7 +41,7 @@ function runSpecifiedPlaybook() {
 }
 
 function main() {
-  installAnsible || handle_error "Failed while installing ansible."
+  installAnsible || handle_error "Failed to install ansible."
   cloneConfiguration || handle_error "Failed to clone configuration."
   runSpecifiedPlaybook $1 || handle_error "Failed to execute $1 playbook."
   exit 0
