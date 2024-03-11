@@ -25,8 +25,7 @@ cloneConfiguration() {
   if [ -e "$HOME"/.config ]; then
     echo "Configuration folder already exists."
   else
-    # git clone https://github.com/maclong9/dotfiles 
-    echo "$HOME"/.config
+    git clone https://github.com/maclong9/dotfiles "$HOME"/.config
   fi
 }
 
