@@ -28,6 +28,7 @@ linux:
     - flatpak
     - git
     - keyd
+    - mesa-dri
     - pipewire
     - river
     - seatd
