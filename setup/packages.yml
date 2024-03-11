@@ -2,6 +2,7 @@ darwin:
   tools:
     - deno
     - mas
+    - neovim
     - zig
     - zls
   casks:
@@ -31,6 +32,7 @@ linux:
     - git
     - keyd
     - mesa-dri
+    - neovim
     - pipewire
     - river
     - seatd
