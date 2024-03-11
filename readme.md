@@ -16,10 +16,16 @@ curl -slS https://raw.githubusercontent.com/maclong9/dotfiles/main/setup/run.sh 
 ## Todo
 
 - [ ] Write Documentation on Blog.
-  - [ ] Ansible
+  - [ ] Configuration
+    - [ ] Ansible
       - [ ] Prepare
       - [ ] Install
       - [ ] Initialise
+    - [ ] POSIX
+      - [ ] Prepare
+      - [ ] Install
+      - [ ] Initialise
+    - [ ] Compare POSIX vs Ansible
   - [ ] Shell
     - [ ] ZSH
     - [ ] Options
