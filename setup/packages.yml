@@ -3,6 +3,7 @@ darwin:
     - deno
     - mas
     - neovim
+    - zig
   casks:
     - element
     - github
@@ -26,6 +27,7 @@ linux:
   tools:
     - alacritty
     - apparmor
+    - deno
     - flatpak
     - git
     - keyd
@@ -33,6 +35,11 @@ linux:
     - pipewire
     - river
     - seatd
+    - zig
   flatpak:
+    - im.riot.Riot
+    - io.github.shiftey.Desktop
     - org.mozilla.firefox
     - com.github.ahrm.sioyek
+    - social.whalebird.WhalebirdDesktop
+    - sh.ppy.osu
