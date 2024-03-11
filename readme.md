@@ -18,25 +18,30 @@ Configuration for unix-y environemts.
     - [ ] Useful Options
     - [ ] Recommended Plugins
 - [ ] Void Linux Setup
-  - [ ] River
+  - [ ] River, yambar, fnott & fuzzel2
+  - [ ] neovim
   - [ ] foot
   - [ ] flatpak
     - [ ] firefox
     - [ ] sioyek
-  - [ ] keyd
+  - [ ] Other Utilities: keyd, pipewire
  - [ ] Building My Blog
    - [ ] Deno
    - [ ] Fresh
    - [ ] Tailwind
    - [ ] Fediverse Comments, Likes & Followers
-- [ ] Mac Apps
-  - [ ] Swish
-  - [ ] iterm2
-  - [ ] orbstack
-  - [ ] Hyperkey
-  - [ ] Github Desktop
-  - [ ] Sioyek
-  - [ ] Osu
+- [ ] Mac Setup
+  - [ ] Tools
+    - [ ] mas
+    - [ ] neovim
+  - [ ] Apps
+    - [ ] Swish
+    - [ ] iterm2
+    - [ ] orbstack
+    - [ ] Hyperkey
+    - [ ] Github Desktop
+    - [ ] Sioyek
+    - [ ] Osu
 
 ## Usage
 
