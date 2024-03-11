@@ -409,8 +409,10 @@ require("lazy").setup({
 	},
 	{
 		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup({ view_options = { show_hidden = true } })
+		end,
 		keys = { { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" } },
-		opts = { default_file_explorer = true, columns = { "icon" } },
 	},
 	{ "echasnovski/mini.indentscope", opts = { options = { try_as_border = true }, symbol = "│" }, lazy = false },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },

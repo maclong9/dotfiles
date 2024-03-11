@@ -20,6 +20,7 @@ darwin:
   # - 434290957  # Motion 
   # - 497799835  # Xcode
     - 1289583905 # Pixelmator Pro 
+    - 1571998974 # Mastodon
 
 linux:
   tools:
