@@ -34,5 +34,5 @@ linux:
     - river
     - seatd
   flatpak:
-    - firefox
-    - sioyek
+    - org.mozilla.firefox
+    - com.github.ahrm.sioyek
