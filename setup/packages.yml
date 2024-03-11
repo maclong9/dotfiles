@@ -1,9 +1,7 @@
 darwin:
   tools:
-    - deno
     - mas
     - neovim
-    - zig
   casks:
     - element
     - github
@@ -27,7 +25,6 @@ linux:
   tools:
     - alacritty
     - apparmor
-    - deno
     - flatpak
     - git
     - keyd
@@ -35,11 +32,14 @@ linux:
     - pipewire
     - river
     - seatd
-    - zig
   flatpak:
-    - im.riot.Riot
-    - io.github.shiftey.Desktop
+    - im.riot.Riot # Element Matrix Client
+    - io.github.shiftey.Desktop # GitHub Desktop
     - org.mozilla.firefox
     - com.github.ahrm.sioyek
-    - social.whalebird.WhalebirdDesktop
+    - social.whalebird.WhalebirdDesktop # Mastodon Client
     - sh.ppy.osu
+
+container:
+  - deno
+  - zig
