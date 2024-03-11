@@ -4,38 +4,30 @@ Configuration for unix-y environemts.
 
 ## Todo
 
-- [ ] Write Documentation in GitHub Wiki.
-  - [ ] Setup
-    - [ ] Prepare
-    - [ ] Install
-    - [ ] Initialise
-  - [ ] NeoVim
-    - [ ] Fennel
-    - [ ] Options
-    - [ ] Plugins
+- [ ] Write Documentation on Blog.
+  - [ ] Ansible
+      - [ ] Prepare
+      - [ ] Install
+      - [ ] Initialise
   - [ ] Shell
     - [ ] ZSH
     - [ ] Options
     - [ ] Plugins
-- [ ] Write Blog Posts
   - [ ] Neovim
     - [ ] Fennel Configuration
     - [ ] Useful Options
     - [ ] Recommended Plugins
-  - [ ] Configuration
-    - [ ] Ansible
-      - [ ] Prepare
-      - [ ] Install
-      - [ ] Initialise
 - [ ] Void Linux Setup
-   - [ ] DWM Configuration
-   - [ ] ST Configiration
+  - [ ] River
+  - [ ] foot
   - [ ] flatpak
     - [ ] firefox
     - [ ] sioyek
   - [ ] keyd
  - [ ] Building My Blog
-   - [ ] Deno & Fresh
+   - [ ] Deno
+   - [ ] Fresh
+   - [ ] Tailwind
    - [ ] Fediverse Comments, Likes & Followers
 - [ ] Mac Apps
   - [ ] Swish
