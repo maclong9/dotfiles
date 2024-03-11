@@ -5,7 +5,7 @@ Configuration for unix-y environemts.
 ## Usage
 
 ```sh
-curl https://raw.githubusercontent.com/maclong9/dotfiles/main/install.sh | sh
+https://raw.githubusercontent.com/maclong9/dotfiles/main/setup/run.sh | sh
 ```
 
 > [!NOTE] 
