@@ -2,6 +2,17 @@
 
 Configuration for unix-y environemts.
 
+## Usage
+
+```sh
+curl https://raw.githubusercontent.com/mac-codes9/dotfiles/main/install.sh | sh
+```
+
+> [!NOTE] 
+> If you are running a Linux distribution other than Void, you will need
+> to alter the package manager in the script and the system name in
+> `setup/initialise.yml`.
+
 ## Todo
 
 - [ ] Write Documentation on Blog.
@@ -42,14 +53,3 @@ Configuration for unix-y environemts.
     - [ ] Github Desktop
     - [ ] Sioyek
     - [ ] Osu
-
-## Usage
-
-```sh
-curl https://raw.githubusercontent.com/mac-codes9/dotfiles/main/install.sh | sh
-```
-
-> [!NOTE] 
-> If you are running a Linux distribution other than Void, you will need
-> to alter the package manager in the script and the system name in
-> `setup/initialise.yml`.
