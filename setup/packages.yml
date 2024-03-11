@@ -4,7 +4,6 @@ darwin:
     - mas
     - neovim
     - zig
-    - zls
   casks:
     - element
     - hyperkey
@@ -25,7 +24,6 @@ darwin:
 linux:
   tools:
     - apparmor
-    - deno
     - flatpak
     - fnott
     - foot
@@ -39,7 +37,6 @@ linux:
     - seatd
     - yambar
     - zig
-    - zls
   flatpak:
     - im.riot.Riot # Element Matrix Client
     - org.mozilla.firefox
