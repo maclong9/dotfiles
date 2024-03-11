@@ -6,18 +6,18 @@ handle_error() {
 }
 
 install_homebrew() {
-  if ! [ -x "$(command -v brew)" > /dev/null ]; 
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/mac/.zprofile'
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if ! command -v brew > /dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/mac/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 }
- 
 
 install_ansible() {
-  if ! [ -x "$(command -v ansible)" > /dev/null ]; then
+  if ! command -v ansible > /dev/null; then
     case "$(uname -s)" in
       "Darwin")
-	install_homebrew || error "Failed to install Homebrew."
+        install_homebrew || handle_error "Failed to install Homebrew."
         brew install ansible
         ;;
       "Linux")
@@ -31,7 +31,7 @@ install_ansible() {
 }
 
 clone_configuration() {
-  if [ -e "$HOME/.config" ]; then  # Adjusted directory check syntax
+  if [ -d "$HOME/.config" ]; then
     echo "Configuration folder already exists."
   else
     git clone https://github.com/maclong9/dotfiles "$HOME/.config"
@@ -41,10 +41,10 @@ clone_configuration() {
 run_playbook() {
   case "$1" in
     "prepare")
-      ansible-playbook "$HOME/.config/setup/prepare.yml" --ask-become-pass  # Corrected playbook path and option
+      ansible-playbook "$HOME/.config/setup/prepare.yml" --ask-become-pass
       ;;
     "initialise")
-      ansible-playbook "$HOME/.config/setup/initialise.yml" --ask-become-pass  # Corrected playbook path and option
+      ansible-playbook "$HOME/.config/setup/initialise.yml" --ask-become-pass
       ;;
     *)
       handle_error "Invalid playbook specified: $1"
@@ -52,7 +52,7 @@ run_playbook() {
   esac
 }
 
-install_ansible || handle_error "Failed to install ansible."
+install_ansible || handle_error "Failed to install Ansible."
 clone_configuration || handle_error "Failed to clone configuration."
 run_playbook "$1" || handle_error "Failed to execute $1 playbook."
 exit 0
