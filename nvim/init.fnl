@@ -12,14 +12,15 @@
 
 ;; Options
 (g! mapleader " ")
+
 (set! tabstop 2)
 (set! shiftwidth 2)
 (set! background :dark)
 (set! scl :no)
+(set! nowrap)
 (each [_ opt (ipairs [
         "relativenumber"
         "hlsearch"
-        "cindent"
         "incsearch"
         "ignorecase"
         "smartcase"
@@ -56,6 +57,8 @@
       ((. (require :deno-nvim) :setup) {})	
     )
   }
+
+  ;; Snippets
 
   ;; Motion
   { 1
