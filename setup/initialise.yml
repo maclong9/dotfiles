@@ -27,15 +27,14 @@
 
     - name: Linux Setup
       when: system == 'void'
+      become: true
       block:
         - name: Install Linux Tools
-          become: true
           ansible.builtin.package:
             name: '{{ item }}'
           with_items: '{{ linux.tools }}'
 
         - name: Install Flatpaks
-          become: true
           community.general.flatpak:
             name: '{{ item }}'
           with_items: '{{ linux.flatpak }}'
