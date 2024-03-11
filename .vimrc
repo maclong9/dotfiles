@@ -3,15 +3,15 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'sheerun/vim-polyglot'
-  Plug 'tpope/vim-fugitive'
-  Plug 'vim-latex/vim-latex'
   Plug 'mattn/emmet-vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+  Plug 'vim-latex/vim-latex'
 call plug#end()
 
 " Options
 syntax on
 let g:mapleader = " "
-let g:user_emmet_leader_key='<Tab>'
 
 set tabstop=2
 set shiftwidth=2
