@@ -4,18 +4,46 @@ handle_error() {
   exit 1
 }
 
-case "$(uname -s)" in
-  "Darwin")
-    pip3 install ansible || handle_error "Failed to install Ansible"
-    ;;
-  "Linux")
-    xbps-install ansible git || handle_error "Failed to install Ansible."
-    ;;
-  *)
-    handle_error "Unsupported system"
-    ;;
-esac
+function installAnsible() {
+  if [ -x "$(command -v $ansible)" ]; then
+    case "$(uname -s)" in
+      "Darwin")
+        pip3 install ansible
+        export PATH=$PATH:"$HOME"/Library/Python/3.9/bin
+        ;;
+      "Linux")
+        xbps-install ansible git
+        ;;
+      *)
+        handle_error "Unsupported system"
+        ;;
+    esac
+  fi
+}
 
-git clone https://github.com/maclong9/dotfiles ~/.config || handle_error "Failed to clone the dotfiles repository."
-ansible-playbook ~/.config/setup/initialise.yml --ask-become-password || handle_error "Failed to execute the Ansible playbook."
-exit 0
+function cloneConfiguration() {
+  if [ -e "$HOME"/.config ]; then
+    echo "Configuration folder already exists."
+  else
+    git clone https://github.com/maclong9/dotfiles "$HOME"/.config
+  fi
+}
+
+function runSpecifiedPlaybook() {
+  case "$1" in
+  "prepare")
+    ansible-playbook ~/.config/setup/prepare.yml --ask-become-password 
+  ;;
+  "initialise")
+    ansible-playbook ~/.config/setup/initialise.yml --ask-become-password
+  ;;
+  esac
+}
+
+function main() {
+  installAnsible || handle_error "Failed while installing ansible."
+  cloneConfiguration || handle_error "Failed to clone configuration."
+  runSpecifiedPlaybook $1 || handle_error "Failed to execute $1 playbook."
+  exit 0
+}
+main()
