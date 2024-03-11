@@ -1,4 +1,5 @@
 #!/bin/sh
+
 handle_error() {
   echo "An error occurred: $1"
   exit 1
@@ -9,10 +10,10 @@ installAnsible() {
     case "$(uname -s)" in
       "Darwin")
         pip3 install ansible
-        export PATH="$PATH":"$HOME"/Library/Python/3.9/bin
+        export PATH="$PATH:$HOME/Library/Python/3.9/bin"
         ;;
       "Linux")
-        xbps-install ansible git
+        xbps-install -S ansible git  # Adjusted xbps-install command for package installation
         ;;
       *)
         handle_error "Unsupported system"
@@ -22,21 +23,24 @@ installAnsible() {
 }
 
 cloneConfiguration() {
-  if [ -e "$HOME"/.config ]; then
+  if [ -e "$HOME/.config" ]; then  # Adjusted directory check syntax
     echo "Configuration folder already exists."
   else
-    git clone https://github.com/maclong9/dotfiles "$HOME"/.config
+    git clone https://github.com/maclong9/dotfiles "$HOME/.config"
   fi
 }
 
 runSpecifiedPlaybook() {
   case "$1" in
-  "prepare")
-    ansible-playbook ~/.config/setup/prepare.yml --ask-become-password 
-  ;;
-  "initialise")
-    ansible-playbook ~/.config/setup/initialise.yml --ask-become-password
-  ;;
+    "prepare")
+      ansible-playbook "$HOME/.config/setup/prepare.yml" --ask-become-pass  # Corrected playbook path and option
+      ;;
+    "initialise")
+      ansible-playbook "$HOME/.config/setup/initialise.yml" --ask-become-pass  # Corrected playbook path and option
+      ;;
+    *)
+      handle_error "Invalid playbook specified: $1"
+      ;;
   esac
 }
 
