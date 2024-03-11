@@ -1,6 +1,9 @@
 darwin:
   tools:
+    - deno
     - mas
+    - zig
+    - zls
   casks:
     - element
     - hyperkey
@@ -20,6 +23,7 @@ darwin:
 linux:
   tools:
     - apparmor
+    - deno
     - flatpak
     - fnott
     - foot
@@ -31,13 +35,11 @@ linux:
     - river
     - seatd
     - yambar
+    - zig
+    - zls
   flatpak:
     - im.riot.Riot # Element Matrix Client
     - org.mozilla.firefox
     - com.github.ahrm.sioyek
     - social.whalebird.WhalebirdDesktop # Mastodon Client
     - sh.ppy.osu
-
-container:
-  - deno
-  - zig
