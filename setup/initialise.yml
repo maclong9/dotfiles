@@ -41,3 +41,12 @@
 
        # TODO: seperate playbook for install sect, 
        # TODO: apparmor, ntp, tlp, seatd, other river & compile ags
+
+    - name: Universal Setup
+      block:
+        - name: Write Vim Configuration to "$HOME"
+          ansible.builtin.file:
+            src: ~/.config/.vimrc
+            dest: ~/.vimrc
+            owner: mac
+            state: link
