@@ -23,15 +23,10 @@ darwin:
 
 linux:
   tools:
-    - alacritty
     - apparmor
     - flatpak
     - git
     - keyd
-    - mesa-dri
-    - pipewire
-    - river
-    - seatd
   flatpak:
     - im.riot.Riot # Element Matrix Client
     - io.github.shiftey.Desktop # GitHub Desktop
