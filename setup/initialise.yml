@@ -11,6 +11,19 @@
     - name: Darwin Setup
       when: system == 'Darwin'
       block:
+        - name: Check if Homebrew is Installed
+          stat:
+            path: /usr/local/bin/brew
+          register: brew_installed
+
+        - name: Install Homebrew
+          command: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+          changed-when: true
+
+        - name: Create .zprofile with Homebrew Reference
+          command: echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> "$HOME/.zprofile"
+          changed-when: true
+          
         - name: Install System Tools
           ansible.builtin.package:
             name: '{{ item }}'
