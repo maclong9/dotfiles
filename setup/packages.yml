@@ -4,6 +4,7 @@ darwin:
     - mas
     - neovim
   casks:
+    - element
     - github
     - hyperkey
     - iterm2
