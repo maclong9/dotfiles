@@ -10,7 +10,7 @@ curl -slS https://raw.githubusercontent.com/maclong9/dotfiles/main/setup/run.sh 
 
 > [!NOTE] 
 > If you are running a Linux distribution other than Void, you will need
-> to alter the package manager in the script and the system name in
+> to alter the package manager in `setup/run.sh` and the system name in
 > `setup/initialise.yml`.
 
 ## Todo
