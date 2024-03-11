@@ -7,6 +7,7 @@ darwin:
     - orbstack
     - osu
     - sioyek
+    - swish
   apps:
   # - 424390742  # Compressor 
   # - 424389933  # Final Cut Pro 
@@ -14,8 +15,7 @@ darwin:
   # - 634159523  # MainStage 
   # - 434290957  # Motion 
   # - 497799835  # Xcode
-  # - 1289583905 # Pixelmator Pro 
-    - 1571998974 # Mastodon
+    - 1289583905 # Pixelmator Pro 
 
 linux:
   tools:

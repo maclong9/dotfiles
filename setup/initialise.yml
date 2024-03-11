@@ -39,7 +39,7 @@
             name: '{{ item }}'
           with_items: '{{ linux.flatpak }}'
 
-       # TODO: seperate playbook for install sect, 
+       # TODO: separate playbook for install sect, 
        # TODO: apparmor, ntp, tlp, seatd, other river & compile ags
 
     - name: Universal Setup
@@ -50,3 +50,31 @@
             dest: ~/.vimrc
             owner: mac
             state: link
+
+        - name: Check for Vim Plug
+          ansible.builtin.stat:
+            path: ~/.vim/autoload/plug.vim
+          register: plug
+
+        - name: Install Vim Plug
+          when: not plug.stat.exists
+          command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+        - name: Install Docker Collection
+          community.general.ansible_galaxy_install:
+            type: collection
+            name: community.docker
+        
+        - name: Get information about the 'void' container
+          community.docker.docker_container_info:
+            name: void
+          register: container_info
+
+        - name: Create Void Container
+          when: container_info.containers is not defined or container_info.containers | length == 0
+          community.docker.docker_container:
+            name: void
+            image: ghcr.io/void-linux/void-musl:d1ee412
+            detach: yes
+            interactive: yes
+            tty: yes
