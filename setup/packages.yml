@@ -6,7 +6,7 @@ darwin:
   casks:
     - github
     - hyperkey
-    - iterm2 # Alacritty?
+    - iterm2
     - orbstack
     - osu
     - sioyek
