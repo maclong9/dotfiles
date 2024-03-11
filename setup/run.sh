@@ -8,7 +8,7 @@ handle_error() {
 install_homebrew() {
   if ! [ -x "$(command -v brew)" > /dev/null ]; 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/mac/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/mac/.zprofile'
   eval "$(/opt/homebrew/bin/brew shellenv)"
 }
  
