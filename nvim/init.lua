@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
-vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 vim.opt.breakindent = true
@@ -37,7 +37,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- [[ Basic Autocommands ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -179,6 +179,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
 			vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 			vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "[F]ind [S]ymbols" })
+			vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "[F]ind [C]olorschemes" })
 			vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
@@ -366,13 +367,26 @@ require("lazy").setup({
 		end,
 	},
 
-	{ -- You can easily change to a different colorscheme.
+	{ -- Oxocarbon for Darwin
 		"nyoom-engineering/oxocarbon.nvim",
-		priority = 1000, -- make sure to load this before all the other start plugins
-		init = function()
-			vim.cmd.colorscheme("oxocarbon")
-		end,
+		priority = 1000, 
 	},
+
+	 { -- Gruvbox for Linux
+        "sainnhe/gruvbox-material",
+        priority = 1000,
+        init = function()
+            if vim.loop.os_uname().sysname == "Darwin" then
+                vim.cmd("colorscheme oxocarbon")
+            elseif vim.loop.os_uname().sysname == "Linux" then
+                vim.g.gruvbox_material_background = "medium"
+				vim.g.gruvbox_material_transparent_background = 1
+                vim.cmd("colorscheme gruvbox-material")
+            else
+                vim.cmd("colorscheme default")
+            end
+        end,
+    },
 
 	-- Highlight todo, notes, etc in comments
 	{
@@ -424,6 +438,7 @@ require("lazy").setup({
 			{ "b", "<cmd>lua require('spider').motion('b')<cr>", mode = { "n", "o", "x" } },
 		},
 	},
+
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
