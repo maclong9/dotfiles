@@ -124,11 +124,11 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	"tpope/vim-fugitive", -- Convenient Access to Git Commands
+	"tpope/vim-sleuth",                  -- Detect tabstop and shiftwidth automatically
+	"tpope/vim-fugitive",                -- Convenient Access to Git Commands
 	{ "numToStr/Comment.nvim", opts = {} }, -- "gc" to comment visual regions/lines
 
-	{ -- Shows pending keybinds
+	{                                    -- Shows pending keybinds
 		"folke/which-key.nvim",
 		event = "VimEnter",
 		config = function()
@@ -157,7 +157,7 @@ require("lazy").setup({
 				end,
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			{ "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			require("telescope").setup({
@@ -369,24 +369,24 @@ require("lazy").setup({
 
 	{ -- Oxocarbon for Darwin
 		"nyoom-engineering/oxocarbon.nvim",
-		priority = 1000, 
+		priority = 1000,
 	},
 
-	 { -- Gruvbox for Linux
-        "sainnhe/gruvbox-material",
-        priority = 1000,
-        init = function()
-            if vim.loop.os_uname().sysname == "Darwin" then
-                vim.cmd("colorscheme oxocarbon")
-            elseif vim.loop.os_uname().sysname == "Linux" then
-                vim.g.gruvbox_material_background = "medium"
+	{ -- Gruvbox for Linux
+		"sainnhe/gruvbox-material",
+		priority = 1000,
+		init = function()
+			if vim.loop.os_uname().sysname == "Darwin" then
+				vim.cmd("colorscheme oxocarbon")
+			elseif vim.loop.os_uname().sysname == "Linux" then
+				vim.g.gruvbox_material_background = "medium"
 				vim.g.gruvbox_material_transparent_background = 1
-                vim.cmd("colorscheme gruvbox-material")
-            else
-                vim.cmd("colorscheme default")
-            end
-        end,
-    },
+				vim.cmd("colorscheme gruvbox-material")
+			else
+				vim.cmd("colorscheme default")
+			end
+		end,
+	},
 
 	-- Highlight todo, notes, etc in comments
 	{
@@ -458,3 +458,4 @@ require("lazy").setup({
 		},
 	},
 })
+

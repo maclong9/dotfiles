@@ -30,7 +30,10 @@ curl -slS https://raw.githubusercontent.com/maclong9/dotfiles/main/setup/run.sh 
     - [ ] Useful Options
     - [ ] Recommended Plugins
 - [ ] Void Linux Setup
-  - [ ] River, yambar, fnott & fuzzel2
+  - [ ] Sway
+    - [ ] swaybar
+    - [ ] fnott
+    - [ ] fuzzel
   - [ ] neovim
   - [ ] foot
   - [ ] flatpak
