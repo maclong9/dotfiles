@@ -41,7 +41,9 @@ set $dark #3c3836
 set $focused #3c3836
 set $inactive #282828
 set $unfocused #282828
-set $urgent #b8bb26
+set $urgent #7FA2AC
+set $darkTransparent #3c383644
+set $urgentTransparent #7FA2AC44
 
 ### class               border      bg          text    indicator   child_border
 client.focused          $focused    $focused    $light  $focused    $focused
@@ -49,16 +51,15 @@ client.focused_inactive $inactive   $inactive   $light  $inactive   $inactive
 client.unfocused        $unfocused  $unfocused  $light  $unfocused  $unfocused
 client.urgent           $urgent     $urgent     $light  $urgent     $urgent
 
-exec_always sh -c "killall yambar; yambar &"
-# bar {
-#   position top
-#   status_command while date +'%A, %d %B %Y %I:%M'; do sleep 1; done
-#   colors {
-#       statusline #ffffff
-#       background #3c383600
-#       inactive_workspace #32323200 #32323200 #5c5c5c
-#       focused_workspace #ebdbb2aa b8bb26aa $light 
-#   }
+bar {
+   position top
+   status_command while ~/.config/sway/bar.sh; do sleep 1; done
+   workspace_buttons no
+   colors {
+       statusline $light
+       background $darkTransparent
+       binding_mode $darkTransparent $urgentTransparent $light
+   }
 }
 
 # Interface
