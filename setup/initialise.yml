@@ -40,7 +40,7 @@
           with_items: '{{ linux.flatpak }}'
 
        # TODO: separate playbook for install sect, 
-       # TODO: apparmor, ntp, tlp, seatd, fonts & bash_profile (tty1 create & chown /run/user)
+       # TODO: apparmor, ntp, tlp, seatd, auto-brightness & gammaview, fonts & bash_profile (tty1 create & chown /run/user)
 
     - name: Universal Setup
       block:
