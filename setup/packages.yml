@@ -25,17 +25,20 @@ darwin:
 linux:
   tools:
     - alacritty
+    - apparmor
     - brightnessctl
     - curl
+    - cronie
     - firefox
     - fzf
     - git
     - github-cli
+    - mako
     - mesa-dri
     - neofetch
     - neovim
     - pipewire
-    - sead
+    - seatd
     - swayfx
     - swayidle
     - swaylock
