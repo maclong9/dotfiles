@@ -82,7 +82,7 @@ output eDP-1 {
 
 # Modes
 ## Resize
-mode "resize" {
+mode "󰩨 Resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
@@ -96,7 +96,7 @@ mode "resize" {
 }
 
 ## Screenshot 
-mode "screenshot" {
+mode " Screenshot" {
     bindsym 1 exec 'grim -g "$(slurp)" ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
     bindsym 2 exec 'grim ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
     bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
@@ -174,7 +174,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 ## Other
-bindsym $mod+r mode "resize"
-bindsym $mod+Print mode "$screenshot"
+bindsym $mod+r mode "󰩨 Resize"
+bindsym $mod+Print mode " Screenshot
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
