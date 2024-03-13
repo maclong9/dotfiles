@@ -1,5 +1,6 @@
-.DS_Store
 *.swp
+.DS_Store
+dconf
 gh
 iterm2
 neofetch

@@ -4,7 +4,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term foot
 set $wallpaper $(find /usr/share/backgrounds/sway/. -type f | shuf -n1)
 set $menu fuzzel
 set $lock swaylock
