@@ -6,6 +6,7 @@ set $up k
 set $right l
 set $term alacritty
 set $wallpaper $(find /usr/share/backgrounds/sway/. -type f | shuf -n1)
+set $menu fuzzel
 set $lock swaylock
 
 # Effects
@@ -110,10 +111,10 @@ mode "screenshot" {
 
 # Bindings
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
-bindsym $mod+Alt+l exec $lock $lockCommandArgs
+bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
+bindsym $mod+Alt+l exec $lock
 bindsym $mod+Shift+e exec swaynag -t warning -m \
 	'Are you sure you want to exit?' -B 'Yes' 'swaymsg exit'
 
