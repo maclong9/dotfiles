@@ -5,6 +5,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
+set $browser firefox
 set $wallpaper $(find /usr/share/backgrounds/sway/. -type f | shuf -n1)
 set $lock swaylock
 set $opacity 0.9
@@ -12,12 +13,12 @@ set $opacity 0.9
 # Effects
 corner_radius 5
 blur on
-blur_xray off
+blur_xray on
 blur_passes 2
 blur_radius 5
 shadows on
 shadows_on_csd on
-shadow_blur_radius 20
+shadow_blur_radius 30
 shadow_color #000000
 default_dim_inactive 0.0
 dim_inactive_colors.unfocused #000000FF
@@ -25,6 +26,7 @@ dim_inactive_colors.urgent #900000FF
 scratchpad_minimize disable
 
 # Startup
+exec mako
 exec swayidle -w \
         timeout 300 '$lock' \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -46,6 +48,7 @@ set $urgent #7FA2AC
 set $darkTransparent #3c383644
 set $urgentTransparent #7FA2AC44
 
+
 ### class               border      bg          text    indicator   child_border
 client.focused          $focused    $focused    $light  $focused    $focused
 client.focused_inactive $inactive   $inactive   $light  $inactive   $inactive
@@ -56,6 +59,7 @@ client.urgent           $urgent     $urgent     $light  $urgent     $urgent
 for_window [class=".*"] opacity $opacity
 for_window [app_id=".*"] opacity $opacity
 
+## Bar
 bar {
    position top
    status_command while ~/.config/sway/bar.sh; do sleep 1; done
@@ -88,8 +92,8 @@ output eDP-1 {
 ## Resize
 mode "󰩨 Resize" {
     bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
+    bindsym $up resize grow height 10px
+    bindsym $down resize shrink height 10px
     bindsym $right resize grow width 10px
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
@@ -115,7 +119,7 @@ mode " Screenshot" {
 
 # Bindings
 bindsym $mod+Return exec $term
-bindsym $mod+d exec $menu
+bindsym $mod+Shift+b exec $browser
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Alt+l exec $lock
@@ -176,6 +180,14 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+
+## Media
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
 
 ## Other
 bindsym $mod+r mode "󰩨 Resize"

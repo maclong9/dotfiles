@@ -24,23 +24,24 @@ darwin:
 
 linux:
   tools:
-    - apparmor
-    - flatpak
-    - fnott
-    - foot
-    - fuzzel
+    - alacritty
+    - brightnessctl
+    - curl
+    - firefox
+    - fzf
     - git
-    - keyd
+    - github-cli
     - mesa-dri
+    - neofetch
     - neovim
     - pipewire
-    - river
-    - seatd
-    - yambar
+    - sead
+    - swayfx
+    - swayidle
+    - swaylock
+    - tlp
+    - unzip
+    - wget
+    - wl-clipboard
     - zig
-  flatpak:
-    - im.riot.Riot # Element Matrix Client
-    - org.mozilla.firefox
-    - com.github.ahrm.sioyek
-    - social.whalebird.WhalebirdDesktop # Mastodon Client
-    - sh.ppy.osu
+    - zsh
