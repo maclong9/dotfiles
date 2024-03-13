@@ -173,7 +173,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 ## Other
-bindsym $mod+r mode "resize"
-bindsym $mod+Print mode "$screenshot"
+bindsym $mod+r mode "󰩨 Resize"
+bindsym $mod+Print mode " Screenshot
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
