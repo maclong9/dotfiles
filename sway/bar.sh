@@ -1,7 +1,7 @@
 battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
 battery_status=$(cat /sys/class/power_supply/BAT0/status)
 battery_icon=""
-current_date=$(date +"%A, %d %B %H %M")
+current_date=$(date +"%A, %d %B %H:%M")
 
 if [ $battery_status = "Discharging" ]; then
   if [ $battery_level -le 10 ]; then

@@ -4,10 +4,10 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
+set $term alacritty
 set $wallpaper $(find /usr/share/backgrounds/sway/. -type f | shuf -n1)
-set $menu fuzzel
 set $lock swaylock
+set $opacity 0.9
 
 # Effects
 corner_radius 5
@@ -51,6 +51,10 @@ client.focused          $focused    $focused    $light  $focused    $focused
 client.focused_inactive $inactive   $inactive   $light  $inactive   $inactive
 client.unfocused        $unfocused  $unfocused  $light  $unfocused  $unfocused
 client.urgent           $urgent     $urgent     $light  $urgent     $urgent
+
+## Opacity
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
 
 bar {
    position top
