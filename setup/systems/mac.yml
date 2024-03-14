@@ -1,0 +1,21 @@
+- name: Darwin Setup
+  when: system == 'Darwin'
+  block:
+    - name: Install System Tools
+      ansible.builtin.package:
+        name: '{{ item }}'
+      with_items: '{{ darwin.tools }}'
+      
+    - name: Install Cask Apps 
+      community.general.homebrew_cask:
+        name: '{{ item }}'
+      with_items: '{{ darwin.casks }}'
+              
+    - name: Install App Store Apps
+      community.general.mas:
+        id: '{{ darwin.apps }}'
+
+    - name: Fetch SFMono Nerd Font
+      get_url:
+        url: https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized/blob/main/LigaSFMonoNerdFont-Regular.otf
+        dest: $HOME/Library/Fonts/LigaSFMonoNerdFont-Regular.otf

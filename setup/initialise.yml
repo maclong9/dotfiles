@@ -5,77 +5,26 @@
   vars:
     system: '{{ ansible_facts["os_family"] }}'
   vars_files:
-    - './packages.yml'
+    - './systems/packages.yml'
   
   tasks:
-    - name: Darwin Setup
+    - name: Setup macOS
+      include_tasks: ./systems/mac.yml
+      vars:
+        packages: '{{ packages }}'
       when: system == 'Darwin'
-      block:
-        - name: Install System Tools
-          ansible.builtin.package:
-            name: '{{ item }}'
-          with_items: '{{ darwin.tools }}'
-        
-        - name: Install Cask Apps 
-          community.general.homebrew_cask:
-            name: '{{ item }}'
-          with_items: '{{ darwin.casks }}'
-              
-        - name: Install App Store Apps
-          community.general.mas:
-            id: '{{ darwin.apps }}'
 
-    - name: Linux Setup
-      when: system == 'void'
-      become: true
-      block:
-        - name: Install Linux Tools
-          ansible.builtin.package:
-            name: '{{ item }}'
-          with_items: '{{ linux.tools }}'
+    - name: Setup Void Linux
+      include_tasks: ./systems/void.yml
+      vars:
+        packages: '{{ packages }}'
+      when: system == 'Void'
 
-        - name: Install Flatpaks
-          community.general.flatpak:
-            name: '{{ item }}'
-          with_items: '{{ linux.flatpak }}'
-
-       # TODO: separate playbook for install sect, 
-       # TODO: apparmor, tlp, seatd, auto-brightness & gammaview, fonts & bash_profile (tty1 create & chown /run/user), xdg-user-dirs, package ags with xbps-src`
+    - name: Setup Arch Linux
+      include_tasks: ./systems/arch.yml
+      vars:
+        packages: '{{ packages }}'
+      when: system == 'Arch'
 
     - name: Universal Setup
-      block:
-        - name: Write Vim Configuration to "$HOME"
-          ansible.builtin.file:
-            src: ~/.config/.vimrc
-            dest: ~/.vimrc
-            owner: mac
-            state: link
-
-        - name: Check for Vim Plug
-          ansible.builtin.stat:
-            path: ~/.vim/autoload/plug.vim
-          register: plug
-
-        - name: Install Vim Plug
-          when: not plug.stat.exists
-          command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-        - name: Install Docker Collection
-          community.general.ansible_galaxy_install:
-            type: collection
-            name: community.docker
-        
-        - name: Get information about the 'void' container
-          community.docker.docker_container_info:
-            name: void
-          register: container_info
-
-        - name: Create Void Container
-          when: container_info.containers is not defined or container_info.containers | length == 0
-          community.docker.docker_container:
-            name: void
-            image: ghcr.io/void-linux/void-musl:d1ee412
-            detach: yes
-            interactive: yes
-            tty: yes
-        # git config aliases
+      include_tasks: ./systems/universal.yml

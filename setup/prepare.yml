@@ -84,7 +84,6 @@
           register: image_authenticity_mac
           changed_when: true
 
-
     - name: Prepare Installation Media
       block:
         - name: Unmount Target Disk

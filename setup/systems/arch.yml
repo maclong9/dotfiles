@@ -1,0 +1,12 @@
+- name: Arch Setup
+  become: true
+  block:
+    - name: Install Linux Tools
+      ansible.builtin.package:
+        name: '{{ item }}'
+      with_items: '{{ packages.linux.arch }}'
+
+    - name: Fetch Caskaydia Cove Font
+      get_url:
+        url: https://github.com/eliheuer/caskaydia-cove/blob/master/fonts/otf/CaskaydiaCove-Regular.otf
+        dest: /usr/local/share/fonts/CaskaydiaCove-Regular.otf

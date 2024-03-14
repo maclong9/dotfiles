@@ -1,9 +1,9 @@
-if [ "$(uname -a)" = "Darwin" ]; then
+if [ "$(uname -s)" = "Darwin" ]; then
     brew update
     brew upgrade
     brew cleanup
     brew doctor
-elif [ "$(uname -a)" = "Linux" ]; then
+elif [ "$(uname -s)" = "Linux" ]; then
     xbps-install -Su
     xbps-remove -R
 fi

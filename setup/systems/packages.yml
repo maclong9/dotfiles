@@ -19,11 +19,17 @@ darwin:
   # - 634159523  # MainStage 
   # - 434290957  # Motion 
   # - 497799835  # Xcode
-    - 1289583905 # Pixelmator Pro 
+  # - 1289583905 # Pixelmator Pro 
     - 1571998974 # Mastodon
 
 linux:
-  tools:
+  arch:
+    - firefox
+    - hyprland-git
+    - hyprlock-git
+    - hypridle-git
+    - kitty-git
+  void:
     - alacritty
     - apparmor
     - brightnessctl

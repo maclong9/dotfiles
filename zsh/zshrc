@@ -15,3 +15,5 @@ if [ "$(uname -a)" = "Linux" ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_CURRENT_DESKTOP=sway
     export XDG_RUNTIME_DIR=$RUN_DIR
 fi
+
+alias g="git"
