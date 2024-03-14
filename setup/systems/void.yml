@@ -64,13 +64,6 @@
     dest: /var/service/cronie
     state: link
 
-- name: Activate gammastep Service
-  become: true
-  ansible.builtin.file:
-    src: /etc/sv/gammastep
-    dest: /var/service
-    state: link
-
 - name: Fetch SFMono Nerd Font
   become: true
   get_url:
