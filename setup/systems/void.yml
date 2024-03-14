@@ -1,11 +1,32 @@
-- name: Degbu Packages
-  debug: 
-    var: packages
-
 - name: Install System Tools
   ansible.builtin.package:
     name: '{{ item }}'
-  with_items: '{{ void }}'
+  with_items:
+    - alacritty
+    - apparmor
+    - brightnessctl
+    - cronie
+    - curl
+    - firefox
+    - fzf
+    - gammastep
+    - git
+    - github-cli
+    - mako
+    - mesa-dri
+    - neofetch
+    - neovim
+    - pipewire
+    - seatd
+    - swayfx
+    - swayidle
+    - swaylock
+    - tlp
+    - unzip
+    - wget
+    - wl-clipboard
+    - zig
+    - zsh
 
 - name: Configure App Armor
   lineinfile:

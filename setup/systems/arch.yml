@@ -1,3 +1,4 @@
+
 - name: Install base-devel & git
   become: true
   ansible.builtin.package:
@@ -34,7 +35,22 @@
     name: '{{ item }}'
     state: present
     use: paru
-  with_items: '{{ arch }}'
+  with_items: 
+    - clip-history
+    - floorp
+    - hypridle-git
+    - hyprland-git
+    - hyprlock-git
+    - hyprpicker-git
+    - hyprshade-git
+    - kitty-git
+    - neovim-git
+    - pipewire-git
+    - polkit-kde-agent-git
+    - swww-git
+    - wireplumber-git
+    - xdg-desktop-portal-hyprland-git
+    - zig-git
 
 - name: Fetch Caskaydia Cove Font
   become: yes

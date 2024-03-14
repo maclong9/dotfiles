@@ -4,9 +4,7 @@
   gather_facts: true
   vars:
     system: '{{ ansible_facts["os_family"] }}'
-  vars_files:
-     './systems/packages.yml'
-  
+
   tasks:
     - name: Setup macOS
       include_tasks: ./systems/mac.yml
