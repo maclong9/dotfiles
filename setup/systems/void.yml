@@ -1,4 +1,5 @@
 - name: Install System Tools
+  become: true
   ansible.builtin.package:
     name: '{{ item }}'
   with_items:
@@ -27,8 +28,10 @@
     - wl-clipboard
     - zig
     - zsh
+  ignore_errors: true
 
 - name: Configure App Armor
+  become: true
   lineinfile:
     regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
     line: 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel4 apparmor=1 security=apparmor"'
@@ -38,17 +41,32 @@
   shell: update-grub
 
 - name: Activate tlp Service
+  become: true
   file:
     src: /etc/sv/tlp
     dest: /var/service/
     state: link
 
 - name: Activate seatd Service
+  become: true
   file:
     src: /etc/sv/seatd
     dest: /var/service
 
+- name: Activate cronie Service
+  become: true
+  file:
+    src: /etc/sv/cronie
+    dest: /var/service
+
+- name: Activate gammastep Service
+  become: true
+  file:
+    src: /etc/sv/gammastep
+    dest: /var/service
+
 - name: Fetch SFMono Nerd Font
+  become: true
   get_url:
     url: https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized/blob/main/LigaSFMonoNerdFont-Regular.otf
     dest: /usr/local/share/fonts/SFMono-Nerd-Font-Ligaturized.otf

@@ -8,20 +8,14 @@
   tasks:
     - name: Setup macOS
       include_tasks: ./systems/mac.yml
-      vars:
-        packages: '{{ packages }}'
       when: system == 'Darwin'
 
     - name: Setup Void Linux
       include_tasks: ./systems/void.yml
-      vars:
-        packages: '{{ packages }}'
       when: system == 'Void'
 
     - name: Setup Arch Linux
       include_tasks: ./systems/arch.yml
-      vars:
-        packages: '{{ packages }}'
       when: system == 'Arch'
 
     - name: Universal Setup
