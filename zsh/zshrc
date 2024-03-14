@@ -5,7 +5,7 @@ setopt autocd
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 %F{%(?.blue.red)}%B󰘧%b%f "
 
-if [ "$(tty)" = "/dev/tty1" ]; then
+if [ "$(uname -a)" = "Linux" ] && [ "$(tty)" = "/dev/tty1" ]; then
     RUN_DIR=/run/user/$(id -u)
     sudo mkdir -p $RUN_DIR
     sudo chown mac $RUN_DIR
