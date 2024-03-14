@@ -1,45 +1,43 @@
-- name: Arch Setup
-  block:
-    - name: Install base-devel & git
-      become: true
-      ansible.builtin.package:
-        name: '{{ item }}'
-        use: pacman
-      with_items:
-        - base-devel
-        - git
+- name: Install base-devel & git
+  become: true
+  ansible.builtin.package:
+    name: '{{ item }}'
+    use: pacman
+  with_items:
+    - base-devel
+    - git
 
-    - name: Check if Paru is installed
-      ansible.builtin.stat:
-        path: '/usr/bin/paru'
-      register: paru_check
+- name: Check if Paru is installed
+  ansible.builtin.stat:
+    path: '/usr/bin/paru'
+  register: paru_check
 
-    - name: Clone Paru Repository
-      when: not paru_check.stat.exists
-      ansible.builtin.git:
-        repo: 'https://aur.archlinux.org/paru.git'
-        dest: $HOME/paru
+- name: Clone Paru Repository
+  when: not paru_check.stat.exists
+  ansible.builtin.git:
+    repo: 'https://aur.archlinux.org/paru.git'
+    dest: $HOME/paru
 
-    - name: Build & Install Paru
-      ansible.builtin.command: >
-        makepkg -si
-      args:
-        chdir: $HOME/paru
+- name: Build & Install Paru
+  ansible.builtin.command: >
+    makepkg -si
+  args:
+    chdir: $HOME/paru
 
-    - name: Clean Up Paru Build Folder
-      ansible.builtin.file:
-        path: $HOME/paru
-        state: absent
+- name: Clean Up Paru Build Folder
+  ansible.builtin.file:
+    path: $HOME/paru
+    state: absent
 
-    - name: Install Tools
-      ansible.builtin.package:
-        name: '{{ item }}'
-        state: present
-        use: paru
-      with_items: '{{ packages.linux.arch }}'
+- name: Install System Tools
+  ansible.builtin.package:
+    name: '{{ item }}'
+    state: present
+    use: paru
+  with_items: '{{ arch }}'
 
-    - name: Fetch Caskaydia Cove Font
-      become: yes
-      get_url:
-        url: https://github.com/eliheuer/caskaydia-cove/blob/master/fonts/otf/CaskaydiaCove-Regular.otf
-        dest: /usr/local/share/fonts/CaskaydiaCove-Regular.otf
+- name: Fetch Caskaydia Cove Font
+  become: yes
+  get_url:
+    url: https://github.com/eliheuer/caskaydia-cove/blob/master/fonts/otf/CaskaydiaCove-Regular.otf
+    dest: /usr/local/share/fonts/CaskaydiaCove-Regular.otf

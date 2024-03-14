@@ -1,17 +1,19 @@
-- name: Darwin Setup
-  when: system == 'Darwin'
-  block:
-    - name: Install System Tools
-      ansible.builtin.package:
-        name: '{{ item }}'
-      with_items: '{{ darwin.tools }}'
-      
-    - name: Install Cask Apps 
-      community.general.homebrew_cask:
-        name: '{{ item }}'
-      with_items: '{{ darwin.casks }}'
-              
-    - name: Install App Store Apps
-      community.general.mas:
-        id: '{{ darwin.apps }}'
-      ignore_errors: true
+- name: Install System Tools
+  ansible.builtin.package:
+    name: '{{ item }}'
+  with_items: '{{ darwin.tools }}'
+  
+- name: Install Cask Apps 
+  community.general.homebrew_cask:
+    name: '{{ item }}'
+  with_items: '{{ darwin.casks }}'
+          
+- name: Install App Store Apps
+  community.general.mas:
+    id: '{{ darwin.apps }}'
+  ignore_errors: true
+
+- name: Fetch Liga SFMono Nerd Font
+  ansible.builtin.get_url:
+    url: https://github.com/epk/SF-Mono-Nerd-Font/blob/master/SFMono%20Regular%20Nerd%20Font%20Complete.otf
+    dest: $HOME/Downloads/

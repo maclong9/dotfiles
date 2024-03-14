@@ -1,32 +1,29 @@
-- name: Void Setup
-  become: true
-  block:
-    - name: Install Tools
-      ansible.builtin.package:
-        name: '{{ item }}'
-      with_items: '{{ packages.linux.void }}'
+- name: Install System Tools
+  ansible.builtin.package:
+    name: '{{ item }}'
+  with_items: '{{ void }}'
 
-    - name: Configure App Armor
-      lineinfile:
-        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
-        line: 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel4 apparmor=1 security=apparmor"'
+- name: Configure App Armor
+  lineinfile:
+    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel4 apparmor=1 security=apparmor"'
 
-    - name: Update grub
-      become: yes
-      shell: update-grub
+- name: Update grub
+  become: yes
+  shell: update-grub
 
-    - name: Activate tlp Service
-      file:
-        src: /etc/sv/tlp
-        dest: /var/service/
-        state: link
+- name: Activate tlp Service
+  file:
+    src: /etc/sv/tlp
+    dest: /var/service/
+    state: link
 
-    - name: Activate seatd Service
-      file:
-        src: /etc/sv/seatd
-        dest: /var/service
+- name: Activate seatd Service
+  file:
+    src: /etc/sv/seatd
+    dest: /var/service
 
-    - name: Fetch SFMono Nerd Font
-      get_url:
-        url: https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized/blob/main/LigaSFMonoNerdFont-Regular.otf
-        dest: /usr/local/share/fonts/SFMono-Nerd-Font-Ligaturized.otf
+- name: Fetch SFMono Nerd Font
+  get_url:
+    url: https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized/blob/main/LigaSFMonoNerdFont-Regular.otf
+    dest: /usr/local/share/fonts/SFMono-Nerd-Font-Ligaturized.otf
