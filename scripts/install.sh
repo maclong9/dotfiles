@@ -17,7 +17,7 @@ install_ansible() {
     if [ "$(uname)" = "Darwin" ]; then
         install_homebrew || handle_error "Failed to install Homebrew."
         brew install ansible
-    elif [ -f /etc/void-release ]; then
+    elif [ -d "/etc/runit/runsvdir" ]; then
         sudo xbps-install -S ansible git
     elif [ -f /etc/arch-release ]; then
         sudo pacman -Syu ansible git --noconfirm
