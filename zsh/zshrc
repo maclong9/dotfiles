@@ -5,7 +5,7 @@ setopt autocd
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 %F{%(?.blue.red)}%B󰘧%b%f "
 
-if [ "$(uname -a)" = "Linux" ] && [ "$(tty)" = "/dev/tty1" ]; then
+if [ -f /etc/void-release ] && [ "$(tty)" = "/dev/tty1" ]; then
     RUN_DIR=/run/user/$(id -u)
     sudo mkdir -p $RUN_DIR
     sudo chown mac $RUN_DIR
@@ -14,6 +14,9 @@ if [ "$(uname -a)" = "Linux" ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
     export XDG_RUNTIME_DIR=$RUN_DIR
+    sway
+elif [ -f /etc/arch-release ] && [ "$(tty)" = "/dev/tty1" ]; then
+    Hyprland
 fi
 
 alias g="git"

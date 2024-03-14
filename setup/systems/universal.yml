@@ -10,6 +10,7 @@
       file:
         src: $HOME/.config/zsh/zshrc
         dest: $HOME/.zshrc
+        state: link
       
     - name: Set up Git aliases
       community.general.git_config:
@@ -17,13 +18,13 @@
         scope: global
         value: "{{ item.command }}"
       loop:
-        - { name: "alias.co", command: "commit -m" }
-        - { name: "alias.ci", command: "commit" }
-        - { name: "alias.pu", command: "push" }
-        - { name: "alias.pl", command: "pull" }
+        - { name: "alias.aa",   command: "add ." }
+        - { name: "alias.cm",   command: "commit -m" }
+        - { name: "alias.pu",   command: "push" }
+        - { name: "alias.pl",   command: "pull" }
         - { name: "alias.plnr", command: "pull --no-rebase" }
-        - { name: "alias.st", command: "status" }
-        - { name: "alias.lg", command: "log --oneline --decorate --graph" }
+        - { name: "alias.st",   command: "status" }
+        - { name: "alias.lg",   command: "log --oneline --decorate --graph" }
 
     - name: Add cron job for maintenance script
       ansible.builtin.cron:

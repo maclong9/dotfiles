@@ -15,18 +15,16 @@ install_homebrew() {
 
 install_ansible() {
   if ! command -v ansible > /dev/null; then
-    case "$(uname -s)" in
-      "Darwin")
+    if [ "$(uname)" == "Darwin" ]; then
         install_homebrew || handle_error "Failed to install Homebrew."
         brew install ansible
-        ;;
-      "Linux")
+    elif [ -f /etc/void-release ]; then
         xbps-install -S ansible git
-        ;;
-      *)
+    elif [ -f /etc/arch-release ]; then
+        pacman -Syu ansible git
+    else
         handle_error "Unsupported system"
-        ;;
-    esac
+    fi
   fi
 }
 

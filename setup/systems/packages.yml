@@ -3,7 +3,6 @@ darwin:
     - deno
     - mas
     - neovim
-    - zig
   casks:
     - element
     - hyperkey
@@ -12,6 +11,7 @@ darwin:
     - osu
     - sioyek
     - swish
+    - utm
   apps:
   # - 424390742  # Compressor 
   # - 424389933  # Final Cut Pro 
@@ -19,24 +19,34 @@ darwin:
   # - 634159523  # MainStage 
   # - 434290957  # Motion 
   # - 497799835  # Xcode
-  # - 1289583905 # Pixelmator Pro 
-    - 1571998974 # Mastodon
+    - 1289583905 # Pixelmator Pro 
 
 linux:
   arch:
-    - firefox
+    - clip-history
+    - floorp
+    - hypridle-git
     - hyprland-git
     - hyprlock-git
-    - hypridle-git
+    - hyprpicker-git
+    - hyprshade-git
     - kitty-git
+    - neovim-git
+    - pipewire-git
+    - polkit-kde-agent-git
+    - swww-git
+    - wireplumber-git
+    - xdg-desktop-portal-hyprland-git
+    - zig-git
   void:
     - alacritty
     - apparmor
     - brightnessctl
-    - curl
     - cronie
+    - curl
     - firefox
     - fzf
+    - gammastep
     - git
     - github-cli
     - mako
