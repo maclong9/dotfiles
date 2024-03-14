@@ -41,6 +41,7 @@
 - name: Update grub
   become: yes
   shell: update-grub
+  ignore_errors: true
 
 - name: Activate tlp Service
   become: true
