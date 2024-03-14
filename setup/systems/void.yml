@@ -32,7 +32,7 @@
 
 - name: Configure App Armor
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/default/grub
     regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
     line: 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel4 apparmor=1 security=apparmor"'
@@ -40,31 +40,31 @@
 
 - name: Update grub
   become: yes
-  shell: update-grub
+  ansible.builtin.shell: update-grub
   ignore_errors: true
 
 - name: Activate tlp Service
   become: true
-  file:
+  ansible.builtin.file:
     src: /etc/sv/tlp
-    dest: /var/service/
+    dest: /var/service/tlp
     state: link
 
 - name: Activate seatd Service
   become: true
-  file:
+  ansible.builtin.file:
     src: /etc/sv/seatd
-    dest: /var/service
+    dest: /var/service/seatd
 
 - name: Activate cronie Service
   become: true
-  file:
+  ansible.builtin.file:
     src: /etc/sv/cronie
-    dest: /var/service
+    dest: /var/service/cronie
 
 - name: Activate gammastep Service
   become: true
-  file:
+  ansible.builtin.file:
     src: /etc/sv/gammastep
     dest: /var/service
 
