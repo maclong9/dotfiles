@@ -18,7 +18,7 @@ install_ansible() {
         install_homebrew || handle_error "Failed to install Homebrew."
         brew install ansible
     elif [ -d "/etc/runit/runsvdir" ]; then
-        sudo xbps-install -S ansible git
+        sudo xbps-install -Syu ansible git
     elif [ -f /etc/arch-release ]; then
         sudo pacman -Syu ansible git --noconfirm
     else
