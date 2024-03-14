@@ -11,6 +11,15 @@
         src: $HOME/.config/zsh/zshrc
         dest: $HOME/.zshrc
         state: link
+
+    - name: Set Git global user name and email
+      community.general.git_config:
+        name: "{{ item.name }}"
+        scope: global
+        value: "{{ item.value }}"
+      loop:
+        - { name: "user.name",  value: "Mac" }
+        - { name: "user.email", value: "maclong9@icloud.com" }
       
     - name: Set up Git aliases
       community.general.git_config:
