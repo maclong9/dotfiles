@@ -19,9 +19,9 @@ install_ansible() {
         install_homebrew || handle_error "Failed to install Homebrew."
         brew install ansible
     elif [ -f /etc/void-release ]; then
-        xbps-install -S ansible git
+        sudo xbps-install -S ansible git
     elif [ -f /etc/arch-release ]; then
-        pacman -Syu ansible git
+        sudo pacman -Syu ansible git
     else
         handle_error "Unsupported system"
     fi
