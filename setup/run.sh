@@ -21,7 +21,7 @@ install_ansible() {
     elif [ -f /etc/void-release ]; then
         sudo xbps-install -S ansible git
     elif [ -f /etc/arch-release ]; then
-        sudo pacman -Syu ansible git
+        sudo pacman -Syu ansible git --noconfirm
     else
         handle_error "Unsupported system"
     fi
