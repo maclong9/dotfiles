@@ -55,18 +55,21 @@
   ansible.builtin.file:
     src: /etc/sv/seatd
     dest: /var/service/seatd
+    state: link
 
 - name: Activate cronie Service
   become: true
   ansible.builtin.file:
     src: /etc/sv/cronie
     dest: /var/service/cronie
+    state: link
 
 - name: Activate gammastep Service
   become: true
   ansible.builtin.file:
     src: /etc/sv/gammastep
     dest: /var/service
+    state: link
 
 - name: Fetch SFMono Nerd Font
   become: true
