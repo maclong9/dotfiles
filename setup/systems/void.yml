@@ -33,8 +33,10 @@
 - name: Configure App Armor
   become: true
   lineinfile:
+    path: /etc/default/grub
     regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
     line: 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel4 apparmor=1 security=apparmor"'
+  ignore_errors: true
 
 - name: Update grub
   become: yes
