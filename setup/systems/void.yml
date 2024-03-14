@@ -65,6 +65,7 @@
     state: link
 
 - name: Ensure Font Directory Exists
+  become: true
   file:
     path: /usr/local/share/fonts
     state: directory
