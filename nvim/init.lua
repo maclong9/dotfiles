@@ -438,6 +438,14 @@ require("lazy").setup({
 			{ "b", "<cmd>lua require('spider').motion('b')<cr>", mode = { "n", "o", "x" } },
 		},
 	},
+	{
+    'smoka7/hop.nvim',
+		keys = {
+		   {"<cr>", "<cmd>HopChar1<cr>", desc = "Hop to character" }
+		},
+    version = "*",
+    opts = {},
+}
 
 }, {
 	ui = {
