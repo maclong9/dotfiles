@@ -5,7 +5,7 @@ Configuration for unix-y environemts.
 ## Usage
 
 ```sh
-curl -slS https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/install.sh | sh -s -- "initialise"
+curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/install.sh | sh -s -- "initialise"
 ```
 
 > [!NOTE] 
