@@ -1,3 +1,7 @@
+- name: Degbu Packages
+  debug: 
+    var: packages
+
 - name: Install System Tools
   ansible.builtin.package:
     name: '{{ item }}'
