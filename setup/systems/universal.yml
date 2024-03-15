@@ -31,7 +31,9 @@
         - { name: "alias.p",   command: "push" }
         - { name: "alias.s",   command: "status" }
         - { name: "alias.l",   command: "log --oneline --decorate --graph" }
+        - { name: "alias.a",    command: "add" }
         - { name: "alias.aa",   command: "add ." }
+        - { name: "alias.ac",   command: "add . && commit -m" }
         - { name: "alias.pl",   command: "pull" }
         - { name: "alias.plnr", command: "pull --no-rebase" }
 
