@@ -9,7 +9,7 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 ```
 
 > [!NOTE] 
-> On macOS you must install [Xcode CLI Tools](https://stackoverflow.com/a/9329325) before running, on Void you must install `curl` before running.
+> Before running you must install [Xcode CLI Tools](https://stackoverflow.com/a/9329325) on macOS and `curl` on Void.
 > 
 > If on a Linux Distribution other than void, please alter the package manager, package names and system name in their respective locations.
 
