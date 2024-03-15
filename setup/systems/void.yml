@@ -8,6 +8,7 @@
     - brightnessctl
     - cronie
     - curl
+    - dejavu-fonts-ttf
     - firefox
     - fzf
     - gammastep
