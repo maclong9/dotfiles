@@ -57,6 +57,12 @@
     dest: /var/service/seatd
     state: link
 
+- name: Add User to `_seatd` Group
+    user:
+      name: mac
+      groups: _seatd
+      append: yes
+
 - name: Activate cronie Service
   become: true
   ansible.builtin.file:
