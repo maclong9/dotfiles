@@ -9,9 +9,8 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 ```
 
 > [!NOTE] 
-> If you are running a Linux distribution other than Void, you will need
-> to alter the package manager in `setup/run.sh` and the system name in
-> `setup/initialise.yml`.
+> on macOS you must install [Xcode CLI Tools](https://stackoverflow.com/a/9329325) before running.
+> If on a Linux Distribution other than void, please alter the package manager, package names and system name in their respective locations.
 
 ## Todo
 
