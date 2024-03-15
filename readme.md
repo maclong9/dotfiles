@@ -9,7 +9,7 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 ```
 
 > [!NOTE] 
-> on macOS you must install [Xcode CLI Tools](https://stackoverflow.com/a/9329325) before running.
+> On macOS you must install [Xcode CLI Tools](https://stackoverflow.com/a/9329325) before running.
 > 
 > If on a Linux Distribution other than void, please alter the package manager, package names and system name in their respective locations.
 
