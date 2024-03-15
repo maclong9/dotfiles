@@ -108,7 +108,6 @@ vim.api.nvim_exec(
   augroup Statusline
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active() | setlocal tabstop=4 shiftwidth=4
-  au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive() | setlocal tabstop=4 shiftwidth=4
   au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short() | setlocal tabstop=4 shiftwidth=4
   augroup END
 ]],
@@ -124,11 +123,11 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"tpope/vim-sleuth",                  -- Detect tabstop and shiftwidth automatically
-	"tpope/vim-fugitive",                -- Convenient Access to Git Commands
+	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	"tpope/vim-fugitive", -- Convenient Access to Git Commands
 	{ "numToStr/Comment.nvim", opts = {} }, -- "gc" to comment visual regions/lines
 
-	{                                    -- Shows pending keybinds
+	{ -- Shows pending keybinds
 		"folke/which-key.nvim",
 		event = "VimEnter",
 		config = function()
@@ -157,7 +156,7 @@ require("lazy").setup({
 				end,
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
-			{ "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
+			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			require("telescope").setup({
@@ -439,14 +438,13 @@ require("lazy").setup({
 		},
 	},
 	{
-    'smoka7/hop.nvim',
+		"smoka7/hop.nvim",
 		keys = {
-		   {"<cr>", "<cmd>HopChar1<cr>", desc = "Hop to character" }
+			{ "<cr>", "<cmd>HopChar1<cr>", desc = "Hop to character" },
 		},
-    version = "*",
-    opts = {},
-}
-
+		version = "*",
+		opts = {},
+	},
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
