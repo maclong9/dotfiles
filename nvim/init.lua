@@ -274,6 +274,7 @@ require("lazy").setup({
 						},
 					},
 				},
+				texlab = {},
 			}
 
 			require("mason").setup()
@@ -404,6 +405,7 @@ require("lazy").setup({
 					"c",
 					"html",
 					"json",
+					"latex",
 					"lua",
 					"markdown",
 					"typescript",
