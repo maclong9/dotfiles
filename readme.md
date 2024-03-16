@@ -41,7 +41,6 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
     - [ ] Options
     - [ ] Plugins
   - [ ] Neovim
-    - [ ] Fennel Configuration
     - [ ] Useful Options
     - [ ] Recommended Plugins
 - [ ] Void Linux Setup
