@@ -61,6 +61,7 @@ for_window [app_id=".*"] opacity $opacity
 
 ## Bar
 bar {
+   modifier
    position top
    status_command while ~/.config/sway/bar.sh; do sleep 1; done
    workspace_buttons no
