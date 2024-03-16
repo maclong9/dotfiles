@@ -31,4 +31,4 @@ else
     battery_icon="󰂄"
 fi
 
-echo "$battery_level% $battery_icon  $current_date"
+echo "$battery_icon $current_date"

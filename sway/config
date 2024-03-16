@@ -72,6 +72,11 @@ bar {
 }
 
 # Interface
+## Keyboard
+input "type:keyboard" {
+    xkb_options caps:ctrl_modifier
+}
+
 ## Trackpad
 input "type:touchpad" {
     dwt enabled

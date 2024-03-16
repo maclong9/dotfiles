@@ -6,7 +6,7 @@ setopt autocd
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
 
-if [ -d /var/service ] && [ "$(tty)" = "/dev/tty1" ]; then
+if [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
     RUN_DIR=/run/user/$(id -u)
     sudo mkdir -p $RUN_DIR
     sudo chown mac $RUN_DIR
@@ -17,6 +17,7 @@ if [ -d /var/service ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_RUNTIME_DIR=$RUN_DIR
     sway
 elif [ -f /etc/arch-release ] && [ "$(tty)" = "/dev/tty1" ]; then
+    # TODO:Add Hyprland setup for arch
     Hyprland
 fi
 

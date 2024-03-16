@@ -32,22 +32,15 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 - [ ] Void Linux Setup
   - [ ] Sway
     - [ ] swaybar
-    - [ ] fnott
-    - [ ] fuzzel
+    - [ ] mako
   - [ ] neovim
   - [ ] foot
-  - [ ] flatpak
-    - [ ] firefox
-    - [ ] sioyek
+  - [ ] firefox
+  - [ ] sioyek
   - [ ] Other Utilities: keyd, pipewire
- - [ ] Building My Blog
-   - [ ] Deno
-   - [ ] Fresh
-   - [ ] Tailwind
-   - [ ] Fediverse Comments, Likes & Followers
 - [ ] Mac Setup
   - [ ] Tools
-    - [ ] Terminal.app
+    - [ ] Alacritty
     - [ ] mas
     - [ ] neovim
   - [ ] Apps
@@ -57,3 +50,17 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
     - [ ] Github Desktop
     - [ ] Sioyek
     - [ ] Osu
+- [ ] Portfolio Site
+    - [ ] CSS
+        - [ ] Layers
+        - [ ] Queries
+        - [ ] Custom Properties
+        - [ ] Clamp
+    - [ ] Deno
+        - [ ] JSX
+        - [ ] Markdown
+    - [ ] Deno Deploy
+    - [ ] Federated
+        - [ ] Comments
+        - [ ] Likes
+        - [ ] Feed

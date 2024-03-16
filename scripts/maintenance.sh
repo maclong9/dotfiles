@@ -3,7 +3,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     brew upgrade
     brew cleanup
     brew doctor
-elif [ "$(uname -s)" = "Linux" ]; then
-    xbps-install -Su
-    xbps-remove -R
+elif [ -d /etc/sv ]; then
+    xbps-install -Syu
+    xbps-remove -RyoO
 fi
