@@ -15,6 +15,18 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 
 ## Todo
 
+- [ ] Write a Zig Fetch Program
+- [ ] Take Screenshots of System
+    - [ ] NeoVim(install.sh) & Void Linux
+    - [ ] Toys
+        - [ ] Zig Fetch
+        - [ ] CMatrix
+        - [ ] CPipes
+        - [ ] CBonstai
+        - [ ] Mako Notification
+    - [ ] NeoVim(_app.tsx) & Portfolio
+    - [ ] Wallpaper & Swaybar
+    - [ ] NeoVim(main.tex) & Zathura(main.tex)
 - [ ] Write Documentation on Blog.
   - [ ] Configuration
     - [ ] Ansible
