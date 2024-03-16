@@ -32,7 +32,8 @@
 
   ignore_errors: true
 
-- name: Fetch Liga SFMono Nerd Font
-  ansible.builtin.get_url:
-    url: https://github.com/epk/SF-Mono-Nerd-Font/blob/master/SFMono%20Regular%20Nerd%20Font%20Complete.otf
-    dest: $HOME/Downloads/
+- name: Open Applications for Configuration
+  ansible.builtin.command: open -a '{{ item }}'
+  with_items:
+    - hyperkey
+    - swish
