@@ -139,7 +139,6 @@ mode " Screenshot" {
 # Bindings
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+b exec $browser
-bindsym $mod+Shift+n exec makoctl dismiss
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Alt+l exec $lock
