@@ -21,7 +21,7 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.cmd("set nowrap")
 
--- [[ Basic Keymaps ]]
+-- [[ Keymaps ]]
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
@@ -32,7 +32,7 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- [[ Basic Autocommands ]]
+-- [[ Autocommands ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- [[ Custom Statusline ]]
+-- [[ Statusline ]]
 local function lsp()
 	local count = {}
 	local levels = {
@@ -392,8 +392,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Highlight todo, notes, etc in comments
-	{
+	{ 	-- Highlight todo, notes, etc in comments
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -426,16 +425,29 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
+	{  -- Edit directories like a buffer
 		"stevearc/oil.nvim",
 		config = function()
 			require("oil").setup({ view_options = { show_hidden = true } })
 		end,
 		keys = { { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" } },
 	},
-	{ "echasnovski/mini.indentscope", opts = { options = { try_as_border = true }, symbol = "│" }, lazy = false },
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-	{
+	{  -- Highlight indent level
+	    "echasnovski/mini.indentscope", 
+	     opts = { 
+		options = { 
+		    try_as_border = true 
+		}, 
+	        symbol = "│"
+	      }, 
+	      lazy = false
+	},
+	{ -- Indent guides, including blanklines
+          "lukas-reineke/indent-blankline.nvim", 
+	   main = "ibl", 
+	   opts = {} 
+	},
+	{ -- WEB motions mork through camel case
 		"chrisgrieser/nvim-spider",
 		keys = {
 			{ "w", "<cmd>lua require('spider').motion('w')<cr>", mode = { "n", "o", "x" } },
@@ -443,7 +455,7 @@ require("lazy").setup({
 			{ "b", "<cmd>lua require('spider').motion('b')<cr>", mode = { "n", "o", "x" } },
 		},
 	},
-	{
+	{  -- Quick jump to specifiod charactec
 		"smoka7/hop.nvim",
 		keys = {
 			{ "<cr>", "<cmd>HopChar1<cr>", desc = "Hop to character" },

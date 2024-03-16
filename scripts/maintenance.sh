@@ -5,7 +5,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     brew upgrade
     brew cleanup
     brew doctor
-	osascript -e "display notification \"$complete_message\" with title \"$title\""
+    osascript -e "display notification \"$complete_message\" with title \"$title\""
 elif [ -d /etc/sv ]; then
     xbps-install -Syu
     xbps-remove -RyoO
