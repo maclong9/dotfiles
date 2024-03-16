@@ -386,8 +386,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Highlight todo, notes, etc in comments
-	{
+	{ 	-- Highlight todo, notes, etc in comments
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -420,16 +419,29 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
+	{  -- Edit directories like a buffer
 		"stevearc/oil.nvim",
 		config = function()
 			require("oil").setup({ view_options = { show_hidden = true } })
 		end,
 		keys = { { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" } },
 	},
-	{ "echasnovski/mini.indentscope", opts = { options = { try_as_border = true }, symbol = "│" }, lazy = false },
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-	{
+	{  -- Highlight indent level
+	    "echasnovski/mini.indentscope", 
+	     opts = { 
+		options = { 
+		    try_as_border = true 
+		}, 
+	        symbol = "│"
+	      }, 
+	      lazy = false
+	},
+	{ -- Indent guides, including blanklines
+          "lukas-reineke/indent-blankline.nvim", 
+	   main = "ibl", 
+	   opts = {} 
+	},
+	{ -- WEB motions mork through camel case
 		"chrisgrieser/nvim-spider",
 		keys = {
 			{ "w", "<cmd>lua require('spider').motion('w')<cr>", mode = { "n", "o", "x" } },
@@ -437,7 +449,7 @@ require("lazy").setup({
 			{ "b", "<cmd>lua require('spider').motion('b')<cr>", mode = { "n", "o", "x" } },
 		},
 	},
-	{
+	{  -- Quick jump to specifiod charactec
 		"smoka7/hop.nvim",
 		keys = {
 			{ "<cr>", "<cmd>HopChar1<cr>", desc = "Hop to character" },
