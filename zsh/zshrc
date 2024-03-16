@@ -15,7 +15,7 @@ if [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
     export XDG_RUNTIME_DIR=$RUN_DIR
-    sway
+    dbus-run-session -- sway
 elif [ -f /etc/arch-release ] && [ "$(tty)" = "/dev/tty1" ]; then
     # TODO:Add Hyprland setup for arch
     Hyprland

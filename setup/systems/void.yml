@@ -5,25 +5,21 @@
   with_items:
     - alacritty
     - apparmor
-    - brightnessctl
     - cronie
     - curl
     - dejavu-fonts-ttf
     - firefox
     - fzf
-    - gammastep
     - git
     - github-cli
-    - keyd
+    - grim
     - mako
     - mesa-dri
-    - neofetch
     - neovim
     - pipewire
     - seatd
+    - slurp
     - swayfx
-    - swayidle
-    - swaylock
     - tlp
     - unzip
     - wget
@@ -64,6 +60,13 @@
   ansible.builtin.file:
     src: /etc/sv/seatd
     dest: /var/service/seatd
+    state: link
+
+- name: Activate dbus Service
+  become: true
+  ansible.builtin.file:
+    src: /etc/sv/dbus
+    dest: /var/service/dbus
     state: link
 
 - name: Add User to `_seatd` Group

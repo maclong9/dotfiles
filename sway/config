@@ -7,7 +7,6 @@ set $right l
 set $term alacritty
 set $browser firefox
 set $wallpaper $(find /usr/share/backgrounds/sway/. -type f | shuf -n1)
-set $lock swaylock
 set $opacity 0.9
 
 # Effects
@@ -26,7 +25,6 @@ dim_inactive_colors.urgent #900000FF
 scratchpad_minimize disable
 
 # Startup
-exec mako && gammastep
 exec swayidle -w \
         timeout 300 '$lock' \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -45,7 +43,7 @@ set $focused #3c3836
 set $inactive #282828
 set $unfocused #282828
 set $urgent #7FA2AC
-set $darkTransparent #3c383644
+set $darkTransparent #3c3836ee
 set $urgentTransparent #7FA2AC44
 
 
@@ -58,19 +56,23 @@ client.urgent           $urgent     $urgent     $light  $urgent     $urgent
 ## Opacity
 for_window [class=".*"] opacity $opacity
 for_window [app_id=".*"] opacity $opacity
-
+    
 ## Bar
 bar {
-   modifier
-   position top
-   status_command while ~/.config/sway/bar.sh; do sleep 1; done
-   workspace_buttons no
-   colors {
-       statusline $light
-       background $darkTransparent
-       binding_mode $darkTransparent $urgentTransparent $light
-   }
+    mode hide
+    modifier Alt
+    position top
+    status_command while ~/.config/sway/bar.sh; do sleep 1; done
+    strip_workspace_numbers yes
+    colors {
+        statusline $light
+        background $darkTransparent
+        binding_mode $darkTransparent $urgentTransparent $light
+        focused_workspace $urgentTransparent $urgentTransparent $light
+    }
 }
+layer_effects 'panel' 'blur_enable; shadows enable; blur_ingore_transparent enable;
+
 
 # Interface
 ## Keyboard
@@ -186,14 +188,6 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
-
-## Media
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-
 
 ## Other
 bindsym $mod+r mode "󰩨 Resize"
