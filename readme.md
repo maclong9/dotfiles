@@ -15,6 +15,9 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 
 ## Todo
 
+- [ ] Portfolio
+- [ ] W2R
+- [ ] apply for jobs
 - [ ] Write a Zig Fetch Program
 - [ ] Take Screenshots of System
     - [ ] NeoVim(install.sh) & Void Linux
@@ -76,3 +79,4 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
         - [ ] Comments
         - [ ] Likes
         - [ ] Feed
+- [ ] iclouh preglamming todo
