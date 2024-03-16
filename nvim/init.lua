@@ -125,6 +125,13 @@ require("lazy").setup({
 	"tpope/vim-fugitive", -- Convenient Access to Git Commands
 	{ "numToStr/Comment.nvim", opts = {} }, -- "gc" to comment visual regions/lines
 
+	{ -- LaTeX Support
+	  "lervag/vimtex",
+	  init = function()
+		vim.g.vimtex_view_method = 'zathura'
+	  end
+	},
+
 	{ -- Shows pending keybinds
 		"folke/which-key.nvim",
 		event = "VimEnter",
@@ -274,7 +281,6 @@ require("lazy").setup({
 						},
 					},
 				},
-				texlab = {},
 			}
 
 			require("mason").setup()
