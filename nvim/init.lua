@@ -126,10 +126,10 @@ require("lazy").setup({
 	{ "numToStr/Comment.nvim", opts = {} }, -- "gc" to comment visual regions/lines
 
 	{ -- LaTeX Support
-	  "lervag/vimtex",
-	  init = function()
-		vim.g.vimtex_view_method = 'zathura'
-	  end
+		"lervag/vimtex",
+		init = function()
+			vim.g.vimtex_view_method = "zathura"
+		end,
 	},
 
 	{ -- Shows pending keybinds
@@ -392,7 +392,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{ 	-- Highlight todo, notes, etc in comments
+	{ -- Highlight todo, notes, etc in comments
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -425,27 +425,27 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{  -- Edit directories like a buffer
+	{ -- Edit directories like a buffer
 		"stevearc/oil.nvim",
 		config = function()
 			require("oil").setup({ view_options = { show_hidden = true } })
 		end,
 		keys = { { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" } },
 	},
-	{  -- Highlight indent level
-	    "echasnovski/mini.indentscope", 
-	     opts = { 
-		options = { 
-		    try_as_border = true 
-		}, 
-	        symbol = "│"
-	      }, 
-	      lazy = false
+	{ -- Highlight indent level
+		"echasnovski/mini.indentscope",
+		opts = {
+			options = {
+				try_as_border = true,
+			},
+			symbol = "│",
+		},
+		lazy = false,
 	},
 	{ -- Indent guides, including blanklines
-          "lukas-reineke/indent-blankline.nvim", 
-	   main = "ibl", 
-	   opts = {} 
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
 	},
 	{ -- WEB motions mork through camel case
 		"chrisgrieser/nvim-spider",
@@ -455,7 +455,7 @@ require("lazy").setup({
 			{ "b", "<cmd>lua require('spider').motion('b')<cr>", mode = { "n", "o", "x" } },
 		},
 	},
-	{  -- Quick jump to specifiod charactec
+	{ -- Quick jump to specifiod charactec
 		"smoka7/hop.nvim",
 		keys = {
 			{ "<cr>", "<cmd>HopChar1<cr>", desc = "Hop to character" },
