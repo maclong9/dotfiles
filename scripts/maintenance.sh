@@ -9,5 +9,5 @@ if [ "$(uname -s)" = "Darwin" ]; then
 elif [ -d /etc/sv ]; then
     xbps-install -Syu
     xbps-remove -RyoO
-	notify-send "Maintenance" "System maintenance complete"
+    notify-send $title $complete_message
 fi

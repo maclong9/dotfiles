@@ -5,6 +5,7 @@
   with_items:
     - alacritty
     - apparmor
+    - cargo
     - cronie
     - curl
     - dejavu-fonts-ttf
@@ -17,6 +18,7 @@
     - mesa-dri
     - neovim
     - pipewire
+    - rust
     - seatd
     - slurp
     - swayfx
@@ -25,6 +27,7 @@
     - wget
     - wl-clipboard
     - zathura
+    - zathura-pdf-mupdf
     - zig
     - zsh
   ignore_errors: true
