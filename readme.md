@@ -78,4 +78,4 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
         - [ ] Comments
         - [ ] Likes
         - [ ] Feed
-- [ ] iclouh preglamming todo
+- [ ] icloud programming todo
