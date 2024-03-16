@@ -24,6 +24,7 @@
     - unzip
     - wget
     - wl-clipboard
+    - zathura
     - zig
     - zsh
   ignore_errors: true
