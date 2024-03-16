@@ -11,7 +11,7 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 > [!NOTE] 
 > Before running you must install [Xcode CLI Tools](https://stackoverflow.com/a/9329325) on macOS and `curl` on Void.
 > 
-> If on a Linux Distribution other than void, please alter the package manager, package names and system name in their respective locations.
+> If on an unsupported os, please add to or change `sripts/install.sh`, `initialise.yml` and `setup/systems/*.yml` to cefrect the operating sytem you've chosen.
 
 ## Todo
 
