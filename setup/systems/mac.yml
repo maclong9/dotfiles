@@ -4,6 +4,8 @@
   with_items: 
     - mas
     - neovim
+    - koekeishiya/formulae/skhd
+    - koekeishiya/formulae/yabai
   
 - name: Install Cask Apps 
   community.general.homebrew_cask:
