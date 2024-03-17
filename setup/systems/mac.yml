@@ -9,14 +9,11 @@
   community.general.homebrew_cask:
     name: '{{ item }}'
   with_items: 
+    - alacritty
     - element
     - hyperkey
-    - iterm2
     - orbstack
     - osu
-    - sioyek
-    - swish
-    - utm
           
 - name: Install App Store Apps
   community.general.mas:
@@ -34,6 +31,6 @@
 
 - name: Open Applications for Configuration
   ansible.builtin.command: open -a '{{ item }}'
-  with_items:
+  with_items:    
+    - element
     - hyperkey
-    - swish
