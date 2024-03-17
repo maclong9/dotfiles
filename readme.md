@@ -60,11 +60,11 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
     - [ ] mas
     - [ ] neovim
   - [ ] Apps
-    - [ ] Swish
+    - [ ] ~~yabai~~ ~~swish~~ yabai
     - [ ] orbstack
     - [ ] Hyperkey
     - [ ] Github Desktop
-    - [ ] Sioyek
+    - [ ] Zathura
     - [ ] Osu
 - [ ] Portfolio Site
     - [ ] CSS
