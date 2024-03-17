@@ -19,8 +19,6 @@ install_ansible() {
         brew install ansible
     elif [ -d "/etc/runit/runsvdir" ]; then
         sudo xbps-install -Syu ansible git
-    elif [ -f /etc/arch-release ]; then
-        sudo pacman -Syu ansible git --noconfirm
     else
         handle_error "Unsupported system"
     fi
