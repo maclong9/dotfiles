@@ -14,9 +14,5 @@
       include_tasks: ./systems/void.yml
       when: system == 'Void'
 
-    - name: Setup Arch Linux
-      include_tasks: ./systems/arch.yml
-      when: system == 'Arch'
-
     - name: Universal Setup
       include_tasks: ./systems/universal.yml
