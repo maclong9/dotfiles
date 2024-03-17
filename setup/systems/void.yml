@@ -5,7 +5,6 @@
   with_items:
     - alacritty
     - apparmor
-    - cargo
     - cronie
     - curl
     - dejavu-fonts-ttf
@@ -18,7 +17,6 @@
     - mesa-dri
     - neovim
     - pipewire
-    - rust
     - seatd
     - slurp
     - swayfx
@@ -30,7 +28,6 @@
     - zathura-pdf-mupdf
     - zig
     - zsh
-  ignore_errors: true
 
 - name: Configure App Armor
   become: true
@@ -45,55 +42,19 @@
   ansible.builtin.shell: update-grub
   ignore_errors: true
 
-- name: Activate tlp Service
+- name: Activate Services
   become: true
   ansible.builtin.file:
-    src: /etc/sv/tlp
-    dest: /var/service/tlp
-    state: link
+    src: "/etc/sv/{{ item }}"
+    dest: "/var/service/{{ item }}"
+  with_items:
+    - cronie
+    - dbus
+    - seatd
+    - tlp
 
-- name: Activate keyd Service
-  become: true
-  ansible.builtin.file:
-    src: /etc/sv/keyd
-    dest: /var/service/tlp
-    state: link
-
-- name: Activate seatd Service
-  become: true
-  ansible.builtin.file:
-    src: /etc/sv/seatd
-    dest: /var/service/seatd
-    state: link
-
-- name: Activate dbus Service
-  become: true
-  ansible.builtin.file:
-    src: /etc/sv/dbus
-    dest: /var/service/dbus
-    state: link
-
-- name: Add User to `_seatd` Group
-    user:
-      name: mac
-      groups: _seatd
-      append: yes
-
-- name: Activate cronie Service
-  become: true
-  ansible.builtin.file:
-    src: /etc/sv/cronie
-    dest: /var/service/cronie
-    state: link
-
-- name: Ensure Font Directory Exists
-  become: true
-  file:
-    path: /usr/local/share/fonts
-    state: directory
-
-- name: Fetch SFMono Nerd Font
-  become: true
-  get_url:
-    url: https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized/blob/main/LigaSFMonoNerdFont-Regular.otf
-    dest: /usr/local/share/fonts/SFMono-Nerd-Font-Ligaturized.otf
+- name: Add User to seatd Group
+  user:
+    name: mac
+    groups: _seatd
+    append: yes

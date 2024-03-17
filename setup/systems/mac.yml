@@ -44,7 +44,7 @@
     path: $(brew --prefix zathura)/lib/zathura
     state: directory
 
-- name: Link Zatduca Plugin
+- name: Link Zathura Plugin
   ansible.builtin.file:
     path: $(brew --prefix zathura-pdf-mupdf)/libpdf-mupdf.dylib 
     dest: $(brew --prefix zathura)/lib/zathura/libpdf-mupdf.dylib

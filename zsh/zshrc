@@ -6,19 +6,33 @@ setopt autocd
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
 
-if [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
+update_theme() {
+    echo "Updating"
+    if [ -n "$1" ]; then
+        if ! grep -q "$1" "$HOME/.config/alacritty/alacritty.toml"; then
+            sed -i "s/everforest\|gruv\|oxo/$1/g" "$HOME/.config/alacritty/alacritty.toml"
+        fi
+    fi
+}
+
+if [ $(uname) = "Darwin" ]; then
+    update_theme "oxo"
+elif [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
     RUN_DIR=/run/user/$(id -u)
     sudo mkdir -p $RUN_DIR
     sudo chown mac $RUN_DIR
+
     export MOZ_ENABLE_WAYLAND=1
     export MOZ_WEBRENDER=1
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
     export XDG_RUNTIME_DIR=$RUN_DIR
-    dbus-run-session -- sway
-elif [ -f /etc/arch-release ] && [ "$(tty)" = "/dev/tty1" ]; then
-    # TODO:Add Hyprland setup for arch
-    Hyprland
+
+    update_theme "gruv"
+
+     dbus-run-session -- sway
+elif [ "$(uname)" = "OpenBSD" ]; then
+    update_theme "everforest"
 fi
 
 alias g="git"
