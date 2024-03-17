@@ -15,6 +15,7 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 
 ## Todo
 
+- [ ] Tailor Apple News
 - [ ] Clean NeoVim Configuration
 - [ ] Portfolio
 - [ ] W2R
