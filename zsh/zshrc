@@ -7,7 +7,6 @@ PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 %F{%(?.blue.red)}%B󰘧%b%f "
 
 update_theme() {
-    echo "Updating"
     if [ -n "$1" ]; then
         if ! grep -q "$1" "$HOME/.config/alacritty/alacritty.toml"; then
             sed -i "s/everforest\|gruv\|oxo/$1/g" "$HOME/.config/alacritty/alacritty.toml"
