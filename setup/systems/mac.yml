@@ -6,6 +6,8 @@
     - neovim
     - koekeishiya/formulae/skhd
     - koekeishiya/formulae/yabai
+    - zegervdv/zathura/zathura
+    - zegervdv/zathur/zathura-pdf-mupdf
   
 - name: Install Cask Apps 
   community.general.homebrew_cask:
@@ -36,3 +38,14 @@
   with_items:    
     - element
     - hyperkey
+
+- name: Create Directory for Zathura
+  ansible.builtin.file: 
+    path: $(brew --prefix zathura)/lib/zathura
+    state: directory
+
+- name: Link Zatduca Plugin
+  ansible.builtin.file:
+    path: $(brew --prefix zathura-pdf-mupdf)/libpdf-mupdf.dylib 
+    dest: $(brew --prefix zathura)/lib/zathura/libpdf-mupdf.dylib
+    state: link
