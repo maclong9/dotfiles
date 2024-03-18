@@ -24,6 +24,7 @@
     - unzip
     - wget
     - wl-clipboard
+    - wluma
     - zathura
     - zathura-pdf-mupdf
     - zig
