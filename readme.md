@@ -84,9 +84,9 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 
 ## Screenshots
 
-![ps_20240319143416](https://github.com/maclong9/dotfiles/assets/115668288/58b825c9-a998-4340-8e26-3d4d7dce775f)
-![ps_20240319143412](https://github.com/maclong9/dotfiles/assets/115668288/a4e60672-55b9-4076-9adc-77a139f69240)
 ![ps_20240319143337](https://github.com/maclong9/dotfiles/assets/115668288/bfdc88fc-9049-481c-8e25-7fc35a282091)
+![ps_20240319143412](https://github.com/maclong9/dotfiles/assets/115668288/a4e60672-55b9-4076-9adc-77a139f69240)
+![ps_20240319143416](https://github.com/maclong9/dotfiles/assets/115668288/58b825c9-a998-4340-8e26-3d4d7dce775f)
 ![ps_20240319143514](https://github.com/maclong9/dotfiles/assets/115668288/521f1d66-b296-4602-af42-c6d6cfa34eb3)
 ![ps_20240319143441](https://github.com/maclong9/dotfiles/assets/115668288/5d93c48f-3d51-4b58-98fe-300f37ffdb71)
 ![ps_20240319143638](https://github.com/maclong9/dotfiles/assets/115668288/f3295584-1391-4671-8e31-beda13d7bbdf)
