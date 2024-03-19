@@ -1,6 +1,8 @@
 *.swp
 .DS_Store
 dconf
+glib-2.0
+gtk-3.0
 gh
 iterm2
 nohup.opt

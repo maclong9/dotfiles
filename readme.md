@@ -17,8 +17,8 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 
 - [ ] Tailor Apple News
 - [x] Clean NeoVim Configuration
-- [ ] [Containerise Portfolio](https://github.com/denoland/deno_docker?tab=readme-ov-file#as-a-dockerfile)
-- [ ] Portfolio
+- [x] [Containerise Portfolio](https://github.com/denoland/deno_docker?tab=readme-ov-file#as-a-dockerfile)
+- [~] Portfolio
 - [ ] W2R
 - [ ] apply for jobs
 - [ ] Take Screenshots of System

@@ -30,17 +30,5 @@ exec swayidle -w \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
         before-sleep '$lock'
 
-workspace 1
-exec alacritty && firefox && sleep 5
-
-workspace 2
-exec alacritty --working-directory=$DOCS_DIR && firefox && sleep 5
-
-workspace 3
-exec alacritty -e nvim $MATHS_DIR/main.tex && zathura $MATHS_DIR/main.pdf && sleep 5
-
-workspace 4
-exec element-desktop
-
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 include './config.d/*.conf'
