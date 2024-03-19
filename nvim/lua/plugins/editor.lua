@@ -86,13 +86,10 @@ return {
 	{ -- Edit directories like a buffer
 		"stevearc/oil.nvim",
 		lazy = false,
-		config = function()
-			local oil = require("oil")
-			oil.setup({
-				view_options = { show_hidden = true },
-				default_file_explorer = true,
-			})
-		end,
+		opts = {
+			view_options = { show_hidden = true },
+			default_file_explorer = true,
+		},
 	},
 
 	{ -- Highlight indent level

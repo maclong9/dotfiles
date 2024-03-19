@@ -20,7 +20,6 @@ curl -Sls https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/insta
 - [ ] Portfolio
 - [ ] W2R
 - [ ] apply for jobs
-- [ ] Write a Zig Fetch Program
 - [ ] Take Screenshots of System
     - [ ] NeoVim(install.sh) & Void Linux
     - [ ] Toys

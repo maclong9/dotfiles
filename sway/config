@@ -6,8 +6,11 @@ set $up k
 set $right l
 set $term alacritty
 set $browser firefox
+set $chat element-desktop
 set $wallpaper $(find /usr/share/backgrounds/sway/. -type f | shuf -n1)
 set $opacity 0.9
+set $DOCS_DIR $HOME/Documents
+set $MATHS_DIR $DOCS_DIR/mathematics
 set $lock swaylock \
     --key-hl-color fb4934ff \
     --ring-color b8bb26ff \
@@ -20,13 +23,24 @@ set $lock swaylock \
     --image /usr/share/backgrounds/sway/gruvbox_girl.png \
     --font Liga SFMono Nerd Font 11
 
-
 # Startup
 exec mako
 exec swayidle -w \
         timeout 300 '$lock' \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
         before-sleep '$lock'
+
+workspace 1
+exec alacritty && firefox && sleep 5
+
+workspace 2
+exec alacritty --working-directory=$DOCS_DIR && firefox && sleep 5
+
+workspace 3
+exec alacritty -e nvim $MATHS_DIR/main.tex && zathura $MATHS_DIR/main.pdf && sleep 5
+
+workspace 4
+exec element-desktop
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 include './config.d/*.conf'

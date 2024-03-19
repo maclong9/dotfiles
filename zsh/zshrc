@@ -29,7 +29,7 @@ elif [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
 
     update_theme "gruv"
 
-     dbus-run-session -- sway
+    dbus-run-session -- sway
 elif [ "$(uname)" = "OpenBSD" ]; then
     update_theme "everforest"
 fi
