@@ -116,7 +116,7 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				typescript = { { "deno" } },
+				typescript = { "deno" },
 			},
 		},
 	},
