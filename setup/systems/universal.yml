@@ -6,11 +6,14 @@
         name: mac
         shell: /bin/zsh
 
-    - name: Symbolically Link ZSH Configuration
+    - name: Link Configuration Files
       file:
-        src: $HOME/.config/zsh/zshrc
-        dest: $HOME/.zshrc
+        src: '~/.config/{{ item }}'
+        dest: '~/.{{ item }}'
         state: link
+      with_items:
+        - vimrc
+        - zshrc
 
     - name: Set Git global user name and email
       community.general.git_config:
