@@ -4,7 +4,6 @@ YELLOW='\033[1;33m'
 BLUE='\033[1;34m'
 NC='\033[0m' # No Color
 
-# Function to print yellow box
 print_yellow_box() {
     local width=${#1}
     local line=$(printf "%-${width}s" " ")
@@ -59,10 +58,8 @@ echo -e "${BLUE}cpu ${NC}- $cpu"
 echo -e "${BLUE}mem ${NC}- $mem_used/$mem_total"
 echo -e "${BLUE}kern ${NC}- $(uname -r)"
 echo -e "${BLUE}pkgs ${NC}- $pkgs ($pkg_mgr)"
-echo ""
 
 # Print color boxes
 for color in "${colors[@]}"; do
-    printf "\033[0;${color}m██\033[0m"
+    printf "\n\033[0;${color}m██\033[0m"
 done
-printf "\n"
