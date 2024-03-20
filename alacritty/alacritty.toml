@@ -1,9 +1,0 @@
-import = [ "~/.config/alacritty/gruv.toml" ]
-
-[font]
-normal = { family = "Liga SFMono Nerd Font" }
-size = 11 
-
-[window]
-padding = { x = 5, y = 5 }
-dynamic_padding = true
