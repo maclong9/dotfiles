@@ -77,12 +77,6 @@ link_configuration() {
    success_message "Configuration linked"
 }
 
-setup_cron() {
-  info_message "Scheduling routine jobs..."
-  printf "0 12 * * 1 %s/.config/scripts/setup.sh" "$HOME" | crontab -
-  success_message "Jobs scheduled"
-}
-
 info_message "Initialising System"
 os_check || handle_error "Failed to check which operating system is running"
 install_xcli || handle_error "Failed to install Xcode Developer Tools"
