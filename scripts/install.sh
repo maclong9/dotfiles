@@ -59,9 +59,9 @@ link_configuration() {
 }
 
 setup_cron() {
-  info_message "Setting up routine cronjob's"
+  info_message "Scheduling routine jobs"
   echo "0 12 * * 1 $HOME/.config/scripts/maintenance.sh" | crontab -
-  success_message "Cron tasks setup"
+  success_message "Jobs scheduled"
 }
 
 install_homebrew || handle_error "Failed to install Homebrew"
