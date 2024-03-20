@@ -69,7 +69,7 @@ nmap <leader>fC :Commits<cr>
 function! SmartTab()
     if pumvisible() == 1
         return "\<C-n>"
-    elseif &filetype == 'html' || &filetype == 'css'
+    elseif &filetype == 'html' || &filetype == 'css' || &filetype == 'tsx'
         return "\<C-y>"
     else
         return "\<Tab>"
