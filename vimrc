@@ -45,11 +45,14 @@ endfor
 " Keys
 let g:mapleader = ' '
 
+"" General
+nmap <leader>e :Explore<cr>
+
 "" Pane Navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
 "" Fuzzy Finding
 nmap <leader>ff :Files<cr>
