@@ -22,13 +22,13 @@ call plug#end()
 " Options
 syntax on
 let g:mapleader = " "
-
+set background=dark
 set tabstop=2
 set shiftwidth=2
 set background=dark
 set scrolloff=0
 set mouse=a
-set nowrap
+colorscheme base16-oxocarbon-dark
 
 for option in [
     \ 'nocompatible',
@@ -40,6 +40,8 @@ for option in [
     \ 'smartcase',
     \ 'linebreak',
     \ 'expandtab',
+    \ 'nowrap',
+    \ 'termguicolors',
 \ ]
   execute 'set '.option
 endfor
