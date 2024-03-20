@@ -52,9 +52,9 @@ install_tools() {
 
 link_configuration() {
    info_message "Linking configuration files..."
-   ln -s "$HOME/.config/gitconfig" "$HOME/.gitconfig"
-   ln -s "$HOME/.config/vimrc" "$HOME/.vimrc"
-   ln -s "$HOME/.config/zshrc" "$HOME/.zshrc"
+   for file in gitconfig vimrc zshrc; do
+     ln -s "$HOME/.config/$file" "$HOME/.$file"
+   done
    success_message "Configuration linked"
 }
 
