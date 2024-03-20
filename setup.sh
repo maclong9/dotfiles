@@ -3,7 +3,7 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
-HOMEBREW_EVAL="/opt/homebrew/bin/brew shellenv"
+HOMEBREW_PATH="/opt/homebrew/bin/brew"
 
 handle_error() {
   printf "%sAn error occurred: %s%s\n" "$RED" "$1" "$NO_COLOR"
@@ -20,7 +20,7 @@ info_message() {
 
 os_check() {
   if [ "$(uname)" != "Darwin" ]; then
-    HOMEBREW_EVAL="/home/linuxbrew/.linuxbrew/bin/brew shellenv"
+    HOMEBREW_PATH="/home/linuxbrew/.linuxbrew/bin/brew"
   fi
 }
 
@@ -37,8 +37,8 @@ install_homebrew() {
   info_message "Installing Homebrew..."
   if ! command -v brew > /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    printf "eval \"\$($HOMEBREW_EVAL)\"" >> "$HOME/.zprofile"
-    eval "$($HOMEBREW_EVAL)"
+    printf "eval \"\$($HOMEBREW_PATH shellenv)\"" >> "$HOME/.zprofile"
+    eval "$($HOMEBREW_PATH shellenv)"
   fi
   success_message "Homebrew installed"
 }
