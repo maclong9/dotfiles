@@ -12,28 +12,32 @@ install_homebrew() {
   fi
 }
 
-install_ansible() {
-  if ! command -v ansible > /dev/null; then
-    if [ "$(uname)" = "Darwin" ]; then
-        install_homebrew || handle_error "Failed to install Homebrew."
-        brew install ansible
-    elif [ -d "/etc/runit/runsvdir" ]; then
-        sudo xbps-install -Syu ansible git
-    else
-        handle_error "Unsupported system"
-    fi
-  fi
-}
-
 clone_configuration() {
   if [ -d "$HOME/.config" ]; then
-    echo "Configuration folder already exists."
+    handle_error "~/.config already exists"
   else
     git clone https://github.com/maclong9/dotfiles "$HOME/.config"
   fi
 }
 
-install_ansible || handle_error "Failed to install Ansible."
+install_tools() {
+  brew install deno mas
+  brew install --cask element hyperkey orbstack osu texifier
+  mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
+  # ^ Compressor, Final Cut Pro, Logic Pro, MainStage, Motion, Xcode, Pixelmator Pro
+  open -a element hyperkey 
+}
+
+link_configuration() {
+   ln -s "$HOME/.config/gitconfig" "$HOME/.gitconfig"
+   ln -s "$HOME/.config/vimrc" "$HOME/.vimrc"
+   ln -s "$HOME/.config/zshrc" "$HOME/.zshrc"
+}
+
+setup_cron() {
+
+}
+
+install_homebrew || handle_error "Failed to install Homebrew"
 clone_configuration || handle_error "Failed to clone configuration."
-ansible-playbook "$HOME/.config/setup/initialise.yml" --ask-become-pass || handle_error "Failed to execute playbook."
 exit 0
