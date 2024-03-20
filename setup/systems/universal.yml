@@ -8,8 +8,8 @@
 
     - name: Link Configuration Files
       file:
-        src: '~/.config/{{ item }}'
-        dest: '~/.{{ item }}'
+        src: "~/.config/{{ item }}"
+        dest: "~/.{{ item }}"
         state: link
       with_items:
         - vimrc
