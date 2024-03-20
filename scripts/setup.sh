@@ -23,7 +23,7 @@ info_message() {
 
 install_xcli() {
   if [ "$ON_DARWIN" ]; then
-    info_message "Installing Xcode command line tools..."
+    info_message "Installing Xcode Developer Tools..."
     xcode-select --install
     sleep 5
     success_message "Xcode Developer Tools installed"
