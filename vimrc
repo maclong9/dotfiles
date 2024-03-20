@@ -48,6 +48,15 @@ for option in [
 endfor
 
 " Keymaps
+"" Pane Navigation
+nnoremap <Leader>v :vsp<CR>
+nnoremap <Leader>h :sp<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"" Fuzzy Finding
 nmap <leader>ff :Files<cr>
 nmap <leader>fb :Buffers<cr>
 nmap <leader>fw :Rg<cr>
