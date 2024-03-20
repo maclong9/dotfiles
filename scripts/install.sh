@@ -42,12 +42,17 @@ clone_configuration() {
 
 install_tools() {
   info_message "Installing tools..."
-  brew install deno mas
+  brew install deno mas  
+  open -a element hyperkey 
+  success_message "Tooling installed"
+}
+
+install_apps() {
+  info_message "Installinf applications..."
   brew install --cask element hyperkey orbstack osu texifier
   mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
   # ^ Compressor, Final Cut Pro, Logic Pro, MainStage, Motion, Xcode, Pixelmator Pro
-  open -a element hyperkey 
-  success_message "Tooling installed"
+  success_message "Applications installed"
 }
 
 link_configuration() {
@@ -64,8 +69,16 @@ setup_cron() {
   success_message "Jobs scheduled"
 }
 
-install_homebrew || handle_error "Failed to install Homebrew"
-clone_configuration || handle_error "Failed to clone configuration"
-install_tools || handle_error "Failed to install tools"
-link_configuration || handle_error "Failed while linking configuration files"
-setup_cron || handle_error "Failed to setup cronjob's"
+main()
+  install_homebrew || handle_error "Failed to install Homebrew"
+  clone_configuration || handle_error "Failed to clone configuration"
+  install_tools || handle_error "Failed to install tools"
+  link_configuration || handle_error "Failed while linking configuration files"
+  setup_cron || handle_error "Failed to setup cronjob's"
+
+  if [ "$(uname)" = "Darwin" ]; then
+    install_apps || handle_error "Error installing applications"
+  fi
+}
+
+main
