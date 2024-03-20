@@ -9,7 +9,6 @@
   community.general.homebrew_cask:
     name: '{{ item }}'
   with_items: 
-    - alacritty
     - element
     - hyperkey
     - orbstack
@@ -33,9 +32,3 @@
   with_items:    
     - element
     - hyperkey
-
-- name: Symlink Vim Configuration
-  ansible.builtin.file:
-    src: ~/.config/vimrc
-    dest: ~/.vimrc
-    state: link
