@@ -80,28 +80,12 @@ setup_cron() {
   success_message "Jobs scheduled"
 }
 
-run_maintenance() {
-  info_message "Running maintenance tasks"
-  brew update
-  brew upgrade
-  brew cleanup
-  success_message "Maintenance complete"
-}
-
-main() {
-  if [ "$1" = "initialise" ]; then
-    info_message "Initialising System"
-    install_xcli || handle_error "Failed to install Xcode Developer Tools"
-    install_homebrew || handle_error "Failed to install Homebrew"
-    clone_configuration || handle_error "Failed to clone configuration"
-    install_tools || handle_error "Failed to install tools"
-    install_apps || handle_error "Error installing applications"
-    link_configuration || handle_error "Failed while linking configuration files"
-    setup_cron || handle_error "Failed to setup cronjob's"
-    success_message "System Initialisation Complete, Enjoy."
-  else
-    run_maintenance || error_message "Failed to perform maintenance tasks"
-  fi
-}
-
-main "$1"
+info_message "Initialising System"
+install_xcli || handle_error "Failed to install Xcode Developer Tools"
+install_homebrew || handle_error "Failed to install Homebrew"
+clone_configuration || handle_error "Failed to clone configuration"
+install_tools || handle_error "Failed to install tools"
+install_apps || handle_error "Error installing applications"
+link_configuration || handle_error "Failed while linking configuration files"
+setup_cron || handle_error "Failed to setup cronjob's"
+success_message "System Initialisation Complete, Enjoy."
