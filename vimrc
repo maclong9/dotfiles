@@ -66,9 +66,6 @@ nmap <leader>fk :Maps<cr>
 nmap <leader>fC :Commits<cr>
 
 "" Emmet
-inoremap <Tab> <C-R>=SmartTab()<CR>
-
-"" Expand Emmet abbreviations with Tab
 function! SmartTab()
     if pumvisible() == 1
         return "\<C-n>"
@@ -78,3 +75,5 @@ function! SmartTab()
         return "\<Tab>"
     endif
 endfunction
+
+inoremap <Tab> <C-R>=SmartTab()<CR>
