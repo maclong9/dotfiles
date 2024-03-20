@@ -24,7 +24,7 @@ install_homebrew() {
   info_message "Installing Homebrew..."
   if ! command -v brew > /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    printf "eval \"\$(/opt/homebrew/bin/brew shellenv)\"\n" >> /Users/mac/.zprofile
+    printf "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >> /Users/mac/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
   success_message "Homebrew installed"
@@ -60,7 +60,7 @@ link_configuration() {
 
 setup_cron() {
   info_message "Scheduling routine jobs"
-  echo "0 12 * * 1 $HOME/.config/scripts/maintenance.sh" | crontab -
+  printf "0 12 * * 1 %s/.config/scripts/maintenance.sh" "$HOME" | crontab -
   success_message "Jobs scheduled"
 }
 
