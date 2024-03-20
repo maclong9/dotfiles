@@ -17,6 +17,7 @@ call plug#begin()
   Plug 'mattn/emmet-vim'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
+  Plug 'tinted-theming/base16-vim'
 call plug#end()
 
 " Options
