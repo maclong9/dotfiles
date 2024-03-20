@@ -60,7 +60,7 @@ clone_configuration() {
 
 install_tools() {
   info_message "Installing tools..."
-  brew install deno ripgrep
+  brew install deno ripgrep zoxide
   success_message "Tooling installed"
 }
 

@@ -26,6 +26,7 @@ set shiftwidth=2
 set scrolloff=0
 set mouse=a
 
+" Set Boolean Options to True
 for option in [
     \ 'nocompatible',
     \ 'relativenumber',
