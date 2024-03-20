@@ -24,7 +24,6 @@ call plug#end()
 syntax on
 set tabstop=2
 set shiftwidth=2
-set background=dark
 set scrolloff=0
 set mouse=a
 set background=dark
