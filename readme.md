@@ -5,7 +5,7 @@ Configuration for unix-y environemts.
 ## Usage
 
 ```sh
-curl https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/install.sh | sh
+curl https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/setup.sh | sh
 ```
 
 > [!IMPORTANT] 
@@ -14,4 +14,4 @@ curl https://raw.githubusercontent.com/maclong9/dotfiles/main/scripts/install.sh
 **Mac App Store IDs**: `Compressor, Final Cut Pro, Logic Pro, MainStage, Motion, Xcode, Pixelmator Pro`
 
 > [!NOTE] 
-> IDs are in the order they appear in `scripts/install.sh`
+> IDs are in the order they appear in `scripts/setup.sh`
