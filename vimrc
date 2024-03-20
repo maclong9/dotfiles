@@ -22,7 +22,6 @@ call plug#end()
 
 " Options
 syntax on
-let g:mapleader = ' '
 set tabstop=2
 set shiftwidth=2
 set background=dark
@@ -47,7 +46,9 @@ for option in [
   execute 'set '.option
 endfor
 
-" Keymaps
+" Keys
+let g:mapleader = ' '
+
 "" Pane Navigation
 nnoremap | :vsp<CR>
 nnoremap \ :sp<CR>
