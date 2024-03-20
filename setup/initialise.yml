@@ -10,9 +10,5 @@
       include_tasks: ./systems/mac.yml
       when: system == 'Darwin'
 
-    - name: Setup Void Linux
-      include_tasks: ./systems/void.yml
-      when: system == 'Void'
-
     - name: Universal Setup
       include_tasks: ./systems/universal.yml
