@@ -33,21 +33,7 @@ clone_configuration() {
   fi
 }
 
-run_playbook() {
-  case "$1" in
-    "prepare")
-      ansible-playbook "$HOME/.config/setup/prepare.yml" --ask-become-pass
-      ;;
-    "initialise")
-      ansible-playbook "$HOME/.config/setup/initialise.yml" --ask-become-pass
-      ;;
-    *)
-      handle_error "Invalid playbook specified: $1"
-      ;;
-  esac
-}
-
 install_ansible || handle_error "Failed to install Ansible."
 clone_configuration || handle_error "Failed to clone configuration."
-run_playbook "$1" || handle_error "Failed to execute $1 playbook."
+ansible-playbook "$HOME/.config/setup/initialise.yml" --ask-become-pass || handle_error "Failed to execute playbook."
 exit 0
