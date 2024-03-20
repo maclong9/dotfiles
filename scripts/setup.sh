@@ -20,6 +20,15 @@ info_message() {
   printf "%s%s %s%s\n" "$BLUE" "$INFO" "$1" "$NO_COLOR"
 }
 
+install_xcli() {
+  if [ "$(uname)" = "Darwin" ]; then
+    info_message "Installing Xcode command line tools..."
+    xcode-select --install
+    sleep 5
+    succes_message "Xcodu Developer Tools installed"
+  fi
+}
+
 install_homebrew() {
   info_message "Installing Homebrew..."
   if ! command -v brew > /dev/null; then
@@ -47,11 +56,13 @@ install_tools() {
 }
 
 install_apps() {
-  info_message "Installinf applications..."
-  brew install mas
-  brew install --cask element hyperkey orbstack osu texifier
-  mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
-  success_message "Applications installed"
+  if [ "$(uname)" = "Darwin" ]; then
+    info_message "Installinf applications..."
+    brew install mas
+    brew install --cask element hyperkey orbstack osu texifier
+    mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
+    success_message "Applications installed"
+  fi
 }
 
 link_configuration() {
@@ -68,16 +79,10 @@ setup_cron() {
   success_message "Jobs scheduled"
 }
 
-main()
-  install_homebrew || handle_error "Failed to install Homebrew"
-  clone_configuration || handle_error "Failed to clone configuration"
-  install_tools || handle_error "Failed to install tools"
-  link_configuration || handle_error "Failed while linking configuration files"
-  setup_cron || handle_error "Failed to setup cronjob's"
-
-  if [ "$(uname)" = "Darwin" ]; then
-    install_apps || handle_error "Error installing applications"
-  fi
-}
-
-main
+install_xcli || handle_error "Failed to install Xcode Developer Tools"
+install_homebrew || handle_error "Failed to install Homebrew"
+clone_configuration || handle_error "Failed to clone configuration"
+install_tools || handle_error "Failed to install tools"
+install_apps || handle_error "Error installing applications"
+link_configuration || handle_error "Failed while linking configuration files"
+setup_cron || handle_error "Failed to setup cronjob's"
