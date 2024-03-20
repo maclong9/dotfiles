@@ -22,7 +22,7 @@ call plug#end()
 
 " Options
 syntax on
-let g:mapleader = " "
+let g:mapleader = ' '
 set tabstop=2
 set shiftwidth=2
 set background=dark
@@ -68,11 +68,11 @@ nmap <leader>fC :Commits<cr>
 "" Emmet
 function! SmartTab()
     if pumvisible() == 1
-        return "\<C-n>"
+        return '\<C-n>'
     elseif &filetype == 'html' || &filetype == 'css' || &filetype == 'tsx'
-        return "\<C-y>"
+        return '\<C-y>'
     else
-        return "\<Tab>"
+        return '\<Tab>'
     endif
 endfunction
 
