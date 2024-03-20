@@ -14,36 +14,11 @@
       with_items:
         - vimrc
         - zshrc
-
-    - name: Set Git global user name and email
-      community.general.git_config:
-        name: "{{ item.name }}"
-        scope: global
-        value: "{{ item.value }}"
-      loop:
-        - { name: "user.name",  value: "Mac" }
-        - { name: "user.email", value: "maclong9@icloud.com" }
-      
-    - name: Set up Git aliases
-      community.general.git_config:
-        name: "{{ item.name }}"
-        scope: global
-        value: "{{ item.command }}"
-      with_items:
-        - { name: "alias.c",   command: "commit -m" }
-        - { name: "alias.p",   command: "push" }
-        - { name: "alias.s",   command: "status" }
-        - { name: "alias.l",   command: "log --oneline --decorate --graph" }
-        - { name: "alias.a",    command: "add" }
-        - { name: "alias.aa",   command: "add ." }
-        - { name: "alias.ac",   command: "!f() { git add . && git commit -m\"$1\"; }; f" }
-        - { name: "alias.pl",   command: "pull" }
-        - { name: "alias.plnr", command: "pull --no-rebase" }
-
+        
     - name: Add cron job for maintenance script
       ansible.builtin.cron:
         name: Run maintenance script
         weekday: "1" 
         hour: "12" 
         minute: "0"
-        job: "{{ ansible_env.HOME }}/.config/scripts/maintenance.sh"
+        job: "~/.config/scripts/maintenance.sh"
