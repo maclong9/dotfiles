@@ -41,7 +41,7 @@ install_homebrew() {
 }
 
 clone_configuration() {
-  info_message "Cloning configuration"
+  info_message "Cloning configuration..."
   if [ -d "$HOME/.config" ]; then
     info_message "$HOME/.config already exists"
   else
@@ -75,7 +75,7 @@ link_configuration() {
 }
 
 setup_cron() {
-  info_message "Scheduling routine jobs"
+  info_message "Scheduling routine jobs..."
   printf "0 12 * * 1 %s/.config/scripts/maintenance.sh" "$HOME" | crontab -
   success_message "Jobs scheduled"
 }
