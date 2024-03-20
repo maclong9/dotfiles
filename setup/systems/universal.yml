@@ -42,4 +42,5 @@
         name: Run maintenance script
         weekday: "1" 
         hour: "12" 
+        minute: "0"
         job: "{{ ansible_env.HOME }}/.config/scripts/maintenance.sh"
