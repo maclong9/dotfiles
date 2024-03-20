@@ -1,7 +1,5 @@
 # Dotfiles
 
-Configuration for unix-y environemts.
-
 ## Usage
 
 ```sh
