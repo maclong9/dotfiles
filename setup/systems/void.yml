@@ -31,13 +31,6 @@
     - zig
     - zsh
 
-- name: Install Cargo Packages
-  community.general.cargo:
-    name: '{{ item }}'
-    state: present
-  with_items:
-    - deno
-
 - name: Configure App Armor
   become: true
   ansible.builtin.lineinfile:
