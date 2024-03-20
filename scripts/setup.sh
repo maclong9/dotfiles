@@ -32,7 +32,7 @@ install_xcli() {
 
 install_homebrew() {
   info_message "Installing Homebrew..."
-  if [ ! command -v brew > /dev/null ]; then
+  if ! command -v brew > /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     printf "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >> "$HOME/.zprofile"
     eval "$(/opt/homebrew/bin/brew shellenv)"
