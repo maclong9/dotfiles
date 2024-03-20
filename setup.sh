@@ -3,26 +3,29 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
-CHECKMARK="$(printf '\342\226\224')"
-INFO="$(printf '\342\204\271')"
-CROSS="$(printf '\342\225\210')"
-ON_DARWIN=$(uname | grep -q "Darwin" && printf true || printf false)
+HOMEBREW_EVAL="/opt/homebrew/bin/brew shellenv"
 
 handle_error() {
-  printf "%s%s An error occurred: %s%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
+  printf "%sAn error occurred: %s%s\n" "$RED" "$1" "$NO_COLOR"
   exit 1
 }
 
 success_message() {
-  printf "%s%s %s%s\n" "$GREEN" "$CHECKMARK" "$1" "$NO_COLOR"
+  printf "%s%s%s\n" "$GREEN" "$1" "$NO_COLOR"
 }
 
 info_message() {
-  printf "%s%s %s%s\n" "$BLUE" "$INFO" "$1" "$NO_COLOR"
+  printf "%s%s%s\n" "$BLUE" "$1" "$NO_COLOR"
+}
+
+os_check() {
+  if [ "$(uname)" = "Darwin" ]; then
+    HOMEBREW_EVAL=""
+  fi
 }
 
 install_xcli() {
-  if [ "$ON_DARWIN" ]; then
+  if [ "$(uname)" = "Darwin" ] && ! command -v git > /dev/null; then
     info_message "Installing Xcode Developer Tools..."
     xcode-select --install
     sleep 5
@@ -34,8 +37,8 @@ install_homebrew() {
   info_message "Installing Homebrew..."
   if ! command -v brew > /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    printf "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >> "$HOME/.zprofile"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    printf "eval \"\$($HOMEBREW_EVAL)\"" >> "$HOME/.zprofile"
+    eval "$($HOMEBREW_EVAL)"
   fi
   success_message "Homebrew installed"
 }
@@ -57,7 +60,7 @@ install_tools() {
 }
 
 install_apps() {
-  if [ "$ON_DARWIN" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
     info_message "Installing applications..."
     brew install mas
     brew install --cask hyperkey osu
@@ -81,6 +84,7 @@ setup_cron() {
 }
 
 info_message "Initialising System"
+os_check || handle_error "Failed to check which operating system is running"
 install_xcli || handle_error "Failed to install Xcode Developer Tools"
 install_homebrew || handle_error "Failed to install Homebrew"
 clone_configuration || handle_error "Failed to clone configuration"
