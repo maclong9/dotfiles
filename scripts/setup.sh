@@ -26,7 +26,7 @@ install_xcli() {
     info_message "Installing Xcode command line tools..."
     xcode-select --install
     sleep 5
-    succes_message "Xcode Developer Tools installed"
+    success_message "Xcode Developer Tools installed"
   fi
 }
 
