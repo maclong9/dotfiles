@@ -33,3 +33,9 @@
   with_items:    
     - element
     - hyperkey
+
+- name: Symlink Vim Configuration
+  ansible.builtin.file:
+    src: ~/.config/vimrc
+    dest: ~/.vimrc
+    state: link
