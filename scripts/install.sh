@@ -3,9 +3,9 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
-CHECKMARK="\xE2\x9C\x94"
-INFO="\xE2\x84\xB9"
-CROSS="\xE2\x9D\x8C"
+CHECKMARK="$(printf '\342\226\224')"
+INFO="$(printf '\342\204\271')"
+CROSS="$(printf '\342\225\210')"
 
 handle_error() {
   printf "%s%s An error occurred: %s, exiting%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
