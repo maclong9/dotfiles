@@ -1,11 +1,11 @@
 #!/bin/sh
-RED='\033[0;31m' 
-GREEN='\033[0;32m'
-BLUE='\033[0;34m' 
-NO_COLOR='\033[0m'
-CHECKMARK='\xE2\x9C\x94'
-INFO='\xE2\x84\xB9'
-CROSS='\xE2\x9D\x8C'
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+BLUE="\033[0;34m"
+NO_COLOR="\033[0m"
+CHECKMARK="\xE2\x9C\x94"
+INFO="\xE2\x84\xB9"
+CROSS="\xE2\x9D\x8C"
 
 handle_error() {
   echo -e "${RED}${CROSS} An error occurred: $1, exiting${NO_COLOR}"
