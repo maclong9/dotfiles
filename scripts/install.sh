@@ -8,23 +8,23 @@ INFO="\xE2\x84\xB9"
 CROSS="\xE2\x9D\x8C"
 
 handle_error() {
-  echo -e "${RED}${CROSS} An error occurred: $1, exiting${NO_COLOR}"
+  printf "%s%s An error occurred: %s, exiting%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
   exit 1
 }
 
 success_message() {
-  echo -e "${GREEN}${CHECKMARK} $1${NO_COLOR}"
+  printf "%s%s %s%s\n" "$GREEN" "$CHECKMARK" "$1" "$NO_COLOR"
 }
 
 info_message() {
-  echo -e "${BLUE}${INFO} $1${NO_COLOR}"
+  printf "%s%s %s%s\n" "$BLUE" "$INFO" "$1" "$NO_COLOR"
 }
 
 install_homebrew() {
   info_message "Installing Homebrew..."
   if ! command -v brew > /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >> /Users/mac/.zprofile
+    printf "eval \"\$(/opt/homebrew/bin/brew shellenv)\"\n" >> /Users/mac/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
   success_message "Homebrew installed"
