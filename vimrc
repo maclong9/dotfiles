@@ -27,7 +27,6 @@ set shiftwidth=2
 set scrolloff=0
 set mouse=a
 set background=dark
-colorscheme base16-oxocarbon-dark
 
 for option in [
     \ 'nocompatible',
@@ -49,8 +48,6 @@ endfor
 let g:mapleader = ' '
 
 "" Pane Navigation
-nnoremap | :vsp<CR>
-nnoremap \ :sp<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -64,16 +61,3 @@ nmap <leader>fm :Marks<cr>
 nmap <leader>fc :Commands<cr>
 nmap <leader>fk :Maps<cr>
 nmap <leader>fC :Commits<cr>
-
-"" Emmet
-function! SmartTab()
-    if pumvisible() == 1
-        return '\<C-n>'
-    elseif &filetype == 'html' || &filetype == 'css' || &filetype == 'tsx'
-        return '\<C-y>'
-    else
-        return '\<Tab>'
-    endif
-endfunction
-
-inoremap <Tab> <C-R>=SmartTab()<CR>
