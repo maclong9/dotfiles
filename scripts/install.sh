@@ -1,8 +1,8 @@
 #!/bin/sh
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-BLUE="\033[0;34m"
-NO_COLOR="\033[0m"
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+BLUE=$(tput setaf 4)
+NO_COLOR=$(tput sgr0)
 CHECKMARK="\xE2\x9C\x94"
 INFO="\xE2\x84\xB9"
 CROSS="\xE2\x9D\x8C"
