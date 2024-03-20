@@ -1,22 +1,18 @@
+# Options
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd
-
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
 
-update_theme() {
-    if [ -n "$1" ]; then
-        if ! grep -q "$1" "$HOME/.config/alacritty/alacritty.toml"; then
-            sed -i "s/everforest\|gruv\|oxo/$1/g" "$HOME/.config/alacritty/alacritty.toml"
-        fi
-    fi
-}
+# Aliases
+alias g="git"
+alias ls="ls --color"
+alias la="ls -a"
 
-if [ $(uname) = "Darwin" ]; then
-    update_theme "oxo"
-elif [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
+# Void Linux Session Start
+if [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
     RUN_DIR=/run/user/$(id -u)
     sudo mkdir -p $RUN_DIR
     sudo chown mac $RUN_DIR
@@ -27,13 +23,5 @@ elif [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_CURRENT_DESKTOP=sway
     export XDG_RUNTIME_DIR=$RUN_DIR
 
-    update_theme "gruv"
-
     dbus-run-session -- sway
-elif [ "$(uname)" = "OpenBSD" ]; then
-    update_theme "everforest"
 fi
-
-alias g="git"
-alias ls="ls --color"
-alias la="ls -a"
