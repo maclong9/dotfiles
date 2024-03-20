@@ -16,13 +16,13 @@
     - grim
     - mako
     - mesa-dri
-    - neovim
     - pipewire
     - seatd
     - slurp
     - swayfx
     - tlp
     - unzip
+    - vim
     - wget
     - wl-clipboard
     - wluma
