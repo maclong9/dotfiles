@@ -33,7 +33,7 @@ install_homebrew() {
 clone_configuration() {
   info_message "Cloning configuration"
   if [ -d "$HOME/.config" ]; then
-    info_message "~/.config already exists"
+    info_message "$HOME/.config already exists"
   else
     git clone https://github.com/maclong9/dotfiles "$HOME/.config"
   fi
