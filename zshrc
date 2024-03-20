@@ -10,6 +10,7 @@ PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 alias g="git"
 alias ls="ls --color"
 alias la="ls -a"
+alias sys="~/.config/scripts/fetch.sh"
 
 # Void Linux Session Start
 if [ -d /etc/sv ] && [ "$(tty)" = "/dev/tty1" ]; then
