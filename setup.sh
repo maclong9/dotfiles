@@ -35,12 +35,17 @@ install_xcli() {
 
 install_homebrew() {
   info_message "Installing Homebrew..."
-  if ! command -v brew > /dev/null; then
+  if [ -d "$HOMEBREW_PATH" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    printf "eval \"\$($HOMEBREW_PATH shellenv)\"" >> "$HOME/.zprofile"
     eval "$($HOMEBREW_PATH shellenv)"
   fi
   success_message "Homebrew installed"
+}
+
+create_zprofile() {
+  if [ ! -e "$HOME/.zprofile" ]; then
+    printf "eval \"\$($HOMEBREW_PATH shellenv)\"" >> "$HOME/.zprofile"
+  fi
 }
 
 clone_configuration() {
@@ -81,6 +86,7 @@ info_message "Initialising System"
 os_check || handle_error "Failed to check which operating system is running"
 install_xcli || handle_error "Failed to install Xcode Developer Tools"
 install_homebrew || handle_error "Failed to install Homebrew"
+create_zprofile || handle_error "Failed to create zprofile"
 clone_configuration || handle_error "Failed to clone configuration"
 install_tools || handle_error "Failed to install tools"
 install_apps || handle_error "Error installing applications"
