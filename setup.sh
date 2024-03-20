@@ -9,16 +9,16 @@ CROSS="$(printf '\342\225\210')"
 ON_DARWIN=$(uname | grep -q "Darwin" && printf true || printf false)
 
 handle_error() {
-  printf "%s%sAn error occurred: %s%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
+  printf "%s%s An error occurred: %s%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
   exit 1
 }
 
 success_message() {
-  printf "%s%s%s%s\n" "$GREEN" "$CHECKMARK" "$1" "$NO_COLOR"
+  printf "%s%s %s%s\n" "$GREEN" "$CHECKMARK" "$1" "$NO_COLOR"
 }
 
 info_message() {
-  printf "%s%s%s%s\n" "$BLUE" "$INFO" "$1" "$NO_COLOR"
+  printf "%s%s %s%s\n" "$BLUE" "$INFO" "$1" "$NO_COLOR"
 }
 
 install_xcli() {
