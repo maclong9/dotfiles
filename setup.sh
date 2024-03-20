@@ -19,8 +19,8 @@ info_message() {
 }
 
 os_check() {
-  if [ "$(uname)" = "Darwin" ]; then
-    HOMEBREW_EVAL=""
+  if [ ! "$(uname)" = "Darwin" ]; then
+    HOMEBREW_EVAL="/home/linuxbrew/.linuxbrew/bin/brew shellenv"
   fi
 }
 
