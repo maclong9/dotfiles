@@ -23,12 +23,12 @@ call plug#end()
 " Options
 syntax on
 let g:mapleader = " "
-set background=dark
 set tabstop=2
 set shiftwidth=2
 set background=dark
 set scrolloff=0
 set mouse=a
+set background=dark
 colorscheme base16-oxocarbon-dark
 
 for option in [
