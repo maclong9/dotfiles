@@ -58,7 +58,7 @@ install_tools() {
 
 install_apps() {
   if [ "$ON_DARWIN" ]; then
-    info_message "Installinf applications..."
+    info_message "Installing applications..."
     brew install mas
     brew install --cask element hyperkey orbstack osu texifier
     mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
