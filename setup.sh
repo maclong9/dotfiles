@@ -55,7 +55,7 @@ clone_configuration() {
 
 install_tools() {
   info_message "Installing tools..."
-  brew install deno
+  brew install deno ripgrep
   success_message "Tooling installed"
 }
 
