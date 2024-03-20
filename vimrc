@@ -17,7 +17,6 @@ call plug#begin()
   Plug 'mattn/emmet-vim'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
-  Plug 'tinted-theming/base16-vim'
 call plug#end()
 
 " Options
@@ -26,7 +25,6 @@ set tabstop=2
 set shiftwidth=2
 set scrolloff=0
 set mouse=a
-set background=dark
 
 for option in [
     \ 'nocompatible',
