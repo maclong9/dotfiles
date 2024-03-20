@@ -1,6 +1,0 @@
-require("plugins")
-require("autocommands")
-require("colorscheme")
-require("keymaps")
-require("options")
-require("statusline")
