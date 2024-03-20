@@ -6,6 +6,7 @@ NO_COLOR=$(tput sgr0)
 CHECKMARK="$(printf '\342\226\224')"
 INFO="$(printf '\342\204\271')"
 CROSS="$(printf '\342\225\210')"
+ON_DARWIN=$(uname | grep -q "Darwin" && printf true || printf false)
 
 handle_error() {
   printf "%s%s An error occurred: %s, exiting%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
@@ -21,7 +22,7 @@ info_message() {
 }
 
 install_xcli() {
-  if [ "$(uname)" = "Darwin" ]; then
+  if [ "$ON_DARWIN" ]; then
     info_message "Installing Xcode command line tools..."
     xcode-select --install
     sleep 5
@@ -56,7 +57,7 @@ install_tools() {
 }
 
 install_apps() {
-  if [ "$(uname)" = "Darwin" ]; then
+  if [ "$ON_DARWIN" ]; then
     info_message "Installinf applications..."
     brew install mas
     brew install --cask element hyperkey orbstack osu texifier
