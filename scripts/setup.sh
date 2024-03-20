@@ -9,7 +9,7 @@ CROSS="$(printf '\342\225\210')"
 ON_DARWIN=$(uname | grep -q "Darwin" && printf true || printf false)
 
 handle_error() {
-  printf "%s%s An error occurred: %s, exiting%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
+  printf "%s%s An error occurred: %s%s\n" "$RED" "$CROSS" "$1" "$NO_COLOR"
   exit 1
 }
 
