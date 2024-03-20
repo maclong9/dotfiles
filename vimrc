@@ -64,3 +64,17 @@ nmap <leader>fm :Marks<cr>
 nmap <leader>fc :Commands<cr>
 nmap <leader>fk :Maps<cr>
 nmap <leader>fC :Commits<cr>
+
+"" Emmet
+inoremap <Tab> <C-R>=SmartTab()<CR>
+
+"" Expand Emmet abbreviations with Tab
+function! SmartTab()
+    if pumvisible() == 1
+        return "\<C-n>"
+    elseif &filetype == 'html' || &filetype == 'css'
+        return "\<C-y>"
+    else
+        return "\<Tab>"
+    endif
+endfunction
