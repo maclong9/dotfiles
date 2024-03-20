@@ -42,16 +42,15 @@ clone_configuration() {
 
 install_tools() {
   info_message "Installing tools..."
-  brew install deno mas  
-  open -a element hyperkey 
+  brew install deno
   success_message "Tooling installed"
 }
 
 install_apps() {
   info_message "Installinf applications..."
+  brew install mas
   brew install --cask element hyperkey orbstack osu texifier
   mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
-  # ^ Compressor, Final Cut Pro, Logic Pro, MainStage, Motion, Xcode, Pixelmator Pro
   success_message "Applications installed"
 }
 
