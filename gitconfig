@@ -1,13 +1,13 @@
 [user]
-    name = Mac
-    email = maclong9@icloud.com
+  name = Mac
+  email = maclong9@icloud.com
 
 [alias]
-    c = commit -m
-    p = push
-    s = status
-    l = log --oneline --decorate --graph
-    a = add
-    aa = add .
-    pl = pull
-    plnr = pull --no-rebase
+  c = commit -m
+  p = push
+  s = status
+  l = log --oneline --decorate --graph
+  a = add
+  aa = add .
+  pl = pull
+  plnr = pull --no-rebase
