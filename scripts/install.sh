@@ -1,6 +1,6 @@
 #!/bin/sh
 handle_error() {
-  echo "An error occurred: $1"
+  echo "An error occurred: $1, exiting"
   exit 1
 }
 
@@ -35,9 +35,11 @@ link_configuration() {
 }
 
 setup_cron() {
-
+  echo "0 12 * * 1 $HOME/.config/scripts/maintenance.sh" | crontab -
 }
 
 install_homebrew || handle_error "Failed to install Homebrew"
-clone_configuration || handle_error "Failed to clone configuration."
-exit 0
+clone_configuration || handle_error "Failed to clone configuration"
+install_tools || handle_error "Failed to install tools"
+link_configuration || handle_error "Failed while linking configuration files"
+setup_cron || handle_error "Failed to setup cronjob's"
