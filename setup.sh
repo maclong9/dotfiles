@@ -54,7 +54,7 @@ clone_configuration() {
 
 install_tools() {
   info_message "Installing tools..."
-  brew install deno fzf mas ripgrep zoxide zplug
+  brew install deno mas ripgrep zoxide zplug
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   success_message "Tooling installed"
 }
