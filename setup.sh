@@ -43,13 +43,13 @@ create_zprofile() {
 }
 
 clone_configuration() {
-  info_message "Cloning configuration..."
   if [ -d "$HOME/.config" ]; then
     info_message "$HOME/.config already exists"
   else
+    info_message "Cloning configuration..."
     git clone https://github.com/maclong9/dotfiles "$HOME/.config"
+    success_message "Configuration cloned"
   fi
-  success_message "Configuration cloned"
 }
 
 install_tools() {
