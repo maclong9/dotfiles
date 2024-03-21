@@ -12,6 +12,7 @@ for option in [
   \ 'linebreak',
   \ 'expandtab', 
   \ 'noswapfile', 
+  \ 'autoread',
   \ 'scrolloff=0', 
   \ 'mouse=a', 
   \ 're=0'
