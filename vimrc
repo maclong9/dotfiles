@@ -11,6 +11,7 @@ for option in [
   \ 'smartcase', 
   \ 'linebreak',
   \ 'expandtab', 
+  \ 'noswapfile', 
   \ 'tabstop=2', 
   \ 'shiftwidth=2',
   \ 'scrolloff=0', 
