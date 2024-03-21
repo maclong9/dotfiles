@@ -4,7 +4,6 @@ PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 
 # Aliases
 alias g="git"
-alias ls="ls --color"
 alias la="ls -a"
 
 # Plugins
