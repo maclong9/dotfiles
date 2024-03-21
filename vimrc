@@ -17,9 +17,7 @@ for option in [
     \ 'smartcase',
     \ 'linebreak',
     \ 'expandtab',
-    \ 'nowrap',
     \ 'termguicolors',
-    \ 'nocompatible',
 \ ]
   execute 'set '.option
 endfor
