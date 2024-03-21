@@ -28,12 +28,12 @@ install_xcli() {
 }
 
 install_homebrew() {
-  info_message "Installing Homebrew..."
   if [ ! -d "$HOMEBREW_PATH" ]; then
+    info_message "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$($HOMEBREW_PATH shellenv)"
+    success_message "Homebrew installed"
   fi
-  success_message "Homebrew installed"
 }
 
 create_zprofile() {
