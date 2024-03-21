@@ -44,7 +44,7 @@ install_homebrew() {
 
 create_zprofile() {
   if [ ! -e "$HOME/.zprofile" ]; then
-    printf "eval \"\$($HOMEBREW_PATH shellenv)\"" >> "$HOME/.zprofile"
+    printf "eval \"\$(%s shellenv)\"" "$HOMEBREW_PATH" >> "$HOME/.zprofile"
   fi
 }
 
