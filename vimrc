@@ -58,7 +58,8 @@ call plug#begin()
     \ 'mattn/emmet-vim',
     \ 'tpope/vim-fugitive',
     \ 'tpope/vim-surround',
-    \ 'tpope/vim-rsi'
+    \ 'tpope/vim-rsi',
+    \ 'arzg/vim-colors-xcode'
   \ ]
     Plug plugin
   endfor
