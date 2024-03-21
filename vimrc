@@ -47,18 +47,6 @@ endfor
 
 
 " Plugins
-"" Install Vim Plug If Not Found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-"" Run :Pluginstall If There Are New Plugins   
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
-"" Plugin List
 call plug#begin()
   for plugin in [
     \ 'junegunn/fzf.vim',
