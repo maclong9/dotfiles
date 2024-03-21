@@ -18,14 +18,8 @@ info_message() {
   printf "%s%s%s\n" "$BLUE" "$1" "$NO_COLOR"
 }
 
-os_check() {
-  if [ "$(uname)" != "Darwin" ]; then
-    HOMEBREW_PATH="/home/linuxbrew/.linuxbrew/bin/brew"
-  fi
-}
-
 install_xcli() {
-  if [ "$(uname)" = "Darwin" ] && ! command -v git > /dev/null; then
+  if ! command -v git > /dev/null; then
     info_message "Installing Xcode Developer Tools..."
     xcode-select --install
     sleep 5
@@ -68,13 +62,11 @@ install_tools() {
 }
 
 install_apps() {
-  if [ "$(uname)" = "Darwin" ]; then
-    info_message "Installing applications..."
-    brew install mas
-    brew install --cask osu superkey
-    mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
-    success_message "Applications installed"
-  fi
+  info_message "Installing applications..."
+  brew install mas
+  brew install --cask osu superkey
+  mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
+  success_message "Applications installed"
 }
 
 link_configuration() {
@@ -86,7 +78,6 @@ link_configuration() {
 }
 
 info_message "Initialising System"
-os_check || handle_error "Failed to check which operating system is running"
 install_xcli || handle_error "Failed to install Xcode Developer Tools"
 install_homebrew || handle_error "Failed to install Homebrew"
 create_zprofile || handle_error "Failed to create zprofile"
