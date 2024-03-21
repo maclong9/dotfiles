@@ -31,7 +31,9 @@ for var in [
 endfor
 
 for mapping in [
-  \ ['e', 'Explore'],
+  \ ['e',  'Explore'],
+  \ ['ez', 'edit ~/.config/zshrc'],
+  \ ['ev', 'edit ~/.config/vimrc'],
   \ ['ff', 'Files'],
   \ ['fb', 'Buffers'],
   \ ['fw', 'Rg'],
