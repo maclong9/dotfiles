@@ -14,7 +14,7 @@ do
 done
 
 # Plugins
-source =/opt/homebrew/opt/zplug
+source /opt/homebrew/opt/zplug
 plugins=(
   "belak/zsh-utils"
   "MichaelAquilina/zsh-you-should-use"
