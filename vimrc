@@ -53,8 +53,9 @@ call plug#begin()
     \ 'sheerun/vim-polyglot',
     \ 'mattn/emmet-vim',
     \ 'tpope/vim-fugitive',
-    \ 'tpope/vim-surround'
+    \ 'tpope/vim-surround',
   \ ]
     Plug plugin
   endfor
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
