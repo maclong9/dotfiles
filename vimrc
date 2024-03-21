@@ -1,4 +1,5 @@
-" Options
+colorscheme habamax
+highlight Normal ctermbg=none
 syntax on
 for option in [
   \ 'nocompatible', 
@@ -10,7 +11,6 @@ for option in [
   \ 'smartcase', 
   \ 'linebreak',
   \ 'expandtab', 
-  \ 'termguicolors', 
   \ 'tabstop=2', 
   \ 'shiftwidth=2',
   \ 'scrolloff=0', 
@@ -20,23 +20,18 @@ for option in [
   execute 'set '.option
 endfor
 
-" Keys
 let g:mapleader = ' '
 for mapping in [
   \ ['e', 'Explore'],
-  \ ['sv', 'vsp'],
-  \ ['sh', 'sp'],
-  \ ['<C-h>', '<C-w>h'],
-  \ ['<C-j>', '<C-w>j'],
-  \ ['<C-k>', '<C-w>k'],
-  \ ['<C-l>', '<C-w>l'],
   \ ['ff', 'Files'],
   \ ['fb', 'Buffers'],
   \ ['fw', 'Rg'],
   \ ['fm', 'Marks'],
   \ ['fc', 'Commands'],
   \ ['fk', 'Maps'],
-  \ ['fC', 'Commits']
+  \ ['fC', 'Commits'],
+  \ ['sv', 'vsp'], 
+  \ ['sh', 'sp'],
 \ ]
   if len(mapping[0]) <= 2
     execute 'nmap <leader>'.mapping[0].' :'.mapping[1].'<CR>'
@@ -45,8 +40,6 @@ for mapping in [
   endif
 endfor
 
-
-" Plugins
 call plug#begin()
   for plugin in [
     \ 'junegunn/fzf.vim',
