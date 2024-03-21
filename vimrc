@@ -23,7 +23,13 @@ for option in [
   execute 'set '.option
 endfor
 
-let g:mapleader = ' '
+for var in [
+  \ 'g:is_posix=1',
+  \ 'g:mapleader=" "',
+\ ]
+  execute 'let '.var
+endfor
+
 for mapping in [
   \ ['e', 'Explore'],
   \ ['ff', 'Files'],
