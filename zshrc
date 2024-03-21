@@ -13,7 +13,5 @@ do
     zplug $plugin
 done
 
-
 zplug load
 bindkey -v
-
