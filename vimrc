@@ -12,8 +12,6 @@ for option in [
   \ 'linebreak',
   \ 'expandtab', 
   \ 'noswapfile', 
-  \ 'tabstop=2', 
-  \ 'shiftwidth=2',
   \ 'scrolloff=0', 
   \ 'mouse=a', 
   \ 're=0'
