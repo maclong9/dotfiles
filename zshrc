@@ -7,12 +7,11 @@ alias g="git"
 alias la="ls -a"
 
 # Plugins
-## Install zplug if missing
+## Install zplug if missing & source
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
   source ~/.zplug/init.zsh && zplug update --self
 fi
-
 source ~/.zplug/init.zsh
 
 ## Define Plugins
