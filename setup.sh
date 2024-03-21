@@ -3,7 +3,7 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
-HOMEBREW_PATH="/opt/homebrew/bin/brew"
+HOMEBREW_PATH="/opt/homebrew/bin"
 
 handle_error() {
   printf "%sAn error occurred: %s%s\n" "$RED" "$1" "$NO_COLOR"
@@ -31,14 +31,14 @@ install_homebrew() {
   if [ ! -d "$HOMEBREW_PATH" ]; then
     info_message "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$($HOMEBREW_PATH shellenv)"
+    eval "$($HOMEBREW_PATH/brew shellenv)"
     success_message "Homebrew installed"
   fi
 }
 
 create_zprofile() {
   if [ ! -e "$HOME/.zprofile" ]; then
-    printf "eval \"\$(%s shellenv)\"" "$HOMEBREW_PATH" >> "$HOME/.zprofile"
+    printf "eval \"\$(%s shellenv)\"" "$HOMEBREW_PATH/brew" >> "$HOME/.zprofile"
   fi
 }
 
