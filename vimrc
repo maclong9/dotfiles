@@ -56,6 +56,7 @@ call plug#begin()
     \ 'mattn/emmet-vim',
     \ 'tpope/vim-fugitive',
     \ 'tpope/vim-surround',
+    \ 'tpope/vim-rsi'
   \ ]
     Plug plugin
   endfor
