@@ -60,9 +60,13 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 "" Plugin List
 call plug#begin()
-  Plug 'junegunn/fzf.vim'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'mattn/emmet-vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
+  for plugin in [
+    \ 'junegunn/fzf.vim',
+    \ 'sheerun/vim-polyglot',
+    \ 'mattn/emmet-vim',
+    \ 'tpope/vim-fugitive',
+    \ 'tpope/vim-surround'
+  \ ]
+    Plug plugin
+  endfor
 call plug#end()
