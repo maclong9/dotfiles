@@ -1,5 +1,4 @@
 # Base Options
-setopt autocd
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
 
