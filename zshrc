@@ -14,4 +14,3 @@ do
 done
 
 zplug load
-bindkey -v
