@@ -25,7 +25,7 @@ endfor
 
 for var in [
   \ 'g:is_posix=1',
-  \ 'g:mapleader=" "',
+  \ 'g:mapleader=";"',
 \ ]
   execute 'let '.var
 endfor
