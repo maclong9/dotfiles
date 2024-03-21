@@ -1,23 +1,13 @@
 " Options
 syntax on
-set tabstop=2
-set shiftwidth=2
-set scrolloff=0
-set mouse=a
-set re=0
-
-" Set Boolean Options to True
 for option in [
-    \ 'nocompatible',
-    \ 'relativenumber',
-    \ 'hlsearch',
-    \ 'cindent',
-    \ 'incsearch',
-    \ 'ignorecase',
-    \ 'smartcase',
-    \ 'linebreak',
-    \ 'expandtab',
-    \ 'termguicolors',
+  \ 'nocompatible', 'relativenumber', 
+  \ 'hlsearch', 'cindent',
+  \ 'incsearch', 'ignorecase', 
+  \ 'smartcase', 'linebreak',
+  \ 'expandtab', 'termguicolors', 
+  \ 'tabstop=2', 'shiftwidth=2',
+  \ 'scrolloff=0', 'mouse=a', 're=0'
 \ ]
   execute 'set '.option
 endfor
