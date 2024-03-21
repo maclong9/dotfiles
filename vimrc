@@ -14,6 +14,7 @@ for option in [
   \ 'noswapfile', 
   \ 'autoread',
   \ 'ttimeout',
+  \ 'wildmenu',
   \ 'ttimeoutlen=100',
   \ 'scrolloff=0', 
   \ 'mouse=a', 
