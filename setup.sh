@@ -54,14 +54,13 @@ clone_configuration() {
 
 install_tools() {
   info_message "Installing tools..."
-  brew install deno fzf ripgrep zoxide zplug
+  brew install deno fzf mas ripgrep zoxide zplug
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   success_message "Tooling installed"
 }
 
 install_apps() {
   info_message "Installing applications..."
-  brew install mas
   brew install --cask osu superkey
   mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
   success_message "Applications installed"
