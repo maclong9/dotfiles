@@ -35,7 +35,7 @@ install_xcli() {
 
 install_homebrew() {
   info_message "Installing Homebrew..."
-  if [ -d "$HOMEBREW_PATH" ]; then
+  if [ ! -d "$HOMEBREW_PATH" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$($HOMEBREW_PATH shellenv)"
   fi
