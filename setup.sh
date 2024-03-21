@@ -22,7 +22,7 @@ install_xcli() {
   if ! command -v git > /dev/null; then
     info_message "Installing Xcode Developer Tools..."
     xcode-select --install
-    sleep 5
+    
     success_message "Xcode Developer Tools installed"
   fi
 }
