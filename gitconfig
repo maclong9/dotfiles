@@ -8,6 +8,9 @@
   s = status
   l = log --oneline --decorate --graph
   a = add
+  b = branch
   aa = add .
+  co = checkout
+  bd = branch -d
   pl = pull
   plnr = pull --no-rebase
