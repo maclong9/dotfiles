@@ -1,4 +1,4 @@
-colorscheme habamax
+colorscheme xcode
 highlight Normal ctermbg=none
 syntax on
 for option in [
@@ -18,7 +18,8 @@ for option in [
   \ 'ttimeoutlen=100',
   \ 'scrolloff=0', 
   \ 'mouse=a', 
-  \ 're=0'
+  \ 're=0',
+  \ 'background=dark',
 \ ]
   execute 'set '.option
 endfor
