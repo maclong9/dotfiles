@@ -61,6 +61,7 @@ clone_configuration() {
 install_tools() {
   info_message "Installing tools..."
   brew install fzf ripgrep zoxide
+  curl -fsSL https://deno.land/install.sh | sh
   curl -sL --proto-redir -all,https \
     https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
