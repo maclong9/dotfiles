@@ -18,6 +18,7 @@ source ~/.zplug/init.zsh
 
 ## Define Plugins
 zplug "zsh-users/zsh-autosuggestions"
+zplug "https://github.com/zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "marlonrichert/zsh-autocomplete"
 zplug "z-shell/zsh-zoxide"
