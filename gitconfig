@@ -9,8 +9,10 @@
   l = log --oneline --decorate --graph
   a = add
   b = branch
+  d = diff
   aa = add .
   co = checkout
   bd = branch -d
   pl = pull
+  dc = diff --cached
   plnr = pull --no-rebase
