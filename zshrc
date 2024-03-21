@@ -30,6 +30,4 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
-
-# Key Bindings
 bindkey -v
