@@ -22,27 +22,28 @@ endfor
 
 " Keys
 let g:mapleader = ' '
-
-"" General
-nmap <leader>e :Explore<cr>
-
-"" Panes
-" Pane Splitting
-nmap <leader>sv :vsp<CR>
-nmap <leader>sh :sp<CR>
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-
-"" Fuzzy Finding
-nmap <leader>ff :Files<cr>
-nmap <leader>fb :Buffers<cr>
-nmap <leader>fw :Rg<cr>
-nmap <leader>fm :Marks<cr>
-nmap <leader>fc :Commands<cr>
-nmap <leader>fk :Maps<cr>
-nmap <leader>fC :Commits<cr>
+for mapping in [
+      \ ['e', 'Explore'],
+      \ ['sv', 'vsp'],
+      \ ['sh', 'sp'],
+      \ ['<C-h>', '<C-w>h'],
+      \ ['<C-j>', '<C-w>j'],
+      \ ['<C-k>', '<C-w>k'],
+      \ ['<C-l>', '<C-w>l'],
+      \ ['ff', 'Files'],
+      \ ['fb', 'Buffers'],
+      \ ['fw', 'Rg'],
+      \ ['fm', 'Marks'],
+      \ ['fc', 'Commands'],
+      \ ['fk', 'Maps'],
+      \ ['fC', 'Commits']
+\ ]
+  if len(mapping[0]) <= 2
+    execute 'nmap <leader>'.mapping[0].' :'.mapping[1].'<CR>'
+  else
+    execute 'nmap '.mapping[0].' :'.mapping[1].'<CR>'
+  endif
+endfor
 
 
 " Plugins
