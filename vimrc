@@ -20,6 +20,7 @@ for option in [
   \ 'mouse=a', 
   \ 're=0',
   \ 'background=dark',
+  \ 'conceallevel=1',
 \ ]
   execute 'set '.option
 endfor
@@ -27,6 +28,7 @@ endfor
 for var in [
   \ 'g:is_posix=1',
   \ 'g:mapleader=";"',
+  \ 'g:tex_conceal='abdmg',
 \ ]
   execute 'let '.var
 endfor
