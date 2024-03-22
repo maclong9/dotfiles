@@ -14,6 +14,7 @@ for option in [
   \ 'autoread',
   \ 'wildmenu',
   \ 'ttimeout',
+  \ 'setlist',
   \ 'ttimeoutlen=100',
   \ 'scrolloff=0', 
   \ 'mouse=a', 
@@ -22,7 +23,7 @@ for option in [
   \ 'completeopt+=menuone noselect',
   \ 'shortmess+=c',
   \ 'textwidth=80',
-  \ 'listchars=multispace:\ \ │',
+  \ 'listchars=multispace:\│',
 \ ]
   execute 'set '.option
 endfor
