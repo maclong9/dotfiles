@@ -21,6 +21,7 @@ for option in [
   \ 're=0',
   \ 'background=dark',
   \ 'conceallevel=1',
+  \ 'completeopt+=menuone noselect',
 \ ]
   execute 'set '.option
 endfor
