@@ -9,7 +9,7 @@ for plugin in \
     "Aloxaf/fzf-tab" \
     "z-shell/zsh-zoxide" \
     "zsh-users/zsh-completions" \
-    "zsh-users/zsh-syntax-highlighting"
+    "zdharma-continuum/fast-syntax-highlighting"
 do
     zplug $plugin
 done
