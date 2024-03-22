@@ -17,7 +17,7 @@ endfor
 for var in [
   \ 'is_posix=1',
   \ 'mapleader=";"',
-  \ 'netrw_banner = 0',
+  \ 'netrw_banner=0',
 \ ]
   execute 'let g:'.var
 endfor
