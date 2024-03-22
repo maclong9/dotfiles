@@ -22,6 +22,7 @@ for option in [
   \ 'background=dark',
   \ 'conceallevel=1',
   \ 'completeopt+=menuone noselect',
+  \ 'shortmess+=c',
 \ ]
   execute 'set '.option
 endfor
@@ -30,6 +31,7 @@ for var in [
   \ 'g:is_posix=1',
   \ 'g:mapleader=";"',
   \ 'g:tex_conceal='abdmg',
+  \ 'g:mucomplete#enable_auto_at_startup',
 \ ]
   execute 'let '.var
 endfor
