@@ -1,29 +1,15 @@
-colorscheme xcode
-syntax on
 for option in [
   \ 'nocompatible', 
   \ 'relativenumber', 
-  \ 'hlsearch', 
-  \ 'cindent',
-  \ 'incsearch', 
-  \ 'ignorecase', 
-  \ 'smartcase', 
-  \ 'linebreak',
+  \ 'incsearch',
   \ 'expandtab', 
   \ 'noswapfile', 
-  \ 'autoread',
-  \ 'wildmenu',
-  \ 'setlist',
-  \ 'ttimeout',
-  \ 'ttimeoutlen=100',
-  \ 'scrolloff=0', 
-  \ 'mouse=a', 
+  \ 'cursorline',
   \ 're=0',
-  \ 'conceallevel=1',
-  \ 'completeopt+=menuone noselect',
+  \ 'completeopt+=menuone',
   \ 'shortmess+=c',
-  \ 'textwidth=80',
-  \ 'listchars=multispace:\│',
+  \ 'tabstop=2',
+  \ 'shiftwidth=2',
 \ ]
   execute 'set '.option
 endfor
@@ -31,21 +17,19 @@ endfor
 for var in [
   \ 'g:is_posix=1',
   \ 'g:mapleader=";"',
-  \ 'g:tex_conceal='abdmg',
+  \ 'g:mucomplete#enable_auto_at_startup=1',
 \ ]
   execute 'let '.var
 endfor
 
 for mapping in [
-  \ ['e',  'Explore'],
+  \ ['ee',  'Explore'],
   \ ['ez', 'edit ~/.config/zshrc'],
   \ ['ev', 'edit ~/.config/vimrc'],
   \ ['ff', 'Files'],
   \ ['fb', 'Buffers'],
   \ ['fw', 'Rg'],
   \ ['fm', 'Marks'],
-  \ ['fc', 'Commands'],
-  \ ['fk', 'Maps'],
   \ ['fC', 'Commits'],
 \ ]
   if len(mapping[0]) <= 2
@@ -62,10 +46,12 @@ call plug#begin()
     \ 'tpope/vim-surround',
     \ 'tpope/vim-rsi',
     \ 'lifepillar/vim-mucomplete',
-    \ 'lervag/vimtex',
-    \ 'arzg/vim-colors-xcode',
   \ ]
     Plug plugin
   endfor
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
+
+syntax on
+colorscheme habamax
+highlight Normal ctermbg=none

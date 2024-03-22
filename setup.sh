@@ -61,7 +61,7 @@ install_tools() {
 
 install_apps() {
   info_message "Installing applications..."
-  brew install --cask osu superkey
+  brew install --cask osu sf-symbols superkey
   mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
   success_message "Applications installed"
 }
