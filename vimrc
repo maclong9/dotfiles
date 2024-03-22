@@ -23,6 +23,7 @@ for option in [
   \ 'conceallevel=1',
   \ 'completeopt+=menuone noselect',
   \ 'shortmess+=c',
+  \ 'textwidth=80',
 \ ]
   execute 'set '.option
 endfor
