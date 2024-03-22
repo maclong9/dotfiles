@@ -17,7 +17,6 @@ endfor
 for var in [
   \ 'g:is_posix=1',
   \ 'g:mapleader=";"',
-  \ 'g:mucomplete#enable_auto_at_startup=1',
 \ ]
   execute 'let '.var
 endfor

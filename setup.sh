@@ -30,7 +30,8 @@ install_xcli() {
 install_homebrew() {
   if [ ! -d "$HOMEBREW_PATH" ]; then
     info_message "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c \
+      "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$($HOMEBREW_PATH/brew shellenv)"
     success_message "Homebrew installed"
   fi
@@ -55,14 +56,16 @@ clone_configuration() {
 install_tools() {
   info_message "Installing tools..."
   brew install deno mas ripgrep zoxide zplug
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+   "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   success_message "Tooling installed"
 }
 
 install_apps() {
   info_message "Installing applications..."
   brew install --cask osu sf-symbols superkey
-  mas install 1289583905 # 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
+  mas install 1289583905 
+  # later: 424390742 424389933 634148309 634159523 434290957 497799835 1289583905 
   success_message "Applications installed"
 }
 

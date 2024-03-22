@@ -14,6 +14,7 @@ do
 done
 zplug load
 
+bindkey -v
 function mkcd() {
   mkdir $1 && cd $1
 }
