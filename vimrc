@@ -1,3 +1,7 @@
+let g:is_posix=1
+let g:mapleader=";"
+let g:netrw_banner=0
+
 set nocompatible
 set relativenumber
 set incsearch
@@ -9,10 +13,6 @@ set completeopt+=menuone
 set shortmess+=c
 set tabstop=2
 set shiftwidth=2
-
-let g:is_posix=1
-let g:mapleader=";"
-let g:netrw_banner=0
 
 nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>ez :edit ~/.config/zshrc<CR>
