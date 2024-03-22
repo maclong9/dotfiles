@@ -1,8 +1,8 @@
 source /opt/homebrew/opt/zplug/init.zsh
+bindkey -v
 
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
-bindkey -v
 
 zplug "djui/alias-tips"
 zplug "Aloxaf/fzf-tab"
