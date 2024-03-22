@@ -6,6 +6,7 @@ source /opt/homebrew/opt/zplug/init.zsh
 for plugin in \
     "belak/zsh-utils" \
     "MichaelAquilina/zsh-you-should-use" \
+    "Aloxaf/fzf-tab" \
     "z-shell/zsh-zoxide" \
     "zsh-users/zsh-completions" \
     "zsh-users/zsh-syntax-highlighting"
