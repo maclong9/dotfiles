@@ -65,7 +65,8 @@ call plug#begin()
     \ 'tpope/vim-fugitive',
     \ 'tpope/vim-surround',
     \ 'tpope/vim-rsi',
-    \ 'arzg/vim-colors-xcode'
+    \ 'arzg/vim-colors-xcode',
+    \ 'lifepillar/vim-mucomplete',
   \ ]
     Plug plugin
   endfor
