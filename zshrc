@@ -1,7 +1,7 @@
+source /opt/homebrew/opt/zplug/init.zsh
+
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
-
-source /opt/homebrew/opt/zplug/init.zsh
 
 for plugin in \
     "belak/zsh-utils" \
