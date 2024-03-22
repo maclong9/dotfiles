@@ -15,10 +15,11 @@ for option in [
 endfor
 
 for var in [
-  \ 'g:is_posix=1',
-  \ 'g:mapleader=";"',
+  \ 'is_posix=1',
+  \ 'mapleader=";"',
+  \ 'netrw_banner = 0',
 \ ]
-  execute 'let '.var
+  execute 'let g:'.var
 endfor
 
 for mapping in [
