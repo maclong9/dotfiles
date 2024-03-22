@@ -5,7 +5,7 @@ source /opt/homebrew/opt/zplug/init.zsh
 
 for plugin in \
     "belak/zsh-utils" \
-    "MichaelAquilina/zsh-you-should-use" \
+    "djui/alias-tips" \
     "Aloxaf/fzf-tab" \
     "z-shell/zsh-zoxide" \
     "zsh-users/zsh-completions" \
