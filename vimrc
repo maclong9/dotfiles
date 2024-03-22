@@ -47,8 +47,6 @@ for mapping in [
   \ ['fc', 'Commands'],
   \ ['fk', 'Maps'],
   \ ['fC', 'Commits'],
-  \ ['sv', 'vsp'], 
-  \ ['sh', 'sp'],
 \ ]
   if len(mapping[0]) <= 2
     execute 'nmap <leader>'.mapping[0].' :'.mapping[1].'<CR>'
