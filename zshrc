@@ -13,5 +13,4 @@ for plugin in \
 do
     zplug $plugin
 done
-
 zplug load
