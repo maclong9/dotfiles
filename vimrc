@@ -1,5 +1,4 @@
 colorscheme xcode
-highlight Normal ctermbg=none
 syntax on
 for option in [
   \ 'nocompatible', 
