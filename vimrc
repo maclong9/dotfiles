@@ -50,8 +50,6 @@ for mapping in [
 \ ]
   if len(mapping[0]) <= 2
     execute 'nmap <leader>'.mapping[0].' :'.mapping[1].'<CR>'
-  else
-    execute 'nmap '.mapping[0].' :'.mapping[1]
   endif
 endfor
 
