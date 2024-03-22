@@ -22,6 +22,7 @@ for option in [
   \ 'completeopt+=menuone noselect',
   \ 'shortmess+=c',
   \ 'textwidth=80',
+  \ 'listchars=multispace:\ \',
 \ ]
   execute 'set '.option
 endfor
