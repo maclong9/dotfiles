@@ -3,14 +3,10 @@ source /opt/homebrew/opt/zplug/init.zsh
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
 
-for plugin in \
-  "djui/alias-tips" \
-  "Aloxaf/fzf-tab" \
-  "z-shell/zsh-zoxide" \
-  "zsh-users/zsh-syntax-highlighting"
-do
-    zplug $plugin
-done
+zplug "djui/alias-tips"
+zplug "Aloxaf/fzf-tab"
+zplug "z-shell/zsh-zoxide"
+zplug "zsh-users/zsh-syntax-highlighting"
 zplug load
 
 bindkey -v
