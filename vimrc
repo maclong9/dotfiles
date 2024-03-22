@@ -32,7 +32,6 @@ for var in [
   \ 'g:is_posix=1',
   \ 'g:mapleader=";"',
   \ 'g:tex_conceal='abdmg',
-  \ 'g:mucomplete#enable_auto_at_startup',
 \ ]
   execute 'let '.var
 endfor
