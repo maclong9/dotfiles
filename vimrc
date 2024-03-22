@@ -18,7 +18,6 @@ for option in [
   \ 'scrolloff=0', 
   \ 'mouse=a', 
   \ 're=0',
-  \ 'background=dark',
   \ 'conceallevel=1',
   \ 'completeopt+=menuone noselect',
   \ 'shortmess+=c',
