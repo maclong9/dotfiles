@@ -8,8 +8,6 @@ zplug "djui/alias-tips"
 zplug "Aloxaf/fzf-tab"
 zplug "z-shell/zsh-zoxide"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug 'ajeetdsouza/zoxide'
-zplug "BurntSushi/ripgrep", from:gh-r, as:command
 zplug load
 
 function mkcd() {
