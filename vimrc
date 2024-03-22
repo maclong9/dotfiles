@@ -22,7 +22,7 @@ for var in [
 endfor
 
 for mapping in [
-  \ ['ee',  'Explore'],
+  \ ['ee', 'Explore'],
   \ ['ez', 'edit ~/.config/zshrc'],
   \ ['ev', 'edit ~/.config/vimrc'],
   \ ['ff', 'Files'],
