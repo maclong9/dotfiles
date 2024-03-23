@@ -7,8 +7,8 @@ export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 zplug "djui/alias-tips"
 zplug "Aloxaf/fzf-tab"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:rg
-zplug "ajeetdsouza/zoxide", from:gh-r, as:command, rename-to:z
+zplug "BurntSushi/ripgrep", from:gh-r, as:command
+zplug "ajeetdsouza/zoxide", from:gh-r, as:command
 zplug "z-shell/zsh-zoxide"
 zplug load
 
