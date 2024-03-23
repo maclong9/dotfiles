@@ -4,16 +4,16 @@ GREEN=$(tput setaf 2)
 BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
 
-handle_error() {
+message_error() {
   printf "%sError %s: %s%s" "$RED" "$1" "$?" "$NO_COLOR"
   exit 1
 }
 
-success_message() {
+message_success() {
   printf "%s%s%s\n" "$GREEN" "$1" "$NO_COLOR"
 }
 
-info_message() {
+message_info() {
   printf "%s%s%s\n" "$BLUE" "$1" "$NO_COLOR"
 }
 
@@ -54,10 +54,15 @@ install_tools() {
   success_message "Tooling installed"
 }
 
+setup_vim() {
+  info_message "Installing Vim plugins..."
+
+  success_message "Vim plugins installed"
+}
+
 tooling_setup() {
   . "$HOME/.zshrc"
   zplug install
-  vim -c "PlugInstall | q"
 }
 
 info_message "Initialising System"
