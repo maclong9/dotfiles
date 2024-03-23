@@ -13,15 +13,12 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     -i | --install-command) 
       INSTALL_COMMAND="$2"
-      shift 2
-      ;;
+      shift 2 ;;
     -h | --help)            
-      usage
-      ;;
+      usage ;;
     *)                      
       printf "Invalid option: %s\n" "$1"
-      usage
-      ;;
+      usage ;;
     esac
 done
 
@@ -29,15 +26,12 @@ message() {
   MSG="$2"; ERR=""; NC="$(tput sgr0)";
   case "$1" in
     "info")    
-      COL="$(tput setaf 4)"
-      ;;
+      COL="$(tput setaf 4)" ;;
     "error")   
        COL="$(tput setaf 1)" 
-       ERR=": $?"
-       ;;
+       ERR=": $?" ;;
     "success") 
-      COL="$(tput setaf 2)"
-      ;;
+      COL="$(tput setaf 2)" ;;
   esac
   
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
@@ -56,7 +50,7 @@ install_git() {
       message "success" "Xcode Developer Tools installed"
     else
       message "info" "Installing git..."
-      "$INSTALL_COMMAND" git
+      "$INSTALL_COMMAND git"
       message "success" "Git installed successfully"
     fi
   fi
@@ -65,7 +59,7 @@ install_git() {
 install_tooling() {
   message "info" "Installing tools..." 
   if [ "$(uname)" != "Darwin" ] && ! vim --version; then
-    "$INSTALL_COMMAND" vim
+    "$INSTALL_COMMAND vim"
   fi
   curl -fsSL "https://deno.land/install.sh" | sh
   message "success" "Tooling installed"
