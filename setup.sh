@@ -56,7 +56,17 @@ install_tools() {
 
 setup_vim() {
   info_message "Installing Vim plugins..."
-
+  mkdir -p "$HOME/.vim/pack"
+  for plugin in 
+    \ 'junegunn/fzf.vim'
+    \ 'sheerun/vim-polyglot'
+    \ 'mattn/emmet-vim'
+    \ 'tpope/vim-fugitive'
+    \ 'tpope/vim-rsi'
+    \ 'lifepillar/vim-mucomplete'
+  do
+    git clone "https://github.com/$plugin" "$HOME/.vim/pack"
+  done
   success_message "Vim plugins installed"
 }
 
