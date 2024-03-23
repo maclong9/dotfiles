@@ -1,17 +1,17 @@
 #!/bin/sh
 message() {
-  MSG="$2";
+  message="$2";
   
   case "$1" in
     "info")    
-      COL="$(tput setaf 4)" ;;
+      color="$(tput setaf 4)" ;;
     "error")   
-       COL="$(tput setaf 1)"; MSG="$?" ;;
+      color="$(tput setaf 1)"; message="$?" ;;
     "success") 
-      COL="$(tput setaf 2)" ;;
+      color="$(tput setaf 2)" ;;
   esac
   
-  printf "%s%s%s%s\n" "$COL" "$MSG" "$(tput sgr0)"
+  printf "%s%s%s%s\n" "$color" "$message" "$(tput sgr0)"
   
   if [ "$1" = "error" ]; then
     exit 1
