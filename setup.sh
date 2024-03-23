@@ -1,4 +1,17 @@
 #!/bin/sh
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --install-command)
+      INSTALL_COMMAND="$2"
+      shift 2
+      ;;
+    *)
+      echo "Invalid option: $1"
+      exit 1
+      ;;
+    esac
+done
+
 message() {
   MSG="$2"; ERR=""; NC="$(tput sgr0)";
   case "$1" in
