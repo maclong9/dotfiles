@@ -3,7 +3,6 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option in [
-  \ 'nocompatible', 
   \ 'relativenumber', 
   \ 'incsearch',
   \ 'noswapfile', 
