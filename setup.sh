@@ -54,6 +54,12 @@ link_configuration() {
    success_message "Configuration linked"
 }
 
+tooling_setup() {
+  . "$HOME/.zshrc"
+  zplug install
+  vim
+}
+
 info_message "Initialising System"
 install_xcli || handle_error "Failed to install Xcode Developer Tools"
 clone_configuration || handle_error "Failed to clone configuration"
