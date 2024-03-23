@@ -1,23 +1,17 @@
 syntax on
+let g:is_posix=1
 colorscheme habamax
 highlight Normal ctermbg=none
 
 for option in [
-  \ 'relativenumber', 
+  \ 're=0',
+  \ 'expandtab', 
+  \ 'tabstop=2',
   \ 'incsearch',
   \ 'noswapfile', 
   \ 'cursorline',
-  \ 'expandtab', 
-  \ 'tabstop=2',
   \ 'shiftwidth=2',
-  \ 're=0',
+  \ 'relativenumber', 
 \ ]
   execute 'set '.option
-endfor
-
-for var in [
-  \ 'is_posix=1',
-  \ 'mapleader=";"',
-\ ]
-  execute 'let g:'.var
 endfor
