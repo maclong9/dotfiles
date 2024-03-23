@@ -27,13 +27,8 @@ for var in [
 endfor
 
 for mapping in [
-  \ ['ee', 'Explore'],
   \ ['ez', 'edit ~/.config/zshrc'],
   \ ['ev', 'edit ~/.config/vimrc'],
-  \ ['ff', 'Files'],
-  \ ['fb', 'Buffers'],
-  \ ['fm', 'Marks'],
-  \ ['fC', 'Commits'],
 \ ]
     execute 'nmap <leader>'.mapping[0].' :'.mapping[1].'<CR>'
 endfor
