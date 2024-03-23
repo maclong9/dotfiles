@@ -12,7 +12,7 @@ for option in [
   'expandtab', 
   'tabstop=2',
   'shiftwidth=2',
-  're=0',
+  're=0'
 ]
   execute 'set '.option
 endfor
