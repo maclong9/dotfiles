@@ -31,8 +31,7 @@ message() {
 handle_critical_error() {
   message "error" "Critical error occurred"
   exit 1
-}
-trap "handle_critical_error" ERR
+} trap "handle_critical_error" ERR
 
 install_git() {
   if ! command -v git > /dev/null; then
