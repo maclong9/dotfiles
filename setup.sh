@@ -57,7 +57,7 @@ link_configuration() {
 tooling_setup() {
   . "$HOME/.zshrc"
   zplug install
-  vim
+  vim -c "PlugInstall | q"
 }
 
 info_message "Initialising System"
