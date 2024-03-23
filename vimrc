@@ -4,7 +4,7 @@ colorscheme habamax
 highlight Normal ctermbg=none
 highlight link netrwMarkFile Search
 
-for option in [ 
+for option: string in [ 
   'incsearch',
   'noswapfile', 
   'cursorline',
