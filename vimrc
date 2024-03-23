@@ -8,10 +8,10 @@ for option in [
   \ 'incsearch',
   \ 'noswapfile', 
   \ 'cursorline',
+  \ 'relativenumber', 
   \ 're=0',
   \ 'tabstop=2',
   \ 'shiftwidth=2',
-  \ 'relativenumber', 
 \ ]
   execute 'set '.option
 endfor
