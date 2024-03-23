@@ -12,8 +12,6 @@ for option in [
   \ 'tabstop=2',
   \ 'shiftwidth=2',
   \ 're=0',
-  \ 'completeopt+=menuone',
-  \ 'shortmess+=c',
 \ ]
   execute 'set '.option
 endfor
