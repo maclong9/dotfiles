@@ -59,7 +59,7 @@ install_git() {
 install_tooling() {
   message "info" "Installing tools..." 
   if [ "$(uname)" != "Darwin" ] && ! vim --version > /dev/null; then
-    "$INSTALL_COMMAND vim"
+    $INSTALL_COMMAND vim
   fi
   curl -fsSL "https://deno.land/install.sh" | sh
   message "success" "Tooling installed"
