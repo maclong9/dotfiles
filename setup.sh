@@ -34,7 +34,7 @@ install_git() {
 install_tooling() {
   message "info" "Installing tools..." 
   if ! deno --version > /dev/null; then
-    curl -fsSL "https://deno.land/install.sh" | sh
+    curl -sS "https://deno.land/install.sh" | sh
   fi  
   message "success" "Tooling installed"
 }
