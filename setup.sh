@@ -3,7 +3,6 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
-HOMEBREW_PATH="/opt/homebrew/bin"
 
 handle_error() {
   printf "%sAn error occurred: %s%s\n" "$RED" "$1" "$NO_COLOR"
@@ -24,22 +23,6 @@ install_xcli() {
     xcode-select --install
     sudo xcodebuild -license accept
     success_message "Xcode Developer Tools installed"
-  fi
-}
-
-install_homebrew() {
-  if [ ! -d "$HOMEBREW_PATH" ]; then
-    info_message "Installing Homebrew..."
-    /bin/bash -c \
-      "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$($HOMEBREW_PATH/brew shellenv)"
-    success_message "Homebrew installed"
-  fi
-}
-
-create_zprofile() {
-  if [ ! -e "$HOME/.zprofile" ]; then
-    printf "eval \"\$(%s shellenv)\"" "$HOMEBREW_PATH/brew" >> "$HOME/.zprofile"
   fi
 }
 
@@ -73,8 +56,6 @@ link_configuration() {
 
 info_message "Initialising System"
 install_xcli || handle_error "Failed to install Xcode Developer Tools"
-install_homebrew || handle_error "Failed to install Homebrew"
-create_zprofile || handle_error "Failed to create zprofile"
 clone_configuration || handle_error "Failed to clone configuration"
 install_tools || handle_error "Failed to install tools"
 install_apps || handle_error "Error installing applications"
