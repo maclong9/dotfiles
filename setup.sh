@@ -2,7 +2,7 @@
 usage() {
   for string in "Usage: %s [-i <install_command>] [-h]\n" "$0" \
     \ "Options:\n"
-    \ "  -i, --install-command <install_command>   Specify the install command to be used\n"
+    \ "  -i, --install-command <install_command>   Specify the install command to be used, be sure to add `sudo` if required.\n"
     \ "  -h, --help                                Display this help message\n";
   do
     printf "$string"
