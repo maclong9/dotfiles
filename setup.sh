@@ -32,11 +32,11 @@ install_git() {
 }
 
 install_tooling() {
-  message "info" "Installing tools..." 
   if ! deno --version > /dev/null; then
+    message "info" "Installing tools..." 
     curl -sS "https://deno.land/install.sh" | sh
+    message "success" "Tooling installed"
   fi  
-  message "success" "Tooling installed"
 }
 
 clone_configuration() {
