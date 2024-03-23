@@ -41,7 +41,6 @@ call plug#begin()
     \ 'sheerun/vim-polyglot',
     \ 'mattn/emmet-vim',
     \ 'tpope/vim-fugitive',
-    \ 'tpope/vim-surround',
     \ 'tpope/vim-rsi',
     \ 'lifepillar/vim-mucomplete',
   \ ]
