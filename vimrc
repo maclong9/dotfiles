@@ -4,12 +4,12 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option in [
-  \ 're=0',
   \ 'expandtab', 
-  \ 'tabstop=2',
   \ 'incsearch',
   \ 'noswapfile', 
   \ 'cursorline',
+  \ 're=0',
+  \ 'tabstop=2',
   \ 'shiftwidth=2',
   \ 'relativenumber', 
 \ ]
