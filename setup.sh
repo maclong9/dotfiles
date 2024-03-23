@@ -76,7 +76,8 @@ install_tooling() {
   if ! command -v curl > /dev/null; then
     $INSTALL_COMMAND curl
   fi
-  curl -fsSL https://deno.land/install.sh | sh
+  curl -fsSL "https://deno.land/install.sh" | sh
+  curl -fsSl "https://raw.githubusercontent.com/junegunn/fzf/master/install" | sh
   message "success" "Tooling installed"
 }
 
