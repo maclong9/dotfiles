@@ -1,11 +1,11 @@
 #!/bin/sh
 usage() {
-  for string in "Usage: %s [-i <install_command>] 
-    [-h]\n" "$0" "Options:\n" \
-    "  -i, --install-command <install_command>   Specify the install command to be used, be sure to add `sudo` if required\n" \
+  for string in "Usage: %s [-i <install_command>] [-h]\n" "$0" "Options:\n" \
+    "  -i, --install-command <install_command>   Specify the install command to be used, be sure to add sudo if required\n" \
     "  -h, --help                                Display this help message\n";
   do
-    printf "$string"
+    printf "%s" "$string"
+  done
   exit 1
 }
 
@@ -25,12 +25,10 @@ message() {
     "success") COL="$(tput setaf 2)";;
   esac
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
+  if [ "$1" = "error" ]; then
+    exit 1
+  fi
 }
-
-handle_critical_error() {
-  message "error" "Critical error occurred"
-  exit 1
-} trap "handle_critical_error" ERR
 
 install_git() {
   if ! git --version > /dev/null; then
@@ -41,7 +39,7 @@ install_git() {
       message "success" "Xcode Developer Tools installed"
     else
       message "info" "Installing git..."
-      $INSTALL_COMMAND git
+      "$INSTALL_COMMAND" git
       message "success" "Git installed successfully"
     fi
   fi
@@ -68,7 +66,7 @@ link_configuration() {
 install_tooling() {
   message "info" "Installing tools..." 
   if ! curl --version > /dev/null; then
-    $INSTALL_COMMAND curl
+    "$INSTALL_COMMAND" curl
   fi
   curl -fsSL "https://deno.land/install.sh" | sh
   curl -fsSl "https://raw.githubusercontent.com/junegunn/fzf/master/install" | sh
