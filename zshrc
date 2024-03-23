@@ -1,7 +1,7 @@
 source "$HOME/.zplug/init.zsh"
 bindkey -v
 
-PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
+export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
 
 zplug "djui/alias-tips"
@@ -12,6 +12,6 @@ zplug "ajeetdsouza/zoxide", from:gh-r, as:command, rename-to:z
 zplug "z-shell/zsh-zoxide"
 zplug load
 
-function mkcd() {
+mkcd() {
   mkdir "$1" && cd "$1"
 }
