@@ -5,8 +5,7 @@ BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
 
 handle_error() {
-  ERROR="$?"
-  printf "%s%s: %s%s" "$RED" "$1" "$ERROR" "$NO_COLOR"
+  printf "%s%s: %s%s" "$RED" "$1" "$?" "$NO_COLOR"
   exit 1
 }
 
