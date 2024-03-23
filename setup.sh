@@ -18,10 +18,8 @@ message() {
 install_xcli() {
   if ! command -v git > /dev/null; then
     message_info "Installing Xcode Developer Tools..."   
- 
     xcode-select --install
-    sudo xcodebuild -license accept  
-   
+    sudo xcodebuild -license accept     
     message_success "Xcode Developer Tools installed"
   fi
 }
@@ -31,39 +29,31 @@ clone_configuration() {
     message "info" "$HOME/.config already exists"
   else
     message "info" "Cloning configuration..."
-  
     git clone "https://github.com/maclong9/dotfiles" "$HOME/.config"
-   
     message "success" "Configuration cloned"
   fi
 }
 
 link_configuration() {
-   message "info" "Linking configuration files..."
- 
+   message "info" "Linking configuration files..." 
    for file in "gitconfig" "vimrc" "zshrc"; do
      ln -s "$HOME/.config/$file" "$HOME/.$file"
-   done
-  
+   done 
    message "success" "Configuration linked"
 }
 
 install_tooling() {
-  message "info" "Installing tools..."
- 
+  message "info" "Installing tools..." 
   curl -fsSL https://deno.land/install.sh | sh
- 
   message "success" "Tooling installed"
 }
 
 install_plugins() {
   TOOL=$1; PLUGIN_PATH=$2; shift 2
-  message "info" "Installing $TOOL plugins..."
- 
+  message "info" "Installing $TOOL plugins..." 
   for plugin in "$@"; do
     git clone "https://github.com/$plugin" "$HOME/$PLUGIN_PATH"
   done
-
   message "success" "$TOOL plugins installed"
 }
 
