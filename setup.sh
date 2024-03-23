@@ -33,7 +33,7 @@ handle_critical_error() {
 } trap "handle_critical_error" ERR
 
 install_git() {
-  if ! command -v git > /dev/null; then
+  if ! git --version > /dev/null; then
     if [ "$(uname)" != "Darwin" ]; then 
       message "info" "Installing Xcode Developer Tools..."   
       xcode-select --install
@@ -67,7 +67,7 @@ link_configuration() {
 
 install_tooling() {
   message "info" "Installing tools..." 
-  if ! command -v curl > /dev/null; then
+  if ! curl --version > /dev/null; then
     $INSTALL_COMMAND curl
   fi
   curl -fsSL "https://deno.land/install.sh" | sh
