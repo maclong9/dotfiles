@@ -13,6 +13,13 @@ message() {
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
 }
 
+handle_critical_error() {
+  message "error" "Critical error occurred"
+  exit 1
+}
+
+trap 'handle_critical_error' ERR
+
 install_xcli() {
   if ! command -v git > /dev/null; then
     message_info "Installing Xcode Developer Tools..."   
