@@ -1,7 +1,17 @@
 #!/bin/sh
-printf "%s%s%s\n" "$(tput setaf 4)" "$1" "$(tput sgr0)"
-printf "%sError %s: %s%s" "$(tput setaf 1)" "$1" "$?" "$(tput sgr0)"
-printf "%s%s%s\n" "$(tput setaf 2)" "$1" "$(tput sgr0)"
+message() {
+  MSG="$2"; ERR=""; NC="$(tput sgr0)";
+  case "$1" in
+    "info")
+      COL="$(tput setaf 4)";;;
+    "success")
+       COL="$(tput setaf 2)";;
+    "error")
+      COL="$(tput setaf 1)" ERR="$?";;
+    *)
+  esac
+    printf "%s%s%s%s\n" "$COL" "$MSG" ": $ERR" "$NC"
+}
 
 install_xcli() {
   if ! command -v git > /dev/null; then
