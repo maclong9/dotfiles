@@ -66,6 +66,15 @@ install_plugins()
 setup_tooling() {
   info_message "Setting up tooling"
   install_plugins "Vim" ".vim/pack/plugins/start" \
+    "junegunn/fzf.vim" \
+    "lifepillar/vim-mucomplete" \
+    "mattn/emmet-vim" \
+    "sheerun/vim-polyglot" \
+    "tpope/vim-fugitive" \
+    "tpope/vim-rsi"
+  
+  install_plugins "ZSH" ".zsh" \
+  
 }
 
 info_message "Initialising System"
