@@ -1,21 +1,21 @@
 #!/bin/sh
 message() {
-  message="$2";
+  content="$2";
   
   case "$1" in
     "info")    
       color="$(tput setaf 4)" 
       ;;
     "error")   
-      color="$(tput setaf 1)"; 
-      message="$?" 
+      color="$(tput setaf 1)"
+      content="$?" 
       ;;
     "success") 
       color="$(tput setaf 2)" 
       ;;
   esac
   
-  printf "%s%s%s\n" "$color" "$message" "$(tput sgr0)"
+  printf "%s%s%s\n" "$color" "$content" "$(tput sgr0)"
   
   if [ "$1" = "error" ]; then
     exit 1
