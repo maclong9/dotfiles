@@ -43,7 +43,7 @@ message() {
 
 install_git() {
   if ! git --version > /dev/null; then
-    if [ "$(uname)" != "Darwin" ]; then 
+    if [ "$(uname)" = "Darwin" ]; then 
       message "info" "Installing Xcode Developer Tools..."   
       xcode-select --install
       sudo xcodebuild -license accept     
