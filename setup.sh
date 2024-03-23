@@ -91,7 +91,7 @@ setup_tooling() {
   message "success" "Tooling setup successfully"
 }
 
-install_xcli || message "error" "installing Xcode Developer Tools"
+install_git || message "error" "installing Git"
 clone_configuration || message "error" "cloning configuration"
 link_configuration || message "error" "linking configuration files"
 install_tooling || message "error" "installing tools"
