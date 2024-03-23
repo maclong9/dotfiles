@@ -67,7 +67,7 @@ install_tooling() {
 
 clone_configuration() {
   if [ -d "$HOME/.config" ]; then
-    message "info" "$HOME/.config already exists"
+    message "error" "$HOME/.config already exists"
   else
     message "info" "Cloning configuration..."
     git clone "https://github.com/maclong9/dotfiles" "$HOME/.config"
