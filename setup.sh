@@ -1,61 +1,62 @@
 #!/bin/sh
-message_info() {
-  printf "%s%s%s\n" "$(tput setaf 4)" "$1" "$(tput sgr0)"
-}
-
-message_error() {
-  printf "%sError %s: %s%s" "$(tput setaf 1)" "$1" "$?" "$(tput sgr0)"
-  exit 1
-}
-
-message_success() {
-  printf "%s%s%s\n" "$(tput setaf 2)" "$1" "$(tput sgr0)"
-}
+printf "%s%s%s\n" "$(tput setaf 4)" "$1" "$(tput sgr0)"
+printf "%sError %s: %s%s" "$(tput setaf 1)" "$1" "$?" "$(tput sgr0)"
+printf "%s%s%s\n" "$(tput setaf 2)" "$1" "$(tput sgr0)"
 
 install_xcli() {
   if ! command -v git > /dev/null; then
-    info_message "Installing Xcode Developer Tools..."   
+    message_info "Installing Xcode Developer Tools..."   
+ 
     xcode-select --install
     sudo xcodebuild -license accept  
-    success_message "Xcode Developer Tools installed"
+   
+    message_success "Xcode Developer Tools installed"
   fi
 }
 
 clone_configuration() {
   if [ -d "$HOME/.config" ]; then
-    info_message "$HOME/.config already exists"
+    message "info" "$HOME/.config already exists"
   else
-    info_message "Cloning configuration..."
+    message "info" "Cloning configuration..."
+  
     git clone "https://github.com/maclong9/dotfiles" "$HOME/.config"
-    success_message "Configuration cloned"
+   
+    message "success" "Configuration cloned"
   fi
 }
 
 link_configuration() {
-   info_message "Linking configuration files..."
-   for file in gitconfig vimrc zshrc; do
+   message "info" "Linking configuration files..."
+ 
+   for file in "gitconfig" "vimrc" "zshrc"; do
      ln -s "$HOME/.config/$file" "$HOME/.$file"
    done
-   success_message "Configuration linked"
+  
+   message "success" "Configuration linked"
 }
 
 install_tooling() {
-  info_message "Installing tools..."
+  message "info" "Installing tools..."
+ 
   curl -fsSL https://deno.land/install.sh | sh
-  success_message "Tooling installed"
+ 
+  message "success" "Tooling installed"
 }
 
 install_plugins() {
-  info_message "Installing $1 plugins..."
   TOOL=$1; PLUGIN_PATH=$2; shift 2
+  message "info" "Installing $TOOL plugins..."
+ 
   for plugin in "$@"; do
     git clone "https://github.com/$plugin" "$HOME/$PLUGIN_PATH"
   done
-  success_message "$TOOL plugins installed"
+
+  message "success" "$TOOL plugins installed"
 }
 
 setup_tooling() {
-  info_message "Setting up tooling"
+  message "info" "Setting up tooling"
 
   install_plugins "Vim" ".vim/pack/plugins/start" \
     "junegunn/fzf.vim" \
@@ -70,13 +71,13 @@ setup_tooling() {
     \ "Aloxaf/fzf-tab"
     \ "zsh-users/zsh-syntax-highlighting"
     
-  message_success "Tooling setup successfully"
+  message "success" "Tooling setup successfully"
 }
 
-info_message "Initialising System"
-install_xcli || handle_error "installing Xcode Developer Tools"
-clone_configuration || handle_error "cloning configuration"
-link_configuration || handle_error "linking configuration files"
-install_tooling || handle_error "installing tools"
-setup_tooling || handle_error "setting up tooling"
-success_message "System Initialisation Complete, Enjoy."
+message "info" "Initialising System"
+install_xcli || message "error" "installing Xcode Developer Tools"
+clone_configuration || message "error" "cloning configuration"
+link_configuration || message "error" "linking configuration files"
+install_tooling || message "error" "installing tools"
+setup_tooling || message "error" "setting up tooling"
+message "success" "System Initialisation Complete, Enjoy."
