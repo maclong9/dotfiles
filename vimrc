@@ -4,7 +4,7 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option in [ 
-  \'expandtab', 
+  \ 'expandtab', 
   \ 'incsearch',
   \ 'noswapfile', 
   \ 'cursorline',
