@@ -8,7 +8,7 @@ zplug "djui/alias-tips"
 zplug "Aloxaf/fzf-tab"
 zplug "z-shell/zsh-zoxide"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "BurntSushi/ripgrep", from:gh-r, as:command
+zplug "BurntSushi/ripgrep", from:gh-r, as:command rename-to:rg
 zplug load
 
 function mkcd() {
