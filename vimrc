@@ -4,14 +4,14 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option in [ 
-  \ 'expandtab', 
   \ 'incsearch',
   \ 'noswapfile', 
   \ 'cursorline',
   \ 'relativenumber', 
-  \ 're=0',
+  \ 'expandtab', 
   \ 'tabstop=2',
   \ 'shiftwidth=2',
+  \ 're=0',
 \ ]
   execute 'set '.option
 endfor
