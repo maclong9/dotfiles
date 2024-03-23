@@ -1,4 +1,3 @@
-source "$HOME/.zplug/init.zsh"
 export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%B󰘧%b%f "
 export PATH="$PATH:$HOME/.deno/bin/"
