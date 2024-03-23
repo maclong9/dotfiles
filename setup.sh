@@ -50,7 +50,7 @@ install_git() {
       message "success" "Xcode Developer Tools installed"
     else
       message "info" "Installing git..."
-      "$INSTALL_COMMAND git"
+      $INSTALL_COMMAND git
       message "success" "Git installed successfully"
     fi
   fi
