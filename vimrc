@@ -23,10 +23,3 @@ for var in [
 \ ]
   execute 'let g:'.var
 endfor
-
-for mapping in [
-  \ ['ez', 'edit ~/.config/zshrc'],
-  \ ['ev', 'edit ~/.config/vimrc'],
-\ ]
-    execute 'nmap <leader>'.mapping[0].' :'.mapping[1].'<CR>'
-endfor
