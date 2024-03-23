@@ -19,9 +19,9 @@ message_info() {
 
 install_xcli() {
   if ! command -v git > /dev/null; then
-    info_message "Installing Xcode Developer Tools..."
+    info_message "Installing Xcode Developer Tools..."   
     xcode-select --install
-    sudo xcodebuild -license accept
+    sudo xcodebuild -license accept  
     success_message "Xcode Developer Tools installed"
   fi
 }
@@ -54,12 +54,13 @@ install_tools() {
   success_message "Tooling installed"
 }
 
-install_plugins() {
+install_plugins() 
   info_message "Installing $1 plugins..."
-  mkdir -p $2
-  for plugin in "$3"; do
-    git clone "https://github.com/$plugin" "$2"
+  TOOL=$1; PLUGIN_PATH=$2; shift 2
+  for plugin in "$@"; do
+    git clone "https://github.com/$plugin" "$HOME/$PLUGIN_PATH"
   done
+  success_message "$TOOL plugins installed"
 }
 
 info_message "Initialising System"
