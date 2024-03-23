@@ -70,7 +70,7 @@ setup_tooling() {
     "tpope/vim-fugitive" \
     "tpope/vim-rsi"
   
-  install_plugins "ZSH" ".zsh" \
+  install_plugins "ZSH" ".zsh/plugins" \
     \ "djui/alias-tips"
     \ "Aloxaf/fzf-tab"
     \ "zsh-users/zsh-syntax-highlighting"
