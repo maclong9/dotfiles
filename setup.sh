@@ -48,6 +48,15 @@ install_git() {
   fi
 }
 
+install_tooling() {
+  message "info" "Installing tools..." 
+  if [ "$(uname)" != "Darwin" ] && ! vim --version; then
+    "$INSTALL_COMMAND" vim
+  fi
+  curl -fsSL "https://deno.land/install.sh" | sh
+  message "success" "Tooling installed"
+}
+
 clone_configuration() {
   if [ -d "$HOME/.config" ]; then
     message "info" "$HOME/.config already exists"
@@ -66,17 +75,8 @@ link_configuration() {
    message "success" "Configuration linked"
 }
 
-install_tooling() {
-  message "info" "Installing tools..." 
-  if [ "$(uname)" != "Darwin" ] && ! vim --version; then
-    "$INSTALL_COMMAND" vim
-  fi
-  curl -fsSL "https://deno.land/install.sh" | sh
-  message "success" "Tooling installed"
-}
-
 install_git || message "error" "installing Git"
+install_tooling || message "error" "installing tools"
 clone_configuration || message "error" "cloning configuration"
 link_configuration || message "error" "linking configuration files"
-install_tooling || message "error" "installing tools"
 message "success" "System configuration complete, enjoy."
