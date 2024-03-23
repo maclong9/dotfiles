@@ -1,6 +1,7 @@
 #!/bin/sh
 message() {
   MSG="$2";
+  
   case "$1" in
     "info")    
       COL="$(tput setaf 4)" ;;
