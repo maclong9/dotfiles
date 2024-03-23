@@ -86,7 +86,7 @@ install_plugins() {
 
 setup_tooling() {
   message "info" "Setting up tooling"
-  install_plugins "Vim" "vim/pack/plugins/start" "junegunn/fzf.vim" "lifepillar/vim-mucomplete" "mattn/emmet-vim" "sheerun/vim-polyglot" "tpope/vim-fugitive" "tpope/vim-rsi"
+  install_plugins "Vim" "vim/pack/plugins/start" "junegunn/fzf.vim" "lifepillar/vim-mucomplete" "sheerun/vim-polyglot" "tpope/vim-fugitive" "tpope/vim-rsi"
   install_plugins "ZSH" "zsh/plugins" "Aloxaf/fzf-tab" "zsh-users/zsh-completions" "zsh-users/zsh-syntax-highlighting"    
   message "success" "Tooling setup successfully"
 }
