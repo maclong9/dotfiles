@@ -2,14 +2,14 @@ for option in [
   \ 'nocompatible', 
   \ 'relativenumber', 
   \ 'incsearch',
-  \ 'expandtab', 
   \ 'noswapfile', 
   \ 'cursorline',
+  \ 'expandtab', 
+  \ 'tabstop=2',
+  \ 'shiftwidth=2',
   \ 're=0',
   \ 'completeopt+=menuone',
   \ 'shortmess+=c',
-  \ 'tabstop=2',
-  \ 'shiftwidth=2',
 \ ]
   execute 'set '.option
 endfor
