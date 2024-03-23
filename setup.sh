@@ -44,17 +44,13 @@ link_configuration() {
    success_message "Configuration linked"
 }
 
-install_tools() {
+install_tooling() {
   info_message "Installing tools..."
-  curl -sL --proto-redir -all,https \
-    "https://raw.githubusercontent.com/zplug/installer/master/installer.zsh" | zsh
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-   "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   curl -fsSL https://deno.land/install.sh | sh
   success_message "Tooling installed"
 }
 
-install_plugins() 
+install_plugins() {
   info_message "Installing $1 plugins..."
   TOOL=$1; PLUGIN_PATH=$2; shift 2
   for plugin in "$@"; do
@@ -65,6 +61,7 @@ install_plugins()
 
 setup_tooling() {
   info_message "Setting up tooling"
+
   install_plugins "Vim" ".vim/pack/plugins/start" \
     "junegunn/fzf.vim" \
     "lifepillar/vim-mucomplete" \
@@ -74,13 +71,17 @@ setup_tooling() {
     "tpope/vim-rsi"
   
   install_plugins "ZSH" ".zsh" \
-  
+    \ "djui/alias-tips"
+    \ "Aloxaf/fzf-tab"
+    \ "zsh-users/zsh-syntax-highlighting"
+    
+  message_success "Tooling setup successfully"
 }
 
 info_message "Initialising System"
 install_xcli || handle_error "installing Xcode Developer Tools"
 clone_configuration || handle_error "cloning configuration"
 link_configuration || handle_error "linking configuration files"
-install_tools || handle_error "installing tools"
-tooling_setup || handle_error "setting up tooling"
+install_tooling || handle_error "installing tools"
+setup_tooling || handle_error "setting up tooling"
 success_message "System Initialisation Complete, Enjoy."
