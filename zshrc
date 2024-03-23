@@ -6,10 +6,10 @@ PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 
 zplug "djui/alias-tips"
 zplug "Aloxaf/fzf-tab"
-zplug "z-shell/zsh-zoxide"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:rg
 zplug "ajeetdsouza/zoxide", from:gh-r, as:command, rename-to:z
+zplug "z-shell/zsh-zoxide"
 zplug load
 
 function mkcd() {
