@@ -21,12 +21,9 @@ done
 message() {
   MSG="$2"; ERR=""; NC="$(tput sgr0)";
   case "$1" in
-    "info")    
-      COL="$(tput setaf 4)";;
-    "error")   
-      COL="$(tput setaf 1)" ERR=": $?";;
-    "success") 
-      COL="$(tput setaf 2)";;
+    "info")    COL="$(tput setaf 4)";;
+    "error")   COL="$(tput setaf 1)" ERR=": $?";;
+    "success") COL="$(tput setaf 2)";;
   esac
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
 }
@@ -91,24 +88,13 @@ install_plugins() {
 
 setup_tooling() {
   message "info" "Setting up tooling"
-  install_plugins "Vim" "vim/pack/plugins/start"
-    \ "junegunn/fzf.vim"
-    \ "lifepillar/vim-mucomplete"
-    \ "mattn/emmet-vim"
-    \ "sheerun/vim-polyglot"
-    \ "tpope/vim-fugitive"
-    \ "tpope/vim-rsi"
-  install_plugins "ZSH" "zsh/plugins"
-    \ "djui/alias-tips"
-    \ "Aloxaf/fzf-tab"
-    \ "zsh-users/zsh-syntax-highlighting"    
+  install_plugins "Vim" "vim/pack/plugins/start" "junegunn/fzf.vim" "lifepillar/vim-mucomplete" "mattn/emmet-vim" "sheerun/vim-polyglot" "tpope/vim-fugitive" "tpope/vim-rsi"
+  install_plugins "ZSH" "zsh/plugins" "djui/alias-tips" "Aloxaf/fzf-tab" "zsh-users/zsh-syntax-highlighting"    
   message "success" "Tooling setup successfully"
 }
 
-message "info" "Initialising System"
 install_xcli || message "error" "installing Xcode Developer Tools"
 clone_configuration || message "error" "cloning configuration"
 link_configuration || message "error" "linking configuration files"
 install_tooling || message "error" "installing tools"
 setup_tooling || message "error" "setting up tooling"
-message "success" "System Initialisation Complete, Enjoy."
