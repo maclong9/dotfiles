@@ -20,9 +20,12 @@ done
 message() {
   MSG="$2"; ERR=""; NC="$(tput sgr0)";
   case "$1" in
-    "info")    COL="$(tput setaf 4)";;
-    "error")   COL="$(tput setaf 1)" ERR=": $?";;
-    "success") COL="$(tput setaf 2)";;
+    "info")    
+      COL="$(tput setaf 4)";;
+    "error")   
+       COL="$(tput setaf 1)" ERR=": $?";;
+    "success") 
+      COL="$(tput setaf 2)";;
   esac
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
   if [ "$1" = "error" ]; then
