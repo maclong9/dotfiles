@@ -1,6 +1,6 @@
 #!/bin/sh
 message() {
-  MSG="$2"; ERR=""; NC="$(tput sgr0)";
+  MSG="$2"; ERR="";
   case "$1" in
     "info")    
       COL="$(tput setaf 4)" ;;
@@ -11,7 +11,7 @@ message() {
       COL="$(tput setaf 2)" ;;
   esac
   
-  printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
+  printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$(tput sgr0)"
   
   if [ "$1" = "error" ]; then
     exit 1
