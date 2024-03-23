@@ -1,27 +1,4 @@
 #!/bin/sh
-usage() {
-  for string in "Usage: %s [-i <install_command>] [-h]\n" "$0" "Options:\n" \
-    "  -i, --install-command <install_command>   Specify the install command to be used\n" \
-    "  -h, --help                                Display this help message\n";
-  do
-    printf "%s" "$string"
-  done
-  exit 1
-}
-
-while [ "$#" -gt 0 ]; do
-  case "$1" in
-    -i | --install-command) 
-      INSTALL_COMMAND="$2"
-      shift 2 ;;
-    -h | --help)            
-      usage ;;
-    *)                      
-      printf "Invalid option: %s\n" "$1"
-      usage ;;
-    esac
-done
-
 message() {
   MSG="$2"; ERR=""; NC="$(tput sgr0)";
   case "$1" in
@@ -43,24 +20,15 @@ message() {
 
 install_git() {
   if ! git --version > /dev/null; then
-    if [ "$(uname)" = "Darwin" ]; then 
-      message "info" "Installing Xcode Developer Tools..."   
-      xcode-select --install
-      sudo xcodebuild -license accept     
-      message "success" "Xcode Developer Tools installed"
-    else
-      message "info" "Installing git..."
-      $INSTALL_COMMAND git
-      message "success" "Git installed successfully"
-    fi
+    message "info" "Installing Xcode Developer Tools..."   
+    xcode-select --install
+    sudo xcodebuild -license accept     
+    message "success" "Xcode Developer Tools installed"
   fi
 }
 
 install_tooling() {
   message "info" "Installing tools..." 
-  if [ "$(uname)" != "Darwin" ] && ! vim --version > /dev/null; then
-    $INSTALL_COMMAND vim
-  fi
   curl -fsSL "https://deno.land/install.sh" | sh
   message "success" "Tooling installed"
 }
