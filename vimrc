@@ -32,7 +32,6 @@ for mapping in [
   \ ['ev', 'edit ~/.config/vimrc'],
   \ ['ff', 'Files'],
   \ ['fb', 'Buffers'],
-  \ ['fw', 'Rg'],
   \ ['fm', 'Marks'],
   \ ['fC', 'Commits'],
 \ ]
