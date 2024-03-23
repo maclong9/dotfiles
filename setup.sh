@@ -68,11 +68,9 @@ link_configuration() {
 
 install_tooling() {
   message "info" "Installing tools..." 
-  for tool in "curl" "vim"; do
-    if [ "$(uname)" != "Darwin" ] && ! $tool --version; then
-      "$INSTALL_COMMAND" $tool
-    fi
-  done
+  if [ "$(uname)" != "Darwin" ] && ! vim --version; then
+    "$INSTALL_COMMAND" vim
+  fi
   curl -fsSL "https://deno.land/install.sh" | sh
   message "success" "Tooling installed"
 }
