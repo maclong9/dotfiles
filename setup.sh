@@ -57,7 +57,7 @@ install_plugins() {
   TOOL=$1; PLUGIN_PATH=$2; shift 2
   message "info" "Installing $TOOL plugins..." 
   for plugin in "$@"; do
-    git clone "https://github.com/$plugin" "$HOME/$PLUGIN_PATH"
+    git clone "https://github.com/$plugin" "$HOME/.$PLUGIN_PATH"
   done
   message "success" "$TOOL plugins installed"
 }
@@ -65,7 +65,7 @@ install_plugins() {
 setup_tooling() {
   message "info" "Setting up tooling"
 
-  install_plugins "Vim" ".vim/pack/plugins/start"
+  install_plugins "Vim" "vim/pack/plugins/start"
     \ "junegunn/fzf.vim"
     \ "lifepillar/vim-mucomplete"
     \ "mattn/emmet-vim"
@@ -73,7 +73,7 @@ setup_tooling() {
     \ "tpope/vim-fugitive"
     \ "tpope/vim-rsi"
   
-  install_plugins "ZSH" ".zsh/plugins"
+  install_plugins "ZSH" "zsh/plugins"
     \ "djui/alias-tips"
     \ "Aloxaf/fzf-tab"
     \ "zsh-users/zsh-syntax-highlighting"
