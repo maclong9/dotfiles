@@ -4,11 +4,15 @@ message() {
   
   case "$1" in
     "info")    
-      color="$(tput setaf 4)" ;;
+      color="$(tput setaf 4)" 
+      ;;
     "error")   
-      color="$(tput setaf 1)"; message="$?" ;;
+      color="$(tput setaf 1)"; 
+      message="$?" 
+      ;;
     "success") 
-      color="$(tput setaf 2)" ;;
+      color="$(tput setaf 2)" 
+      ;;
   esac
   
   printf "%s%s%s\n" "$color" "$message" "$(tput sgr0)"
