@@ -5,7 +5,7 @@ BLUE=$(tput setaf 4)
 NO_COLOR=$(tput sgr0)
 
 handle_error() {
-  printf "%s%s: %s%s" "$RED" "$1" "$?" "$NO_COLOR"
+  printf "%sError %s: %s%s" "$RED" "$1" "$?" "$NO_COLOR"
   exit 1
 }
 
@@ -36,6 +36,14 @@ clone_configuration() {
   fi
 }
 
+link_configuration() {
+   info_message "Linking configuration files..."
+   for file in gitconfig vimrc zshrc; do
+     ln -s "$HOME/.config/$file" "$HOME/.$file"
+   done
+   success_message "Configuration linked"
+}
+
 install_tools() {
   info_message "Installing tools..."
   curl -sL --proto-redir -all,https \
@@ -46,14 +54,6 @@ install_tools() {
   success_message "Tooling installed"
 }
 
-link_configuration() {
-   info_message "Linking configuration files..."
-   for file in gitconfig vimrc zshrc; do
-     ln -s "$HOME/.config/$file" "$HOME/.$file"
-   done
-   success_message "Configuration linked"
-}
-
 tooling_setup() {
   . "$HOME/.zshrc"
   zplug install
@@ -61,9 +61,9 @@ tooling_setup() {
 }
 
 info_message "Initialising System"
-install_xcli || handle_error "Failed to install Xcode Developer Tools"
-clone_configuration || handle_error "Failed to clone configuration"
-install_tools || handle_error "Failed to install tools"
-link_configuration || handle_error "Failed to link configuration files"
-tooling_setup || handle_error "Failed to setup tooling"
+install_xcli || handle_error "installing Xcode Developer Tools"
+clone_configuration || handle_error "cloning configuration"
+link_configuration || handle_error "linking configuration files"
+install_tools || handle_error "installing tools"
+tooling_setup || handle_error "setting up tooling"
 success_message "System Initialisation Complete, Enjoy."
