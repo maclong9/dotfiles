@@ -11,7 +11,7 @@ message() {
       color="$(tput setaf 2)" ;;
   esac
   
-  printf "%s%s%s%s\n" "$color" "$message" "$(tput sgr0)"
+  printf "%s%s%s\n" "$color" "$message" "$(tput sgr0)"
   
   if [ "$1" = "error" ]; then
     exit 1
