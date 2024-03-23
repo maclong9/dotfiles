@@ -1,4 +1,4 @@
-source "$HOME/.zplug"
+source "$HOME/.zplug/init.zsh"
 bindkey -v
 
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
@@ -13,5 +13,5 @@ zplug "z-shell/zsh-zoxide"
 zplug load
 
 function mkcd() {
-  mkdir $1 && cd $1
+  mkdir "$1" && cd "$1"
 }
