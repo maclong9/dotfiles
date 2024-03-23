@@ -44,7 +44,7 @@ clone_configuration() {
     message "info" "$HOME/.config already exists"
   else
     message "info" "Cloning configuration..."
-    git clone "https://github.com/maclong9/dotfiles" "$HOME/.config"
+    git clone -q "https://github.com/maclong9/dotfiles" "$HOME/.config"
     message "success" "Configuration cloned"
   fi
 }
