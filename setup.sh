@@ -1,7 +1,6 @@
 #!/bin/sh
 message() {
   content="$2";
-  
   case "$1" in
     "info")    
       color="$(tput setaf 4)" 
