@@ -1,18 +1,18 @@
-syntax on
+vim9script
 g:is_posix = 1
+syntax on
 colorscheme habamax
 highlight Normal ctermbg=none
-highlight link netrwMarkFile Search
 
-for option in [ 
+for option: string in [
   'incsearch',
-  'noswapfile', 
+  'noswapfile',
   'cursorline',
-  'relativenumber', 
-  'expandtab', 
-  'tabstop = 2',
-  'shiftwidth = 2',
-  're = 0'
+  'relativenumber',
+  'expandtab',
+  'tabstop=2',
+  'shiftwidth=2',
+  're=0'
 ]
-  execute 'set '.option
+  execute 'set ' .. option
 endfor
