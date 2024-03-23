@@ -20,12 +20,18 @@ handle_critical_error() {
 
 trap "handle_critical_error" ERR
 
-install_xcli() {
+install_git() {
   if ! command -v git > /dev/null; then
-    message_info "Installing Xcode Developer Tools..."   
-    xcode-select --install
-    sudo xcodebuild -license accept     
-    message_success "Xcode Developer Tools installed"
+    if [ "$(uname)" != "Darwin" ]; then 
+      message "info" "Installing Xcode Developer Tools..."   
+      xcode-select --install
+      sudo xcodebuild -license accept     
+      message "success" "Xcode Developer Tools installed"
+    else
+      message "info" "Installing git..."
+      $INSTALL_COMMAND git
+      message "success" "Git installed successfully"
+    fi
   fi
 }
 
@@ -49,6 +55,9 @@ link_configuration() {
 
 install_tooling() {
   message "info" "Installing tools..." 
+  if ! command -v curl > /dev/null; then
+    $INSTALL_COMMAND curl
+  fi
   curl -fsSL https://deno.land/install.sh | sh
   message "success" "Tooling installed"
 }
