@@ -12,8 +12,8 @@ usage() {
 while [ $# -gt 0 ]; do
   case "$1" in
     -i | --install-command) INSTALL_COMMAND="$2"; shift 2;;
-    -h | --help) usage;;
-    *)           printf "Invalid option: %s\n" "$1"; usage;;
+    -h | --help)            usage;;
+    *)                      printf "Invalid option: %s\n" "$1"; usage;;
     esac
 done
 
