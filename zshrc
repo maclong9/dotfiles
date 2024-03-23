@@ -1,4 +1,4 @@
-source /opt/homebrew/opt/zplug/init.zsh
+source "$HOME/.zplug"
 bindkey -v
 
 PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
