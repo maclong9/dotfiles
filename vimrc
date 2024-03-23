@@ -2,6 +2,7 @@ syntax on
 let g:is_posix=1
 colorscheme habamax
 highlight Normal ctermbg=none
+highlight! link netrwMarkFile Search
 
 for option in [ 
   \ 'incsearch',
