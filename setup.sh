@@ -63,6 +63,11 @@ install_plugins()
   success_message "$TOOL plugins installed"
 }
 
+setup_tooling() {
+  info_message "Setting up tooling"
+  install_plugins "Vim" ".vim/pack/plugins/start" \
+}
+
 info_message "Initialising System"
 install_xcli || handle_error "installing Xcode Developer Tools"
 clone_configuration || handle_error "cloning configuration"
