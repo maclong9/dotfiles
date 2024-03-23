@@ -1,17 +1,16 @@
 #!/bin/sh
 message() {
-  MSG="$2"; ERR="";
+  MSG="$2";
   case "$1" in
     "info")    
       COL="$(tput setaf 4)" ;;
     "error")   
-       COL="$(tput setaf 1)" 
-       ERR=": $?" ;;
+       COL="$(tput setaf 1)"; MSG="$?" ;;
     "success") 
       COL="$(tput setaf 2)" ;;
   esac
   
-  printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$(tput sgr0)"
+  printf "%s%s%s%s\n" "$COL" "$MSG" "$(tput sgr0)"
   
   if [ "$1" = "error" ]; then
     exit 1
@@ -51,8 +50,8 @@ link_configuration() {
    message "success" "Configuration linked"
 }
 
-install_git || message "error" "installing Git"
-install_tooling || message "error" "installing tools"
-clone_configuration || message "error" "cloning configuration"
-link_configuration || message "error" "linking configuration files"
+install_git || message "error"
+install_tooling || message "error"
+clone_configuration || message "error"
+link_configuration || message "error"
 message "success" "System configuration complete, enjoy."
