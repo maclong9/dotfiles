@@ -35,7 +35,6 @@ handle_critical_error() {
   message "error" "Critical error occurred"
   exit 1
 }
-
 trap "handle_critical_error" ERR
 
 install_git() {
@@ -92,7 +91,6 @@ install_plugins() {
 
 setup_tooling() {
   message "info" "Setting up tooling"
-
   install_plugins "Vim" "vim/pack/plugins/start"
     \ "junegunn/fzf.vim"
     \ "lifepillar/vim-mucomplete"
@@ -100,12 +98,10 @@ setup_tooling() {
     \ "sheerun/vim-polyglot"
     \ "tpope/vim-fugitive"
     \ "tpope/vim-rsi"
-  
   install_plugins "ZSH" "zsh/plugins"
     \ "djui/alias-tips"
     \ "Aloxaf/fzf-tab"
-    \ "zsh-users/zsh-syntax-highlighting"
-    
+    \ "zsh-users/zsh-syntax-highlighting"    
   message "success" "Tooling setup successfully"
 }
 
