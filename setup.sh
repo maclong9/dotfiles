@@ -1,16 +1,11 @@
 #!/bin/sh
-while [ $# -gt 0 ]; do
-  case "$1" in
-    --install-command)
-      INSTALL_COMMAND="$2"
-      shift 2
-      ;;
-    *)
-      echo "Invalid option: $1"
-      exit 1
-      ;;
-    esac
-done
+usage() {
+  printf "Usage: %s [-i <install_command>] [-h]\n" "$0"
+  printf "Options:\n"
+  printf "  -i, --install-command <install_command>   Specify the install command to be used\n"
+  printf "  -h, --help                                Display this help message\n"
+  exit 1
+}
 
 message() {
   MSG="$2"; ERR=""; NC="$(tput sgr0)";
@@ -25,6 +20,17 @@ message() {
   
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
 }
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -i | --install-command)
+      INSTALL_COMMAND="$2"; shift 2;;
+    -h | --help)
+      usage;;
+    *)
+      message "Invalid option: %s\n" "$1"; usage;;
+    esac
+done
 
 handle_critical_error() {
   message "error" "Critical error occurred"
