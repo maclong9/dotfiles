@@ -18,7 +18,7 @@ handle_critical_error() {
   exit 1
 }
 
-trap 'handle_critical_error' ERR
+trap "handle_critical_error" ERR
 
 install_xcli() {
   if ! command -v git > /dev/null; then
