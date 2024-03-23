@@ -28,7 +28,6 @@ message() {
     "success") 
       COL="$(tput setaf 2)";;
   esac
-  
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
 }
 
