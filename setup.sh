@@ -1,20 +1,15 @@
 #!/bin/sh
-RED=$(tput setaf 1)
-GREEN=$(tput setaf 2)
-BLUE=$(tput setaf 4)
-NO_COLOR=$(tput sgr0)
+message_info() {
+  printf "%s%s%s\n" "$(tput setaf 4)" "$1" "$(tput sgr0)"
+}
 
 message_error() {
-  printf "%sError %s: %s%s" "$RED" "$1" "$?" "$NO_COLOR"
+  printf "%sError %s: %s%s" "$(tput setaf 1)" "$1" "$?" "$(tput sgr0)"
   exit 1
 }
 
 message_success() {
-  printf "%s%s%s\n" "$GREEN" "$1" "$NO_COLOR"
-}
-
-message_info() {
-  printf "%s%s%s\n" "$BLUE" "$1" "$NO_COLOR"
+  printf "%s%s%s\n" "$(tput setaf 2)" "$1" "$(tput sgr0)"
 }
 
 install_xcli() {
