@@ -1,3 +1,7 @@
+syntax on
+colorscheme habamax
+highlight Normal ctermbg=none
+
 for option in [
   \ 'nocompatible', 
   \ 'relativenumber', 
@@ -34,21 +38,3 @@ for mapping in [
 \ ]
     execute 'nmap <leader>'.mapping[0].' :'.mapping[1].'<CR>'
 endfor
-
-call plug#begin()
-  for plugin in [
-    \ 'junegunn/fzf.vim',
-    \ 'sheerun/vim-polyglot',
-    \ 'mattn/emmet-vim',
-    \ 'tpope/vim-fugitive',
-    \ 'tpope/vim-rsi',
-    \ 'lifepillar/vim-mucomplete',
-  \ ]
-    Plug plugin
-  endfor
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-call plug#end()
-
-syntax on
-colorscheme habamax
-highlight Normal ctermbg=none
