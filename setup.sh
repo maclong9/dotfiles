@@ -54,7 +54,7 @@ install_tooling() {
 }
 
 install_plugins() {
-  TOOL=$1; PLUGIN_PATH=$2; shift 2
+  TOOL="$1"; PLUGIN_PATH="$2"; shift 2
   message "info" "Installing $TOOL plugins..." 
   for plugin in "$@"; do
     git clone "https://github.com/$plugin" "$HOME/.$PLUGIN_PATH"
