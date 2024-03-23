@@ -12,11 +12,16 @@ usage() {
 while [ "$#" -gt 0 ]; do
   case "$1" in
     -i | --install-command) 
-      INSTALL_COMMAND="$2"; shift 2;;
+      INSTALL_COMMAND="$2"
+      shift 2
+      ;;
     -h | --help)            
-      usage;;
+      usage
+      ;;
     *)                      
-      printf "Invalid option: %s\n" "$1"; usage;;
+      printf "Invalid option: %s\n" "$1"
+      usage
+      ;;
     esac
 done
 
@@ -24,13 +29,19 @@ message() {
   MSG="$2"; ERR=""; NC="$(tput sgr0)";
   case "$1" in
     "info")    
-      COL="$(tput setaf 4)";;
+      COL="$(tput setaf 4)"
+      ;;
     "error")   
-       COL="$(tput setaf 1)" ERR=": $?";;
+       COL="$(tput setaf 1)" 
+       ERR=": $?"
+       ;;
     "success") 
-      COL="$(tput setaf 2)";;
+      COL="$(tput setaf 2)"
+      ;;
   esac
+  
   printf "%s%s%s%s\n" "$COL" "$MSG" "$ERR" "$NC"
+  
   if [ "$1" = "error" ]; then
     exit 1
   fi
