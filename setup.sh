@@ -31,7 +31,7 @@ clone_configuration() {
     info_message "$HOME/.config already exists"
   else
     info_message "Cloning configuration..."
-    git clone https://github.com/maclong9/dotfiles "$HOME/.config"
+    git clone "https://github.com/maclong9/dotfiles" "$HOME/.config"
     success_message "Configuration cloned"
   fi
 }
@@ -57,15 +57,15 @@ install_tools() {
 setup_vim() {
   info_message "Installing Vim plugins..."
   mkdir -p "$HOME/.vim/pack"
-  for plugin in 
-    \ 'junegunn/fzf.vim'
-    \ 'sheerun/vim-polyglot'
-    \ 'mattn/emmet-vim'
-    \ 'tpope/vim-fugitive'
-    \ 'tpope/vim-rsi'
-    \ 'lifepillar/vim-mucomplete'
+  for plugin in \
+    \ "junegunn/fzf.vim"
+    \ "sheerun/vim-polyglot"
+    \ "tpope/vim-fugitive"
+    \ "mattn/emmet-vim"
+    \ "tpope/vim-rsi"
+    \ "lifepillar/vim-mucomplete"
   do
-    git clone "https://github.com/$plugin" "$HOME/.vim/pack"
+    git clone "https://github.com/$plugin" "$HOME/.vim/pack/"
   done
   success_message "Vim plugins installed"
 }
