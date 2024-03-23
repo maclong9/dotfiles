@@ -13,6 +13,6 @@ for option: string in [
   'tabstop = 2',
   'shiftwidth = 2',
   're = 0'
-]
+]: string
   execute 'set '.option
 endfor
