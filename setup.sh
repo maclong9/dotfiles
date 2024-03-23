@@ -1,20 +1,19 @@
 #!/bin/sh
 usage() {
-  printf "Usage: %s [-i <install_command>] [-h]\n" "$0"
-  printf "Options:\n"
-  printf "  -i, --install-command <install_command>   Specify the install command to be used\n"
-  printf "  -h, --help                                Display this help message\n"
+  for string in "Usage: %s [-i <install_command>] [-h]\n" "$0" \
+    \ "Options:\n"
+    \ "  -i, --install-command <install_command>   Specify the install command to be used\n"
+    \ "  -h, --help                                Display this help message\n";
+  do
+    printf "$string"
   exit 1
 }
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    -i | --install-command)
-      INSTALL_COMMAND="$2"; shift 2;;
-    -h | --help)
-      usage;;
-    *)
-      printf "Invalid option: %s\n" "$1"; usage;;
+    -i | --install-command) INSTALL_COMMAND="$2"; shift 2;;
+    -h | --help) usage;;
+    *)           printf "Invalid option: %s\n" "$1"; usage;;
     esac
 done
 
@@ -97,3 +96,4 @@ clone_configuration || message "error" "cloning configuration"
 link_configuration || message "error" "linking configuration files"
 install_tooling || message "error" "installing tools"
 setup_tooling || message "error" "setting up tooling"
+message "success" "System configuration complete, enjoy."
