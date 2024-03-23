@@ -54,25 +54,12 @@ install_tools() {
   success_message "Tooling installed"
 }
 
-setup_vim() {
-  info_message "Installing Vim plugins..."
-  mkdir -p "$HOME/.vim/pack"
-  for plugin in \
-    \ "junegunn/fzf.vim"
-    \ "sheerun/vim-polyglot"
-    \ "tpope/vim-fugitive"
-    \ "mattn/emmet-vim"
-    \ "tpope/vim-rsi"
-    \ "lifepillar/vim-mucomplete"
-  do
-    git clone "https://github.com/$plugin" "$HOME/.vim/pack/"
+install_plugins() {
+  info_message "Installing $1 plugins..."
+  mkdir -p $2
+  for plugin in "$3"; do
+    git clone "https://github.com/$plugin" "$2"
   done
-  success_message "Vim plugins installed"
-}
-
-tooling_setup() {
-  . "$HOME/.zshrc"
-  zplug install
 }
 
 info_message "Initialising System"
