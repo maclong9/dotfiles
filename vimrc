@@ -3,8 +3,8 @@ let g:is_posix=1
 colorscheme habamax
 highlight Normal ctermbg=none
 
-for option in [
-  \ 'expandtab', 
+for option in [ 
+  \'expandtab', 
   \ 'incsearch',
   \ 'noswapfile', 
   \ 'cursorline',
