@@ -23,7 +23,7 @@ message() {
 }
 
 install_git() {
-  if ! git --version > /dev/null; then
+  if ! command -v git > /dev/null; then
     message "info" "Installing Xcode Developer Tools..."   
     xcode-select --install
     sudo xcodebuild -license accept     
@@ -32,7 +32,7 @@ install_git() {
 }
 
 install_tooling() {
-  if ! deno --version > /dev/null; then
+  if ! command -v deno > /dev/null; then
     message "info" "Installing tools..." 
     curl -SLs "https://deno.land/install.sh" | sh > /dev/null
     message "success" "Tooling installed"
