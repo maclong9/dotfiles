@@ -57,7 +57,7 @@ link_configuration() {
    message "success" "Configuration linked"
 }
 
-install_git || message "error"
+install_xcli || message "error"
 install_tooling || message "error"
 clone_configuration || message "error"
 link_configuration || message "error"
