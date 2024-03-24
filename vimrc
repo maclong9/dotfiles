@@ -6,7 +6,7 @@ highlight Normal ctermbg=none
 
 for option: string in [
   'incsearch',
-  'noswapfile',
+  'noshowmode',
   'cursorline',
   'relativenumber',
   'expandtab',
