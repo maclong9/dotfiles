@@ -11,7 +11,6 @@ message() {
       ;;
     "success") 
       color="$(tput setaf 2)" 
-      tput cuu1 && tput el
       ;;
   esac
   
