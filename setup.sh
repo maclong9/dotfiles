@@ -22,7 +22,7 @@ message() {
   fi
 }
 
-install_git() {
+install_xcli() {
   if ! command -v git > /dev/null; then
     message "info" "Installing Xcode Developer Tools..."   
     xcode-select --install
