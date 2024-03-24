@@ -23,7 +23,7 @@ message() {
 }
 
 install_xcli() {
-  if ! command -v git > /dev/null; then
+  if ! command -v git > /dev/null && [ "$(uname)" = "Darwin" ]; then
     message "info" "Installing Xcode Developer Tools..."   
     xcode-select --install
     sudo xcodebuild -license accept     
