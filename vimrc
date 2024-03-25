@@ -10,6 +10,7 @@ for option: string in [
   'cursorline',
   'relativenumber',
   'expandtab',
+  'cindent',
   'tabstop=2',
   'shiftwidth=2',
   're=0'
