@@ -8,7 +8,7 @@ for option: string in [
   'number',
   'relativenumber',
   'noswapfile',
-  'smartindent',
+  'cindent',
   'noshowmode',
   'cursorline',
   'incsearch',
