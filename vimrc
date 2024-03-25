@@ -5,15 +5,16 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option: string in [
-  'incsearch',
+  'number',
+  'relativenumber',
+  'noswapfile',
+  'smartindent',
   'noshowmode',
   'cursorline',
-  'relativenumber',
+  'incsearch',
   'expandtab',
-  'cindent',
   'tabstop=2',
   'shiftwidth=2',
-  're=0'
 ]
   execute 'set ' .. option
 endfor
