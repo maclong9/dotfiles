@@ -29,7 +29,7 @@ install_xcli() {
 
 install_tooling() {
   if ! command -v deno > /dev/null; then
-    message "info" "Installing tooling"
+    message "info" "Installing Deno"
     curl -SLs "https://deno.land/install.sh" | sh >/dev/null 2>&1
     message "success" "Tooling installed"
   fi  
