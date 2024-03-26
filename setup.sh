@@ -1,14 +1,15 @@
 #!/bin/sh
 message() {
+  ESC=$(printf '\033')
   content="$2"
   if [ "$1" = "info" ]; then
-    color="\033[34m"
+    color="$ESC[34m"
     content="$content..."
   elif [ "$1" = "error" ]; then
-    color="\033[31m" 
+    color="$ESC[31m" 
   elif [ "$1" = "success" ]; then
-    color="\033[32m" 
-    printf "\033[1A\033[K"
+    color="$ESC[32m" 
+    printf "$ESC[1A\033[K"
   fi
   
   printf "%s%s%s\n" "$color" "$content" "\033[0m"
