@@ -29,7 +29,7 @@ install_xcli() {
 install_tooling() {
   if [ -n "$1" ]; then
     if [ "$(uname)" != "Darwin" ]; then
-      $1 git vim
+      "$1" git vim
     fi
   else
     message "error" "No install command specified"
