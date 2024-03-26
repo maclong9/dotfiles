@@ -27,19 +27,10 @@ install_xcli() {
 }
 
 install_tooling() {
-  if [ -n "$1" ]; then
-    if [ "$(uname)" != "Darwin" ]; then
-      command "$1 git vim"
-    fi
-  else
-    message "error" "No install command specified"
-    return
-  fi
-
-  if [ ! -d "$HOME/.deno" ]; then
-    message "info" "Installing Deno..."
+  if ! command -v deno > /dev/null; then
+    message "info" "Installing Tooling..."
     curl -SLs "https://deno.land/install.sh" | sh >/dev/null 2>&1
-    message "success" "Deno installed"
+    message "success" "Tooling installed"
   fi
 }
 
