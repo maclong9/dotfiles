@@ -11,9 +11,6 @@ for option: string in [
   'noshowmode',
   'cursorline',
   'incsearch',
-  'expandtab',
-  'tabstop=2',
-  'shiftwidth=2',
 ]
   execute 'set ' .. option
 endfor
