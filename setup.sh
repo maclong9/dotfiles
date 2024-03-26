@@ -1,13 +1,13 @@
 #!/bin/sh
 message() {
-  ESC=$(printf "\033")
+  ESC_PREFIX=$(printf "\033")
   if [ "$1" = "info" ]; then
-    printf "%s" "${ESC}[34m"
+    printf "%s" "${ESC_PREFIX}[34m" # Sets Foreground to Blue
   elif [ "$1" = "error" ]; then
-    printf "%s" "${ESC}[31m" 
+    printf "%s" "${ESC_PREFIX}[31m" # Sets Foreground to Red
   elif [ "$1" = "success" ]; then
-    printf "%s" "${ESC}[32m" 
-    printf "%s[1A%s[K" "${ESC}" "${ESC}"
+    printf "%s" "${ESC_PREFIX}[32m" # Sets Foreground to Green
+    printf "%s[1A%s[K" "${ESC_PREFIX}" "${ESC_PREFIX}"
   fi
   
   printf "%s%s[0m\n" "$2" "${ESC}"
