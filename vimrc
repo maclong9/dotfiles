@@ -18,14 +18,3 @@ for option: string in [
 ]
   execute 'set ' .. option
 endfor
-
-augroup Formatting
-    autocmd!
-    autocmd FileType javascript,typescript,jsx,tsx,markdown,json 
-      \ setlocal formatexpr=deno\ fmt\ -
-augroup END
-
-augroup Writing
-  autocmd!
-  autocmd FileType markdown setlocal spell
-augroup END
