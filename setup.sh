@@ -20,11 +20,15 @@ message() {
 }
 
 install_xcli() {
-  if ! command -v git > /dev/null && [ "$(uname)" = "Darwin" ]; then
-    message "info" "Installing Xcode Developer Tools"   
-    xcode-select --install
-    sudo xcodebuild -license accept     
-    message "success" "Xcode Developer Tools installed"
+  if ! command -v git > /dev/null
+    if [ "$(uname)" = "Darwin" ]; then
+      message "info" "Installing Xcode Developer Tools"   
+      xcode-select --install
+      sudo xcodebuild -license accept     
+      message "success" "Xcode Developer Tools installed"
+    else
+      $1 git
+    fi
   fi
 }
 
@@ -55,7 +59,7 @@ link_configuration() {
 }
 
 install_xcli || message "error"
-install_tooling || message "error"
+install_tooling $1 || message "error"
 clone_configuration || message "error"
 link_configuration || message "error"
 message "success" "System configuration complete, enjoy."
