@@ -11,7 +11,7 @@ message() {
    printf "\033[1A\033[K"
   fi
   
-  printf "%s%s%s\n" "$color" "$content" "$(tput sgr0)"
+  printf "%s%s%s\n" "$color" "$content" "\e[0m"
   
   if [ "$1" = "error" ]; then
     exit 1
