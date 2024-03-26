@@ -5,6 +5,7 @@
 [alias]
   a = add
   aa = add .
+  ac = "!f() { git add . && git commit -m \"$1\"; }; f"
   b = branch
   bd = branch -d
   c = commit -m
@@ -13,3 +14,4 @@
   p = push
   pl = pull
   s = status
+
