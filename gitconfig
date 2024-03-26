@@ -1,16 +1,15 @@
 [user]
-  name = Mac
   email = maclong9@icloud.com
+  name = Mac
 
 [alias]
   a = add
-  c = commit -m
-  p = push
-  b = branch
-  s = status
-  d = diff
   aa = add .
-  co = checkout
+  b = branch
   bd = branch -d
+  c = commit -m
+  co = checkout
+  d = diff
+  p = push
   pl = pull
-  plnr = pull --no-rebase
+  s = status
