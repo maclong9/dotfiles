@@ -1,17 +1,18 @@
 #!/bin/sh
+
 message() {
-  content="$2";
+  content="$2"
   if [ "$1" = "info" ]; then
-    color="\e[34m"
+    color="\033[34m"
     content="$content..."
   elif [ "$1" = "error" ]; then
-    color="\e[31m" 
+    color="\033[31m" 
   elif [ "$1" = "success" ]; then
-   color="\e[32m" 
-   printf "\033[1A\033[K"
+    color="\033[32m" 
+    printf "\033[1A\033[K"
   fi
   
-  printf "%s%s%s\n" "$color" "$content" "\e[0m"
+  printf "%s%s%s\n" "$color" "$content" "\033[0m"
   
   if [ "$1" = "error" ]; then
     exit 1
