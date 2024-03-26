@@ -9,7 +9,7 @@ message() {
     color="$ESC[31m" 
   elif [ "$1" = "success" ]; then
     color="$ESC[32m" 
-    printf "$ESC[1A\033[K"
+    printf "%s[1A%s[K" "$ESC" "$ESC"
   fi
   
   printf "%s%s%s\n" "$color" "$content" "$ESC[0m"
