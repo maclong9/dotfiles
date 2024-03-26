@@ -8,7 +8,7 @@ message() {
     color="\e[31m" 
   elif [ "$1" = "success" ]; then
    color="\e[32m" 
-   tput cuu1 && tput el
+   printf "\033[1A\033[K"
   fi
   
   printf "%s%s%s\n" "$color" "$content" "$(tput sgr0)"
