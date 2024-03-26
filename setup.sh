@@ -3,16 +3,16 @@ message() {
   ESC=$(printf '\033')
   content="$2"
   if [ "$1" = "info" ]; then
-    color="$ESC[34m"
     content="$content..."
+    printf "%s" "$ESC[34m"
   elif [ "$1" = "error" ]; then
-    color="$ESC[31m" 
+    printf "%s" "$ESC[31m" 
   elif [ "$1" = "success" ]; then
-    color="$ESC[32m" 
+    printf "%s" "$ESC[32m" 
     printf "%s[1A%s[K" "$ESC" "$ESC"
   fi
   
-  printf "%s%s%s\n" "$color" "$content" "$ESC[0m"
+  printf "%s%s[0m\n" "$content" "$ESC"
   
   if [ "$1" = "error" ]; then
     exit 1
