@@ -5,7 +5,6 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option: string in [
-  'number',
   'relativenumber',
   'noswapfile',
   'cindent',
