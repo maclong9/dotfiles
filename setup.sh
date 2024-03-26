@@ -1,6 +1,6 @@
 #!/bin/sh
 message() {
-  ESC=$(printf '\033')
+  ESC=$(printf "\033")
   if [ "$1" = "info" ]; then
     printf "%s" "$ESC[34m"
   elif [ "$1" = "error" ]; then
