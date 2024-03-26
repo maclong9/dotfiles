@@ -7,7 +7,7 @@ message() {
     printf "%s" "${ESC_PREFIX}[31m" # Sets Foreground to Red
   elif [ "$1" = "success" ]; then
     printf "%s" "${ESC_PREFIX}[32m" # Sets Foreground to Green
-    printf "%s[1A%s[K" "${ESC_PREFIX}" "${ESC_PREFIX}"
+    printf "%s[1A%s[K" "${ESC_PREFIX}" "${ESC_PREFIX}" # Clears Previous Line
   fi
   
   printf "%s%s[0m\n" "$2" "${ESC}"
