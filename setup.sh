@@ -53,7 +53,7 @@ link_configuration() {
 }
 
 install_xcli || message "error"
-install_tooling $1 || message "error"
+install_tooling || message "error"
 clone_configuration || message "error"
 link_configuration || message "error"
 message "success" "System configuration complete, enjoy."
