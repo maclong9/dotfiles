@@ -12,7 +12,7 @@ message() {
     printf "$ESC[1A\033[K"
   fi
   
-  printf "%s%s%s\n" "$color" "$content" "\033[0m"
+  printf "%s%s%s\n" "$color" "$content" "$ESC[0m"
   
   if [ "$1" = "error" ]; then
     exit 1
