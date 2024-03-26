@@ -24,3 +24,8 @@ augroup Formatting
     autocmd FileType javascript,typescript,jsx,tsx,markdown,json 
       \ setlocal formatexpr=Deno\ fmt\ -
 augroup END
+
+augroup Writing
+  autocmd!
+  autocmd FileType markdown setlocal spell
+augroup END
