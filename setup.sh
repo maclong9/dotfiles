@@ -2,12 +2,12 @@
 message() {
   content="$2";
   if [ "$1" = "info" ]; then
-    color="$(tput setaf 4)"
+    color="\e[34m"
     content="$content..."
   elif [ "$1" = "error" ]; then
-    color="$(tput setaf 4)" 
+    color="\e[31m" 
   elif [ "$1" = "success" ]; then
-   color="$(tput setaf 2)" 
+   color="\e[32m" 
    tput cuu1 && tput el
   fi
   
