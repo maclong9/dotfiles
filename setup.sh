@@ -32,7 +32,7 @@ install_tooling() {
       $1 git vim
     fi
   else
-    message "error" "No install command specified."
+    message "error" "No install command specified"
     return
   fi
 
