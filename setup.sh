@@ -1,5 +1,4 @@
 #!/bin/sh
-
 message() {
   content="$2"
   if [ "$1" = "info" ]; then
