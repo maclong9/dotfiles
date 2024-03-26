@@ -18,7 +18,7 @@ message() {
 }
 
 install_xcli() {
-  if ! command -v git > /dev/null
+  if ! command -v git > /dev/null; then
     if [ "$(uname)" = "Darwin" ]; then
       message "info" "Installing Xcode Developer Tools..."   
       xcode-select --install
