@@ -36,7 +36,7 @@ install_tooling() {
     return
   fi
 
-  if ! command -v deno > /dev/null; then
+  if [ ! -d "$HOME/.deno" ]; then
     message "info" "Installing Deno..."
     curl -SLs "https://deno.land/install.sh" | sh >/dev/null 2>&1
     message "success" "Deno installed"
