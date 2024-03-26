@@ -11,6 +11,7 @@ for option: string in [
   'noshowmode',
   'cursorline',
   'incsearch',
+  'hlsearch',
 ]
   execute 'set ' .. option
 endfor
