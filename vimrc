@@ -10,8 +10,6 @@ for option: string in [
   'cindent',
   'noshowmode',
   'cursorline',
-  'incsearch',
-  'hlsearch',
 ]
   execute 'set ' .. option
 endfor
