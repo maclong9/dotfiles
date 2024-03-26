@@ -22,7 +22,7 @@ endfor
 augroup Formatting
     autocmd!
     autocmd FileType javascript,typescript,jsx,tsx,markdown,json 
-      \ setlocal formatexpr=Deno\ fmt\ -
+      \ setlocal formatexpr=deno\ fmt\ -
 augroup END
 
 augroup Writing
