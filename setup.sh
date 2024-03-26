@@ -2,15 +2,15 @@
 message() {
   ESC=$(printf "\033")
   if [ "$1" = "info" ]; then
-    printf "%s" "$ESC[34m"
+    printf "%s" "${ESC}[34m"
   elif [ "$1" = "error" ]; then
-    printf "%s" "$ESC[31m" 
+    printf "%s" "${ESC}[31m" 
   elif [ "$1" = "success" ]; then
-    printf "%s" "$ESC[32m" 
-    printf "%s[1A%s[K" "$ESC" "$ESC"
+    printf "%s" "${ESC}[32m" 
+    printf "%s[1A%s[K" "${ESC}" "${ESC}"
   fi
   
-  printf "%s%s[0m\n" "$2" "$ESC"
+  printf "%s%s[0m\n" "$2" "${ESC}"
   
   if [ "$1" = "error" ]; then
     exit 1
