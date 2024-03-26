@@ -18,15 +18,11 @@ message() {
 }
 
 install_xcli() {
-  if ! command -v git > /dev/null; then
-    if [ "$(uname)" = "Darwin" ]; then
-      message "info" "Installing Xcode Developer Tools..."   
-      xcode-select --install
-      sudo xcodebuild -license accept     
-      message "success" "Xcode Developer Tools installed"
-    else
-      $1 git
-    fi
+  if ! command -v git > /dev/null && [ "$(uname)" = "Darwin" ]; then
+    message "info" "Installing Xcode Developer Tools..."   
+    xcode-select --install
+    sudo xcodebuild -license accept     
+    message "success" "Xcode Developer Tools installed"
   fi
 }
 
@@ -35,7 +31,10 @@ install_tooling() {
     message "info" "Installing Tooling..."
     curl -SLs "https://deno.land/install.sh" | sh >/dev/null 2>&1
     message "success" "Tooling installed"
-  fi  
+  fi
+  if [ "$(uname)" != "Darwin" ]; then
+    $1 git vim
+  fi
 }
 
 clone_configuration() {
