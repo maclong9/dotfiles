@@ -1,15 +1,15 @@
 vim9script
+syntax enable
 g:is_posix = 1
-syntax on
 colorscheme habamax
 highlight Normal ctermbg=none
 
 for option: string in [
-  'relativenumber',
-  'noswapfile',
   'cindent',
+  'noswapfile',
   'noshowmode',
   'cursorline',
+  'relativenumber',
 ]
   execute 'set ' .. option
 endfor
