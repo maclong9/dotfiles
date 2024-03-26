@@ -3,12 +3,11 @@
   email = maclong9@icloud.com
 
 [alias]
+  a = add
   c = commit -m
   p = push
-  s = status
-  l = log --oneline --decorate --graph
-  a = add
   b = branch
+  s = status
   d = diff
   aa = add .
   co = checkout
