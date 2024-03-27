@@ -2,7 +2,7 @@
 message() {
   ANSI_PREFIX=$(printf "\033")
   if [ "$1" = "info" ]; then
-    printf "%s" "${ANSI_PREFIX}[34m" # Sets Foreground to Blue
+    printf "%s" "\033[34m" # Sets Foreground to Blue
   elif [ "$1" = "error" ]; then
     printf "%s" "${ANSI_PREFIX}[31m" # Sets Foreground to Red
   elif [ "$1" = "success" ]; then
