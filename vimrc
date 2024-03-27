@@ -10,6 +10,7 @@ for option: string in [
   'noshowmode',
   'cursorline',
   'smartindent',
+  'shiftwidth=2',
   'relativenumber',
 ]
   execute 'set ' .. option
