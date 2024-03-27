@@ -10,7 +10,7 @@ message() {
     printf "%s[1A%s[K" "${ANSI_PREFIX}" "${ANSI_PREFIX}" # Clears Previous Line
   fi
   
-  printf "%s%s[0m\n" "$2" "${ANSI_PREFIX}"
+  printf "%s%s[0m\n" "$2" "${ANSI_PREFIX}" # Clears previous Foreground color
   
   if [ "$1" = "error" ]; then
     exit 1
