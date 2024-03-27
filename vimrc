@@ -5,6 +5,7 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option: string in [
+  'tabstop=2',
   'noswapfile',
   'noshowmode',
   'cursorline',
