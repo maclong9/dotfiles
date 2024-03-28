@@ -5,6 +5,7 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option: string in [
+	'nowrap',
   'tabstop=2',
   'noswapfile',
   'noshowmode',
@@ -15,3 +16,5 @@ for option: string in [
 ]
   execute 'set ' .. option
 endfor
+
+command! -nargs=1 G execute ':!git <args>'
