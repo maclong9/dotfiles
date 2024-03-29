@@ -17,8 +17,10 @@ for option: string in [
   execute 'set ' .. option
 endfor
 
-command! -nargs=1 G execute ':!git <args>'
+def command! G(args: string)
+  execute ':!git ' .. args
+enddef
 
 augroup templates
-	autocmd BufNewFile *.sh 0r ~/.config/templates/skeleton.sh
+  autocmd BufNewFile *.sh 0r ~/.config/templates/skeleton.sh
 augroup END
