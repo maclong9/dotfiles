@@ -22,7 +22,7 @@ install_xcli() {
 
 install_tooling() {
   if [ "$(uname)" != "Darwin" ]; then
-    pkg install curl git vim
+    xbps-install curl git vim
   fi
   
   if ! command -v deno > /dev/null; then
