@@ -21,6 +21,10 @@ install_xcli() {
 }
 
 install_tooling() {
+  if [ "$(uname)" != "Darwin" ]; then
+    pkg install curl git vim
+  fi
+  
   if ! command -v deno > /dev/null; then
     message "info" "Installing Tooling..."
     curl -SLs "https://deno.land/install.sh" | sh >/dev/null 2>&1
