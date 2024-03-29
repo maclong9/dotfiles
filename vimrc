@@ -18,3 +18,7 @@ for option: string in [
 endfor
 
 command! -nargs=1 G execute ':!git <args>'
+
+augroup templates
+	autocmd BufNewFile *.sh 0r ~/.config/templates/skeleton.sh
+augroup END
