@@ -2,13 +2,12 @@
 message() {
   ANSI_PREFIX=$(printf "\033")
   if [ "$1" = "info" ]; then
-    printf "[info] %s" "${ANSI_PREFIX}[34m" # Sets Foreground to Blue
+    color="${ANSI_PREFIX}[34m" # Sets Foreground to Blue
   elif [ "$1" = "success" ]; then
-    printf "[success] %s" "${ANSI_PREFIX}[32m" # Sets Foreground to Green
-    printf "%s[1A%s[K" "${ANSI_PREFIX}" "${ANSI_PREFIX}" # Clears Previous Line
+    color="${ANSI_PREFIX}[1A%s[K${ANSI_PREFIX}[32m" # Clears Previous Line & Sets Foreground to Green
   fi
   
-  printf "%s%s[0m\n" "$2" "${ANSI_PREFIX}" # Prints message & clears previous Foreground color
+  printf "%s[%s] %s%s[0m\n" "$color" "$1" "$2" "${ANSI_PREFIX}" # Prints message & clears Foreground color
 }
 
 install_xcli() {
