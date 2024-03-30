@@ -1,15 +1,11 @@
 #!/bin/sh -e
 message() {
-  ANSI_PREFIX=$(printf "\033")
-  if [ "$1" = "info" ]; then
-    color="${ANSI_PREFIX}[34m" # Sets Foreground to Blue
-  elif [ "$1" = "success" ]; then
-    color="${ANSI_PREFIX}[1A${ANSI_PREFIX}[K${ANSI_PREFIX}[32m" # Clears previous line & sets Foreground to Green
-	elif [ "$1" = "error" ]; then
-		printf "%s" "${ANSI_PREFIX}[31m" # Sets Foreground to Red
-  fi
+  ansi_pre=$(printf "\033")
+  [ "$1" = "info" ] color="${ansi_pre}[34m" # Foreground > Blue
+  [ "$1" = "success" ] && color="${ansi_pre}[1A${ansi_pre}[K${ansi_pre}[32m" # Deletes Previous Line & Foreground > Green
+  [ "$1" = "error" ] && printf "%s" "${ansi_pre}[31m" # Foreground > Red
 
-  printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PREFIX}[0m" "$2"
+  printf "%s[%s] %s%s\n" "$color" "$1" "${ansi_pre}[0m" "$2"
 }
 
 install_xcli() {
