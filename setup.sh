@@ -3,6 +3,8 @@ message() {
   ANSI_PREFIX=$(printf "\033")
   if [ "$1" = "info" ]; then
     color="${ANSI_PREFIX}[34m" # Sets Foreground to Blue
+  elif [ "$1" = "info" ]; then
+    color="${ANSI_PREFIX}" # Sets Foreground to Red
   elif [ "$1" = "success" ]; then
     color="${ANSI_PREFIX}[1A ${ANSI_PREFIX}[K ${ANSI_PREFIX}[32m" # Clears previous line & sets Foreground to Green
   fi
