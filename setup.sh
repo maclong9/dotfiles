@@ -7,7 +7,7 @@ message() {
     color="${ANSI_PREFIX}[1A%s[K${ANSI_PREFIX}[32m" # Clears previous line & sets Foreground to Green
   fi
   
-  printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PREFIX}[0m" "$2" # Prints message
+  printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PREFIX}[0m" "$2"
 }
 
 install_xcli() {
