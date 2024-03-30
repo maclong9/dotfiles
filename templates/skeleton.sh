@@ -2,17 +2,11 @@
 message() {
   ANSI_PREFIX=$(printf "\033")
   if [ "$1" = "info" ]; then
-    printf "%s" "${ANSI_PREFIX}[34m" # Sets Foreground to Blue
-  elif [ "$1" = "error" ]; then
-    printf "%s" "${ANSI_PREFIX}[31m" # Sets Foreground to Red
+    color="${ANSI_PREFIX}[34m" # Sets Foreground to Blue
   elif [ "$1" = "success" ]; then
-    printf "%s" "${ANSI_PREFIX}[32m" # Sets Foreground to Green
-    printf "%s[1A%s[K" "${ANSI_PREFIX}" "${ANSI_PREFIX}" # Clears Previous Line
+    color="${ANSI_PREFIX}[1A${ANSI_PREFIX}[K${ANSI_PREFIX}[32m" # Clears previous line & sets Foreground to Green
   fi
-  
-  printf "%s%s[0m\n" "$2" "${ANSI_PREFIX}" # Prints message & clears previous Foreground color
-  
-  if [ "$1" = "error" ]; then
-    exit 1
-  fi
+
+  printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PREFIX}[0m" "$2"
 }
+
