@@ -19,8 +19,9 @@ endfor
 
 command! -nargs=1 G execute ':!git <args>'
 
-nmap <C-d> <C-d>zz
-nmap <C-u> <C-u>zz
+augroup editor
+	autocmd CursorMoved * normal! zz
+augroup END
 
 augroup templates
   autocmd BufNewFile *.sh :0r ~/.config/templates/skeleton.sh
