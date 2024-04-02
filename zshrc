@@ -9,10 +9,14 @@ mkcd() {
 }
 
 gc() {
-	base_url="https://github.com"
-	if [[ "$1" == *"/"* ]]; then
-		git clone "$base_url/$1"
+	if [[ "$1" == *"https"* ]]; then
+		git clone "$1"
 	else
-		git clone "$base_url/maclong9/$1"
+		base_url="https://github.com"
+		if [[ "$1" == *"/"* ]]; then
+			git clone "$base_url/$1"
+		else
+			git clone "$base_url/maclong9/$1"
+		fi
 	fi
 }
