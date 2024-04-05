@@ -62,7 +62,7 @@ augroup editor
 augroup END
 
 augroup templates
-  autocmd BufNewFile * 
+  autocmd BufNewFile * {
     var filetype = getbufvar('%', '&filetype')
     for [lang, exts] in items(languages)
       if index(exts, filetype) != -1
