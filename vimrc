@@ -15,7 +15,7 @@ var languages = {
 
 def ReadSnippet(type: string, name: string)
   let filename = '~/.config/templates/snippets.' .. type
-  execute 'read ' . fnameescape(filename) . ' | /^<!-- ' . name . ' -->/+1;/^<!-- !' . name . '  -->/-1 d | noh'
+  execute 'read ' . fnameescape(filename) . ' | /^# ' . name . '/+1;/^# !' . name . '  $/-1 d | noh'
 enddef
 
 for [lang, exts] in items(languages)
