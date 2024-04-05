@@ -6,7 +6,7 @@ highlight Normal ctermbg=none
 command -nargs=1 G execute ':!git <args>'                                       
 
 var languages = {
-  'typescript': ['ts', 'js', 'jsx', 'tsx'],
+  'typescript': ['tsx', 'jsx', 'js', 'ts'],
   'c': ['c', 'h'],
   'python': ['py'],
   'shell': ['sh'],
