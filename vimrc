@@ -8,6 +8,7 @@ command -nargs=1 G execute ':!git <args>'
 var languages = {
   'c': ['c', 'h'],
   'shell': ['sh'],
+  'perl': ['pl'],
   'python': ['py'],
   'json': ['json'],
   'typescript': ['tsx', 'jsx', 'js', 'ts'],
