@@ -22,7 +22,7 @@ enddef
 for [lang, exts] in items(languages)
   for ext in exts
     execute 'nnoremap <leader>' .. ext[0] .. 'r :call ReadSnippet("' .. ext[0] .. ' ' .. lang .. '",     expand("<cword>"))<CR>'
-    execute 'nnoremap <leader>' .. ext[0] .. 'R :call ReadSnippet("' .. ' ' .. ext[0] .. ' ' .. lang .. '",     input("Snippet name: "))<CR>'
+    execute 'nnoremap <leader>' .. ext[0] .. 'R :call ReadSnippet("' .. ext[0] .. ' ' .. lang .. '",     input("Snippet name: "))<CR>'
   endfor
 endfor
 
