@@ -3,7 +3,7 @@ syntax enable
 filetype plugin on
 colorscheme habamax
 highlight Normal ctermbg=none
-command! -nargs=1 G execute ':!git <args>'                                       
+command -nargs=1 G execute ':!git <args>'                                       
 
 var languages = {
   'typescript': ['ts', 'js', 'jsx', 'tsx'],
