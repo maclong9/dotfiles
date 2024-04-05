@@ -1,6 +1,7 @@
 vim9script
 g:is_posix = 1
 syntax enable
+filetype plugin on
 colorscheme habamax
 highlight Normal ctermbg=none
 
