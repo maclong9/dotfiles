@@ -24,6 +24,7 @@ command! -nargs=1 G execute ':!git <args>'
 
 augroup editor
 	autocmd CursorMoved * normal! zz
+	autocmd BufWritePost *.js,*.ts,*.jsx,*.tsx,*.py,*.c,*.sh,*.pl,*.rb,*.swift silent! !ctags -R .
 augroup END
 
 augroup templates
