@@ -43,9 +43,13 @@ link_configuration() {
    message "success" "Configuration linked"
 }
 
-message "info" "System Initialising"
-install_xcli 
-install_tooling 
-clone_configuration
-link_configuration 
-message "success" "System configuration complete, enjoy."
+main() {
+  message "info" "System Initialising"
+  install_xcli 
+  install_tooling 
+  clone_configuration
+  link_configuration 
+  message "success" "System configuration complete, enjoy."
+}
+
+main
