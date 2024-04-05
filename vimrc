@@ -8,10 +8,8 @@ command! -nargs=1 G execute ':!git <args>'
 var languages = {
   'typescript': ['ts', 'js', 'jsx', 'tsx'],
   'c': ['c', 'h'],
-  'ruby': ['rb'],
   'python': ['py'],
   'shell': ['sh'],
-  'perl': ['pl']
 ]
 
 def ReadSnippet(type: string, name: string)
