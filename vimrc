@@ -14,6 +14,7 @@ for option: string in [
   'smartindent',
   'shiftwidth=2',
   'relativenumber',
+  'omnifunc=syntaxcomplete#Complete',
 ]
   execute 'set ' .. option
 endfor
