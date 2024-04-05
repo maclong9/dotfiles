@@ -5,7 +5,7 @@ colorscheme habamax
 highlight Normal ctermbg=none
 command! -nargs=1 G execute ':!git <args>'                                       
 
-var languages: dict<string, list<string>> = {
+var languages = {
   'typescript': ['ts', 'js', 'jsx', 'tsx'],
   'c': ['c', 'h'],
   'ruby': ['rb'],
