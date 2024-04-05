@@ -19,6 +19,13 @@ def ReadSnippet(type: string, name: string)
   execute 'read ' . fnameescape(filename) . ' | /^<!-- ' . name . ' -->/+1;/^<!--   End of ' . name . ' -->/-1 d | noh'
 enddef
 
+for [lang, exts] in items(languages)
+  for ext in exts
+    execute 'nnoremap <leader>' .. ext .. 'r :call ReadSnippet("' .. lang .. '",     expand("<cword>"))<CR>'
+    execute 'nnoremap <leader>' .. ext .. 'R :call ReadSnippet("' .. lang .. '",     input("Snippet name: "))<CR>'
+  endfor
+endfor
+
 for [var: string, val: number] in [
   ['is_posix', 1],
   ['netrw_banner', 0],
@@ -40,13 +47,6 @@ for option: string in [
   'regexpengine=0',
 ]
   execute 'set ' .. option
-endfor
-
-for [lang, exts] in items(languages)
-  for ext in exts
-    execute 'nnoremap <leader>' .. ext .. 'r :call ReadSnippet("' .. lang .. '",     expand("<cword>"))<CR>'
-    execute 'nnoremap <leader>' .. ext .. 'R :call ReadSnippet("' .. lang .. '",     input("Snippet name: "))<CR>'
-  endfor
 endfor
 
 augroup editor
