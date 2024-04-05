@@ -6,14 +6,17 @@ colorscheme habamax
 highlight Normal ctermbg=none
 
 for option: string in [
-	'nowrap',
+	'path+=**',
   'tabstop=2',
   'noswapfile',
   'noshowmode',
   'cursorline',
   'smartindent',
+	'breakindent',
+	'nocompatible',
   'shiftwidth=2',
   'relativenumber',
+	'regexpengine=0',
   'omnifunc=syntaxcomplete#Complete',
 ]
   execute 'set ' .. option
