@@ -37,7 +37,7 @@ clone_configuration() {
 
 link_configuration() {
    message "info" "Linking configuration files..." 
-   for file in "gitconfig" "vimrc" "zshrc"; do
+   for file in "gitconfig" "gitignore" "vimrc" "zshrc"; do
      ln -s "$HOME/.config/$file" "$HOME/.$file"
    done 
    message "success" "Configuration linked"
