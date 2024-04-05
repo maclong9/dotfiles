@@ -11,7 +11,7 @@ var languages = {
   'perl': ['pl'],
   'python': ['py'],
   'json': ['json'],
-  'typescript': ['tsx', 'jsx', 'js', 'ts'],
+  'typescript': ['tsx', 'js', 'ts'],
 }
 
 def ReadSnippet(type: string, name: string)
