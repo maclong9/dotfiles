@@ -3,7 +3,7 @@ syntax enable
 filetype plugin on
 colorscheme habamax
 highlight Normal ctermbg=none
-command -nargs=1 G execute ':!git <args>'                                       
+command -nargs=1 G execute ':!git <args>'
 
 var languages = {
   'c': ['c', 'h'],
@@ -11,7 +11,7 @@ var languages = {
   'python': ['py'],
   'json': ['json'],
   'typescript': ['tsx', 'jsx', 'js', 'ts'],
-]
+}
 
 def ReadSnippet(type: string, name: string)
   let filename = '~/.config/templates/snippets.' .. type
