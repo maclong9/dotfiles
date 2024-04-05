@@ -53,5 +53,13 @@ augroup editor
 augroup END
 
 augroup templates
-  autocmd BufNewFile *.sh :0r ~/.config/templates/skeleton.sh
-augroup END  
+  autocmd BufNewFile * {                                                         
+    var filetype = getbufvar('%', '&filetype')
+    for [lang, exts] in items(languages)
+      if index(exts, filetype) != -1
+        execute ':0r ~/.config/templates/skeleton.' .. exts[0]
+        break
+      endif
+    endfor
+  }
+augroup END 
