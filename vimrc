@@ -10,6 +10,7 @@ var languages = {
   'c': ['c', 'h'],
   'python': ['py'],
   'shell': ['sh'],
+  'json': ['json']
 ]
 
 def ReadSnippet(type: string, name: string)
