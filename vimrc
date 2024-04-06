@@ -19,7 +19,7 @@ def ReadSnippet(type: string, name: string)
   execute 'read ' . fnameescape(filename) . ' | /^# ' . name . '/+1;/^# !' . name . '  $/-1 d | noh'
 enddef
 
-for [lang, exts] in items(languages)
+for [lang: string, exts: list<string>] in items(languages)
   for ext in exts
     execute 'nnoremap <leader>' .. ext[0] .. 'r :call ReadSnippet("' .. ext[0] .. ' ' .. lang .. '", expand("<cword>"))<CR>'
     execute 'nnoremap <leader>' .. ext[0] .. 'R :call ReadSnippet("' .. ext[0] .. ' ' .. lang .. '", input("Snippet name: "))<CR>'
