@@ -4,10 +4,6 @@ export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 
 alias g="git"
 
-mkcd() {
-  mkdir "$1" && cd "$1"
-}
-
 gc() {
   base_url="https://github.com"
   if [[ "$1" == *"https"* ]]; then
