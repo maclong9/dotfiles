@@ -27,9 +27,9 @@ for [lang, exts] in items(languages)
 endfor
 
 for [var: string, val: number] in items({ 
-		'is_posix': 1, 
-		'netrw_banner': 0, 
-		'netrw_liststyle': 3 
+  'is_posix': 1, 
+  'netrw_banner': 0, 
+  'netrw_liststyle': 3 
 })
     execute 'g:' .. var .. ' = ' .. val
 endfor
