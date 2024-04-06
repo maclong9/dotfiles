@@ -3,9 +3,9 @@ syntax enable
 filetype plugin on
 colorscheme habamax
 highlight Normal ctermbg=none
-command -nargs=1 G execute ':!git <args>'
+command! -nargs=1 G execute ':!git <args>'
 
-var languages = {
+var languages: dict<list<string>> = {
   'c': ['c', 'h'],
   'shell': ['sh'],
   'perl': ['pl'],
@@ -26,13 +26,14 @@ for [lang, exts] in items(languages)
   endfor
 endfor
 
-for [var: string, val: number] in [
-  ['is_posix', 1],
-  ['netrw_banner', 0],
-  ['netrw_liststyle', 3]
-]
-  execute 'g:' .. var .. ' = ' .. val
+for [var: string, val: number] in items({ 
+		'is_posix': 1, 
+		'netrw_banner': 0, 
+		'netrw_liststyle': 3 
+})
+    execute 'g:' .. var .. ' = ' .. val
 endfor
+
   
 for option: string in [
   'path+=**',
