@@ -16,13 +16,16 @@ var languages: dict<list<string>> = {
 
 def ReadSnippet(ext: string, lang: string)
   let filename = '~/.config/templates/snippets.' .. type
-  execute 'read ' . fnameescape(filename) . ' | /^# ' . lang . '/+1;/^# !' . lang . '  $/-1 d | noh'
+  execute 'read ' .. fnameescape(filename) .. ' | /^# ' .. lang .. \
+		 '/+1;/^# !' . lang . '  $/-1 d | noh'
 enddef
 
 for [lang: string, exts: list<string>] in items(languages)
   for ext in exts
-    execute 'nnoremap <leader>' .. ext[0] .. 'r :call ReadSnippet("' .. ext[0] .. ' ' .. lang .. '", expand("<cword>"))<CR>'
-    execute 'nnoremap <leader>' .. ext[0] .. 'R :call ReadSnippet("' .. ext[0] .. ' ' .. lang .. '", input("Snippet name: "))<CR>'
+    execute 'nnoremap <leader>' .. ext .. 'r :call ReadSnippet("' .. ext .. ' ' ..
+			lang .. '", expand("<cword>"))<CR>'
+    execute 'nnoremap <leader>' .. ext .. 'R :call ReadSnippet("' .. ext .. ' ' ..
+			lang .. '", input("Snippet name: "))<CR>'
   endfor
 endfor
 
