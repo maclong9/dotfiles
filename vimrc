@@ -14,9 +14,9 @@ var languages: dict<list<string>> = {
   'typescript': ['tsx', 'js', 'ts'],
 }
 
-def ReadSnippet(type: string, name: string)
+def ReadSnippet(ext: string, lang: string)
   let filename = '~/.config/templates/snippets.' .. type
-  execute 'read ' . fnameescape(filename) . ' | /^# ' . name . '/+1;/^# !' . name . '  $/-1 d | noh'
+  execute 'read ' . fnameescape(filename) . ' | /^# ' . lang . '/+1;/^# !' . lang . '  $/-1 d | noh'
 enddef
 
 for [lang: string, exts: list<string>] in items(languages)
