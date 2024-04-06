@@ -14,21 +14,6 @@ var languages: dict<list<string>> = {
   'typescript': ['tsx', 'js', 'ts'],
 }
 
-def ReadSnippet(ext: string, lang: string)
-  let filename = '~/.config/templates/snippets.' .. type
-  execute 'read ' .. fnameescape(filename) .. ' | /^# ' .. lang .. \
-		 '/+1;/^# !' . lang . '  $/-1 d | noh'
-enddef
-
-for [lang: string, exts: list<string>] in items(languages)
-  for ext in exts
-    execute 'nnoremap <leader>' .. ext .. 'r :call ReadSnippet("' .. ext .. ' ' ..
-			lang .. '", expand("<cword>"))<CR>'
-    execute 'nnoremap <leader>' .. ext .. 'R :call ReadSnippet("' .. ext .. ' ' ..
-			lang .. '", input("Snippet name: "))<CR>'
-  endfor
-endfor
-
 for [var: string, val: number] in items({ 
   'is_posix': 1, 
   'netrw_banner': 0, 
@@ -39,7 +24,6 @@ endfor
 
   
 for option: string in [
-  'path+=**',
   'tabstop=2', 
   'noswapfile',
   'noshowmode', 
@@ -53,8 +37,16 @@ for option: string in [
   execute 'set ' .. option
 endfor
 
+def AutoSave(message: string)
+	if &modified
+		silent! write
+		echo message
+	endif
+enddef
+
 augroup editor
   autocmd CursorMoved * normal! zz
+	autocmd CursorHold * AutoSave("File saved.")
   autocmd BufWritePost * {
     var filetype = getbufvar('%', '&filetype')                                   
     for [lang, exts] in items(languages)
