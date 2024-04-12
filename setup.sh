@@ -37,7 +37,7 @@ clone_configuration() {
     message "error" "Back up dotfiles location $DOT_DIR already exists. Exiting."
     exit 1
   fi
-  
+  printf '%s' "$DOT_DIR"
   message "info" "$PREV_CLEAR Cloning configuration..."
   git clone -q "https://github.com/maclong9/dotfiles" "$HOME/.config"
   message "success" "Configuration cloned"
