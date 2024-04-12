@@ -5,10 +5,10 @@ PREV_CLEAR=$(printf "${ANSI_PRE}[1A${ANSI_PRE}[K")
 
 message() {
   [ "$1" = "info" ] && color="${ANSI_PRE}[34m" # Blue
-  [ "$1" = "success" ] && color="${PREV_CLEAR}${ansi_pre}[32m" # Clear ^ & Green
+  [ "$1" = "success" ] && color="${PREV_CLEAR}${ANSI_PRE}[32m" # Clear ^ & Green
   [ "$1" = "error" ] && color="${ANSI_PRE}[31m" # Red
 
-  printf "%s[%s] %s%s\n" "$color" "$1" "${ansi_pre}[0m" "$2"
+  printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PRE}[0m" "$2"
 }
 
 install_xcli() {
