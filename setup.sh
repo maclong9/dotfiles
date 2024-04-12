@@ -32,10 +32,15 @@ clone_configuration() {
   if [ -d "$DOT_DIR" ]; then
     message "info" "$HOME/.config already exists, setting \$DOT_DIR to \"\$HOME/.dotfiles\""
     DOT_DIR="$HOME/.dotfiles"
-    message "info" "$PREV_CLEAR Cloning configuration..."
-    git clone -q "https://github.com/maclong9/dotfiles" "$HOME/.config"
-    message "success" "Configuration cloned"
   fi
+  if [ -d "$HOME/.dotfiles" ]; then
+    message "error" "Back up dotfiles location $DOT_DIR already exists. Exiting."
+    exit 1
+  fi
+  
+  message "info" "$PREV_CLEAR Cloning configuration..."
+  git clone -q "https://github.com/maclong9/dotfiles" "$HOME/.config"
+  message "success" "Configuration cloned"
 }
 
 link_configuration() {
