@@ -1,9 +1,12 @@
 #!/bin/sh -e
+DOT_DIR="$HOME/.config"
+ANSI_PRE=$(printf "\033")
+PREV_CLEAR=$(printf "${ANSI_PRE}[1A${ANSI_PRE}[K")
+
 message() {
-  ansi_pre=$(printf "\033")
-  [ "$1" = "info" ] && color="${ansi_pre}[34m" # Blue
-  [ "$1" = "success" ] && color="${ansi_pre}[1A${ansi_pre}[K${ansi_pre}[32m" # Clear ^ & Green
-  [ "$1" = "error" ] && color="${ansi_pre}[31m" # Red
+  [ "$1" = "info" ] && color="${ANSI_PRE}[34m" # Blue
+  [ "$1" = "success" ] && color="${PREV_CLEAR}${ansi_pre}[32m" # Clear ^ & Green
+  [ "$1" = "error" ] && color="${ANSI_PRE}[31m" # Red
 
   printf "%s[%s] %s%s\n" "$color" "$1" "${ansi_pre}[0m" "$2"
 }
@@ -26,10 +29,10 @@ install_tooling() {
 }
 
 clone_configuration() {
-  if [ -d "$HOME/.config" ]; then
-    message "info" "$HOME/.config already exists"
-  else
-		message "info" "Cloning configuration..."
+  if [ -d "$DOT_DIR" ]; then
+    message "info" "$HOME/.config already exists, setting \$DOT_DIR to \"\$HOME/.dotfiles\""
+    DOT_DIR="$HOME/.dotfiles"
+    message "info" "$PREV_CLEAR Cloning configuration..."
     git clone -q "https://github.com/maclong9/dotfiles" "$HOME/.config"
     message "success" "Configuration cloned"
   fi
@@ -38,7 +41,7 @@ clone_configuration() {
 link_configuration() {
    message "info" "Linking configuration files..." 
    for file in "gitconfig" "gitignore" "vimrc" "zshrc"; do
-     ln -s "$HOME/.config/$file" "$HOME/.$file"
+     ln -s "$DOT_DIR/$file" "$HOME/.$file"
    done 
    message "success" "Configuration linked"
 }
