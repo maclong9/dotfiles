@@ -21,11 +21,10 @@ install_xcli() {
 }
 
 install_tooling() {
-  if ! command -v deno > /dev/null; then
     message "info" "Installing Tooling..."
-    curl -SLs "https://deno.land/install.sh" | sh >/dev/null 2>&1
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     message "success" "Tooling installed"
-  fi
 }
 
 clone_configuration() {
