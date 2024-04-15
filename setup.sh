@@ -24,6 +24,7 @@ install_tooling() {
     message "info" "Installing Tooling..."
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    curl -fsSL https://deno.land/install.sh | sh
     message "success" "Tooling installed"
 }
 
