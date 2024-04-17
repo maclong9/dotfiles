@@ -28,9 +28,26 @@ for option: string in [
   execute 'set ' .. option
 endfor
 
+for [map: string, cmd: string] in items({
+		la: 'LspCodeAction',
+		ld: 'LspDefinition',
+		lf: 'LspDocumentFormat',
+		lh: 'LspHover',
+		ll: 'LspCodeLens',
+		ln: 'LspNextDiagnostic',
+		lp: 'LspPreviousDiagnostic',
+		lr: 'Lsprename',
+		ls: 'LspDocumentSymbol',
+		lt: 'LspTypeDefintion'
+})
+	execute 'nmap ' .. map .. ' :' .. cmd .. '<cr>'
+endfor
+
+
 call plug#begin()
   Plug 'prabirshrestha/vim-lsp'
   Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
+
