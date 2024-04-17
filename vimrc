@@ -29,16 +29,16 @@ for option: string in [
 endfor
 
 for [map: string, cmd: string] in items({
-		lh: 'LspHover',
-		lr: 'LspRename',
-		ll: 'LspCodeLens',
-		la: 'LspCodeAction',
-		ld: 'LspDefinition',
-		lt: 'LspTypeDefinition',
-		ls: 'LspDocumentSymbol',
-		lf: 'LspDocumentFormat',
-		'l[': 'LspPreviousDiagnostic',
-		'l]': 'LspNextDiagnostic',
+	lh: 'LspHover',
+	lr: 'LspRename',
+	ll: 'LspCodeLens',
+	la: 'LspCodeAction',
+	ld: 'LspDefinition',
+	lt: 'LspTypeDefinition',
+	ls: 'LspDocumentSymbol',
+	lf: 'LspDocumentFormat',
+	'l[': 'LspPreviousDiagnostic',
+	'l]': 'LspNextDiagnostic',
 })
 	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
@@ -47,6 +47,6 @@ call plug#begin()
   Plug 'prabirshrestha/vim-lsp'
   Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
