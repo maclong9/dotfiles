@@ -22,6 +22,7 @@ for option: string in [
 	'smartindent',
 	'breakindent',
 	'shiftwidth=2',
+	'signcolumn=no',
 	'relativenumber',
 	'regexpengine=0',
 ]
