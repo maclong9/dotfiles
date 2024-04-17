@@ -11,7 +11,7 @@ for [var: string, val: number] in items({
   netrw_banner: 0, 
   netrw_liststyle: 3 
 })
-    execute 'g:' .. var .. ' = ' .. val
+	execute 'g:' .. var .. ' = ' .. val
 endfor
   
 for option: string in [
@@ -29,20 +29,19 @@ for option: string in [
 endfor
 
 for [map: string, cmd: string] in items({
+		lh: 'LspHover',
+		lr: 'LspRename',
+		ll: 'LspCodeLens',
 		la: 'LspCodeAction',
 		ld: 'LspDefinition',
-		lf: 'LspDocumentFormat',
-		lh: 'LspHover',
-		ll: 'LspCodeLens',
-		ln: 'LspNextDiagnostic',
-		lp: 'LspPreviousDiagnostic',
-		lr: 'Lsprename',
+		lt: 'LspTypeDefinition',
 		ls: 'LspDocumentSymbol',
-		lt: 'LspTypeDefintion'
+		lf: 'LspDocumentFormat',
+		'l[': 'LspPreviousDiagnostic',
+		'l]': 'LspNextDiagnostic',
 })
-	execute 'nmap ' .. map .. ' :' .. cmd .. '<cr>'
+	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
-
 
 call plug#begin()
   Plug 'prabirshrestha/vim-lsp'
