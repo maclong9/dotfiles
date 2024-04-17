@@ -1,6 +1,5 @@
 vim9script
 syntax enable
-filetype plugin on
 colorscheme habamax
 highlight Normal ctermbg=none
 autocmd CursorMoved * normal! zz
