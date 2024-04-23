@@ -34,11 +34,11 @@ install_tooling() {
 
 clone_configuration() {
   if [ -d "$DOT_DIR" ]; then
-    message "info" "'$HOME/.config' already exists, setting \"\$DOT_DIR\" to '$HOME/.dotfiles'"
     if [ -d "$HOME/.dotfiles" ]; then
-      message "error" "Back up dotfiles location '$DOT_DIR' already exists. Exiting."
+      message "error" "Main and back up dotfiles location '$DOT_DIR' already exist. Exiting."
       exit 1
     else
+      message "info" "'$HOME/.config' already exists, setting \"\$DOT_DIR\" to '$HOME/.dotfiles'"
       DOT_DIR="$HOME/.dotfiles"
     fi
   fi
