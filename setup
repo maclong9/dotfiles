@@ -2,7 +2,7 @@
 # usage: `curl https://raw.githubusercontent.com/maclong9/dotfiles/main/setup | sh`
 DOT_DIR="$HOME/.config"
 ANSI_PRE=$(printf "\033")
-PREV_CLEAR=$(printf "%s[1a%s[K" "${ANSI_PRE}" "${ANSI_PRE}")
+PREV_CLEAR=$(printf "%s%s" "${ANSI_PRE}[1a" "${ANSI_PRE}[K")
 
 message() {
   [ "$1" = "info" ] && color="${ANSI_PRE}[34m" # Blue
