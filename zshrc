@@ -1,6 +1,6 @@
 export PATH="$PATH:$HOME/.deno/bin/"
 export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
-%F{%(?.blue.red)}%B󰘧%b%f "
+%F{%(?.blue.red)}%Bλ%b%f "
 
 alias g="git"
 alias hg="history | grep"
