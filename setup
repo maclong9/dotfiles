@@ -1,4 +1,5 @@
 #!/bin/sh -e
+# usage: `curl https://raw.githubusercontent.com/maclong9/dotfiles/main/setup | sh`
 DOT_DIR="$HOME/.config"
 ANSI_PRE=$(printf "\033")
 PREV_CLEAR=$(printf "${ANSI_PRE}[1A${ANSI_PRE}[K")
