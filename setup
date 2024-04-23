@@ -41,7 +41,6 @@ clone_configuration() {
       DOT_DIR="$HOME/.dotfiles"
     fi
   fi
-  printf '%s' "$DOT_DIR"
   message "info" "$PREV_CLEAR Cloning configuration..."
   git clone -q "https://github.com/maclong9/dotfiles" "$HOME/.config"
   message "success" "Configuration cloned"
