@@ -23,7 +23,8 @@ install_xcli() {
 
 install_tooling() {
     message "info" "Installing Tooling..."
-    if [ "$uname" = "Linux" ]; then
+    if [ "$(uname)" = "Linux" ]; then
+        echo "
         sudo apt install curl git vim zsh
     fi
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
