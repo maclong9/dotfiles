@@ -14,3 +14,6 @@
   p = push
   pl = pull
   s = status
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

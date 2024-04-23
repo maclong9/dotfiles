@@ -24,14 +24,14 @@ for option: string in [
 	'signcolumn=no',
 	'relativenumber',
 	'regexpengine=0',
-	'colorcolumn=80'
+	'colorcolumn='
 ]
   execute 'set ' .. option
 endfor
 
 for [map: string, cmd: string] in items({
-	lh: 'lsphover',
-	lr: 'lsprename',
+	lh: 'LspHover',
+	lr: 'LspRename',
 	ll: 'LspCodeLens',
 	la: 'LspCodeAction',
 	ld: 'LspDefinition',
