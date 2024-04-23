@@ -2,7 +2,7 @@
 # usage: `curl https://raw.githubusercontent.com/maclong9/dotfiles/main/setup | sh`
 DOT_DIR="$HOME/.config"
 ANSI_PRE=$(printf "\033")
-PREV_CLEAR=$(printf "${ANSI_PRE}[1A${ANSI_PRE}[K")
+PREV_CLEAR=$(printf "%s[1a%s[K" "${ANSI_PRE}" "${ANSI_PRE}")
 
 message() {
   [ "$1" = "info" ] && color="${ANSI_PRE}[34m" # Blue
@@ -24,7 +24,7 @@ install_xcli() {
 install_tooling() {
     message "info" "Installing Tooling..."
     if [ "$(uname)" = "Linux" ]; then
-        echo "
+        echo "Installing Tools"
         sudo apt install curl git vim zsh
     fi
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -45,7 +45,7 @@ clone_configuration() {
   fi
   message "info" "$PREV_CLEAR Cloning configuration..."
   git clone -q "https://github.com/maclong9/dotfiles" "$DOT_DIR"
-  ls -l
+  ls -la
   message "success" "Configuration cloned"
 }
 
