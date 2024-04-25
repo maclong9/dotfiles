@@ -4,14 +4,14 @@ export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 
 alias g="git"
 alias hg="history | grep"
+alias dev="cd ~/Developer"
+alias cnf="cd ~/.config"
 
 gc() {
-  base_url="https://github.com"
-  if [[ "$1" == *"https"* ]]; then
-    git clone "$1"
-  elif [[ "$1" == *"/"* ]]; then
-    git clone "$base_url/$1"
+  base_url="git@github.com:"
+  if [[ "$1" == *"/"* ]]; then
+    git clone "$base_url/$1.git"
   else
-    git clone "$base_url/maclong9/$1"
+    git clone "$base_url/maclong9/$1.git"
   fi
 }
