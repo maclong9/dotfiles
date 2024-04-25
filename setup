@@ -5,68 +5,68 @@ ANSI_PRE=$(printf "\033")
 PREV_CLEAR=$(printf "%s%s" "${ANSI_PRE}[1a" "${ANSI_PRE}[K")
 
 message() {
-  [ "$1" = "info" ] && color="${ANSI_PRE}[34m" # Blue
-  [ "$1" = "success" ] && color="${PREV_CLEAR}${ANSI_PRE}[32m" # Clear ^ & Green
-  [ "$1" = "error" ] && color="${ANSI_PRE}[31m" # Red
+	[ "$1" = "info" ] && color="${ANSI_PRE}[34m" # Blue
+	[ "$1" = "success" ] && color="${PREV_CLEAR}${ANSI_PRE}[32m" # Clear ^ & Green
+	[ "$1" = "error" ] && color="${ANSI_PRE}[31m" # Red
 
-  printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PRE}[0m" "$2"
+	printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PRE}[0m" "$2"
 }
 
 install_xcli() {
-  if ! command -v git > /dev/null && [ "$(uname)" = "Darwin" ]; then
-    message "info" "Installing Xcode Developer Tools..."   
-    xcode-select --install
-    sudo xcodebuild -license accept     
-    message "success" "Xcode Developer Tools installed"
-  fi
+	if ! command -v git > /dev/null && [ "$(uname)" = "Darwin" ]; then
+		message "info" "Installing Xcode Developer Tools..."	 
+		xcode-select --install
+		sudo xcodebuild -license accept		 
+		message "success" "Xcode Developer Tools installed"
+	fi
 }
 
 install_tooling() {
-    message "info" "Installing Tooling..."
-    if [ "$(uname)" = "Linux" ]; then
+		message "info" "Installing Tooling..."
+		if [ "$(uname)" = "Linux" ]; then
 			sudo apt update	
 			sudo apt install -y software-properties-common
 			sudo add-apt-repository -y ppa:jonathonf/vim
 			sudo apt update	
-      sudo apt install -y git vim zsh
-      chsh -s /bin/zsh
-    fi
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    curl -fsSL https://deno.land/install.sh | sh
-    message "success" "Tooling installed"
+			sudo apt install -y git vim zsh
+			chsh -s /bin/zsh
+		fi
+		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		curl -fsSL https://deno.land/install.sh | sh
+		message "success" "Tooling installed"
 }
 
 clone_configuration() {
-  if [ -d "$DOT_DIR" ]; then
-    if [ -d "$HOME/.dotfiles" ]; then
-      message "error" "Main and back up dotfiles location '$DOT_DIR' already exist. Exiting."
-      exit 1
-    else
-      message "info" "'$HOME/.config' already exists, setting \"\$DOT_DIR\" to '$HOME/.dotfiles'"
-      DOT_DIR="$HOME/.dotfiles"
-    fi
-  fi
-  message "info" "$PREV_CLEAR Cloning configuration..."
-  git clone -q "https://github.com/maclong9/dotfiles" "$DOT_DIR"
-  message "success" "Configuration cloned"
+	if [ -d "$DOT_DIR" ]; then
+		if [ -d "$HOME/.dotfiles" ]; then
+			message "error" "Main and back up dotfiles location '$DOT_DIR' already exist. Exiting."
+			exit 1
+		else
+			message "info" "'$HOME/.config' already exists, setting \"\$DOT_DIR\" to '$HOME/.dotfiles'"
+			DOT_DIR="$HOME/.dotfiles"
+		fi
+	fi
+	message "info" "$PREV_CLEAR Cloning configuration..."
+	git clone -q "https://github.com/maclong9/dotfiles" "$DOT_DIR"
+	message "success" "Configuration cloned"
 }
 
 link_configuration() {
-   message "info" "Linking configuration files..." 
-   for file in "gitconfig" "vimrc" "zshrc"; do
-     ln -s "$DOT_DIR/$file" "$HOME/.$file"
-   done 
-   message "success" "Configuration linked"
+	 message "info" "Linking configuration files..." 
+	 for file in "gitconfig" "vimrc" "zshrc"; do
+		 ln -s "$DOT_DIR/$file" "$HOME/.$file"
+	 done 
+	 message "success" "Configuration linked"
 }
 
 main() {
-  message "info" "System Initialising"
-  install_xcli 
-  install_tooling 
-  clone_configuration
-  link_configuration 
-  message "success" "System configuration complete, enjoy."
+	message "info" "System Initialising"
+	install_xcli 
+	install_tooling 
+	clone_configuration
+	link_configuration 
+	message "success" "System configuration complete, enjoy."
 }
 
 main
