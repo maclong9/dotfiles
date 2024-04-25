@@ -1,11 +1,11 @@
-export PATH="$PATH:$HOME/.deno/bin/"
+export PATH="$PATH:$HOME/.deno/bin/:$HOME/.local/bin"
 export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%Bλ%b%f "
 
+setopt autocd
+
 alias g="git"
 alias hg="history | grep"
-alias dev="cd ~/Developer"
-alias cnf="cd ~/.config"
 
 gc() {
   base_url="git@github.com:"
@@ -15,3 +15,5 @@ gc() {
     git clone "$base_url/maclong9/$1.git"
   fi
 }
+
+eval "$(zoxide init zsh)"
