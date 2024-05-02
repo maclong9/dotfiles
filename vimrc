@@ -30,7 +30,9 @@ for option: string in [
 endfor
 
 for [map: string, cmd: string] in items({
-	lh: 'lsphover',
+        ln: 'LspPreviousDiagnostic',
+	lp: 'LspNextDiagnostic',
+        lh: 'lsphover',
 	lr: 'lsprename',
 	ll: 'LspCodeLens',
 	la: 'LspCodeAction',
@@ -38,8 +40,6 @@ for [map: string, cmd: string] in items({
 	lt: 'LspTypeDefinition',
 	ls: 'LspDocumentSymbol',
 	lf: 'LspDocumentFormat',
-	'l[': 'LspPreviousDiagnostic',
-	'l]': 'LspNextDiagnostic',
 })
 	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
