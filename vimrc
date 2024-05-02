@@ -32,7 +32,7 @@ endfor
 for [map: string, cmd: string] in items({
 	lp: 'LspPreviousDiagnostic',
 	ln: 'LspNextDiagnostic',
-        lh: 'lsphover',
+	lh: 'lshover',
 	lr: 'lsprename',
 	ll: 'LspCodeLens',
 	la: 'LspCodeAction',
