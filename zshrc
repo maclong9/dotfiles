@@ -4,7 +4,6 @@ export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 
 alias g="git"
 alias hg="history | grep"
-alias fmt="deno run -A npm:prettier . --write"
 
 gc() {
   base_url="git@github.com:"
