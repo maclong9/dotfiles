@@ -39,7 +39,7 @@ for [map: string, cmd: string] in items({
 	ld: 'LspDefinition',
 	lt: 'LspTypeDefinition',
 	ls: 'LspDocumentSymbol',
-	lf: 'LspDocumentFormat',
+	lf: 'LspDocumentFormat'
 })
 	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
