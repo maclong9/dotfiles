@@ -30,16 +30,16 @@ for option in [
 endfor
 
 for [map, cmd] in items({
-	lp: 'LspPreviousDiagnostic',
-	ln: 'LspNextDiagnostic',
-	lh: 'lshover',
-	lr: 'lsprename',
-	ll: 'LspCodeLens',
 	la: 'LspCodeAction',
 	ld: 'LspDefinition',
-	lt: 'LspTypeDefinition',
+	lf: 'LspDocumentFormat',
+	lh: 'LspHover',
+	ll: 'LspCodeLens',
+	ln: 'LspNextDiagnostic',
+	lp: 'LspPreviousDiagnostic',
+	lr: 'LspRename',
 	ls: 'LspDocumentSymbol',
-	lf: 'LspDocumentFormat'
+	lt: 'LspTypeDefinition',
 })
 	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
