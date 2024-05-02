@@ -5,7 +5,7 @@ highlight Normal ctermbg=none
 autocmd CursorMoved * normal! zz
 command! -nargs=1 G execute ':!git <args>'
 
-for [var: string, val: number] in items({ 
+for [var, val] in items({ 
 	is_posix: 1, 
 	netrw_banner: 0, 
 	netrw_liststyle: 3 
@@ -13,7 +13,7 @@ for [var: string, val: number] in items({
 	execute 'g:' .. var .. ' = ' .. val
 endfor
   
-for option: string in [
+for option in [
 	'tabstop=2', 
 	'noswapfile',
 	'noshowmode', 
@@ -29,7 +29,7 @@ for option: string in [
   execute 'set ' .. option
 endfor
 
-for [map: string, cmd: string] in items({
+for [map, cmd] in items({
 	lp: 'LspPreviousDiagnostic',
 	ln: 'LspNextDiagnostic',
 	lh: 'lshover',
@@ -50,4 +50,3 @@ call plug#begin()
 	Plug 'prabirshrestha/asyncomplete.vim'
 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
-
