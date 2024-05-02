@@ -33,7 +33,7 @@ for [map, cmd] in items({
 	la: 'LspCodeAction',
 	ld: 'LspDefinition',
 	lf: 'LspDocumentFormat',
-        lg: 'LspDefinition',
+	lg: 'LspDefinition',
 	lh: 'LspHover',
 	ll: 'LspCodeLens',
 	ln: 'LspNextDiagnostic',
