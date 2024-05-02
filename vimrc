@@ -30,8 +30,8 @@ for option: string in [
 endfor
 
 for [map: string, cmd: string] in items({
-        ln: 'LspPreviousDiagnostic',
-	lp: 'LspNextDiagnostic',
+	lp: 'LspPreviousDiagnostic',
+	ln: 'LspNextDiagnostic',
         lh: 'lsphover',
 	lr: 'lsprename',
 	ll: 'LspCodeLens',
