@@ -31,6 +31,7 @@ for option in [
 endfor
 
 for [map, cmd] in items({
+	db: '!lldb<cr>',
 	la: 'LspCodeAction',
 	ld: 'LspDefinition',
 	lf: 'LspDocumentFormat',
