@@ -5,12 +5,13 @@ highlight Normal ctermbg=none
 autocmd CursorMoved * normal! zz
 command! -nargs=1 G execute ':!git <args>'
 
-for [var, val] in items({ 
+for [var, val] in items({
 	is_posix: 1, 
 	netrw_banner: 0, 
-	netrw_liststyle: 3 
+	netrw_liststyle: 3,
+	mapleader: ';'
 })
-	execute 'g:' .. var .. ' = ' .. val
+	execute 'g:' .. var .. ' = ' .. string(val)
 endfor
   
 for option in [
