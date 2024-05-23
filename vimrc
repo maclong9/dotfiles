@@ -21,7 +21,7 @@ for option in [
 	'smartindent',
 	'shiftwidth=2',
 	'signcolumn=no',
-        'scrolloff=999',
+	'scrolloff=999',
 	'regexpengine=0',
 	'relativenumber',
 ]
