@@ -2,7 +2,6 @@ vim9script
 syntax enable
 colorscheme habamax
 highlight Normal ctermbg=none
-autocmd CursorMoved * normal! zz
 command! -nargs=1 G execute ':!git <args>'
 
 for [var, val] in items({
@@ -23,6 +22,7 @@ for option in [
 	'smartindent',
 	'shiftwidth=2',
 	'signcolumn=no',
+        'scrolloff=999',
 	'regexpengine=0',
 	'relativenumber',
 ]
