@@ -13,5 +13,3 @@ gc() {
     git clone "$base_url/maclong9/$1.git"
   fi
 }
-
-eval "$(zoxide init zsh)"
