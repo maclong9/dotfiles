@@ -8,10 +8,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-   PlugInstall --sync | source $MYVIMRC
- endif
-
 for [var, val] in items({
 	is_posix: 1, 
 	mapleader: ';',
