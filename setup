@@ -22,15 +22,8 @@ install_xcli() {
 
 clone_configuration() {
 	if [ -d "$DOT_DIR" ]; then
-		if [ -d "$HOME/.dotfiles" ]; then
-			message "error" \
-				"Main and back up dotfiles location '$DOT_DIR' already exist. Exiting."
-			exit 1
-		else
-			message "info" \
-				"'$HOME/.config' exists, setting \"\$DOT_DIR\" to '$HOME/.dotfiles'"
-			DOT_DIR="$HOME/.dotfiles"
-		fi
+		message "error" "'$HOME/.config' exists, setting \"\$DOT_DIR\" to '$HOME/.dotfiles'"
+		exit 1
 	fi
 	message "info" "Cloning configuration..."
 	git clone -q "https://github.com/maclong9/dotfiles" "$DOT_DIR"
