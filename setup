@@ -8,7 +8,6 @@ message() {
 	[ "$1" = "info" ] && color="${ANSI_PRE}[34m" # Blue
 	[ "$1" = "success" ] && color="${PREV_CLEAR}${ANSI_PRE}[32m" # Clear ^ & Green
 	[ "$1" = "error" ] && color="${ANSI_PRE}[31m" # Red
-
 	printf "%s[%s] %s%s\n" "$color" "$1" "${ANSI_PRE}[0m" "$2"
 }
 
@@ -33,7 +32,6 @@ clone_configuration() {
 			DOT_DIR="$HOME/.dotfiles"
 		fi
 	fi
-
 	message "info" "$PREV_CLEAR Cloning configuration..."
 	git clone -q "https://github.com/maclong9/dotfiles" "$DOT_DIR"
 	message "success" "Configuration cloned"
