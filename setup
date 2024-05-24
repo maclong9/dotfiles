@@ -49,7 +49,6 @@ link_configuration() {
 main() {
 	message "info" "System Initialising"
 	install_xcli 
-	install_tooling 
 	clone_configuration
 	link_configuration 
 	message "success" "System configuration complete, enjoy."
