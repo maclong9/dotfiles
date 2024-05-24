@@ -3,12 +3,3 @@ export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 
 alias g="git"
 alias hg="history | grep"
-
-gc() {
-  base_url="git@github.com:"
-  if [[ "$1" == *"/"* ]]; then
-    git clone "$base_url/$1.git"
-  else
-    git clone "$base_url/maclong9/$1.git"
-  fi
-}
