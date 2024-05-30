@@ -13,14 +13,14 @@ extension Process {
 	
 	public func link(src: URL, dest: URL) throws {
 		executableURL = Process.lnExecPath
-		arguments = ["-s", src.path, dest.path] 
+		arguments = ["-s", src.path, dest.path]
 		try run()
 	}
 }
 
-var configPath = "/Users/mac/.config"
-
 do {
+	let configPath = "/Users/mac/.config"
+	
 	try Process().clone(
 		repo: "https://github.com/maclong9/dotfiles",
 		path: configPath
@@ -37,7 +37,7 @@ do {
 	while let fileUrl = enumerator?.nextObject() as? URL {
 		if fileUrl.hasDirectoryPath == false && fileUrl.pathExtension != "swift" {
 			try Process().link(
-				src: fileUrl, 
+				src: fileUrl,
 				dest: URL(fileURLWithPath: "/Users/mac/.\(fileUrl.lastPathComponent)")
 			)
 		}
