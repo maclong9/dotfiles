@@ -1,5 +1,4 @@
 #!/usr/bin/swift
-// USAGE: curl -sL https://raw.githubusercontent.com/maclong9/dotfiles/main/setup.swift | swift -
 import Foundation
 
 extension Process {
