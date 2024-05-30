@@ -1,4 +1,5 @@
 #!/usr/bin/swift
+# USAGE: curl https://raw.githubusercontent.com/maclong9/dotfiles/main/setup.swift | swift
 import Foundation
 
 extension Process {
@@ -13,12 +14,12 @@ extension Process {
 	
 	public func link(src: URL, dest: URL) throws {
 		executableURL = Process.lnExecPath
-		arguments = ["-s", src.path, dest.path] // Convert URLs to strings
+		arguments = ["-s", src.path, dest.path] 
 		try run()
 	}
 }
 
-var configPath = "/Users/mac/testing123"
+var configPath = "/Users/mac/.config"
 
 do {
 	try Process().clone(
@@ -36,10 +37,9 @@ do {
 	
 	while let fileUrl = enumerator?.nextObject() as? URL {
 		if fileUrl.hasDirectoryPath == false {
-			let destUrl = URL(fileURLWithPath: "/Users/mac/.\(fileUrl.lastPathComponent)")
 			try Process().link(
-				src: fileUrl, // Pass URL objects directly
-				dest: destUrl
+				src: fileUrl, 
+				dest: URL(fileURLWithPath: "/Users/mac/.\(fileUrl.lastPathComponent)")
 			)
 		}
 	}
