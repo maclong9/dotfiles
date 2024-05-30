@@ -35,7 +35,7 @@ do {
 	)
 	
 	while let fileUrl = enumerator?.nextObject() as? URL {
-		if fileUrl.pathExtension != "swift" {
+    fileUrl.pathExtension != "swift" {
 			try Process().link(
 				src: fileUrl,
 				dest: URL(
