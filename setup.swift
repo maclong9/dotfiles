@@ -35,12 +35,12 @@ do {
 	)
 	
 	while let fileUrl = enumerator?.nextObject() as? URL {
-  	if fileUrl.pathExtension != "swift" {
+		if fileUrl.pathExtension != "swift" {
 			try Process().link(
 				src: fileUrl,
 				dest: URL(
-            fileURLWithPath: "/Users/mac/.\(fileUrl.lastPathComponent)"
-        )
+					fileURLWithPath: "/Users/mac/.\(fileUrl.lastPathComponent)"
+				)
 			)
 		}
 	}
