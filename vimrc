@@ -23,7 +23,8 @@ for option in [
 	'signcolumn=no',
 	'scrolloff=999',
 	'regexpengine=0',
-	'relativenumber'
+	'relativenumber',
+        'completeopt+=fuzzy'
 ]
   execute 'set ' .. option
 endfor
