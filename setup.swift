@@ -24,7 +24,7 @@ extension Process {
     extraArgs: String? = nil
   ) throws {
     executableURL = Process.shExecPath
-    arguments = ["-c", "curl \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
+    arguments = ["-c", "curl -fsSL \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
     try run()
   }
 }
