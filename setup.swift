@@ -64,7 +64,7 @@ do {
     try Process().install(
       from: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
       withOutput: true,
-      extraArgs: "~/.vimrc/autoload/plug.vim --create-dirs"
+      extraArgs: "/Users/mac/.vimrc/autoload/plug.vim --create-dirs"
     )
   }
 
