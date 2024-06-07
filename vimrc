@@ -52,5 +52,6 @@ call plug#begin()
 	Plug 'mattn/vim-lsp-settings',
 	Plug 'prabirshrestha/vim-lsp',
 	Plug 'prabirshrestha/asyncomplete.vim',
-	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim',
+	Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
