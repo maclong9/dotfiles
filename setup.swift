@@ -20,11 +20,7 @@ extension Process {
     waitUntilExit()
   }
 
-  public func install(
-    from src: String,
-    withOutput: Bool = false,
-    extraArgs: String? = nil
-  ) throws {
+  public func install(from src: String, withOutput: Bool = false, extraArgs: String? = nil) throws {
     executableURL = Process.shExecPath
     arguments = ["-c", "curl -fsSL \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
     try run()
