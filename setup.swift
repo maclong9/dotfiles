@@ -33,11 +33,9 @@ extension Process {
 }
 
 do {
-  let configPath = "/Users/mac/.config"
-
   try Process().clone(
     from: "https://github.com/maclong9/dotfiles",
-    to: configPath
+    to: "/Users/mac/.config"
   )
 
   sleep(4)
