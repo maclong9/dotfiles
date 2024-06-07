@@ -1,7 +1,7 @@
 vim9script
 syntax enable
 colorscheme habamax
-command! -nargs=1 G execute ':!git <args>'
+command! -nargs=1 g execute ':!git <args>'
 
 for [var, val] in items({
 	is_posix: 1, 
