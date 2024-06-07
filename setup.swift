@@ -60,27 +60,23 @@ do {
   }
 
   if !FileManager.default.fileExists(atPath: "/Users/mac/.deno") {
-    print("Installing Deno")
     try Process().install(from: "https://deno.land/install.sh")
   }
-  
+
   if !FileManager.default.fileExists(atPath: "/usr/local/bin/tmux") {
-    print("Installing tmux")
     try Process().install(
-      from: "https://gist.githubusercontent.com/tomasbasham/1e405cfa16e88c0f5d2f49bbbd161944/raw/c70c143eecadc3ca67317227bbb687f51486353d/install_tmux_osx_no_brew"
+      from:
+        "https://gist.githubusercontent.com/tomasbasham/1e405cfa16e88c0f5d2f49bbbd161944/raw/c70c143eecadc3ca67317227bbb687f51486353d/install_tmux_osx_no_brew"
     )
   }
 
   if !FileManager.default.fileExists(atPath: "/Users/mac/.vim") {
-    print("Installing vim-plug")
     try Process().install(
       from: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
       withOutput: true,
       extraArgs: "/Users/mac/.vim/autoload/plug.vim --create-dirs"
     )
   }
-
-  exit(0)
 } catch {
   print("Error: \(error)")
 }
