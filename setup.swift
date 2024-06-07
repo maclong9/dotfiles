@@ -10,12 +10,14 @@ extension Process {
     executableURL = Process.gitExecPath
     arguments = ["clone", "-q", repo, path]
     try run()
+    waitUntilExit()
   }
 
   public func link(from src: URL, to dest: URL) throws {
     executableURL = Process.lnExecPath
     arguments = ["-s", src.path, dest.path]
     try run()
+    waitUntilExit()
   }
 
   public func install(
@@ -26,6 +28,7 @@ extension Process {
     executableURL = Process.shExecPath
     arguments = ["-c", "curl -fsSL \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
     try run()
+    waitUntilExit()
   }
 }
 
