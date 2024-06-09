@@ -29,7 +29,8 @@ extension Process {
 }
 
 do {
-  let configPath = "/Users/mac/.config"
+  let homeDir = "/Users/mac"
+  let configPath = "\(homeDir)/.config"
   try Process().clone(
     from: "https://github.com/maclong9/dotfiles",
     to: configPath
@@ -48,13 +49,13 @@ do {
       try Process().link(
         from: fileUrl,
         to: URL(
-          fileURLWithPath: "/Users/mac/.\(fileUrl.lastPathComponent)"
+          fileURLWithPath: "\(homeDir)/.\(fileUrl.lastPathComponent)"
         )
       )
     }
   }
 
-  if !FileManager.default.fileExists(atPath: "/Users/mac/.deno") {
+  if !FileManager.default.fileExists(atPath: "\(homeDir)/.deno") {
     try Process().install(from: "https://deno.land/install.sh")
   }
 
@@ -64,12 +65,13 @@ do {
         "https://gist.githubusercontent.com/tomasbasham/1e405cfa16e88c0f5d2f49bbbd161944/raw/c70c143eecadc3ca67317227bbb687f51486353d/install_tmux_osx_no_brew"
     )
   }
+  try FileManager.default.removeItem(at: "\(homeDir)/tmux-install")
 
-  if !FileManager.default.fileExists(atPath: "/Users/mac/.vim") {
+  if !FileManager.default.fileExists(atPath: "\(homeDir)/.vim") {
     try Process().install(
       from: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
       withOutput: true,
-      extraArgs: "/Users/mac/.vim/autoload/plug.vim --create-dirs"
+      extraArgs: "\(homeDir)/.vim/autoload/plug.vim --create-dirs"
     )
   }
 } catch {
