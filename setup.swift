@@ -32,6 +32,13 @@ extension Process {
       waitUntilExit()
     }
   }
+
+  public func changeOwnerRecursively(of path: String, toOwner owner: String) throws {
+        executableURL = URL(fileURLWithPath: "/usr/sbin/chown")
+        arguments = ["-R", owner, path]
+        try run()
+        waitUntilExit()
+    }
 }
 
 func enableTouchIDForSudo() throws {
