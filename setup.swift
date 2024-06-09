@@ -25,6 +25,12 @@ extension Process {
     arguments = ["-c", "curl -fsSL \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
     try run()
     waitUntilExit()
+
+    if let runAfterCommand = runAfter {
+      arguments = ["-c", runAfterCommand]
+      try run()
+      waitUntilExit()
+    }
   }
 }
 
@@ -62,16 +68,17 @@ do {
   if !FileManager.default.fileExists(atPath: URL(fileUrlWithPath: "/usr/local/bin/tmux")) {
     try Process().install(
       from:
-        "https://gist.githubusercontent.com/tomasbasham/1e405cfa16e88c0f5d2f49bbbd161944/raw/c70c143eecadc3ca67317227bbb687f51486353d/install_tmux_osx_no_brew"
+        "https://gist.githubusercontent.com/tomasbasham/1e405cfa16e88c0f5d2f49bbbd161944/raw/c70c143eecadc3ca67317227bbb687f51486353d/install_tmux_osx_no_brew",
+      runAfter: "rm -rf \(homeDir)/tmux-install"
     )
   }
-  try FileManager.default.removeItem(at: "\(homeDir)/tmux-install")
 
   if !FileManager.default.fileExists(atPath: "\(homeDir)/.vim") {
     try Process().install(
       from: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
       withOutput: true,
-      extraArgs: "\(homeDir)/.vim/autoload/plug.vim --create-dirs"
+      extraArgs: "\(homeDir)/.vim/autoload/plug.vim --create-dirs",
+      runAfter: "vim +PlugInstall +qall"
     )
   }
 } catch {
