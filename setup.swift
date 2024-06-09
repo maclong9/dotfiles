@@ -25,6 +25,13 @@ extension Process {
     try run()
     waitUntilExit()
   }
+
+  func runCommand(at path: String? = FileManager.default.currentDirectoryPath, with args: [String]) throws {
+    executableURL = URL(fileURLWithPath: "/usr/bin/env")
+    arguments = ["sh", "-c", path != nil ? "cd \(path!) && \(args.joined(separator: " "))" : args.joined(separator: " ")]
+    try run()
+    waitUntilExit()
+  }
 }
 
 do {
@@ -45,11 +52,15 @@ do {
     }
   }
 
-    try Process().install(from: "https://deno.land/install.sh")
-    try Process().install(
-      from:
-        "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
-    )
+  try Process().install(from: "https://deno.land/install.sh")
+  try Process().install(
+    from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
+  )
+
+  let mintPath = "\(homeDir)/Mint"
+  try Process().clone(from: "https://github.com/yonaskolb/Mint.git", to: mintPath)
+  try Process().runCommand(at: mintPath, with: ["sudo make"])
+  try Process().runCommand(with: ["mint install maclong9/SwiftList"])
 } catch {
   print("Error: \(error)")
 }
