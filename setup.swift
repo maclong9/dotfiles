@@ -5,6 +5,7 @@ extension Process {
   private static let gitExecPath = URL(fileURLWithPath: "/usr/bin/git")
   private static let lnExecPath = URL(fileURLWithPath: "/bin/ln")
   private static let shExecPath = URL(fileURLWithPath: "/bin/sh")
+  private static let vimExecPath = URL(fileURLWithPath: "/usr/bin/vim")
 
   public func clone(from repo: String, to path: String) throws {
     executableURL = Process.gitExecPath
@@ -21,10 +22,17 @@ extension Process {
   }
 
   public func install(
-    from src: String, withOutput: Bool = false, extraArgs: String? = nil, runAfter: String? = nil
+    from src: String, withOutput: Bool = false, extraArgs: String? = nil
   ) throws {
     executableURL = Process.shExecPath
     arguments = ["-c", "curl \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
+    try run()
+    waitUntilExit()
+  }
+
+  public func vimSetup() throws {
+    executableURL = Process.vimExecPath
+    arguments = ["+PlugInstall", "+qall"]
     try run()
     waitUntilExit()
   }
@@ -58,7 +66,8 @@ do {
     }
   }
 
-  if !FileManager.default.fileExists(atPath: "\(homeDir)/.deno") {
+  if !FileManager.default.fileExists(atPath: "/Users/mac/.deno") {
+    print("Installing Deno")
     try Process().install(from: "https://deno.land/install.sh")
   }
 
@@ -68,15 +77,17 @@ do {
         "https://gist.githubusercontent.com/tomasbasham/1e405cfa16e88c0f5d2f49bbbd161944/raw/c70c143eecadc3ca67317227bbb687f51486353d/install_tmux_osx_no_brew"
     )
   }
+  try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
 
   if !FileManager.default.fileExists(atPath: "/Users/mac/.vim") {
-    print("Installing vim-plug")
     try Process().install(
       from: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
       withOutput: true,
       extraArgs: "/Users/mac/.vim/autoload/plug.vim --create-dirs"
     )
   }
+  try Process().vimSetup()
+
 } catch {
   print("Error: \(error)")
 }
