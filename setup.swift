@@ -13,7 +13,7 @@ extension Process {
   }
 
   public func link(from src: URL, to dest: URL) throws {
-    executableURL = URL(fileURLWithPath: "/bin/ln")
+    executableURL = URL(fileURLWithPath: "/usr/bin/ln")
     arguments = ["-s", src.path, dest.path]
     try run()
     waitUntilExit()
