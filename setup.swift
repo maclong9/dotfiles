@@ -95,7 +95,9 @@ do {
       extraArgs: "\(homeDir)/.vim/autoload/plug.vim --create-dirs",
       runAfter: "vim +PlugInstall +qall"
     )
-  }  
+  }
+
+  try Process().changeOwnerRecursively(of: homeDir, toOwner: "mac")
 } catch {
   print("Error: \(error)")
 }
