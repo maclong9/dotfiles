@@ -92,7 +92,7 @@ do {
     )
 
     while let fileUrl = enumerator?.nextObject() as? URL {
-        if fileUrl.pathExtension != "swift" {
+        if fileUrl.pathExtension != "swift" || fileUrl.pathExtension != "md" {
             try Process().link(
                 from: fileUrl,
                 to: URL(fileURLWithPath: "\(homeDir)/.\(fileUrl.lastPathComponent)")
