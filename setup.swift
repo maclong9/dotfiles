@@ -20,8 +20,8 @@ extension Process {
   }
 
   func install(from src: String) throws {
-    executableURL = URL(fileURLWithPath: "/bin/sh")
-    arguments = ["-c", "curl -Slsf \(src) | sh"]
+    executableURL = URL(fileURLWithPath: "/bin/curl")
+    arguments = ["-fsSL", src, "| sh"]
     try run()
     waitUntilExit()
   }
