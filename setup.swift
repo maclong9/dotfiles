@@ -13,15 +13,15 @@ extension Process {
   }
 
   public func link(from src: URL, to dest: URL) throws {
-    executableURL = URL(fileURLWithPath: "/usr/bin/ln")
+    executableURL = URL(fileURLWithPath: "/bin/ln")
     arguments = ["-s", src.path, dest.path]
     try run()
     waitUntilExit()
   }
 
   func install(from src: String) throws {
-    executableURL = URL(fileURLWithPath: "/bin/curl")
-    arguments = ["-fsSL", src, "| sh"]
+    executableURL = URL(fileURLWithPath: "/bin/sh")
+    arguments = ["-c", "curl -fsSL \(src) | sh"]
     try run()
     waitUntilExit()
   }
