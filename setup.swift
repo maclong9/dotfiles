@@ -61,6 +61,8 @@ do {
   try Process().clone(from: "https://github.com/yonaskolb/Mint.git", to: mintPath)
   try Process().runCommand(at: mintPath, with: ["sudo make"])
   try Process().runCommand(with: ["mint install maclong9/SwiftList"])
+  try Process().runCommand(with: ["mint install nicklockwood/SwiftFormat"])
+  try Process().runCommand(with: ["mint install realm/SwiftLint"])
 } catch {
   print("Error: \(error)")
 }
