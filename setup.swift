@@ -3,6 +3,8 @@ import Foundation
 
 let homeDir = "/Users/mac"
 let configPath = "\(homeDir)/.config"
+let mintPath = "\(homeDir)/Mint"
+
 
 extension Process {
   public func clone(from repo: String, to path: String) throws {
@@ -57,7 +59,6 @@ do {
     from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
   )
 
-  let mintPath = "\(homeDir)/Mint"
   try Process().clone(from: "https://github.com/yonaskolb/Mint.git", to: mintPath)
   try Process().runCommand(at: mintPath, with: ["sudo make"])
   try Process().runCommand(with: ["mint install maclong9/SwiftList"])
