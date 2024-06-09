@@ -86,8 +86,6 @@ do {
       extraArgs: "/Users/mac/.vim/autoload/plug.vim --create-dirs"
     )
   }
-  try Process().vimSetup()
-
 } catch {
   print("Error: \(error)")
 }
