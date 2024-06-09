@@ -59,7 +59,7 @@ do {
     try Process().install(from: "https://deno.land/install.sh")
   }
 
-  if !FileManager.default.fileExists(atPath: "/usr/local/bin/tmux") {
+  if !FileManager.default.fileExists(atPath: URL(string: "/usr/local/bin/tmux")) {
     try Process().install(
       from:
         "https://gist.githubusercontent.com/tomasbasham/1e405cfa16e88c0f5d2f49bbbd161944/raw/c70c143eecadc3ca67317227bbb687f51486353d/install_tmux_osx_no_brew"
