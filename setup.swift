@@ -40,7 +40,8 @@ func enableTouchIDForSudo() throws {
   var pamContents = try String(contentsOfFile: pamFilePath, encoding: .utf8)
   
   if !pamContents.contains(pamTidLine) {
-    pamContents = pamTidLine + pamContents
+    let lines = pamContents.split(separator: "\n", omittingEmptySubsequences: false)
+    pamContents = lines.prefix(1).joined(separator: "\n") + "\n" + pamTidLine + lines.dropFirst().joined(separator: "\n")
     try pamContents.write(toFile: pamFilePath, atomically: true, encoding: .utf8)
   }
 }
