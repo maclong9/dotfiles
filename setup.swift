@@ -34,9 +34,23 @@ extension Process {
   }
 }
 
+func enableTouchIDForSudo() throws {
+  let pamFilePath = "/etc/pam.d/sudo"
+  let pamTidLine = "auth       sufficient     pam_tid.so\n"
+  var pamContents = try String(contentsOfFile: pamFilePath, encoding: .utf8)
+  
+  if !pamContents.contains(pamTidLine) {
+    pamContents = pamTidLine + pamContents
+    try pamContents.write(toFile: pamFilePath, atomically: true, encoding: .utf8)
+  }
+}
+
 do {
   let homeDir = "/Users/mac"
   let configPath = "\(homeDir)/.config"
+
+  try enableTouchIDForSudo()
+
   try Process().clone(
     from: "https://github.com/maclong9/dotfiles",
     to: configPath
@@ -80,7 +94,7 @@ do {
       extraArgs: "\(homeDir)/.vim/autoload/plug.vim --create-dirs",
       runAfter: "vim +PlugInstall +qall"
     )
-  }
+  }  
 } catch {
   print("Error: \(error)")
 }
