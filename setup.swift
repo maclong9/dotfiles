@@ -21,7 +21,7 @@ extension Process {
 
   func install(from src: String) throws {
     executableURL = URL(fileURLWithPath: "/bin/sh")
-    arguments = ["-c", "curl \(src) | sh"]
+    arguments = ["-c", "curl -Slsf \(src) | sh"]
     try run()
     waitUntilExit()
   }
