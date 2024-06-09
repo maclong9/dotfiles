@@ -1,6 +1,9 @@
 #!/usr/bin/swift
 import Foundation
 
+let homeDir = "/Users/mac"
+let configPath = "\(homeDir)/.config"
+
 extension Process {
     private static let gitExecPath = URL(fileURLWithPath: "/usr/bin/git")
     private static let lnExecPath = URL(fileURLWithPath: "/bin/ln")
@@ -50,9 +53,6 @@ extension Process {
 }
 
 do {
-    let homeDir = "/Users/mac"
-    let configPath = "\(homeDir)/.config"
-
     try Process().clone(from: "https://github.com/maclong9/dotfiles", to: configPath)
 
     sleep(4)
