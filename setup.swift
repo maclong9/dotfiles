@@ -29,13 +29,6 @@ extension Process {
     try run()
     waitUntilExit()
   }
-
-  public func vimSetup() throws {
-    executableURL = Process.vimExecPath
-    arguments = ["+PlugInstall", "+qall"]
-    try run()
-    waitUntilExit()
-  }
 }
 
 do {
@@ -78,14 +71,6 @@ do {
     )
   }
   try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
-
-  if !FileManager.default.fileExists(atPath: "/Users/mac/.vim") {
-    try Process().install(
-      from: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
-      withOutput: true,
-      extraArgs: "/Users/mac/.vim/autoload/plug.vim --create-dirs"
-    )
-  }
 } catch {
   print("Error: \(error)")
 }
