@@ -5,7 +5,6 @@ let homeDir = "/Users/mac"
 let configPath = "\(homeDir)/.config"
 let mintPath = "\(homeDir)/Mint"
 
-
 extension Process {
   public func clone(from repo: String, to path: String) throws {
     executableURL = URL(fileURLWithPath: "/usr/bin/git")
