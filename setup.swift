@@ -20,9 +20,7 @@ extension Process {
     waitUntilExit()
   }
 
-  public func install(
-    from src: String, withOutput: Bool = false, extraArgs: String? = nil
-  ) throws {
+  public func install(from src: String, withOutput: Bool = false, extraArgs: String? = nil) throws {
     executableURL = Process.shExecPath
     arguments = ["-c", "curl \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
     try run()
@@ -34,10 +32,7 @@ do {
   let homeDir = "/Users/mac"
   let configPath = "\(homeDir)/.config"
 
-  try Process().clone(
-    from: "https://github.com/maclong9/dotfiles",
-    to: configPath
-  )
+  try Process().clone(from: "https://github.com/maclong9/dotfiles", to: configPath)
 
   sleep(4)
 
@@ -51,9 +46,7 @@ do {
     if fileUrl.pathExtension != "swift" {
       try Process().link(
         from: fileUrl,
-        to: URL(
-          fileURLWithPath: "\(homeDir)/.\(fileUrl.lastPathComponent)"
-        )
+        to: URL(fileURLWithPath: "\(homeDir)/.\(fileUrl.lastPathComponent)")
       )
     }
   }
