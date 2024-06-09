@@ -9,10 +9,12 @@
   b = branch
   bd = branch -d
   c = commit -m
-	cl = "!f() { base_url=\"git@github.com:\"; if [[ \"$1\" == *\"/\"* ]]; then git clone \"$base_url/$1.git\"; else git clone \"$base_url/maclong9/$1.git\"; fi; }; f"
+  cl = "!f() { base_url=\"git@github.com:\"; if [[ \"$1\" == *\"/\"* ]]; then git clone \"$base_url/$1.git\"; else git clone \"$base_url/maclong9/$1.git\"; fi; }; f"
   co = checkout
   d = diff
   p = push
   pl = pull
   pln = pull --no-rebase
   s = status
+  rl = reset --hard HEAD^
+  al = commit --amend --no-edit
