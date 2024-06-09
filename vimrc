@@ -43,6 +43,12 @@ for [map, cmd] in items({
 	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
 
+autocmd VimEnter * {
+  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)')) {
+    PlugInstall | q
+  }
+}
+
 call plug#begin()
 	Plug 'mattn/vim-lsp-settings',
 	Plug 'prabirshrestha/vim-lsp',
