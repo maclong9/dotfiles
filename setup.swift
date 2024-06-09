@@ -19,74 +19,11 @@ extension Process {
     waitUntilExit()
   }
 
-  public func install(from src: String, withOutput: Bool = false, extraArgs: String? = nil) throws {
+  public func install(from src: String) throws {
     executableURL = URL(fileURLWithPath: "/bin/sh")
-    arguments = ["-c", "curl \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
+    arguments = ["-c", "curl \(src) | sh"]
     try run()
     waitUntilExit()
-  }
-
-  public func installTmux() throws {
-    let tmuxInstallDir = "\(homeDir)/tmux-install"
-
-    try FileManager.default.createDirectory(
-      atPath: tmuxInstallDir, withIntermediateDirectories: true, attributes: nil)
-    currentDirectoryPath = tmuxInstallDir
-
-    executableURL = URL(fileURLWithPath: "/usr/bin/curl")
-    arguments = ["-OL", "https://www.openssl.org/source/openssl-1.0.2l.tar.gz"]
-    try run()
-    waitUntilExit()
-
-    executableURL = URL(fileURLWithPath: "/usr/bin/curl")
-    arguments = ["-OL", "https://github.com/tmux/tmux/releases/download/2.3/tmux-2.3.tar.gz"]
-    try run()
-    waitUntilExit()
-
-    executableURL = URL(fileURLWithPath: "/usr/bin/curl")
-    arguments = [
-      "-OL",
-      "https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz",
-    ]
-    try run()
-    waitUntilExit()
-
-    executableURL = URL(fileURLWithPath: "/usr/bin/tar")
-    arguments = ["xzf", "openssl-1.0.2l.tar.gz"]
-    try run()
-    waitUntilExit()
-
-    arguments = ["xzf", "tmux-2.3.tar.gz"]
-    try run()
-    waitUntilExit()
-
-    arguments = ["xzf", "libevent-2.0.22-stable.tar.gz"]
-    try run()
-    waitUntilExit()
-
-    executableURL = URL(fileURLWithPath: "/bin/sh")
-    currentDirectoryPath = "/Users/mac/tmux-install/openssl-1.0.2l"
-    arguments = [
-      "-c",
-      "./Configure darwin64-x86_64-cc --prefix=/usr/local --openssldir=/usr/local/ssl && make && sudo make install",
-    ]
-    try run()
-    waitUntilExit()
-
-    currentDirectoryPath = "/Users/mac/tmux-install/libevent-2.0.22-stable"
-    arguments = ["-c", "./configure && make && sudo make install"]
-    try run()
-    waitUntilExit()
-
-    currentDirectoryPath = "/Users/mac/tmux-install/tmux-2.3"
-    arguments = [
-      "-c",
-      "LDFLAGS=\"-L/usr/local/lib\" CPPFLAGS=\"-I/usr/local/include\" LIBS=\"-lresolv\" ./configure --prefix=/usr/local && make && sudo make install",
-    ]
-    try run()
-    waitUntilExit()
-
-    try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
   }
 }
 
@@ -120,6 +57,7 @@ do {
         "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
     )
   }
+  try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
 } catch {
   print("Error: \(error)")
 }
