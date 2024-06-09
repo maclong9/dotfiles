@@ -57,7 +57,7 @@ do {
   try Process().install(
     from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
   )
-  try FileManager.default.removeItem(at: "\(homeDir)/tmux-install")
+  try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
   try Process().clone(from: "https://github.com/yonaskolb/Mint.git", to: mintPath)
   try Process().runCommand(at: mintPath, with: ["sudo make"])
   try Process().runCommand(with: ["mint install maclong9/SwiftList"])
