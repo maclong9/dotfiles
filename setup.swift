@@ -20,7 +20,9 @@ extension Process {
     waitUntilExit()
   }
 
-  public func install(from src: String, withOutput: Bool = false, extraArgs: String? = nil, runAfter: String? = nil) throws {
+  public func install(
+    from src: String, withOutput: Bool = false, extraArgs: String? = nil, runAfter: String? = nil
+  ) throws {
     executableURL = Process.shExecPath
     arguments = ["-c", "curl -fsSL \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
     try run()
@@ -34,11 +36,11 @@ extension Process {
   }
 
   public func changeOwnerRecursively(of path: String, toOwner owner: String) throws {
-        executableURL = URL(fileURLWithPath: "/usr/sbin/chown")
-        arguments = ["-R", owner, path]
-        try run()
-        waitUntilExit()
-    }
+    executableURL = URL(fileURLWithPath: "/usr/sbin/chown")
+    arguments = ["-R", owner, path]
+    try run()
+    waitUntilExit()
+  }
 }
 
 do {
