@@ -42,15 +42,19 @@ extension Process {
 }
 
 func enableTouchIDForSudo() throws {
-  let pamFilePath = "/etc/pam.d/sudo"
-  let pamTidLine = "auth       sufficient     pam_tid.so\n"
-  var pamContents = try String(contentsOfFile: pamFilePath, encoding: .utf8)
+  #if os(macOS)
+    let pamFilePath = "/etc/pam.d/sudo"
+    let pamTidLine = "auth       sufficient     pam_tid.so\n"
+    var pamContents = try String(contentsOfFile: pamFilePath, encoding: .utf8)
   
-  if !pamContents.contains(pamTidLine) {
-    let lines = pamContents.split(separator: "\n", omittingEmptySubsequences: false)
-    pamContents = lines.prefix(1).joined(separator: "\n") + "\n" + pamTidLine + lines.dropFirst().joined(separator: "\n")
-    try pamContents.write(toFile: pamFilePath, atomically: true, encoding: .utf8)
-  }
+    if !pamContents.contains(pamTidLine) {
+      let lines = pamContents.split(separator: "\n", omittingEmptySubsequences: false)
+      pamContents = lines.prefix(1).joined(separator: "\n") + "\n" + pamTidLine + lines.dropFirst().joined(separator: "\n")
+      try pamContents.write(toFile: pamFilePath, atomically: true, encoding: .utf8)
+    }
+  #else
+    print("Touch ID for sudo is only supported on macOS.")
+  #endif
 }
 
 do {
