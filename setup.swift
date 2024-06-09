@@ -52,7 +52,6 @@ do {
   }
 
   if !FileManager.default.fileExists(atPath: "/Users/mac/.deno") {
-    print("Installing Deno")
     try Process().install(from: "https://deno.land/install.sh")
   }
 
