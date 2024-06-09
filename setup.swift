@@ -34,6 +34,25 @@ extension Process {
     )
     try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
   }
+
+   public func installSwiftList() throws {
+        let url = URL(string: "https://github.com/maclong9/SwiftList/releases/download/v1.0.2/sls")!
+        let destination = URL(fileURLWithPath: "/usr/local/bin/sls")
+        
+        let downloadTask = URLSession.shared.downloadTask(with: url) { location, _, error in
+            guard let location = location, error == nil else {
+                print("Error downloading SwiftList binary: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            do {
+                try FileManager.default.moveItem(at: location, to: destination)
+                print("SwiftList installed successfully to /usr/local/bin")
+            } catch {
+                print("Error moving SwiftList binary to /usr/local/bin: \(error.localizedDescription)")
+            }
+        }
+        downloadTask.resume()
+    }
 }
 
 do {
@@ -55,6 +74,7 @@ do {
   }
 
   try Process().installTooling()
+  try Process().installSwiftList()
 } catch {
   print("Error: \(error)")
 }
