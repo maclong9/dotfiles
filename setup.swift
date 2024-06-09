@@ -25,15 +25,6 @@ extension Process {
     try run()
     waitUntilExit()
   }
-
-  public func installTooling() throws {
-    try Process().install(from: "https://deno.land/install.sh")
-    try Process().install(
-      from:
-        "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
-    )
-    try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
-  }
 }
 
 do {
@@ -54,7 +45,11 @@ do {
     }
   }
 
-  try Process().installTooling()
+    try Process().install(from: "https://deno.land/install.sh")
+    try Process().install(
+      from:
+        "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
+    )
 } catch {
   print("Error: \(error)")
 }
