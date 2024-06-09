@@ -24,7 +24,7 @@ extension Process {
     from src: String, withOutput: Bool = false, extraArgs: String? = nil, runAfter: String? = nil
   ) throws {
     executableURL = Process.shExecPath
-    arguments = ["-c", "curl -fsSL \(withOutput ? "-o" : "") \(src) | sh"]
+    arguments = ["-c", "curl \(withOutput ? "-o" : "") \(extraArgs ?? "")  \(src) | sh"]
     try run()
     waitUntilExit()
   }
@@ -69,11 +69,12 @@ do {
     )
   }
 
-  if !FileManager.default.fileExists(atPath: "\(homeDir)/.vim") {
-    try FileManager.default.createDirectory(atPath: "\(homeDir)/.vim/autoload", withIntermediateDirectories: true, attributes: nil)
+  if !FileManager.default.fileExists(atPath: "/Users/mac/.vim") {
+    print("Installing vim-plug")
     try Process().install(
       from: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
-      withOutput: true
+      withOutput: true,
+      extraArgs: "/Users/mac/.vim/autoload/plug.vim --create-dirs"
     )
   }
 } catch {
