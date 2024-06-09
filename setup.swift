@@ -5,7 +5,6 @@ extension Process {
   private static let gitExecPath = URL(fileURLWithPath: "/usr/bin/git")
   private static let lnExecPath = URL(fileURLWithPath: "/bin/ln")
   private static let shExecPath = URL(fileURLWithPath: "/bin/sh")
-  private static let vimExecPath = URL(fileURLWithPath: "/usr/bin/vim")
 
   public func clone(from repo: String, to path: String) throws {
     executableURL = Process.gitExecPath
