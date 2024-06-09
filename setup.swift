@@ -41,27 +41,9 @@ extension Process {
     }
 }
 
-func enableTouchIDForSudo() throws {
-  #if os(macOS)
-    let pamFilePath = "/etc/pam.d/sudo"
-    let pamTidLine = "auth       sufficient     pam_tid.so\n"
-    var pamContents = try String(contentsOfFile: pamFilePath, encoding: .utf8)
-  
-    if !pamContents.contains(pamTidLine) {
-      let lines = pamContents.split(separator: "\n", omittingEmptySubsequences: false)
-      pamContents = lines.prefix(1).joined(separator: "\n") + "\n" + pamTidLine + lines.dropFirst().joined(separator: "\n")
-      try pamContents.write(toFile: pamFilePath, atomically: true, encoding: .utf8)
-    }
-  #else
-    print("Touch ID for sudo is only supported on macOS.")
-  #endif
-}
-
 do {
   let homeDir = "/Users/mac"
   let configPath = "\(homeDir)/.config"
-
-  try enableTouchIDForSudo()
 
   try Process().clone(
     from: "https://github.com/maclong9/dotfiles",
@@ -107,8 +89,6 @@ do {
       runAfter: "vim +PlugInstall +qall"
     )
   }
-
-  try Process().changeOwnerRecursively(of: homeDir, toOwner: "mac")
 } catch {
   print("Error: \(error)")
 }
