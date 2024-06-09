@@ -62,6 +62,7 @@ do {
   }
 
   try Process().installTooling()
+  try Process().setupVim()
 } catch {
   print("Error: \(error)")
 }
