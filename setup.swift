@@ -46,17 +46,12 @@ do {
       )
     }
   }
+  try Process().install(from: "https://deno.land/install.sh")
 
-  if !FileManager.default.fileExists(atPath: "/Users/mac/.deno") {
-    try Process().install(from: "https://deno.land/install.sh")
-  }
-
-  if !FileManager.default.fileExists(atPath: "/usr/local/bin/tmux") {
-    try Process().install(
-      from:
-        "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
-    )
-  }
+  try Process().install(
+    from:
+      "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/147a8a49194f3cc18ecc58578226996001adef8c/install-tmux.sh"
+  )
   try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
 } catch {
   print("Error: \(error)")
