@@ -34,6 +34,13 @@ extension Process {
     )
     try FileManager.default.removeItem(at: URL(fileURLWithPath: "\(homeDir)/tmux-install"))
   }
+
+  public func setupVim() throws {
+    executableURL = URL(fileURLWithPath: "/usr/bin/vim")
+    arguments = ["+qa"]
+    try run()
+    waitUntilExit()
+  }
 }
 
 do {
