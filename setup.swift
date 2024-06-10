@@ -54,7 +54,7 @@ do {
   )
 
   while let fileUrl = enumerator?.nextObject() as? URL {
-    if !fileUrl.pathExtension.isEmpty {
+    if fileUrl.pathExtension.isEmpty {
       try Process().link(
         from: fileUrl.path,
         to: "\(homeDir)/.\(fileUrl.lastPathComponent)"
