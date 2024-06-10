@@ -30,22 +30,12 @@ extension Process {
     try execute("/bin/ln", with: ["-s", src, dest])
   }
 
-  public func gitInstall(from url: String) throws {
-    let repoUrl = URL(string: url)!
-    try Process().clone(from: repoUrl.path, to: repoUrl.lastPathComponent)
-    fm.changeCurrentDirectoryPath(repoUrl.lastPathComponent)
-    try execute("/usr/bin/swift", with: ["run", "mint", "install", "yonaskolb/mint"])
-    fm.changeCurrentDirectoryPath(homeDir)
-    try fm.removeItem(at: URL(fileURLWithPath: repoUrl.lastPathComponent))
-  }
-
-  public func scriptInstall(from src: String) throws {
+  public func install(from src: String) throws {
     try execute("/bin/sh", with: ["-c", "curl -fsSL \(src) | sh"])
   }
 }
 
-do {
-  try Process().clone(from: "maclong9/dotfiles", to: configPath)
+func symbolicallyLinkFiles() throws {
   let enumerator = fm.enumerator(
     at: URL(fileURLWithPath: configPath),
     includingPropertiesForKeys: [.isRegularFileKey],
@@ -60,11 +50,17 @@ do {
       )
     }
   }
+}
 
-  try Process().scriptInstall(from: "https://deno.land/install.sh")
-  try Process().gitInstall(from: "https://github.com/yonaskolb/Mint")
-  try Process().scriptInstall(from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/d4698fa97ce39a3134062f44fb59f4c978777a05/install-tmux.sh")
-  
+do {
+  try Process().clone(from: "maclong9/dotfiles", to: configPath)
+  try Process().install(from: "https://deno.land/install.sh")
+  try Process().install(
+    from:
+      "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/d4698fa97ce39a3134062f44fb59f4c978777a05/install-tmux.sh"
+  )
+  try symbolicallyLinkFiles()
+
 } catch {
   print("Error: \(error)")
 }
