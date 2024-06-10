@@ -63,7 +63,8 @@ do {
 
   try Process().scriptInstall(from: "https://deno.land/install.sh")
   try Process().gitInstall(from: "https://github.com/yonaskolb/Mint")
-  try Process().scriptInstall(from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/86a6904ca6f8abe5796db5b6835a13633505a024/install-tmux.sh")
+  try Process().scriptInstall(from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/d4698fa97ce39a3134062f44fb59f4c978777a05/install-tmux.sh")
+  
 } catch {
   print("Error: \(error)")
 }
