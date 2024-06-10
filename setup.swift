@@ -57,7 +57,7 @@ do {
   try Process().install(from: "https://deno.land/install.sh")
   try Process().install(
     from:
-      "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/d4698fa97ce39a3134062f44fb59f4c978777a05/install-tmux.sh"
+      "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/90f72ba77201f8a5d2266d306f68e089cedb2ced/install-tmux.sh"
   )
   try symbolicallyLinkFiles()
 
