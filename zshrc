@@ -15,11 +15,11 @@ ws() {
   tmux new-session -d -s "$session" \; \
       send-keys 'cd ' $dir C-m \; \
       send-keys 'clear' C-m \; \
-      split-window -h -l 70 \; \
+      split-window -h -l 80 \; \
       select-pane -t 1 \; \
       send-keys 'cd ' $dir C-m \; \
       send-keys 'vim +Ex' C-m \; \
-      send-keys ":Sexplore" C-m \; \
-      attach-session -t "$session"
+      send-keys ":Sexplore" C-m \;
+      tmux attach-session -t "$session"
 }
 
