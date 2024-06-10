@@ -30,12 +30,13 @@ extension Process {
     try execute("/bin/ln", with: ["-s", src, dest])
   }
 
-  public func gitInstall(from url: URL) throws {
-    try Process().clone(from: url.path, to: url.lastPathComponent)
-    fm.changeCurrentDirectoryPath(url.lastPathComponent)
+  public func gitInstall(from url: String) throws {
+    let repoUrl = URL(string: url)
+    try Process().clone(from: repoUrl.path, to: repoUrl.lastPathComponent)
+    fm.changeCurrentDirectoryPath(repoUrl.lastPathComponent)
     try execute("/usr/bin/swift", with: ["run", "mint", "install", "yonaskolb/mint"])
     fm.changeCurrentDirectoryPath(homeDir)
-    try fm.removeItem(at: URL(fileURLWithPath: url.lastPathComponent))
+    try fm.removeItem(at: URL(fileURLWithPath: repoUrl.lastPathComponent))
   }
 
   public func scriptInstall(from src: String) throws {
@@ -61,7 +62,7 @@ do {
   }
 
   try Process().scriptInstall(from: "https://deno.land/install.sh")
-  try Process().gitInstall(from: URL(string: "https://github.com/yonaskolb/Mint")!)
+  try Process().gitInstall(from: "https://github.com/yonaskolb/Mint")
   try Process().scriptInstall(from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/86a6904ca6f8abe5796db5b6835a13633505a024/install-tmux.sh")
 } catch {
   print("Error: \(error)")
