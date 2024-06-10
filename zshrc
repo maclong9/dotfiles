@@ -15,7 +15,7 @@ ws() {
   tmux new-session -d -s "$session" \; \
       send-keys 'cd ' $dir C-m \; \
       send-keys 'clear' C-m \; \
-      split-window -h -l 80 \; \
+      split-window -h -l 100 \; \
       select-pane -t 1 \; \
       send-keys 'cd ' $dir C-m \; \
       send-keys 'vim +Ex' C-m \; \
