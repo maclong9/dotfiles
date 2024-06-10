@@ -14,6 +14,7 @@ endfor
   
 for option in [
 	'tabstop=2', 
+	'expandtab',	
 	'cursorline',
 	'noshowmode', 
 	'noswapfile',
