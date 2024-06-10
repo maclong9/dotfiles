@@ -3,7 +3,9 @@ import Foundation
 
 let homeDir = "/Users/mac"
 let configPath = "\(homeDir)/.config"
-let mintPath = "\(homeDir)/Mint"
+let tmuxVer = "3.4"
+let libEventVer = "2.1.12-stable"
+let fm = FileManager.default
 
 extension Process {
   public func execute(_ binary: String, with args: [String]? = []) throws {
@@ -28,31 +30,22 @@ extension Process {
     try execute("/bin/ln", with: ["-s", src, dest])
   }
 
-  func install(from url: URL, install: Bool? = false) throws {
-    if !url.path.contains("github") {
-      try Process().clone(from: url.path, to: url.lastPathComponent)
-    }
-
-    FileManager.default.changeCurrentDirectoryPath(url.lastPathComponent)
-
-    if install == false {
-	try execute("/usr/bin/sudo", with: ["make"])
-    } else {
-	try execute("/usr/bin/make")
-	try execute("/usr/bin/sudo", with: ["make", "install"])
-    }
-    
-    FileManager.default.changeCurrentDirectoryPath(homeDir)
+  public func gitInstall(from url: URL) throws {
+    try Process().clone(from: url.path, to: url.lastPathComponent)
+    fm.changeCurrentDirectoryPath(url.lastPathComponent)
+    try execute("/usr/bin/swift", with: ["run", "mint", "install", "yonaskolb/mint"])
+    fm.changeCurrentDirectoryPath(homeDir)
+    try fm.removeItem(at: URL(fileURLWithPath: url.lastPathComponent))
   }
 
-  func installFromScript(from src: String) throws {
-    try execute("/bin/sh", with: ["-c", "curl", "-fsSl", src, "| sh"])
+  public func scriptInstall(from src: String) throws {
+    try execute("/bin/sh", with: ["-c", "curl -fsSL \(src) | sh"])
   }
 }
 
 do {
   try Process().clone(from: "maclong9/dotfiles", to: configPath)
-  let enumerator = FileManager.default.enumerator(
+  let enumerator = fm.enumerator(
     at: URL(fileURLWithPath: configPath),
     includingPropertiesForKeys: [.isRegularFileKey],
     options: [.skipsHiddenFiles]
@@ -67,9 +60,9 @@ do {
     }
   }
 
-  try Process().installFromScript(from: "https://deno.land/install.sh")
-  try Process().install(from: URL(string: "https://github.com/yonaskolb/Mint")!)
+  try Process().scriptInstall(from: "https://deno.land/install.sh")
+  try Process().gitInstall(from: URL(string: "https://github.com/yonaskolb/Mint")!)
+  try Process().scriptInstall(from: "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/1bb585ba5797ddd31da8ce5e06c493520b96252f/install-tmux.sh")
 } catch {
   print("Error: \(error)")
 }
-
