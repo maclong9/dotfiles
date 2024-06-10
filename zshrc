@@ -13,32 +13,34 @@ alias wsf="ws -f"
 alias wsb="ws -b"
 
 ws() {
-  local flag="$1"; shift
-  local dir="${1:-$PWD}"; shift
-	local session="$(basename "$dir" | tr -d '.')_$$"
+  local flag="$1"
+  shift
+  local dir="${1:-$PWD}"
+  shift
+  local session="$(basename "$dir" | tr -d '.')"
 
-	echo "$flag"
-	echo "$dir"
-  echo $session
-
-  if [[ "$flag" == "-f" ]]; then
-    tmux new-session -d -s "$session" \; \
-			send-keys 'cd ' $dir C-m \; \
+  if tmux has-session -t "$session" 2>/dev/null; then
+    tmux attach-session -t "$session"
+  else
+    if [[ "$flag" == "-f" ]]; then
+      tmux new-session -d -s "$session" \; \
+      send-keys 'cd ' $dir C-m \; \
       send-keys 'vim +Ex' C-m \; \
       split-window -v -p 20 \; \
-			send-keys 'cd ' $dir C-m \; \
-			send-keys 'clear' C-m \; \
+      send-keys 'cd ' $dir C-m \; \
+      send-keys 'clear' C-m \; \
       attach-session -t "$session"
-  elif [[ "$flag" == "-b" ]]; then
-    tmux new-session -d -s "$session" \; \
-			send-keys 'cd ' $dir C-m \; \
-			send-keys 'clear' C-m \; \
+    elif [[ "$flag" == "-b" ]]; then
+      tmux new-session -d -s "$session" \; \
+      send-keys 'cd ' $dir C-m \; \
+      send-keys 'clear' C-m \; \
       split-window -h -p 70 \; \
       select-pane -t 1 \; \
-			send-keys 'cd ' $dir C-m \; \
+      send-keys 'cd ' $dir C-m \; \
       send-keys 'vim +Ex' C-m \; \
-      send-keys ":Sexplore" C-m \; \
+      send-keys ":Sexplore" C-m
       attach-session -t "$session"
+    fi
   fi
 }
 
