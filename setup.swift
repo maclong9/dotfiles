@@ -31,12 +31,12 @@ extension Process {
   }
 
   public func gitInstall(from url: String) throws {
-    let repoUrl = URL(string: url)
+    let repoUrl = URL(string: url)!
     try Process().clone(from: repoUrl.path, to: repoUrl.lastPathComponent)
     fm.changeCurrentDirectoryPath(repoUrl.lastPathComponent)
     try execute("/usr/bin/swift", with: ["run", "mint", "install", "yonaskolb/mint"])
     fm.changeCurrentDirectoryPath(homeDir)
-    try fm.removeItem(at: URL(fileURLWithPath: repoUrl.lastPathComponent)!)
+    try fm.removeItem(at: URL(fileURLWithPath: repoUrl.lastPathComponent))
   }
 
   public func scriptInstall(from src: String) throws {
