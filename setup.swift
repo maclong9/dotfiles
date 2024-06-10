@@ -35,9 +35,14 @@ extension Process {
 
     FileManager.default.changeCurrentDirectoryPath(url.lastPathComponent)
 
-    if let install = install, !install {
-        try execute("/usr/bin/sudo", with: ["make"])
+    if install == false {
+	try execute("/usr/bin/sudo", with: ["make"])
+    } else {
+	try execute("/usr/bin/make")
+	try execute("/usr/bin/sudo", with: ["make", "install"])
     }
+    
+    FileManager.default.changeCurrentDirectoryPath(homeDir)
   }
 
   func installFromScript(from src: String) throws {
