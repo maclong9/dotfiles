@@ -3,8 +3,6 @@ import Foundation
 
 let homeDir = "/Users/mac"
 let configPath = "\(homeDir)/.config"
-let tmuxVer = "3.4"
-let libEventVer = "2.1.12-stable"
 let fm = FileManager.default
 
 extension Process {
@@ -55,10 +53,6 @@ func symbolicallyLinkFiles() throws {
 do {
   try Process().clone(from: "maclong9/dotfiles", to: configPath)
   try Process().install(from: "https://deno.land/install.sh")
-  try Process().install(
-    from:
-      "https://gist.githubusercontent.com/maclong9/32616842c8197da8271dda426b78f87c/raw/90f72ba77201f8a5d2266d306f68e089cedb2ced/install-tmux.sh"
-  )
   try symbolicallyLinkFiles()
 
 } catch {
