@@ -8,18 +8,12 @@ alias tks="tmux kill-server"
 alias wsf="ws -f"
 alias wsb="ws -b"
 
-
 ws() {
-  local dir="${1:-$PWD}"
-  local session=$(basename "$dir" | tr -d '.')
-  tmux new-session -d -s "$session" \; \
-      send-keys 'cd ' $dir C-m \; \
-      send-keys 'clear' C-m \; \
-      split-window -h -l 100 \; \
-      select-pane -t 1 \; \
-      send-keys 'cd ' $dir C-m \; \
-      send-keys 'vim +Ex' C-m \; \
-      send-keys ":Sexplore" C-m \;
-      tmux attach-session -t "$session"
-}
+  local dir=${1:-.}
 
+  vim -c "let &rtp=&rtp" -c "cd $dir" \
+      -c "vsplit | wincmd l" \
+      -c "wincmd H | vertical resize 10 | terminal" \
+      -c "wincmd l | Explore" \
+      -c "wincmd h | Explore"
+}
