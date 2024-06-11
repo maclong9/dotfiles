@@ -1,14 +1,7 @@
 vim9script
 syntax enable
 colorscheme habamax
-autocmd VimResized * wincmd =
 command! -nargs=1 G execute ':!git <args>'
-
-# TODO: Setup Quick Pane Switching
-highlight StatusLine ctermbg=36 
-highlight StatusLineInactive ctermbg=235 ctermfg=36
-highlight VertSplit ctermbg=235 ctermfg=235
-# TODO: Add Git Branch to StatusLine
 
 for [var, val] in items({
 	is_posix: 1, 
@@ -18,29 +11,35 @@ for [var, val] in items({
 })
 	execute 'g:' .. var .. ' = ' .. string(val)
 endfor
+
+for [group, attrs] in items({
+    'StatusLine': { 'ctermbg': 36 },
+    'StatusLineNC': { 'ctermbg': 235, 'ctermfg': 36 },
+    'VertSplit': { 'ctermbg': 235, 'ctermfg': 235 }
+})
+	var cmd = 'hi ' .. group
+	for [attr, val] in items(attrs)
+		cmd ..= ' ' .. attr .. '=' .. string(val)
+	endfor
+	execute cmd
+endfor
   
 for option in [
-	'tabstop=4', 
-	'expandtab',	
 	'cursorline',
 	'noshowmode', 
 	'noswapfile',
-	'breakindent',
 	'smartindent',
-	'shiftwidth=4',
 	'signcolumn=no',
 	'scrolloff=999',
 	'regexpengine=0',
 	'relativenumber',
-    'fillchars+=vert:\ '
+	'fillchars+=vert:\ '
 ]
-  execute 'set ' .. option
+	execute 'set ' .. option
 endfor
 
 for [map, cmd] in items({
-	lh: 'LspHover',
 	lr: 'LspRename',
-	ll: 'LspCodeLens',
 	la: 'LspCodeAction',
 	ld: 'LspDefinition',
 	lf: 'LspDocumentFormat',
@@ -53,8 +52,8 @@ for [map, cmd] in items({
 endfor
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin()
