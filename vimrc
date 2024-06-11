@@ -19,27 +19,21 @@ for [var, val] in items({
 endfor
   
 for option in [
-	'tabstop=4', 
-	'expandtab',	
 	'cursorline',
 	'noshowmode', 
 	'noswapfile',
 	'breakindent',
 	'smartindent',
-	'shiftwidth=4',
-	'signcolumn=no',
 	'scrolloff=999',
 	'regexpengine=0',
 	'relativenumber',
-    'fillchars+=vert:\ '
+        'fillchars+=vert:\ '
 ]
   execute 'set ' .. option
 endfor
 
 for [map, cmd] in items({
-	lh: 'LspHover',
 	lr: 'LspRename',
-	ll: 'LspCodeLens',
 	la: 'LspCodeAction',
 	ld: 'LspDefinition',
 	lf: 'LspDocumentFormat',
