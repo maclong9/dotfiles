@@ -10,6 +10,5 @@ ws() {
       -c "vsplit" \
       -c "wincmd l | split" \
       -c "wincmd h | vertical resize 80 | terminal" \
-      -c "wincmd j | q" \
-      -c "wincmd l"
+      -c "wincmd j | q"
 }
