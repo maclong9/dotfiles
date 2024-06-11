@@ -45,12 +45,7 @@ for [map, cmd] in items({
 	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
 
-for key in [
-  'h',
-  'j',
-  'k',
-  'l',
-]
+for key in ['h', 'j', 'k', 'l']
   execute 'nmap <C-' .. key .. '> <C-w>' .. key
 endfor
 
