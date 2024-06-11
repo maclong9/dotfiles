@@ -22,7 +22,6 @@ for option in [
 	'cursorline',
 	'noshowmode', 
 	'noswapfile',
-	'breakindent',
 	'smartindent',
 	'scrolloff=999',
 	'regexpengine=0',
