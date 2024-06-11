@@ -45,10 +45,6 @@ for [map, cmd] in items({
 	execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
 
-for key in ['h', 'j', 'k', 'l']
-  execute 'nmap <C-' .. key .. '> <C-w>' .. key
-endfor
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC

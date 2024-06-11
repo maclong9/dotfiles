@@ -11,9 +11,11 @@ alias wsb="ws -b"
 ws() {
   local dir=${1:-.}
 
-  vim -c "let &rtp=&rtp" -c "cd $dir" \
-      -c "vsplit | wincmd l" \
-      -c "wincmd H | vertical resize 10 | terminal" \
-      -c "wincmd l | Explore" \
-      -c "wincmd h | Explore"
+  vim -c "cd $dir" \
+      -c "vsplit" \
+      -c "wincmd l | split" \
+      -c "wincmd h | vertical resize 80 | terminal" \
+      -c "wincmd j | q" \
+      -c "wincmd l"
 }
+
