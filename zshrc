@@ -7,8 +7,9 @@ alias hg="history | grep"
 
 ws() {
   vim -c "cd ${1:-.}" \
-      -c "vsplit" \
-      -c "wincmd l | Sexplore" \
-      -c "wincmd h | vertical resize 80 | terminal" \
-      -c "wincmd j | q | wincmd l | wincmd j | Explore"
+    -c "vsplit" \
+    -c "wincmd l | Sexplore" \
+    -c "wincmd h | vertical resize 80 | terminal" \
+    -c "wincmd j | q | wincmd l | wincmd j | Explore"
 }
+
