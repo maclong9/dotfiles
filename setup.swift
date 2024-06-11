@@ -24,6 +24,7 @@ do {
             configPath
         ]
     )
+    
     try Process().execute(
         "/bin/sh",
         with: [
