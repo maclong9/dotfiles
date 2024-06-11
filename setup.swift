@@ -18,14 +18,6 @@ extension Process {
       "/usr/bin/git",
       with: ["clone", "-q", "https://github.com/\(repo)", path])
   }
-
-  public func link(from src: String, to dest: String) throws {
-
-  }
-
-  public func install(from src: String) throws {
-
-  }
 }
 
 func symbolicallyLinkFiles() throws {
