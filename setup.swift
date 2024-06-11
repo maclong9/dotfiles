@@ -3,6 +3,7 @@ import Foundation
 
 let homeDir = "/Users/mac"
 let configPath = "\(homeDir)/.config"
+let configRepo = "https://github.com/maclong9/dotfiles"
 let fm = FileManager.default
 
 extension Process {
@@ -15,23 +16,8 @@ extension Process {
 }
 
 do {
-    try Process().execute(
-        "/usr/bin/git",
-        with: [
-            "clone",
-            "-q",
-            "https://github.com/maclong9/dotfiles",
-            configPath
-        ]
-    )
-    
-    try Process().execute(
-        "/bin/sh",
-        with: [
-            "-c",
-            "curl -fsSL https://deno.land/install.sh | sh"
-        ]
-    )
+    try Process().execute("/usr/bin/git", with: ["clone", "-q", configRepo, configPath])
+    try Process().execute("/bin/sh", with: ["-c", "curl -fsSL https://deno.land/install.sh | sh"])
 
     let enumerator = fm.enumerator(
         at: URL(fileURLWithPath: configPath),
@@ -41,14 +27,7 @@ do {
 
     while let fileUrl = enumerator?.nextObject() as? URL {
         if fileUrl.pathExtension.isEmpty {
-            try Process().execute(
-                "/bin/ln",
-                with: [
-                    "-s",
-                    fileUrl.path,
-                    "\(homeDir)/.\(fileUrl.lastPathComponent)",
-                ]
-            )
+            try Process().execute("/bin/ln", with: ["-s", fileUrl.path, "\(homeDir)/.\(fileUrl.lastPathComponent)"])
         }
     }
 } catch {
