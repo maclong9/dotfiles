@@ -29,7 +29,7 @@ func symbolicallyLinkFiles() throws {
 
   while let fileUrl = enumerator?.nextObject() as? URL {
     if fileUrl.pathExtension.isEmpty {
-      try execute("/bin/ln", with: [
+      try Process().execute("/bin/ln", with: [
         "-s",
         fileUrl.path,
         "\(homeDir)/.\(fileUrl.lastPathComponent)"
@@ -40,7 +40,7 @@ func symbolicallyLinkFiles() throws {
 
 do {
   try Process().clone(from: "maclong9/dotfiles", to: configPath)
-  try execute("/bin/sh", with: ["-c", "curl -fsSL https://deno.land/install.sh | sh"])
+  try Process().execute("/bin/sh", with: ["-c", "curl -fsSL https://deno.land/install.sh | sh"])
   try symbolicallyLinkFiles()
 } catch {
   print("Error: \(error)")
