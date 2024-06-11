@@ -4,6 +4,12 @@ colorscheme habamax
 autocmd VimResized * wincmd =
 command! -nargs=1 G execute ':!git <args>'
 
+# TODO: Setup Quick Pane Switching
+highlight StatusLine ctermbg=36
+highlight StatusLineInactive ctermbg=234 ctermfg=36
+highlight VertSplit ctermbg=235 ctermfg=235
+# TODO: Add Git Branch to StatusLine
+
 for [var, val] in items({
 	is_posix: 1, 
 	mapleader: ';',
@@ -25,7 +31,8 @@ for option in [
 	'signcolumn=no',
 	'scrolloff=999',
 	'regexpengine=0',
-	'relativenumber'
+	'relativenumber',
+    'fillchars+=vert:\ '
 ]
   execute 'set ' .. option
 endfor
