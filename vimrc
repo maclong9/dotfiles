@@ -1,7 +1,6 @@
 vim9script
 syntax enable
 colorscheme habamax
-autocmd VimResized * wincmd =
 command! -nargs=1 G execute ':!git <args>'
 
 # TODO: Setup Quick Pane Switching
