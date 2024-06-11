@@ -14,14 +14,14 @@ for [var, val] in items({
 endfor
   
 for option in [
-	'tabstop=2', 
+	'tabstop=4', 
 	'expandtab',	
 	'cursorline',
 	'noshowmode', 
 	'noswapfile',
 	'breakindent',
 	'smartindent',
-	'shiftwidth=2',
+	'shiftwidth=4',
 	'signcolumn=no',
 	'scrolloff=999',
 	'regexpengine=0',
