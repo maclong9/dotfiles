@@ -12,15 +12,13 @@ extension Process {
     try run()
     waitUntilExit()
   }
-
-  public func clone(from repo: String, to path: String) throws {
-    try execute(
-      "/usr/bin/git",
-      with: ["clone", "-q", "https://github.com/\(repo)", path])
-  }
 }
 
-func symbolicallyLinkFiles() throws {
+do {
+  try execute(
+    "/usr/bin/git", with: ["clone", "-q", "https://github.com/maclong9/dotfiles", configPath])
+  try Process().execute("/bin/sh", with: ["-c", "curl -fsSL https://deno.land/install.sh | sh"])
+
   let enumerator = fm.enumerator(
     at: URL(fileURLWithPath: configPath),
     includingPropertiesForKeys: [.isRegularFileKey],
@@ -29,19 +27,15 @@ func symbolicallyLinkFiles() throws {
 
   while let fileUrl = enumerator?.nextObject() as? URL {
     if fileUrl.pathExtension.isEmpty {
-      try Process().execute("/bin/ln", with: [
-        "-s",
-        fileUrl.path,
-        "\(homeDir)/.\(fileUrl.lastPathComponent)"
-      ])
+      try Process().execute(
+        "/bin/ln",
+        with: [
+          "-s",
+          fileUrl.path,
+          "\(homeDir)/.\(fileUrl.lastPathComponent)",
+        ])
     }
   }
-}
-
-do {
-  try Process().clone(from: "maclong9/dotfiles", to: configPath)
-  try Process().execute("/bin/sh", with: ["-c", "curl -fsSL https://deno.land/install.sh | sh"])
-  try symbolicallyLinkFiles()
 } catch {
   print("Error: \(error)")
 }
