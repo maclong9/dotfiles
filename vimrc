@@ -5,8 +5,8 @@ autocmd VimResized * wincmd =
 command! -nargs=1 G execute ':!git <args>'
 
 # TODO: Setup Quick Pane Switching
-highlight StatusLine ctermbg=36
-highlight StatusLineInactive ctermbg=234 ctermfg=36
+highlight StatusLine ctermbg=36 
+highlight StatusLineInactive ctermbg=235 ctermfg=36
 highlight VertSplit ctermbg=235 ctermfg=235
 # TODO: Add Git Branch to StatusLine
 
