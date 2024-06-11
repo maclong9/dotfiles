@@ -26,7 +26,7 @@ for option in [
 	'scrolloff=999',
 	'regexpengine=0',
 	'relativenumber',
-        'fillchars+=vert:\ '
+    'fillchars+=vert:\ '
 ]
   execute 'set ' .. option
 endfor
