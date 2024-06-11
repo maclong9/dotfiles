@@ -16,20 +16,15 @@ extension Process {
   public func clone(from repo: String, to path: String) throws {
     try execute(
       "/usr/bin/git",
-      with: [
-        "clone",
-        "-q",
-        repo.contains("github") ? repo : "https://github.com/\(repo)",
-        path,
-      ])
+      with: ["clone", "-q", "https://github.com/\(repo)", path])
   }
 
   public func link(from src: String, to dest: String) throws {
-    try execute("/bin/ln", with: ["-s", src, dest])
+
   }
 
   public func install(from src: String) throws {
-    try execute("/bin/sh", with: ["-c", "curl -fsSL \(src) | sh"])
+
   }
 }
 
@@ -41,20 +36,20 @@ func symbolicallyLinkFiles() throws {
   )
 
   while let fileUrl = enumerator?.nextObject() as? URL {
-    if fileUrl.pathExtension.isEmpty || fileUrl.pathExtension.contains("conf") {
-      try Process().link(
-        from: fileUrl.path,
-        to: "\(homeDir)/.\(fileUrl.lastPathComponent)"
-      )
+    if fileUrl.pathExtension.isEmpty {
+      try execute("/bin/ln", with: [
+        "-s",
+        fileUrl.path,
+        "\(homeDir)/.\(fileUrl.lastPathComponent)"
+      ])
     }
   }
 }
 
 do {
   try Process().clone(from: "maclong9/dotfiles", to: configPath)
-  try Process().install(from: "https://deno.land/install.sh")
+  try execute("/bin/sh", with: ["-c", "curl -fsSL https://deno.land/install.sh | sh"])
   try symbolicallyLinkFiles()
-
 } catch {
   print("Error: \(error)")
 }
