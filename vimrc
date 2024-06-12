@@ -28,6 +28,7 @@ for option in [
 	'noshowmode', 
 	'noswapfile',
 	'smartindent',
+	'shiftwidth=4',
 	'signcolumn=no',
 	'scrolloff=999',
 	'regexpengine=0',
