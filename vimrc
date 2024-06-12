@@ -17,11 +17,9 @@ for [group, attrs] in items({
     'StatusLineNC': { 'ctermbg': 235, 'ctermfg': 36 },
     'VertSplit': { 'ctermbg': 235, 'ctermfg': 235 }
 })
-	var cmd = 'hi ' .. group
-	for [attr, val] in items(attrs)
-		cmd ..= ' ' .. attr .. '=' .. string(val)
-	endfor
-	execute cmd
+        for [attr, val] in items(attrs)
+                execute 'hi ' .. group .. ' ' .. attr .. '=' .. string(val)
+        endfor
 endfor
   
 for option in [
