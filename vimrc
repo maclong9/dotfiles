@@ -23,6 +23,7 @@ for [group, attrs] in items({
 endfor
   
 for option in [
+	'tabstop=4',
 	'cursorline',
 	'noshowmode', 
 	'noswapfile',
