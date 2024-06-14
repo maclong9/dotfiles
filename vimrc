@@ -27,6 +27,7 @@ for option in [
 	'cursorline',
 	'noshowmode', 
 	'noswapfile',
+	'breakindent',
 	'smartindent',
 	'shiftwidth=4',
 	'signcolumn=no',
