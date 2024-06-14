@@ -8,12 +8,12 @@ alias hg="history | grep"
 ws() {
 	case "$1" in
 		"-s" || "")
-            vim -c "cd $2" \
+            vim -c "cd ${2:-.}" \
                 -c "vsplit" \
                 -c "Explore | vertical resize 80" \
                 -c "wincmd l | Explore |  below terminal";;
         "-w")
-            vim -c "cd $2" \
+            vim -c "cd ${2:-.}" \
                 -c "vsplit" \
                 -c "wincmd l | Sexplore" \
                 -c "wincmd h | vertical resize 80 | terminal" \
