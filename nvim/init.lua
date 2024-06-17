@@ -19,7 +19,6 @@ if not ok then
 end
 
 lazy.setup({
-  -- Add plugins
   {
     "neovim/nvim-lspconfig", -- Collection of configurations for built-in LSP client
     dependencies = {
@@ -57,7 +56,6 @@ lazy.setup({
     dependencies = { "nvim-treesitter" }, -- or require if not used so far
     after = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
   },
-  "nvim-treesitter/nvim-treesitter-context",
   {
     "nvim-neotest/neotest",
     dependencies = {
