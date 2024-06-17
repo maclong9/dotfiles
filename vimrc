@@ -65,17 +65,34 @@ call plug#end()
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
 
 var lspServers = [
-    {
+  {
         name: 'clang',
         filetype: ['c', 'cpp'],
         path: '/usr/bin/clangd',
         args: ['--background-index']
+  },
+  {
+        name: 'cssls',
+        filetype: 'css',
+        path: '/usr/local/node_modules/.bin/css-languageserver',
+        args: ['--stdio'],
     },
     {
-        name: 'typescript-language-server',
-        filetype: ['typescript', 'typescriptreact'],
-        path: 'typescript-language-server',
-        args: ['--stdio']
+        name: 'deno',
+        filetype: ['javascript', 'typescript', 'javascriptreact', 'typescriptreact'],
+        path: '/usr/local/bin/deno',
+        args: ['lsp'],
+        debug: v:true,
+        initializationOptions: {
+            enable: v:true,
+            lint: v:true
+        }
+    },
+    {
+        name: 'emmet',
+        filetype: ['html', 'javascriptreact', 'typescriptreact'],
+        path: '/usr/local/node_modules/.bin/emmet-language-server',
+        args: ['--stdio'],
     }
 ]
 
