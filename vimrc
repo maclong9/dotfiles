@@ -76,8 +76,7 @@ var lspServers = [
         name: 'typescript-language-server',
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
         path: 'typescript-language-server',
-        args: ['--stdio'],
-        runIfSearch: ['package.json']
+        args: ['--stdio']
     }
 ]
 
