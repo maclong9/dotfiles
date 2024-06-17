@@ -63,6 +63,7 @@ call plug#begin()
     Plug 'yegappan/lsp'
     Plug 'mattn/emmet-vim'
     Plug 'sheerun/vim-polyglot'
+    Plug 'wellle/context.vim'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
