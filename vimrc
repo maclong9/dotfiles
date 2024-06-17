@@ -42,13 +42,12 @@ endfor
 for [map, cmd] in items({
         lr: 'LspRename',
         la: 'LspCodeAction',
-        ld: 'LspDefinition',
         ll: 'LspDiag current',
-        lf: 'LspDocumentFormat',
+        lf: 'LspFormat',
         lo: 'LspOutline',
         lt: 'LspPeekTypeDef',
-        ln: 'LspNextDiagnostic',
-        lp: 'LspPreviousDiagnostic'
+        ln: 'LspDiag nextWrap',
+        lp: 'LspDiag prevWrap'
 })
     execute 'nmap <leader>' .. map .. ' :' .. cmd .. '<cr>'
 endfor
@@ -60,6 +59,7 @@ endif
 
 call plug#begin()
     Plug 'yegappan/lsp'
+	Plug 'mattn/emmet-vim'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
@@ -73,7 +73,7 @@ var lspServers = [
     },
     {
         name: 'typescript-language-server',
-        filetype: ['typescript', 'typescript.tsx'],
+        filetype: ['typescript', 'typescriptreact'],
         path: 'typescript-language-server',
         args: ['--stdio']
     }
