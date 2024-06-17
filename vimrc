@@ -60,6 +60,7 @@ endif
 call plug#begin()
     Plug 'yegappan/lsp'
 	Plug 'mattn/emmet-vim'
+	Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
@@ -75,7 +76,8 @@ var lspServers = [
         name: 'typescript-language-server',
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
         path: 'typescript-language-server',
-        args: ['--stdio']
+        args: ['--stdio'],
+		runIfSearch: ['package.json']
     }
 ]
 
