@@ -30,8 +30,6 @@ lazy.setup({
   "nvim-treesitter/nvim-treesitter", -- Syntax highlighting
   "nvim-treesitter/nvim-treesitter-context", -- Show context at the top
   "windwp/nvim-ts-autotag", -- Auto-close and auto-rename HTML tags
-  "nvim-treesitter/playground", -- Interactive playground
-  "nvim-telescope/telescope.nvim", -- Fuzzy finder
   "datsfilipe/vesper.nvim", -- Vesper theme
   "nvim-lualine/lualine.nvim", -- Statusline
   "lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
@@ -47,7 +45,6 @@ lazy.setup({
   "L3MON4D3/LuaSnip", -- Snippets plugin
   "rafamadriz/friendly-snippets", -- Snippets collection
   "jose-elias-alvarez/null-ls.nvim", -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  "nvim-telescope/telescope-file-browser.nvim", -- File browser extension for telescope.nvim
   {
     "nvim-treesitter/nvim-treesitter",
     build = function()
@@ -55,20 +52,11 @@ lazy.setup({
       ts_update()
     end,
   },
-  "alvan/vim-closetag", -- Auto-close (X)HTML tags
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons", -- optional, for file icons
-    },
-    tag = "nightly", -- optional, updated every week. (see issue #1193)
-  },
   {
     "abecodes/tabout.nvim",
     dependencies = { "nvim-treesitter" }, -- or require if not used so far
     after = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
   },
-  "windwp/nvim-autopairs",
   "nvim-treesitter/nvim-treesitter-context",
   {
     "nvim-neotest/neotest",
@@ -82,35 +70,9 @@ lazy.setup({
     "nvim-lualine/lualine.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
   },
-  "ziglang/zig.vim",
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-  },
   "stevearc/dressing.nvim",
-  "lewis6991/gitsigns.nvim",
-  "windwp/nvim-ts-autotag",
   "NvChad/nvim-colorizer.lua",
-  "tpope/vim-abolish",
-  "styled-components/vim-styled-components",
-  "pangloss/vim-javascript",
-  "javascript-libraries-syntax.vim",
-  { "akinsho/bufferline.nvim", tag = "v3.*" },
-  "navarasu/onedark.nvim",
-  "kyazdani42/nvim-tree.lua",
-  "ful1e5/lsp_lines.nvim",
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    config = function()
-      require("rose-pine").setup()
-      vim.cmd("colorscheme rose-pine")
-    end,
-  },
-  "glepnir/lspsaga.nvim",
   "folke/which-key.nvim",
-  "lukas-reineke/indent-blankline.nvim",
-  { "akinsho/nvim-bufferline.lua", tag = "v3.*" },
   "gelguy/tailwindcss-nvim",
 })
 
