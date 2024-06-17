@@ -43,6 +43,7 @@ for [map, cmd] in items({
     lr: 'LspRename',
     la: 'LspCodeAction',
     ld: 'LspDefinition',
+	ll: 'LspDiag current',
     lf: 'LspDocumentFormat',
     ls: 'LspDocumentSymbol',
     lt: 'LspTypeDefinition',
@@ -58,8 +59,25 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-    Plug 'mattn/vim-lsp-settings',
-    Plug 'prabirshrestha/vim-lsp',
-    Plug 'prabirshrestha/asyncomplete.vim',
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	Plug 'yegappan/lsp'
 call plug#end()
+
+var lspOpts = {autoHighlightDiags: true}
+autocmd User LspSetup call LspOptionsSet(lspOpts)
+
+var lspServers = [
+    {
+        name: 'clang',
+        filetype: ['c', 'cpp'],
+        path: '/usr/bin/clangd',
+        args: ['--background-index']
+    },
+    {
+        name: 'typescript-language-server',
+        filetype: ['typescript', 'typescript.tsx'],
+        path: 'typescript-language-server',
+        args: ['--stdio']
+    }
+]
+
+autocmd User LspSetup call LspAddServer(lspServers)
