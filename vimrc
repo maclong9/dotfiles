@@ -3,8 +3,6 @@ syntax enable
 colorscheme habamax
 command! -nargs=1 G execute ':!git <args>'
 
-
-
 for [var, val] in items({
         is_posix: 1,
         mapleader: ';',
