@@ -1,4 +1,5 @@
 #!/usr/bin/swift
+// curl -sL https://raw.githubusercontent.com/maclong9/dotfiles/main/setup.swift | swift -
 import Foundation
 
 let homeDir = "/Users/mac"
