@@ -10,13 +10,13 @@ ws() {
 		"-s" || "")
             vim -c "cd ${2:-.}" \
                 -c "vsplit" \
-                -c "Explore | vertical resize 80" \
+                -c "Explore | vertical resize 90" \
                 -c "wincmd l | Explore |  below terminal";;
         "-w")
             vim -c "cd ${2:-.}" \
                 -c "vsplit" \
                 -c "wincmd l | Sexplore" \
-                -c "wincmd h | vertical resize 80 | terminal" \
+                -c "wincmd h | vertical resize 90 | terminal" \
                 -c "wincmd j | q | wincmd l | wincmd j | Explore";;
     esac
 }
