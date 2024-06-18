@@ -3,6 +3,11 @@ syntax enable
 colorscheme habamax
 command! -nargs=1 G execute ':!git <args>'
 
+noremap <A-h> <C-w>h
+noremap <A-j> <C-w>j
+noremap <A-k> <C-w>k
+noremap <A-l> <C-w>l
+
 for [var, val] in items({
         is_posix: 1,
         mapleader: ';',
