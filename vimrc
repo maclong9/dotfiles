@@ -8,7 +8,6 @@ for [var, val] in items({
         mapleader: ';',
         netrw_banner: 0,
         netrw_liststyle: 3,
-        EasyMotion_do_mapping: 0
 })
     execute 'g:' .. var .. ' = ' .. string(val)
 endfor
@@ -41,16 +40,6 @@ for option in [
 endfor
 
 for [map, cmd] in items({
-        '<A-h>': 'h',
-        '<A-j>': 'j',
-        '<A-k>': 'k',
-        '<A-l>': 'l',
-})
-    execute 'noremap ' .. key .. ' :wincmd ' .. mapping .. '<CR>'
-endfor
-
-for [map, cmd] in items({
-        f:  '<Plug>(easymotion-overwin-f)',
         lr: 'LspRename',
         la: 'LspCodeAction',
         ll: 'LspDiag current',
@@ -73,7 +62,6 @@ call plug#begin()
     Plug 'mattn/emmet-vim'
     Plug 'sheerun/vim-polyglot'
     Plug 'wellle/context.vim'
-    Plug 'easymotion/vim-easy-motion' " Add vim-easy-motion plugin
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
