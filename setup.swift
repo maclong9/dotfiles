@@ -2,7 +2,7 @@
 // curl -sL https://raw.githubusercontent.com/maclong9/dotfiles/main/setup.swift | swift -
 import Foundation
 
-let homeDir = "/Users/mac"
+let homeDir = "/Users/maclong"
 let configPath = "\(homeDir)/.config"
 let configRepo = "https://github.com/maclong9/dotfiles"
 let fm = FileManager.default
