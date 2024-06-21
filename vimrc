@@ -73,10 +73,10 @@ var lspServers = [
         args: ['--background-index']
     },
     {
-        name: 'typescript-language-server',
+        name: 'deno',
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
-        path: 'typescript-language-server',
-        args: ['--stdio']
+        path: 'deno',
+        args: ['lsp']
     }
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
