@@ -16,5 +16,3 @@
   pl = pull
   pln = pull --no-rebase
   s = status
-  rl = reset --hard HEAD^
-  al = commit --amend --no-edit
