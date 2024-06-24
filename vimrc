@@ -63,6 +63,7 @@ call plug#begin()
     Plug 'sheerun/vim-polyglot'
     Plug 'wellle/context.vim'
     Plug 'mityu/vim-wispath'
+    Plug 'Eliot00/auto-pairs'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
