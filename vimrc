@@ -62,6 +62,7 @@ call plug#begin()
     Plug 'mattn/emmet-vim'
     Plug 'sheerun/vim-polyglot'
     Plug 'wellle/context.vim'
+    Plug 'mityu/vim-wispath'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
