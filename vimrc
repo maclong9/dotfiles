@@ -3,7 +3,6 @@ syntax enable
 colorscheme habamax
 command! -nargs=1 G execute ':!git <args>'
 
-
 for [var, val] in items({
         is_posix: 1,
         mapleader: ';',
@@ -65,6 +64,7 @@ call plug#begin()
     Plug 'wellle/context.vim'
     Plug 'mityu/vim-wispath'
     Plug 'Eliot00/auto-pairs'
+    Plug 'tpope/vim-surround'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
