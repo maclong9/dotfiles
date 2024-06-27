@@ -2,10 +2,10 @@ export PATH=$PATH:~/.deno/bin
 
 if [[ -f $HOME/.inputrc ]]; then
     export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
-    %F{%(?.blue.red)}%BΨ%b%f "
+%F{%(?.blue.red)}%BΨ%b%f "
 else
     export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
-    %F{%(?.blue.red)}%Bλ%b%f "
+%F{%(?.blue.red)}%Bλ%b%f "
 fi
 
 setopt autocd
