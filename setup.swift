@@ -17,8 +17,9 @@ extension Process {
 }
 
 do {
-    try Process().execute("/usr/bin/git", with: ["clone", "-q", configRepo, configPath])
-    try Process().execute("/bin/sh", with: ["-c", "curl -fsSL https://deno.land/install.sh | sh"])
+    try Process().execute("/usr/bin/git", with: [
+        "clone", "-q", configRepo, configPath
+    ])
 
     let enumerator = fm.enumerator(
         at: URL(fileURLWithPath: configPath),
