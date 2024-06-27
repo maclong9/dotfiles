@@ -12,16 +12,6 @@ for [var, val] in items({
     execute 'g:' .. var .. ' = ' .. string(val)
 endfor
 
-for [group, attrs] in items({
-        'StatusLine': { 'ctermbg': 36 },
-        'StatusLineNC': { 'ctermbg': 235, 'ctermfg': 36 },
-        'VertSplit': { 'ctermbg': 235, 'ctermfg': 235 }
-})
-    for [attr, val] in items(attrs)
-        execute 'hi ' .. group .. ' ' .. attr .. '=' .. string(val)
-    endfor
-endfor
-
 for option in [
         'tabstop=4',
         'cursorline',
@@ -33,8 +23,7 @@ for option in [
         'signcolumn=no',
         'scrolloff=999',
         'regexpengine=0',
-        'relativenumber',
-        'fillchars+=vert:\ '
+        'relativenumber'
 ]
     execute 'set ' .. option
 endfor
