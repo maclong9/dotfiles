@@ -67,7 +67,7 @@ call plug#begin()
     Plug 'tpope/vim-surround'
 call plug#end()
 
-autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true})
+autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true, ignoreMissingServer: v:true})
 var lspServers = [
     {
         name: 'clang',
