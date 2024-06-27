@@ -1,12 +1,6 @@
 export PATH=$PATH:~/.deno/bin
-
-if [[ -f $HOME/.inputrc ]]; then
-    export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
-%F{%(?.blue.red)}%BΨ%b%f "
-else
-    export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
+export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%Bλ%b%f "
-fi
 
 setopt autocd
 
@@ -28,4 +22,3 @@ ws() {
                 -c "wincmd j | q | wincmd l | wincmd j | Explore";;
     esac
 }
-
