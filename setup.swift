@@ -4,7 +4,7 @@ import Foundation
 
 let homeDir = "/Users/maclong"
 let configPath = "\(homeDir)/.config"
-let configRepo = "https://github.com/maclong9/dotfiles"
+let configRepo = "git@github.com:maclong9/dotfiles.git"
 let fm = FileManager.default
 
 extension Process {
