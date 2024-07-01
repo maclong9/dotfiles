@@ -3,4 +3,4 @@ export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~
 setopt autocd
 alias g="git"
 alias hg="history | grep"
-alias dup="docker-compouse up -d"
+alias dup="docker-compose up -d"
