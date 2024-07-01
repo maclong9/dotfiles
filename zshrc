@@ -4,3 +4,5 @@ setopt autocd
 alias g="git"
 alias hg="history | grep"
 alias dup="docker-compose up -d"
+alias dst="docker-compose stop"
+alias ddw="docker-compose down"
