@@ -2,6 +2,8 @@
 import Foundation
 
 // TODO: Add Homebrew Installation and Tooling Install
+// `brew install node deno typescript-language-server`
+// `brew install --cask maccy`
 
 let homeDir = "/Users/maclong"
 let configPath = "\(homeDir)/.config"
