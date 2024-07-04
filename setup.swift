@@ -1,6 +1,8 @@
 #!/usr/bin/swift
 import Foundation
 
+// TODO: Add Homebrew Installation and Tooling Install
+
 let homeDir = "/Users/maclong"
 let configPath = "\(homeDir)/.config"
 let configRepo = "git@github.com:maclong9/dotfiles.git"

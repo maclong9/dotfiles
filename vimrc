@@ -54,6 +54,7 @@ call plug#begin()
     Plug 'mityu/vim-wispath'
     Plug 'Eliot00/auto-pairs'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-commentary'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true, ignoreMissingServer: v:true})
@@ -67,8 +68,8 @@ var lspServers = [
     {
         name: 'deno',
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
-        path: 'deno',
-        args: ['lsp']
+        path: '/opt/homebrew/bin/typescript-language-server',
+        args: ['--stdio']
     }
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
