@@ -1,6 +1,7 @@
-export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/opt/homebrew/bin:$HOME/.rbenv/bin
 export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%Bλ%b%f "
+eval "$(rbenv init -)"
 setopt autocd
 alias g="git"
 alias hg="history | grep"

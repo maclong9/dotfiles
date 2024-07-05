@@ -66,10 +66,16 @@ var lspServers = [
         args: ['--background-index']
     },
     {
-        name: 'deno',
+        name: 'typescript',
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
         path: '/opt/homebrew/bin/typescript-language-server',
         args: ['--stdio']
-    }
+    },
+    {
+        name: 'liquid',
+        filetype: ['liquid'],
+        path: 'shopify',
+        args: ['theme', 'language-server']
+    },
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
