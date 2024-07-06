@@ -50,7 +50,6 @@ call plug#begin()
     Plug 'yegappan/lsp'
     Plug 'mattn/emmet-vim'
     Plug 'sheerun/vim-polyglot'
-    Plug 'wellle/context.vim'
     Plug 'mityu/vim-wispath'
     Plug 'Eliot00/auto-pairs'
     Plug 'tpope/vim-surround'
@@ -70,12 +69,6 @@ var lspServers = [
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
         path: '/opt/homebrew/bin/typescript-language-server',
         args: ['--stdio']
-    },
-    {
-        name: 'liquid',
-        filetype: ['liquid'],
-        path: 'shopify',
-        args: ['theme', 'language-server']
     },
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
