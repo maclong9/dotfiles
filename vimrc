@@ -70,11 +70,6 @@ var lspServers = [
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
         path: '/opt/homebrew/bin/typescript-language-server',
         args: ['--stdio']
-    },
-    {
-        name: 'eslint',
-        filetype: ['.ts', '.tsx'],
-        path: 'eslint'
     }
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
