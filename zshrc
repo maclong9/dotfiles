@@ -23,4 +23,3 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load
-echo "\033[36mQUANTUM CORE ONLINE // ESTABLISHING ENTANGLEMENT // ALIGNING PARALLEL REALITIES\033[0m"
