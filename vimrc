@@ -54,6 +54,7 @@ call plug#begin()
     Plug 'Eliot00/auto-pairs'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
+    Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true, ignoreMissingServer: v:true})
@@ -70,5 +71,10 @@ var lspServers = [
         path: '/opt/homebrew/bin/typescript-language-server',
         args: ['--stdio']
     },
+    {
+        name: 'eslint',
+        filetype: ['.ts', '.tsx'],
+        path: 'eslint'
+    }
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
