@@ -12,4 +12,8 @@ for file in .config/*(D); do
     ln -s "$file" "$HOME/.${file:t}"
   fi
 done
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install deno gh tmux typescript-language-server vapor zoxide
 ```

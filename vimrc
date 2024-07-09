@@ -61,7 +61,7 @@ autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnR
 var lspServers = [
     {
         name: 'clang',
-        filetype: ['c', 'cpp'],
+        filetype: ['c'],
         path: '/usr/bin/clangd',
         args: ['--background-index']
     },
