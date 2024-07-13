@@ -5,10 +5,10 @@
 [alias]
   a = add
   aa = add .
-  ac = "!f() { git add . && git commit -m \"$1\"; }; f"
+  ac = "!f() { git add . && git commit -sm \"$1\"; }; f"
   b = branch
   bd = branch -d
-  c = commit -m
+  c = commit -sm
   cl = "!f() { base_url=\"https://github.com/\"; if [[ \"$1\" == *\"/\"* ]]; then git clone \"$base_url/$1.git\"; else git clone \"$base_url/maclong9/$1.git\"; fi; }; f"
   co = checkout
   d = diff
