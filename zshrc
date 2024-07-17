@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/.mint/bin:/opt/homebrew/bin
+export PATH=$PATH:/opt/homebrew/bin
 export PROMPT="%F{white}%n@%m %B%F{brightwhite}%~ 
 %F{%(?.blue.red)}%Bλ%b%f "
 
@@ -10,6 +10,7 @@ alias dup="docker-compose up -d"
 alias dst="docker-compose stop"
 alias ddw="docker-compose down"
 alias ls="sls -cli"
+alias setupinstall="brew install deno gh neovim tmux zoxide && brew install --cask clop heroix maccy neovide orbstack visual-studio-code whisky"
 
 source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting"

@@ -68,8 +68,8 @@ var lspServers = [
     {
         name: 'typescript',
         filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
-        path: '/opt/homebrew/bin/typescript-language-server',
-        args: ['--stdio']
+        path: 'deno',
+        args: ['lsp']
     }
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
