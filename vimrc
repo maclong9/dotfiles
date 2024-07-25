@@ -64,12 +64,6 @@ var lspServers = [
         filetype: ['c'],
         path: '/usr/bin/clangd',
         args: ['--background-index']
-    },
-    {
-        name: 'typescript',
-        filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
-        path: 'deno',
-        args: ['lsp']
     }
 ]
 autocmd User LspSetup call LspAddServer(lspServers)
