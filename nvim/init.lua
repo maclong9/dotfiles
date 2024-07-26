@@ -410,20 +410,6 @@ require("lazy").setup({
 			end
 
 			vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-
-			local Terminal = require("toggleterm.terminal").Terminal
-			local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-
-			function _LAZYGIT_TOGGLE()
-				lazygit:toggle()
-			end
-
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>g",
-				"<cmd>lua _LAZYGIT_TOGGLE()<CR>",
-				{ noremap = true, silent = true }
-			)
 		end,
 	},
 	{ -- Move around camelCase and snake_case words
