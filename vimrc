@@ -54,7 +54,6 @@ call plug#begin()
     Plug 'Eliot00/auto-pairs'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
-    Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 autocmd User LspSetup call LspOptionsSet({autoHighlightDiags: v:true, outlineOnRight: v:true, usePopupInCodeAction: v:true, ignoreMissingServer: v:true})

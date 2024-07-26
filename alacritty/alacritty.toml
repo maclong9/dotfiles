@@ -1,7 +1,0 @@
-[window]
-padding = { x = 5, top = 30, bottom = 5 }
-dynamic_padding = true
-decorations = "Transparent"
-
-[font]
-normal = { family = "Liga SFMono Nerd Font" }
