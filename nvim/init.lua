@@ -28,6 +28,8 @@ vim.opt.fillchars:append({ eob = " " })
 vim.opt.laststatus = 3
 vim.o.statusline = "%f %h%w%m%r %=(%l,%c%V)"
 vim.opt.tabstop = 2
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
 
 -- [[ Basic Keymaps ]]
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -161,9 +163,7 @@ require("lazy").setup({
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-
 			{ "j-hui/fidget.nvim", opts = {} },
-
 			{
 				"folke/lazydev.nvim",
 				ft = "lua",
@@ -236,7 +236,6 @@ require("lazy").setup({
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local servers = {
-				tsserver = {},
 				eslint = {},
 				lua_ls = {
 					settings = {
@@ -253,6 +252,7 @@ require("lazy").setup({
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
+				"vue-language-server",
 				"stylua",
 				"eslint",
 			})
@@ -437,7 +437,33 @@ require("lazy").setup({
 			)
 		end,
 	},
-
+	{
+		"chrisgrieser/nvim-spider",
+		keys = {
+			{
+				"e",
+				"<cmd>lua require('spider').motion('e')<CR>",
+				mode = { "n", "o", "x" },
+			},
+		},
+	},
+	{
+		"stevearc/oil.nvim",
+		opts = {
+			default_file_explorer = true,
+			view_options = {
+				show_hidden = true,
+			},
+		},
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		keys = {
+			{
+				"<leader>e",
+				"<cmd>Oil<cr>",
+				desc = "[E]xplore current working directory",
+			},
+		},
+	},
 	{
 		"datsfilipe/vesper.nvim",
 		priority = 1000,
@@ -481,7 +507,28 @@ require("lazy").setup({
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.surround").setup()
 			require("mini.pairs").setup()
+			require("mini.comment").setup()
+			require("mini.starter").setup()
 		end,
+	},
+	{
+		"chikko80/error-lens.nvim",
+		event = "BufRead",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			require("error-lens").setup()
+		end,
+	},
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -496,7 +543,6 @@ require("lazy").setup({
 				"luadoc",
 				"markdown",
 				"vue",
-				"typescript",
 				"markdown_inline",
 				"query",
 				"vim",
