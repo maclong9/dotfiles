@@ -31,7 +31,7 @@ vim.opt.tabstop = 2
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
 
--- [[ Basic Keymaps ]]
+-- [[ Keymaps ]]
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -40,7 +40,7 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- [[ Basic Autocommands ]]
+-- [[ Autocommands ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -63,6 +63,8 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	"tpope/vim-rsi", -- Allow readline movement bindings in <cmd> mode
+	"github/copilot.vim", -- GitHub Copilot integration
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -77,11 +79,10 @@ require("lazy").setup({
 	},
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
-		config = function() -- This is the function that runs, AFTER loading
+		event = "VimEnter",
+		config = function()
 			require("which-key").setup()
 
-			-- Document existing key chains
 			require("which-key").add({
 				{ "<leader>c", group = "[C]ode" },
 				{ "<leader>d", group = "[D]ocument" },
@@ -118,11 +119,9 @@ require("lazy").setup({
 				},
 			})
 
-			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
 
-			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
@@ -135,7 +134,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
-			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 10,
@@ -150,13 +148,11 @@ require("lazy").setup({
 				})
 			end, { desc = "[S]earch [/] in Open Files" })
 
-			-- Shortcut for searching your Neovim configuration files
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
 		end,
 	},
-
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -271,7 +267,6 @@ require("lazy").setup({
 			vim.g.user_emmet_leader_key = "<C-Y-,>"
 		end,
 	},
-
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
@@ -361,29 +356,23 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "tpope/vim-rsi" },
-	{
-		"tpope/vim-fugitive",
-		cmd = "Git",
-		keys = {
-			{ "<leader>gs", "<cmd>Git<cr>", desc = "Git status" },
-			{ "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" },
-			{ "<leader>gp", "<cmd>Git push<cr>", desc = "Git push" },
-			{ "<leader>gl", "<cmd>Git pull<cr>", desc = "Git pull" },
-			{ "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
-			{ "<leader>gd", "<cmd>Gvdiffsplit<cr>", desc = "Git diff" },
-			{ "<leader>gr", "<cmd>Gread<cr>", desc = "Git read (checkout)" },
-			{ "<leader>gw", "<cmd>Gwrite<cr>", desc = "Git write (add)" },
-			{ "<leader>ge", "<cmd>Gedit<cr>", desc = "Git edit" },
-			{ "<leader>glo", "<cmd>Git log<cr>", desc = "Git log" },
+	{ -- Convenitent terminal based Git integration
+		"kdheepak/lazygit.nvim",
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
 		},
-		config = function()
-			vim.api.nvim_create_user_command("GBrowse", function()
-				vim.cmd("Git browse")
-			end, {})
-		end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+		},
 	},
-	{
+	{ -- Quickly pop up a terminal window in your nvim instance
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		config = function()
@@ -437,7 +426,7 @@ require("lazy").setup({
 			)
 		end,
 	},
-	{
+	{ -- Move around camelCase and snake_case words
 		"chrisgrieser/nvim-spider",
 		keys = {
 			{
@@ -447,7 +436,7 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
+	{ -- Treat directories as buffers
 		"stevearc/oil.nvim",
 		opts = {
 			default_file_explorer = true,
@@ -464,7 +453,7 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
+	{ -- A simple and clean colorscheme
 		"datsfilipe/vesper.nvim",
 		priority = 1000,
 		init = function()
@@ -483,7 +472,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
+	{ -- Guides for indent levels
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {
@@ -495,13 +484,13 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
+	{ -- Quickly comment out lines or blocks of code
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
-	{
+	{ -- A collection of utilities
 		"echasnovski/mini.nvim",
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
@@ -511,7 +500,7 @@ require("lazy").setup({
 			require("mini.starter").setup()
 		end,
 	},
-	{
+	{ -- For interactive testing
 		"nvim-neotest/neotest",
 		dependencies = {
 			"nvim-neotest/nvim-nio",
@@ -520,7 +509,7 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
-	{
+	{ -- Treesitter for syntax highlighting
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
@@ -551,22 +540,4 @@ require("lazy").setup({
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
-}, {
-	ui = {
-		icons = vim.g.have_nerd_font and {} or {
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
-		},
-	},
-})
+}, {})
