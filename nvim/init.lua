@@ -65,6 +65,7 @@ require("lazy").setup({
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	"tpope/vim-rsi", -- Allow readline movement bindings in <cmd> mode
 	"github/copilot.vim", -- GitHub Copilot integration
+	"stevearc/dressing.nvim", -- Add some nice decorations to your neovim
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
