@@ -8,11 +8,9 @@ for [var, val] in items({
         mapleader: ';',
         netrw_banner: 0,
         netrw_liststyle: 3,
-        lsp_settings_filetype_vue: [
-            'eslint-language-server',
-            'typescript-language-server',
-            'volar-server'
-        ]
+        indentLine_char: '│',
+        lsp_settings_filetype_typescript: ['eslint-language-server', 'typescript-language-server'],
+        lsp_settings_filetype_vue: ['eslint-language-server', 'typescript-language-server', 'volar-server']
 })
     execute 'g:' .. var .. ' = ' .. string(val)
 endfor
@@ -28,12 +26,12 @@ for option in [
         'noswapfile',
         'number',
         'regexpengine=0',
+        'signcolumn=no',
         'relativenumber',
         'scrolloff=999',
-        'shiftwidth=4',
-        'signcolumn=no',
+        'shiftwidth=2',
         'smartindent',
-        'tabstop=4'
+        'tabstop=2',
 ]
     execute 'set ' .. option
 endfor
@@ -46,8 +44,10 @@ for [key, cmd] in items({
         '<C-k>': '<C-w>k',
         '<C-l>': '<C-w>l',
         '<Esc>': '<cmd>nohlsearch<cr>',
+        '<leader>e': '<cmd>Explore<cr>',
         '<leader>f': '<cmd>Files<cr>',
         '<leader>g': '<cmd>Rg<cr>',
+        'ga': '<plug>(lsp-code-action)',
         'gd': '<plug>(lsp-definition)',
         'gh': '<plug>(lsp-hover)',
         'gi': '<plug>(lsp-implementation)',
@@ -77,6 +77,7 @@ call plug#begin()
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
+    Plug 'yggdroot/indentline'
 call plug#end()
 
 # [[ Colorscheme Configuration ]]
