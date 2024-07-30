@@ -10,8 +10,8 @@ for [var, val] in items({
         netrw_liststyle: 3,
         lsp_settings_filetype_vue: [
             'eslint-language-server',
-            'typescript-language-server'
-            'volar-server', 
+            'typescript-language-server',
+            'volar-server'
         ]
 })
     execute 'g:' .. var .. ' = ' .. string(val)
@@ -28,35 +28,34 @@ for option in [
         'noswapfile',
         'number',
         'regexpengine=0',
-        'relativenumber'
+        'relativenumber',
         'scrolloff=999',
         'shiftwidth=4',
         'signcolumn=no',
         'smartindent',
-        'tabstop=4',
+        'tabstop=4'
 ]
     execute 'set ' .. option
 endfor
 
 # [[ Key Mappings ]]
 for [key, cmd] in items({
-        ';': '<cmd>Files<cr>',
         '<C-a>': '<plug>(lsp-action)',
         '<C-h>': '<C-w>h',
         '<C-j>': '<C-w>j',
         '<C-k>': '<C-w>k',
         '<C-l>': '<C-w>l',
         '<Esc>': '<cmd>nohlsearch<cr>',
+        '<leader>f': '<cmd>Files<cr>',
         '<leader>g': '<cmd>Rg<cr>',
-        '<leader>rn': '<plug>(lsp-rename)',
         'gd': '<plug>(lsp-definition)',
         'gh': '<plug>(lsp-hover)',
         'gi': '<plug>(lsp-implementation)',
         'gn': '<cmd>LspNextDiagnostic<cr>',
         'gp': '<cmd>LspPreviousDiagnostic<cr>',
-        'gr': '<plug>(lsp-references)',
+        'gr': '<plug>(lsp-rename)',
         'gs': '<plug>(lsp-document-symbol-search)',
-        'gt': '<plug>(lsp-type-definition)',
+        'gt': '<plug>(lsp-type-definition)'
 })
     execute 'nnoremap ' .. key .. ' ' .. cmd
 endfor
@@ -84,7 +83,13 @@ call plug#end()
 colorscheme xcodedark
 for [group, settings] in items({
         'EndOfBuffer': 'guibg=NONE ctermbg=NONE',
-        'Normal': 'guibg=NONE ctermbg=NONE',
+        'Normal': 'guibg=NONE ctermbg=NONE'
 })
     execute 'hi ' .. group .. ' ' .. settings
 endfor
+
+# [[ Auto Commands ]]
+augroup EslintOnSave
+    autocmd!
+    autocmd BufWritePost *.vue,*.ts silent! execute '!eslint --fix %'
+augroup END
