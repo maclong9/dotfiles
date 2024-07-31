@@ -16,6 +16,15 @@ return {
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
   {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        vue = {},
+      },
+    },
+  },
+
+  {
     "stevearc/oil.nvim",
     opts = {
       default_file_explorer = true,
