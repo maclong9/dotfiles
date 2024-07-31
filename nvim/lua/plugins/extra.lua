@@ -19,7 +19,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        vue = {},
+        vue = { "eslint" },
       },
     },
   },
@@ -36,8 +36,8 @@ return {
     keys = {
       { "<leader>e", "<cmd>Oil<cr>", desc = "Open parent directory" },
     },
-    config = function()
-      require("oil").setup()
+    config = function(opts)
+      require("oil").setup(opts)
     end,
   },
 
